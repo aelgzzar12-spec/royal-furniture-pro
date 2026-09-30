@@ -6,15 +6,16 @@
   <script>
     fetch("/api/auth", {
       method: "GET",
-      credentials: "include"
+      credentials: "include",
+      cache: "no-store"
     })
     .then(response => {
       if (!response.ok) {
-        window.location.href = "login.html";
+        window.location.replace("login.html");
       }
     })
     .catch(() => {
-      window.location.href = "login.html";
+      window.location.replace("login.html");
     });
   </script>
 
@@ -255,7 +256,6 @@
 
 </header>
 
-
 <main>
 
   <div class="intro">
@@ -272,7 +272,6 @@
     </p>
 
   </div>
-
 
   <!-- STORE INFORMATION -->
 
@@ -298,7 +297,6 @@
 
       </div>
 
-
       <div class="field">
 
         <label>
@@ -318,7 +316,6 @@
 
     </div>
 
-
     <div class="field">
 
       <label>
@@ -333,7 +330,6 @@
     </div>
 
   </section>
-
 
   <!-- HERO -->
 
@@ -357,7 +353,6 @@
 
     </div>
 
-
     <div class="field">
 
       <label>
@@ -372,7 +367,6 @@
     </div>
 
   </section>
-
 
   <!-- PRODUCTS -->
 
@@ -394,7 +388,6 @@
 
   </section>
 
-
   <button
     class="save"
     onclick="saveEverything()"
@@ -411,7 +404,6 @@
   </div>
 
 </main>
-
 
 <script>
 
@@ -441,7 +433,6 @@
 
     wrapper.className = "product";
 
-
     wrapper.innerHTML = `
 
       <div class="product-top">
@@ -460,7 +451,6 @@
 
       </div>
 
-
       <div class="grid">
 
         <div class="field">
@@ -476,7 +466,6 @@
           >
 
         </div>
-
 
         <div class="field">
 
@@ -494,7 +483,6 @@
 
       </div>
 
-
       <div class="field">
 
         <label>
@@ -508,7 +496,6 @@
         >
 
       </div>
-
 
       <div class="field">
 
@@ -526,7 +513,6 @@
       </div>
 
     `;
-
 
     document
       .getElementById("products")
@@ -553,47 +539,36 @@
         localStorage.getItem("royalFurnitureProSettings")
       ) || {};
 
-
     document.getElementById("storeName").value =
       settings.storeName || "Royal Furniture";
 
-
     document.getElementById("currency").value =
       settings.currency || "$";
-
 
     document.getElementById("storeDescription").value =
       settings.storeDescription ||
       "A curated selection of furniture created for contemporary interiors and elegant spaces.";
 
-
     document.getElementById("heroTitle").value =
       settings.heroTitle ||
       "Furniture made for modern living.";
 
-
     document.getElementById("heroDescription").value =
       settings.heroDescription ||
       "Discover refined furniture pieces designed to bring comfort, character and timeless style into your space.";
-
 
     const savedProducts =
       JSON.parse(
         localStorage.getItem("royalFurnitureProProducts")
       );
 
-
     const products =
       savedProducts || defaultProducts;
 
-
     document.getElementById("products").innerHTML = "";
 
-
     products.forEach(product => {
-
       createProduct(product);
-
     });
 
   }
@@ -630,7 +605,6 @@
 
     const products = [];
 
-
     document
       .querySelectorAll(".product")
       .forEach(product => {
@@ -641,13 +615,11 @@
             .value
             .trim();
 
-
         const price =
           product
             .querySelector(".product-price")
             .value
             .trim();
-
 
         const description =
           product
@@ -655,13 +627,11 @@
             .value
             .trim();
 
-
         const image =
           product
             .querySelector(".product-image")
             .value
             .trim();
-
 
         if (name) {
 
@@ -682,7 +652,6 @@
         }
 
       });
-
 
     return products;
 
@@ -724,28 +693,23 @@
 
     };
 
-
     const products =
       collectProducts();
-
 
     localStorage.setItem(
       "royalFurnitureProSettings",
       JSON.stringify(settings)
     );
 
-
     localStorage.setItem(
       "royalFurnitureProProducts",
       JSON.stringify(products)
     );
 
-
     const notice =
       document.getElementById("notice");
 
     notice.style.display = "block";
-
 
     setTimeout(() => {
 
@@ -756,12 +720,23 @@
   }
 
 
-  function logout() {
+  async function logout() {
 
-    document.cookie =
-      "royalFurnitureProSession=; Max-Age=0; Path=/;";
+    try {
 
-    window.location.href = "login.html";
+      await fetch("/api/logout", {
+        method: "POST",
+        credentials: "include",
+        cache: "no-store"
+      });
+
+    } catch (error) {
+
+      console.log("Logout request failed.");
+
+    }
+
+    window.location.replace("login.html");
 
   }
 
