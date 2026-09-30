@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Royal Furniture Pro — Customize</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f3ef;
+      color: #171717;
+      line-height: 1.5;
+    }
+
+    header {
+      background: #171717;
+      color: #fff;
+      padding: 20px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .back {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: .8;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 50px 6%;
+    }
+
+    .intro {
+      margin-bottom: 35px;
+    }
+
+    .intro span {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #777;
+    }
+
+    .intro h1 {
+      font-size: 42px;
+      margin: 8px 0 12px;
+    }
+
+    .intro p {
+      color: #666;
+      max-width: 650px;
+    }
+
+    .panel {
+      background: #fff;
+      padding: 30px;
+      border: 1px solid #e4e0d9;
+      margin-bottom: 25px;
+    }
+
+    .panel h2 {
+      font-size: 21px;
+      margin-bottom: 22px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d8d4cd;
+      background: #faf9f7;
+      font: inherit;
+      border-radius: 3px;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .product {
+      border: 1px solid #e2ded7;
+      padding: 22px;
+      margin-bottom: 18px;
+      background: #faf9f7;
+    }
+
+    .product-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .product-top strong {
+      font-size: 16px;
+    }
+
+    .delete {
+      border: 1px solid #cfcac2;
+      background: #fff;
+      padding: 8px 13px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .delete:hover {
+      background: #eee;
+    }
+
+    .add-product {
+      border: 1px dashed #aaa;
+      background: transparent;
+      width: 100%;
+      padding: 15px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .save {
+      width: 100%;
+      background: #171717;
+      color: #fff;
+      border: none;
+      padding: 17px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .save:hover {
+      opacity: .9;
+    }
+
+    .notice {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+
+      main {
+        padding: 35px 5%;
+      }
+
+      .intro h1 {
+        font-size: 34px;
+      }
+
+      .panel {
+        padding: 22px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      header {
+        padding: 18px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    ROYAL PRO
+  </div>
+
+  <a href="index.html" class="back">
+    ← Back to Store
+  </a>
+
+</header>
+
+
+<main>
+
+  <div class="intro">
+
+    <span>Store Customizer</span>
+
+    <h1>
+      Customize your store
+    </h1>
+
+    <p>
+      Update your furniture store information, homepage content,
+      products and prices without editing the main website.
+    </p>
+
+  </div>
+
+
+  <!-- STORE INFORMATION -->
+
+  <section class="panel">
+
+    <h2>
+      Store Information
+    </h2>
+
+    <div class="grid">
+
+      <div class="field">
+
+        <label>
+          Store Name
+        </label>
+
+        <input
+          id="storeName"
+          type="text"
+          value="Royal Furniture"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Currency
+        </label>
+
+        <select id="currency">
+
+          <option value="$">USD ($)</option>
+          <option value="EGP">EGP</option>
+          <option value="€">EUR (€)</option>
+          <option value="£">GBP (£)</option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Store Description
+      </label>
+
+      <textarea id="storeDescription">Premium furniture for modern living.</textarea>
+
+    </div>
+
+  </section>
+
+
+  <!-- HERO -->
+
+  <section class="panel">
+
+    <h2>
+      Homepage Hero
+    </h2>
+
+    <div class="field">
+
+      <label>
+        Main Heading
+      </label>
+
+      <input
+        id="heroTitle"
+        type="text"
+        value="Furniture made for modern living."
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Hero Description
+      </label>
+
+      <textarea id="heroDescription">Discover refined furniture pieces designed to bring comfort, character and timeless style into your space.</textarea>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+
+  <section class="panel">
+
+    <h2>
+      Product Manager
+    </h2>
+
+    <div id="products">
+
+      <div class="product">
+
+        <div class="product-top">
+
+          <strong>
+            Product 1
+          </strong>
+
+          <button
+            class="delete"
+            onclick="deleteProduct(this)"
+          >
+            Delete
+          </button>
+
+        </div>
+
+        <div class="grid">
+
+          <div class="field">
+
+            <label>
+              Product Name
+            </label>
+
+            <input
+              type="text"
+              value="Royal Lounge Chair"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Price
+            </label>
+
+            <input
+              type="number"
+              value="499"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Product Description
+          </label>
+
+          <input
+            type="text"
+            value="Premium upholstered chair"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Product Image URL
+          </label>
+
+          <input
+            type="text"
+            value="assets/product-1.jpg"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="product">
+
+        <div class="product-top">
+
+          <strong>
+            Product 2
+          </strong>
+
+          <button
+            class="delete"
+            onclick="deleteProduct(this)"
+          >
+            Delete
+          </button>
+
+        </div>
+
+        <div class="grid">
+
+          <div class="field">
+
+            <label>
+              Product Name
+            </label>
+
+            <input
+              type="text"
+              value="Modern Sofa"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Price
+            </label>
+
+            <input
+              type="number"
+              value="1299"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Product Description
+          </label>
+
+          <input
+            type="text"
+            value="Contemporary living sofa"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Product Image URL
+          </label>
+
+          <input
+            type="text"
+            value="assets/product-2.jpg"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="add-product"
+      onclick="addProduct()"
+    >
+      + Add New Product
+    </button>
+
+  </section>
+
+
+  <button
+    class="save"
+    onclick="saveSettings()"
+  >
+    Save Store Settings
+  </button>
+
+  <div
+    id="notice"
+    class="notice"
+  >
+    Settings saved successfully.
+  </div>
+
+</main>
+
+
+<script>
+
+  let productNumber = 2;
+
+
+  function addProduct() {
+
+    productNumber++;
+
+    const products = document.getElementById("products");
+
+    const product = document.createElement("div");
+
+    product.className = "product";
+
+    product.innerHTML = `
+
+      <div class="product-top">
+
+        <strong>
+          Product ${productNumber}
+        </strong>
+
+        <button
+          class="delete"
+          onclick="deleteProduct(this)"
+        >
+          Delete
+        </button>
+
+      </div>
+
+
+      <div class="grid">
+
+        <div class="field">
+
+          <label>
+            Product Name
+          </label>
+
+          <input
+            type="text"
+            value="New Product"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Price
+          </label>
+
+          <input
+            type="number"
+            value="0"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Product Description
+        </label>
+
+        <input
+          type="text"
+          value="Product description"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Product Image URL
+        </label>
+
+        <input
+          type="text"
+          value="assets/product.jpg"
+        >
+
+      </div>
+
+    `;
+
+    products.appendChild(product);
+
+  }
+
+
+  function deleteProduct(button) {
+
+    const product = button.closest(".product");
+
+    product.remove();
+
+  }
+
+
+  function saveSettings() {
+
+    const settings = {
+
+      storeName:
+        document.getElementById("storeName").value,
+
+      currency:
+        document.getElementById("currency").value,
+
+      storeDescription:
+        document.getElementById("storeDescription").value,
+
+      heroTitle:
+        document.getElementById("heroTitle").value,
+
+      heroDescription:
+        document.getElementById("heroDescription").value
+
+    };
+
+
+    localStorage.setItem(
+      "royalFurnitureProSettings",
+      JSON.stringify(settings)
+    );
+
+
+    const notice =
+      document.getElementById("notice");
+
+    notice.style.display = "block";
+
+    setTimeout(() => {
+
+      notice.style.display = "none";
+
+    }, 2500);
+
+  }
+
+</script>
+
+</body>
+</html>
