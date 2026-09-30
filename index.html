@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Royal Furniture Pro</title>
+
+  <meta
+    name="description"
+    content="Royal Furniture Pro — a premium furniture e-commerce template."
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f5f1;
+      color: #171717;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      width: 100%;
+      padding: 22px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border-bottom: 1px solid #e8e4dd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      opacity: .6;
+    }
+
+    .cart {
+      background: #171717;
+      color: #fff;
+      padding: 10px 17px;
+      border-radius: 30px;
+      font-size: 14px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 78vh;
+      padding: 80px 6%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      background: #ebe5dc;
+    }
+
+    .hero-content {
+      max-width: 580px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      opacity: .65;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 1.02;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      max-width: 500px;
+      color: #555;
+      margin-bottom: 32px;
+    }
+
+    .hero-button {
+      display: inline-block;
+      background: #171717;
+      color: #fff;
+      padding: 15px 28px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .hero-image {
+      min-height: 500px;
+      background:
+        linear-gradient(
+          rgba(0,0,0,.08),
+          rgba(0,0,0,.08)
+        ),
+        url("assets/hero.jpg") center/cover;
+      border-radius: 4px;
+    }
+
+    /* COLLECTION */
+
+    .section {
+      padding: 90px 6%;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 40px;
+      gap: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 38px;
+      line-height: 1.1;
+    }
+
+    .section-header p {
+      max-width: 430px;
+      color: #666;
+      font-size: 15px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid #e8e4dd;
+      overflow: hidden;
+    }
+
+    .product-image {
+      height: 360px;
+      background: #ddd center/cover;
+    }
+
+    .product-card:nth-child(1) .product-image {
+      background-image: url("assets/product-1.jpg");
+    }
+
+    .product-card:nth-child(2) .product-image {
+      background-image: url("assets/product-2.jpg");
+    }
+
+    .product-card:nth-child(3) .product-image {
+      background-image: url("assets/product-3.jpg");
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .product-info p {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    /* FEATURES */
+
+    .features {
+      background: #171717;
+      color: #fff;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .feature {
+      padding: 15px 0;
+    }
+
+    .feature-number {
+      font-size: 13px;
+      opacity: .5;
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #aaa;
+      font-size: 14px;
+      max-width: 330px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 6%;
+      background: #fff;
+      border-top: 1px solid #e8e4dd;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 55px;
+      }
+
+      .hero-image {
+        min-height: 380px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 400px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-header p {
+        margin-top: 15px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <a href="#" class="logo">
+      ROYAL
+    </a>
+
+    <div class="nav-links">
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <a href="#collection" class="cart">
+      Cart (0)
+    </a>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Royal Furniture Pro
+      </div>
+
+      <h1>
+        Furniture made for modern living.
+      </h1>
+
+      <p>
+        Discover refined furniture pieces designed to bring
+        comfort, character and timeless style into your space.
+      </p>
+
+      <a href="#collection" class="hero-button">
+        Explore Collection
+      </a>
+
+    </div>
+
+    <div class="hero-image"></div>
+
+  </section>
+
+
+  <!-- COLLECTION -->
+
+  <section class="section" id="collection">
+
+    <div class="section-header">
+
+      <div>
+        <div class="eyebrow">
+          Featured Collection
+        </div>
+
+        <h2>
+          Selected pieces
+        </h2>
+      </div>
+
+      <p>
+        A curated selection of furniture created for
+        contemporary interiors and elegant spaces.
+      </p>
+
+    </div>
+
+
+    <div class="products">
+
+      <article class="product-card">
+
+        <div class="product-image"></div>
+
+        <div class="product-info">
+
+          <h3>
+            Royal Lounge Chair
+          </h3>
+
+          <p>
+            Premium upholstered chair
+          </p>
+
+          <div class="price">
+            $499
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="product-card">
+
+        <div class="product-image"></div>
+
+        <div class="product-info">
+
+          <h3>
+            Modern Sofa
+          </h3>
+
+          <p>
+            Contemporary living sofa
+          </p>
+
+          <div class="price">
+            $1,299
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="product-card">
+
+        <div class="product-image"></div>
+
+        <div class="product-info">
+
+          <h3>
+            Royal Dining Table
+          </h3>
+
+          <p>
+            Solid wood dining table
+          </p>
+
+          <div class="price">
+            $899
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURES -->
+
+  <section class="section features" id="about">
+
+    <div class="feature">
+
+      <div class="feature-number">
+        01
+      </div>
+
+      <h3>
+        Premium Design
+      </h3>
+
+      <p>
+        A refined interface designed for modern
+        furniture brands and showrooms.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-number">
+        02
+      </div>
+
+      <h3>
+        Online Store
+      </h3>
+
+      <p>
+        Built as the foundation for a complete
+        furniture e-commerce experience.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-number">
+        03
+      </div>
+
+      <h3>
+        Fully Responsive
+      </h3>
+
+      <p>
+        Designed to look great on mobile,
+        tablet and desktop screens.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer id="contact">
+
+    <div>
+      © 2026 Royal Furniture Pro
+    </div>
+
+    <div>
+      Premium Furniture E-Commerce Template
+    </div>
+
+  </footer>
+
+</body>
+</html>
