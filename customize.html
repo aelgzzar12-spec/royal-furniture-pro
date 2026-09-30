@@ -4,9 +4,18 @@
 
   <!-- ADMIN PROTECTION -->
   <script>
-    if (sessionStorage.getItem("royalFurnitureProLoggedIn") !== "true") {
+    fetch("/api/auth", {
+      method: "GET",
+      credentials: "include"
+    })
+    .then(response => {
+      if (!response.ok) {
+        window.location.href = "login.html";
+      }
+    })
+    .catch(() => {
       window.location.href = "login.html";
-    }
+    });
   </script>
 
   <meta charset="UTF-8">
@@ -749,7 +758,8 @@
 
   function logout() {
 
-    sessionStorage.removeItem("royalFurnitureProLoggedIn");
+    document.cookie =
+      "royalFurnitureProSession=; Max-Age=0; Path=/;";
 
     window.location.href = "login.html";
 
