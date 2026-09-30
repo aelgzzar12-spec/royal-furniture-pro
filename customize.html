@@ -39,7 +39,6 @@
       color: #fff;
       text-decoration: none;
       font-size: 14px;
-      opacity: .8;
     }
 
     main {
@@ -128,20 +127,12 @@
       margin-bottom: 20px;
     }
 
-    .product-top strong {
-      font-size: 16px;
-    }
-
     .delete {
       border: 1px solid #cfcac2;
       background: #fff;
       padding: 8px 13px;
       cursor: pointer;
       font-size: 12px;
-    }
-
-    .delete:hover {
-      background: #eee;
     }
 
     .add-product {
@@ -161,19 +152,14 @@
       padding: 17px;
       font-size: 15px;
       cursor: pointer;
-      margin-top: 5px;
-    }
-
-    .save:hover {
-      opacity: .9;
     }
 
     .notice {
-      margin-top: 15px;
-      text-align: center;
-      font-size: 13px;
-      color: #666;
       display: none;
+      text-align: center;
+      margin-top: 15px;
+      color: #555;
+      font-size: 13px;
     }
 
     @media (max-width: 700px) {
@@ -193,10 +179,6 @@
       .grid {
         grid-template-columns: 1fr;
         gap: 0;
-      }
-
-      header {
-        padding: 18px 5%;
       }
     }
   </style>
@@ -228,8 +210,8 @@
     </h1>
 
     <p>
-      Update your furniture store information, homepage content,
-      products and prices without editing the main website.
+      Manage your store information, homepage content,
+      products, prices and images.
     </p>
 
   </div>
@@ -254,7 +236,7 @@
         <input
           id="storeName"
           type="text"
-          value="Royal Furniture"
+          placeholder="Your Store Name"
         >
 
       </div>
@@ -286,7 +268,10 @@
         Store Description
       </label>
 
-      <textarea id="storeDescription">Premium furniture for modern living.</textarea>
+      <textarea
+        id="storeDescription"
+        placeholder="Describe your furniture store..."
+      ></textarea>
 
     </div>
 
@@ -310,7 +295,7 @@
       <input
         id="heroTitle"
         type="text"
-        value="Furniture made for modern living."
+        placeholder="Furniture made for modern living."
       >
 
     </div>
@@ -322,7 +307,10 @@
         Hero Description
       </label>
 
-      <textarea id="heroDescription">Discover refined furniture pieces designed to bring comfort, character and timeless style into your space.</textarea>
+      <textarea
+        id="heroDescription"
+        placeholder="Write your homepage description..."
+      ></textarea>
 
     </div>
 
@@ -337,167 +325,7 @@
       Product Manager
     </h2>
 
-    <div id="products">
-
-      <div class="product">
-
-        <div class="product-top">
-
-          <strong>
-            Product 1
-          </strong>
-
-          <button
-            class="delete"
-            onclick="deleteProduct(this)"
-          >
-            Delete
-          </button>
-
-        </div>
-
-        <div class="grid">
-
-          <div class="field">
-
-            <label>
-              Product Name
-            </label>
-
-            <input
-              type="text"
-              value="Royal Lounge Chair"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Price
-            </label>
-
-            <input
-              type="number"
-              value="499"
-            >
-
-          </div>
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Product Description
-          </label>
-
-          <input
-            type="text"
-            value="Premium upholstered chair"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Product Image URL
-          </label>
-
-          <input
-            type="text"
-            value="assets/product-1.jpg"
-          >
-
-        </div>
-
-      </div>
-
-
-      <div class="product">
-
-        <div class="product-top">
-
-          <strong>
-            Product 2
-          </strong>
-
-          <button
-            class="delete"
-            onclick="deleteProduct(this)"
-          >
-            Delete
-          </button>
-
-        </div>
-
-        <div class="grid">
-
-          <div class="field">
-
-            <label>
-              Product Name
-            </label>
-
-            <input
-              type="text"
-              value="Modern Sofa"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Price
-            </label>
-
-            <input
-              type="number"
-              value="1299"
-            >
-
-          </div>
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Product Description
-          </label>
-
-          <input
-            type="text"
-            value="Contemporary living sofa"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Product Image URL
-          </label>
-
-          <input
-            type="text"
-            value="assets/product-2.jpg"
-          >
-
-        </div>
-
-      </div>
-
-    </div>
-
+    <div id="products"></div>
 
     <button
       class="add-product"
@@ -511,16 +339,16 @@
 
   <button
     class="save"
-    onclick="saveSettings()"
+    onclick="saveEverything()"
   >
-    Save Store Settings
+    Save Store Changes
   </button>
 
   <div
     id="notice"
     class="notice"
   >
-    Settings saved successfully.
+    Changes saved successfully.
   </div>
 
 </main>
@@ -528,29 +356,44 @@
 
 <script>
 
-  let productNumber = 2;
+  const defaultProducts = [
+
+    {
+      name: "Royal Lounge Chair",
+      price: "499",
+      description: "Premium upholstered chair",
+      image: "assets/product-1.jpg"
+    },
+
+    {
+      name: "Modern Sofa",
+      price: "1299",
+      description: "Contemporary living sofa",
+      image: "assets/product-2.jpg"
+    }
+
+  ];
 
 
-  function addProduct() {
+  function createProduct(product) {
 
-    productNumber++;
+    const wrapper =
+      document.createElement("div");
 
-    const products = document.getElementById("products");
+    wrapper.className = "product";
 
-    const product = document.createElement("div");
 
-    product.className = "product";
-
-    product.innerHTML = `
+    wrapper.innerHTML = `
 
       <div class="product-top">
 
         <strong>
-          Product ${productNumber}
+          Product
         </strong>
 
         <button
           class="delete"
+          type="button"
           onclick="deleteProduct(this)"
         >
           Delete
@@ -568,8 +411,9 @@
           </label>
 
           <input
+            class="product-name"
             type="text"
-            value="New Product"
+            value="${escapeHtml(product.name)}"
           >
 
         </div>
@@ -582,8 +426,9 @@
           </label>
 
           <input
+            class="product-price"
             type="number"
-            value="0"
+            value="${escapeHtml(product.price)}"
           >
 
         </div>
@@ -598,8 +443,9 @@
         </label>
 
         <input
+          class="product-description"
           type="text"
-          value="Product description"
+          value="${escapeHtml(product.description)}"
         >
 
       </div>
@@ -612,48 +458,216 @@
         </label>
 
         <input
+          class="product-image"
           type="text"
-          value="assets/product.jpg"
+          value="${escapeHtml(product.image)}"
+          placeholder="assets/product.jpg"
         >
 
       </div>
 
     `;
 
-    products.appendChild(product);
+
+    document
+      .getElementById("products")
+      .appendChild(wrapper);
+
+  }
+
+
+  function escapeHtml(value) {
+
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+  }
+
+
+  function loadSettings() {
+
+    const settings =
+      JSON.parse(
+        localStorage.getItem("royalFurnitureProSettings")
+      ) || {};
+
+
+    document.getElementById("storeName").value =
+      settings.storeName || "Royal Furniture";
+
+
+    document.getElementById("currency").value =
+      settings.currency || "$";
+
+
+    document.getElementById("storeDescription").value =
+      settings.storeDescription ||
+      "A curated selection of furniture created for contemporary interiors and elegant spaces.";
+
+
+    document.getElementById("heroTitle").value =
+      settings.heroTitle ||
+      "Furniture made for modern living.";
+
+
+    document.getElementById("heroDescription").value =
+      settings.heroDescription ||
+      "Discover refined furniture pieces designed to bring comfort, character and timeless style into your space.";
+
+
+    const savedProducts =
+      JSON.parse(
+        localStorage.getItem("royalFurnitureProProducts")
+      );
+
+
+    const products =
+      savedProducts || defaultProducts;
+
+
+    document.getElementById("products").innerHTML = "";
+
+
+    products.forEach(product => {
+
+      createProduct(product);
+
+    });
+
+  }
+
+
+  function addProduct() {
+
+    createProduct({
+
+      name: "New Product",
+
+      price: "0",
+
+      description: "Product description",
+
+      image: "assets/product.jpg"
+
+    });
 
   }
 
 
   function deleteProduct(button) {
 
-    const product = button.closest(".product");
+    const product =
+      button.closest(".product");
 
     product.remove();
 
   }
 
 
-  function saveSettings() {
+  function collectProducts() {
+
+    const products = [];
+
+
+    document
+      .querySelectorAll(".product")
+      .forEach(product => {
+
+        const name =
+          product
+            .querySelector(".product-name")
+            .value
+            .trim();
+
+
+        const price =
+          product
+            .querySelector(".product-price")
+            .value
+            .trim();
+
+
+        const description =
+          product
+            .querySelector(".product-description")
+            .value
+            .trim();
+
+
+        const image =
+          product
+            .querySelector(".product-image")
+            .value
+            .trim();
+
+
+        if (name) {
+
+          products.push({
+
+            name: name,
+
+            price: price,
+
+            description:
+              description || "Furniture product",
+
+            image:
+              image || "assets/product.jpg"
+
+          });
+
+        }
+
+      });
+
+
+    return products;
+
+  }
+
+
+  function saveEverything() {
 
     const settings = {
 
       storeName:
-        document.getElementById("storeName").value,
+        document
+          .getElementById("storeName")
+          .value
+          .trim(),
 
       currency:
-        document.getElementById("currency").value,
+        document
+          .getElementById("currency")
+          .value,
 
       storeDescription:
-        document.getElementById("storeDescription").value,
+        document
+          .getElementById("storeDescription")
+          .value
+          .trim(),
 
       heroTitle:
-        document.getElementById("heroTitle").value,
+        document
+          .getElementById("heroTitle")
+          .value
+          .trim(),
 
       heroDescription:
-        document.getElementById("heroDescription").value
+        document
+          .getElementById("heroDescription")
+          .value
+          .trim()
 
     };
+
+
+    const products =
+      collectProducts();
 
 
     localStorage.setItem(
@@ -662,10 +676,17 @@
     );
 
 
+    localStorage.setItem(
+      "royalFurnitureProProducts",
+      JSON.stringify(products)
+    );
+
+
     const notice =
       document.getElementById("notice");
 
     notice.style.display = "block";
+
 
     setTimeout(() => {
 
@@ -674,6 +695,9 @@
     }, 2500);
 
   }
+
+
+  loadSettings();
 
 </script>
 
