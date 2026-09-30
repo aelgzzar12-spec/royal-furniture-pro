@@ -6,11 +6,6 @@
 
   <title>Royal Furniture Pro</title>
 
-  <meta
-    name="description"
-    content="Royal Furniture Pro — a premium furniture e-commerce template."
-  >
-
   <style>
     * {
       margin: 0;
@@ -43,7 +38,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #ffffff;
+      background: #fff;
       border-bottom: 1px solid #e8e4dd;
       position: sticky;
       top: 0;
@@ -61,10 +56,6 @@
       gap: 28px;
       align-items: center;
       font-size: 14px;
-    }
-
-    .nav-links a:hover {
-      opacity: .6;
     }
 
     .cart {
@@ -123,13 +114,10 @@
 
     .hero-image {
       min-height: 500px;
-      background:
-        linear-gradient(
-          rgba(0,0,0,.08),
-          rgba(0,0,0,.08)
-        ),
-        url("assets/hero.jpg") center/cover;
+      background: #ddd;
       border-radius: 4px;
+      background-size: cover;
+      background-position: center;
     }
 
     /* COLLECTION */
@@ -172,18 +160,6 @@
     .product-image {
       height: 360px;
       background: #ddd center/cover;
-    }
-
-    .product-card:nth-child(1) .product-image {
-      background-image: url("assets/product-1.jpg");
-    }
-
-    .product-card:nth-child(2) .product-image {
-      background-image: url("assets/product-2.jpg");
-    }
-
-    .product-card:nth-child(3) .product-image {
-      background-image: url("assets/product-3.jpg");
     }
 
     .product-info {
@@ -236,8 +212,6 @@
       font-size: 14px;
       max-width: 330px;
     }
-
-    /* FOOTER */
 
     footer {
       padding: 35px 6%;
@@ -296,12 +270,10 @@
 
 <body>
 
-  <!-- NAVBAR -->
-
   <nav class="navbar">
 
-    <a href="#" class="logo">
-      ROYAL
+    <a href="#" class="logo" id="storeName">
+      Royal Furniture
     </a>
 
     <div class="nav-links">
@@ -317,8 +289,6 @@
   </nav>
 
 
-  <!-- HERO -->
-
   <section class="hero">
 
     <div class="hero-content">
@@ -327,11 +297,11 @@
         Royal Furniture Pro
       </div>
 
-      <h1>
+      <h1 id="heroTitle">
         Furniture made for modern living.
       </h1>
 
-      <p>
+      <p id="heroDescription">
         Discover refined furniture pieces designed to bring
         comfort, character and timeless style into your space.
       </p>
@@ -342,12 +312,10 @@
 
     </div>
 
-    <div class="hero-image"></div>
+    <div class="hero-image" id="heroImage"></div>
 
   </section>
 
-
-  <!-- COLLECTION -->
 
   <section class="section" id="collection">
 
@@ -363,98 +331,23 @@
         </h2>
       </div>
 
-      <p>
+      <p id="storeDescription">
         A curated selection of furniture created for
         contemporary interiors and elegant spaces.
       </p>
 
     </div>
 
-
-    <div class="products">
-
-      <article class="product-card">
-
-        <div class="product-image"></div>
-
-        <div class="product-info">
-
-          <h3>
-            Royal Lounge Chair
-          </h3>
-
-          <p>
-            Premium upholstered chair
-          </p>
-
-          <div class="price">
-            $499
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="product-card">
-
-        <div class="product-image"></div>
-
-        <div class="product-info">
-
-          <h3>
-            Modern Sofa
-          </h3>
-
-          <p>
-            Contemporary living sofa
-          </p>
-
-          <div class="price">
-            $1,299
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="product-card">
-
-        <div class="product-image"></div>
-
-        <div class="product-info">
-
-          <h3>
-            Royal Dining Table
-          </h3>
-
-          <p>
-            Solid wood dining table
-          </p>
-
-          <div class="price">
-            $899
-          </div>
-
-        </div>
-
-      </article>
-
-    </div>
+    <div class="products" id="products"></div>
 
   </section>
 
-
-  <!-- FEATURES -->
 
   <section class="section features" id="about">
 
     <div class="feature">
 
-      <div class="feature-number">
-        01
-      </div>
+      <div class="feature-number">01</div>
 
       <h3>
         Premium Design
@@ -470,9 +363,7 @@
 
     <div class="feature">
 
-      <div class="feature-number">
-        02
-      </div>
+      <div class="feature-number">02</div>
 
       <h3>
         Online Store
@@ -488,9 +379,7 @@
 
     <div class="feature">
 
-      <div class="feature-number">
-        03
-      </div>
+      <div class="feature-number">03</div>
 
       <h3>
         Fully Responsive
@@ -506,12 +395,10 @@
   </section>
 
 
-  <!-- FOOTER -->
-
   <footer id="contact">
 
     <div>
-      © 2026 Royal Furniture Pro
+      © 2026 <span id="footerName">Royal Furniture</span>
     </div>
 
     <div>
@@ -519,6 +406,144 @@
     </div>
 
   </footer>
+
+
+  <script>
+
+    const defaultProducts = [
+      {
+        name: "Royal Lounge Chair",
+        price: "499",
+        description: "Premium upholstered chair",
+        image: "assets/product-1.jpg"
+      },
+      {
+        name: "Modern Sofa",
+        price: "1299",
+        description: "Contemporary living sofa",
+        image: "assets/product-2.jpg"
+      }
+    ];
+
+
+    function loadStore() {
+
+      const settings =
+        JSON.parse(
+          localStorage.getItem("royalFurnitureProSettings")
+        ) || {};
+
+
+      const storeName =
+        settings.storeName || "Royal Furniture";
+
+      const heroTitle =
+        settings.heroTitle ||
+        "Furniture made for modern living.";
+
+      const heroDescription =
+        settings.heroDescription ||
+        "Discover refined furniture pieces designed to bring comfort, character and timeless style into your space.";
+
+      const storeDescription =
+        settings.storeDescription ||
+        "A curated selection of furniture created for contemporary interiors and elegant spaces.";
+
+
+      document.getElementById("storeName").textContent =
+        storeName;
+
+      document.getElementById("footerName").textContent =
+        storeName;
+
+      document.getElementById("heroTitle").textContent =
+        heroTitle;
+
+      document.getElementById("heroDescription").textContent =
+        heroDescription;
+
+      document.getElementById("storeDescription").textContent =
+        storeDescription;
+
+
+      const savedProducts =
+        JSON.parse(
+          localStorage.getItem("royalFurnitureProProducts")
+        );
+
+      const products =
+        savedProducts || defaultProducts;
+
+
+      const container =
+        document.getElementById("products");
+
+      container.innerHTML = "";
+
+
+      products.forEach(product => {
+
+        const card =
+          document.createElement("article");
+
+        card.className = "product-card";
+
+
+        const image =
+          document.createElement("div");
+
+        image.className = "product-image";
+
+        image.style.backgroundImage =
+          `url("${product.image}")`;
+
+
+        const info =
+          document.createElement("div");
+
+        info.className = "product-info";
+
+
+        const name =
+          document.createElement("h3");
+
+        name.textContent =
+          product.name;
+
+
+        const description =
+          document.createElement("p");
+
+        description.textContent =
+          product.description;
+
+
+        const price =
+          document.createElement("div");
+
+        price.className = "price";
+
+        price.textContent =
+          `${settings.currency || "$"}${product.price}`;
+
+
+        info.appendChild(name);
+        info.appendChild(description);
+        info.appendChild(price);
+
+        card.appendChild(image);
+        card.appendChild(info);
+
+        container.appendChild(card);
+
+      });
+
+    }
+
+
+    loadStore();
+
+  </script>
 
 </body>
 </html>
