@@ -91,6 +91,11 @@
       opacity: 0.9;
     }
 
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     .error {
       display: none;
       margin-top: 15px;
@@ -150,7 +155,7 @@
         >
       </div>
 
-      <button type="submit">
+      <button type="submit" id="loginButton">
         Login
       </button>
 
@@ -167,26 +172,58 @@
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
+    document.getElementById("loginForm").addEventListener("submit", async function(e) {
       e.preventDefault();
 
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value;
 
-      /*
-        Temporary test credentials.
-        These will NOT be our final security system.
-      */
+      const errorMessage = document.getElementById("errorMessage");
+      const loginButton = document.getElementById("loginButton");
 
-      if (username === "admin" && password === "RoyalPro123") {
+      errorMessage.style.display = "none";
+      loginButton.disabled = true;
+      loginButton.textContent = "Logging in...";
 
-        sessionStorage.setItem("royalFurnitureProLoggedIn", "true");
+      try {
 
-        window.location.href = "customize.html";
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            username: username,
+            password: password
+          })
+        });
 
-      } else {
+        const data = await response.json();
 
-        document.getElementById("errorMessage").style.display = "block";
+        if (response.ok && data.success) {
+
+          window.location.href = "customize.html";
+
+        } else {
+
+          errorMessage.textContent =
+            data.message || "Invalid username or password.";
+
+          errorMessage.style.display = "block";
+
+        }
+
+      } catch (error) {
+
+        errorMessage.textContent =
+          "Unable to connect to the login server.";
+
+        errorMessage.style.display = "block";
+
+      } finally {
+
+        loginButton.disabled = false;
+        loginButton.textContent = "Login";
 
       }
     });
