@@ -12,21 +12,26 @@ export default function handler(req, res) {
   const correctPassword = process.env.ADMIN_PASSWORD;
 
   if (
-    username === correctUsername &&
-    password === correctPassword
+    username !== correctUsername ||
+    password !== correctPassword
   ) {
-    res.setHeader(
-      "Set-Cookie",
-      "royalFurnitureProSession=authenticated; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=86400"
-    );
-
-    return res.status(200).json({
-      success: true
+    return res.status(401).json({
+      success: false,
+      message: "Invalid username or password"
     });
   }
 
-  return res.status(401).json({
-    success: false,
-    message: "Invalid username or password"
+  const sessionCookie =
+    "royalFurnitureProSession=authenticated; " +
+    "HttpOnly; " +
+    "Secure; " +
+    "SameSite=Lax; " +
+    "Path=/; " +
+    "Max-Age=86400";
+
+  res.setHeader("Set-Cookie", sessionCookie);
+
+  return res.status(200).json({
+    success: true
   });
 }
