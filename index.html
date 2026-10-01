@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Royal Furniture Pro</title>
-<meta name="description" content="Premium furniture showroom and e-commerce template.">
+
+<meta
+  name="description"
+  content="Premium furniture showroom and e-commerce template."
+>
 
 <style>
+
 :root{
   --bg:#f5f2ec;
   --surface:#fff;
@@ -43,6 +49,7 @@ a{
   color:inherit;
   text-decoration:none;
 }
+
 
 /* ================= HEADER ================= */
 
@@ -113,6 +120,7 @@ header{
   margin-left:6px;
   font-size:11px;
 }
+
 
 /* ================= HERO ================= */
 
@@ -253,6 +261,7 @@ header{
   background:white;
 }
 
+
 /* ================= GENERAL ================= */
 
 .container{
@@ -292,6 +301,7 @@ header{
   color:var(--muted);
   font-size:15px;
 }
+
 
 /* ================= CATEGORIES ================= */
 
@@ -358,6 +368,7 @@ header{
   font-size:23px;
   font-weight:500;
 }
+
 
 /* ================= PRODUCTS ================= */
 
@@ -448,6 +459,7 @@ header{
   z-index:2;
 }
 
+
 /* ================= STORY ================= */
 
 .story-section{
@@ -496,6 +508,7 @@ header{
   margin-top:30px;
 }
 
+
 /* ================= VALUES ================= */
 
 .values{
@@ -530,6 +543,7 @@ header{
   font-size:14px;
   max-width:330px;
 }
+
 
 /* ================= FOOTER ================= */
 
@@ -582,7 +596,8 @@ footer{
   font-size:12px;
 }
 
-/* ================= MODAL ================= */
+
+/* ================= PRODUCT MODAL ================= */
 
 .modal{
   position:fixed;
@@ -659,6 +674,7 @@ footer{
   color:var(--muted);
   margin-bottom:35px;
 }
+
 
 /* ================= CART ================= */
 
@@ -762,6 +778,198 @@ footer{
   color:var(--muted);
 }
 
+
+/* ================= CHECKOUT ================= */
+
+.checkout-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.78);
+  z-index:300;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.checkout-modal.show{
+  display:flex;
+}
+
+.checkout-box{
+  background:#fff;
+  width:min(1050px,100%);
+  max-height:92vh;
+  overflow:auto;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+}
+
+.checkout-form{
+  padding:45px;
+  position:relative;
+}
+
+.checkout-summary{
+  background:#f5f2ec;
+  padding:45px;
+}
+
+.checkout-title{
+  font-size:38px;
+  font-weight:500;
+  margin-bottom:10px;
+}
+
+.checkout-subtitle{
+  color:var(--muted);
+  margin-bottom:30px;
+}
+
+.checkout-field{
+  margin-bottom:18px;
+}
+
+.checkout-field label{
+  display:block;
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:7px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.checkout-field input,
+.checkout-field textarea{
+  width:100%;
+  padding:14px;
+  border:1px solid var(--line);
+  background:#fff;
+  font:inherit;
+  outline:none;
+}
+
+.checkout-field textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.checkout-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.checkout-actions{
+  display:flex;
+  gap:12px;
+  margin-top:25px;
+}
+
+.checkout-submit{
+  flex:1;
+  background:#171717;
+  color:#fff;
+  border:none;
+  padding:17px;
+  cursor:pointer;
+}
+
+.checkout-back{
+  background:white;
+  border:1px solid var(--line);
+  padding:17px 22px;
+  cursor:pointer;
+}
+
+.checkout-summary h3{
+  font-size:22px;
+  font-weight:500;
+  margin-bottom:25px;
+}
+
+.checkout-summary-item{
+  display:flex;
+  gap:12px;
+  padding:15px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.checkout-summary-item img{
+  width:65px;
+  height:75px;
+  object-fit:cover;
+}
+
+.checkout-summary-item-info{
+  flex:1;
+}
+
+.checkout-summary-item-info strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:4px;
+}
+
+.checkout-summary-item-info span{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.checkout-summary-total{
+  display:flex;
+  justify-content:space-between;
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid #cfc9bf;
+  font-size:20px;
+}
+
+.order-success{
+  display:none;
+  grid-column:1 / -1;
+  text-align:center;
+  padding:70px 30px;
+}
+
+.order-success.show{
+  display:block;
+}
+
+.order-success-icon{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#171717;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 25px;
+  font-size:28px;
+}
+
+.order-success h2{
+  font-size:36px;
+  font-weight:500;
+  margin-bottom:12px;
+}
+
+.order-success p{
+  color:var(--muted);
+  margin-bottom:28px;
+}
+
+.order-number{
+  display:inline-block;
+  padding:12px 18px;
+  background:#f5f2ec;
+  margin-bottom:28px;
+  font-size:13px;
+}
+
+
 /* ================= TABLET ================= */
 
 @media(max-width:1100px){
@@ -811,7 +1019,9 @@ footer{
     min-height:400px;
     height:400px;
   }
+
 }
+
 
 /* ================= MOBILE ================= */
 
@@ -941,7 +1151,47 @@ footer{
     font-size:34px;
   }
 
+  .checkout-modal{
+    padding:10px;
+  }
+
+  .checkout-box{
+    grid-template-columns:1fr;
+    max-height:95vh;
+  }
+
+  .checkout-form,
+  .checkout-summary{
+    padding:28px 22px;
+  }
+
+  .checkout-summary{
+    order:2;
+  }
+
+  .checkout-form{
+    order:1;
+  }
+
+  .checkout-title{
+    font-size:31px;
+  }
+
+  .checkout-grid{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .checkout-actions{
+    flex-direction:column;
+  }
+
+  .order-success{
+    order:3;
+  }
+
 }
+
 
 /* ================= SMALL PHONES ================= */
 
@@ -960,10 +1210,12 @@ footer{
   }
 
 }
+
 </style>
 </head>
 
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
@@ -976,15 +1228,40 @@ ROYAL <span>FURNITURE</span>
 </a>
 
 <div class="nav-links">
-<a href="#categories">Categories</a>
-<a href="#collection">Collection</a>
-<a href="#story">Our Story</a>
-<a href="#values">Values</a>
+
+<a href="#categories">
+Categories
+</a>
+
+<a href="#collection">
+Collection
+</a>
+
+<a href="#story">
+Our Story
+</a>
+
+<a href="#values">
+Values
+</a>
+
 </div>
 
-<button class="cart-btn" onclick="openCart()">
+<button
+  class="cart-btn"
+  onclick="openCart()"
+  type="button"
+>
+
 Cart
-<span class="cart-count" id="cartCount">0</span>
+
+<span
+  class="cart-count"
+  id="cartCount"
+>
+0
+</span>
+
 </button>
 
 </nav>
@@ -998,17 +1275,25 @@ Cart
 
 <div class="hero-slides">
 
-<div class="hero-slide active"
-style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2200&q=90')"></div>
+<div
+  class="hero-slide active"
+  style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2200&q=90')"
+></div>
 
-<div class="hero-slide"
-style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2200&q=90')"></div>
+<div
+  class="hero-slide"
+  style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2200&q=90')"
+></div>
 
-<div class="hero-slide"
-style="background-image:url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=2200&q=90')"></div>
+<div
+  class="hero-slide"
+  style="background-image:url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=2200&q=90')"
+></div>
 
-<div class="hero-slide"
-style="background-image:url('https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=2200&q=90')"></div>
+<div
+  class="hero-slide"
+  style="background-image:url('https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=2200&q=90')"
+></div>
 
 </div>
 
@@ -1031,11 +1316,17 @@ character, comfort and elegance into modern spaces.
 
 <div class="hero-actions">
 
-<a href="#categories" class="btn btn-primary">
+<a
+  href="#categories"
+  class="btn btn-primary"
+>
 Explore Collection
 </a>
 
-<a href="#story" class="btn btn-outline">
+<a
+  href="#story"
+  class="btn btn-outline"
+>
 Discover Our Story
 </a>
 
@@ -1045,10 +1336,29 @@ Discover Our Story
 
 <div class="hero-dots">
 
-<button class="hero-dot active" onclick="goToSlide(0)"></button>
-<button class="hero-dot" onclick="goToSlide(1)"></button>
-<button class="hero-dot" onclick="goToSlide(2)"></button>
-<button class="hero-dot" onclick="goToSlide(3)"></button>
+<button
+  class="hero-dot active"
+  onclick="goToSlide(0)"
+  type="button"
+></button>
+
+<button
+  class="hero-dot"
+  onclick="goToSlide(1)"
+  type="button"
+></button>
+
+<button
+  class="hero-dot"
+  onclick="goToSlide(2)"
+  type="button"
+></button>
+
+<button
+  class="hero-dot"
+  onclick="goToSlide(3)"
+  type="button"
+></button>
 
 </div>
 
@@ -1057,7 +1367,10 @@ Discover Our Story
 
 <!-- ================= CATEGORIES ================= -->
 
-<section class="categories-section" id="categories">
+<section
+  class="categories-section"
+  id="categories"
+>
 
 <div class="container">
 
@@ -1085,61 +1398,116 @@ from elegant living spaces to refined home offices.
 
 <div class="category-grid">
 
-<div class="category-card" onclick="filterCategory('Living Room')">
+<div
+  class="category-card"
+  onclick="filterCategory('Living Room')"
+>
 
-<img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=90" alt="Living Room">
+<img
+  src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=90"
+  alt="Living Room"
+>
 
 <div class="category-content">
+
 <span>01</span>
-<h3>Living Room</h3>
-</div>
+
+<h3>
+Living Room
+</h3>
 
 </div>
 
+</div>
 
-<div class="category-card" onclick="filterCategory('Bedroom')">
 
-<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=90" alt="Bedroom">
+<div
+  class="category-card"
+  onclick="filterCategory('Bedroom')"
+>
+
+<img
+  src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=90"
+  alt="Bedroom"
+>
 
 <div class="category-content">
+
 <span>02</span>
-<h3>Bedroom</h3>
-</div>
+
+<h3>
+Bedroom
+</h3>
 
 </div>
 
+</div>
 
-<div class="category-card" onclick="filterCategory('Dining')">
 
-<img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=90" alt="Dining Room">
+<div
+  class="category-card"
+  onclick="filterCategory('Dining')"
+>
+
+<img
+  src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=90"
+  alt="Dining Room"
+>
 
 <div class="category-content">
+
 <span>03</span>
-<h3>Dining</h3>
-</div>
+
+<h3>
+Dining
+</h3>
 
 </div>
 
+</div>
 
-<div class="category-card" onclick="filterCategory('Office')">
 
-<img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=90" alt="Office">
+<div
+  class="category-card"
+  onclick="filterCategory('Office')"
+>
+
+<img
+  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=90"
+  alt="Office"
+>
 
 <div class="category-content">
+
 <span>04</span>
-<h3>Office</h3>
-</div>
+
+<h3>
+Office
+</h3>
 
 </div>
 
+</div>
 
-<div class="category-card" onclick="filterCategory('Accessories')">
 
-<img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=90" alt="Accessories">
+<div
+  class="category-card"
+  onclick="filterCategory('Accessories')"
+>
+
+<img
+  src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=90"
+  alt="Accessories"
+>
 
 <div class="category-content">
+
 <span>05</span>
-<h3>Accessories</h3>
+
+<h3>
+Accessories
+</h3>
+
 </div>
 
 </div>
@@ -1153,7 +1521,10 @@ from elegant living spaces to refined home offices.
 
 <!-- ================= COLLECTION ================= -->
 
-<section class="section" id="collection">
+<section
+  class="section"
+  id="collection"
+>
 
 <div class="container">
 
@@ -1179,38 +1550,63 @@ sophisticated interiors and contemporary living.
 </div>
 
 
-<!-- FILTERS -->
-
 <div class="filter-bar">
 
-<button class="filter-btn active" onclick="filterCategory('All')">
+<button
+  class="filter-btn active"
+  onclick="filterCategory('All')"
+  type="button"
+>
 All
 </button>
 
-<button class="filter-btn" onclick="filterCategory('Living Room')">
+<button
+  class="filter-btn"
+  onclick="filterCategory('Living Room')"
+  type="button"
+>
 Living Room
 </button>
 
-<button class="filter-btn" onclick="filterCategory('Bedroom')">
+<button
+  class="filter-btn"
+  onclick="filterCategory('Bedroom')"
+  type="button"
+>
 Bedroom
 </button>
 
-<button class="filter-btn" onclick="filterCategory('Dining')">
+<button
+  class="filter-btn"
+  onclick="filterCategory('Dining')"
+  type="button"
+>
 Dining
 </button>
 
-<button class="filter-btn" onclick="filterCategory('Office')">
+<button
+  class="filter-btn"
+  onclick="filterCategory('Office')"
+  type="button"
+>
 Office
 </button>
 
-<button class="filter-btn" onclick="filterCategory('Accessories')">
+<button
+  class="filter-btn"
+  onclick="filterCategory('Accessories')"
+  type="button"
+>
 Accessories
 </button>
 
 </div>
 
 
-<div class="products" id="products"></div>
+<div
+  class="products"
+  id="products"
+></div>
 
 </div>
 
@@ -1219,7 +1615,10 @@ Accessories
 
 <!-- ================= STORY ================= -->
 
-<section class="story-section section" id="story">
+<section
+  class="story-section section"
+  id="story"
+>
 
 <div class="story-grid">
 
@@ -1269,7 +1668,10 @@ The Royal Furniture Standard
 
 <!-- ================= VALUES ================= -->
 
-<section class="section" id="values">
+<section
+  class="section"
+  id="values"
+>
 
 <div class="container">
 
@@ -1431,36 +1833,57 @@ Email
 
 <!-- ================= PRODUCT MODAL ================= -->
 
-<div class="modal" id="productModal">
+<div
+  class="modal"
+  id="productModal"
+>
 
 <div class="modal-box">
 
 <div class="modal-image">
 
-<img id="modalImage" src="" alt="">
+<img
+  id="modalImage"
+  src=""
+  alt=""
+>
 
 </div>
 
 <div class="modal-info">
 
-<button class="close" onclick="closeModal()">
+<button
+  class="close"
+  onclick="closeModal()"
+  type="button"
+>
 ×
 </button>
 
-<div class="modal-category" id="modalCategory">
+<div
+  class="modal-category"
+  id="modalCategory"
+>
 Furniture
 </div>
 
 <h2 id="modalName"></h2>
 
-<div class="modal-price" id="modalPrice"></div>
+<div
+  class="modal-price"
+  id="modalPrice"
+></div>
 
 <p class="modal-description">
 A refined piece created to bring comfort,
 character and timeless style to your interior.
 </p>
 
-<button class="btn btn-primary" id="modalAdd">
+<button
+  class="btn btn-primary"
+  id="modalAdd"
+  type="button"
+>
 Add to Cart
 </button>
 
@@ -1473,7 +1896,10 @@ Add to Cart
 
 <!-- ================= CART ================= -->
 
-<div class="cart-overlay" id="cartOverlay">
+<div
+  class="cart-overlay"
+  id="cartOverlay"
+>
 
 <div class="cart-panel">
 
@@ -1483,13 +1909,20 @@ Add to Cart
 Your Cart
 </h2>
 
-<button class="close" onclick="closeCart()">
+<button
+  class="close"
+  onclick="closeCart()"
+  type="button"
+>
 ×
 </button>
 
 </div>
 
-<div class="cart-items" id="cartItems"></div>
+<div
+  class="cart-items"
+  id="cartItems"
+></div>
 
 <div class="cart-footer">
 
@@ -1505,7 +1938,11 @@ Total
 
 </div>
 
-<button class="checkout" onclick="checkout()">
+<button
+  class="checkout"
+  onclick="checkout()"
+  type="button"
+>
 Proceed to Checkout
 </button>
 
@@ -1516,7 +1953,208 @@ Proceed to Checkout
 </div>
 
 
+<!-- ================= CHECKOUT ================= -->
+
+<div
+  class="checkout-modal"
+  id="checkoutModal"
+>
+
+<div class="checkout-box">
+
+
+<div
+  class="checkout-form"
+  id="checkoutFormArea"
+>
+
+<button
+  class="close"
+  onclick="closeCheckout()"
+  type="button"
+>
+×
+</button>
+
+<div class="eyebrow">
+Secure Checkout
+</div>
+
+<h2 class="checkout-title">
+Complete your order.
+</h2>
+
+<p class="checkout-subtitle">
+Enter your details and we will prepare your order.
+</p>
+
+
+<div class="checkout-grid">
+
+<div class="checkout-field">
+
+<label>
+Full Name
+</label>
+
+<input
+  id="customerName"
+  type="text"
+  placeholder="Your full name"
+>
+
+</div>
+
+
+<div class="checkout-field">
+
+<label>
+Phone
+</label>
+
+<input
+  id="customerPhone"
+  type="tel"
+  placeholder="+20 100 000 0000"
+>
+
+</div>
+
+</div>
+
+
+<div class="checkout-field">
+
+<label>
+Email
+</label>
+
+<input
+  id="customerEmail"
+  type="email"
+  placeholder="you@example.com"
+>
+
+</div>
+
+
+<div class="checkout-field">
+
+<label>
+Address
+</label>
+
+<textarea
+  id="customerAddress"
+  placeholder="Enter your delivery address"
+></textarea>
+
+</div>
+
+
+<div class="checkout-field">
+
+<label>
+Order Notes
+</label>
+
+<textarea
+  id="customerNotes"
+  placeholder="Optional notes about your order"
+></textarea>
+
+</div>
+
+
+<div class="checkout-actions">
+
+<button
+  class="checkout-submit"
+  onclick="placeOrder()"
+  type="button"
+>
+Place Order
+</button>
+
+<button
+  class="checkout-back"
+  onclick="closeCheckout()"
+  type="button"
+>
+Back to Cart
+</button>
+
+</div>
+
+</div>
+
+
+<div class="checkout-summary">
+
+<h3>
+Order Summary
+</h3>
+
+<div id="checkoutSummaryItems"></div>
+
+<div class="checkout-summary-total">
+
+<span>
+Total
+</span>
+
+<strong id="checkoutSummaryTotal">
+0
+</strong>
+
+</div>
+
+</div>
+
+
+<div
+  class="order-success"
+  id="orderSuccess"
+>
+
+<div class="order-success-icon">
+✓
+</div>
+
+<h2>
+Order received.
+</h2>
+
+<p>
+Thank you for your order.
+Your request has been saved successfully.
+</p>
+
+<div
+  class="order-number"
+  id="orderNumber"
+>
+Order #RF-000000
+</div>
+
+<button
+  class="checkout-submit"
+  onclick="finishOrder()"
+  type="button"
+>
+Continue Shopping
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
 <script>
+
 
 /* ================= HERO SLIDER ================= */
 
@@ -1528,29 +2166,32 @@ document.querySelectorAll(".hero-dot");
 
 let currentSlide = 0;
 
+
 function goToSlide(index){
 
 slides.forEach(slide=>{
-slide.classList.remove("active");
+  slide.classList.remove("active");
 });
 
 dots.forEach(dot=>{
-dot.classList.remove("active");
+  dot.classList.remove("active");
 });
 
 currentSlide = index;
 
 slides[currentSlide].classList.add("active");
+
 dots[currentSlide].classList.add("active");
 
 }
+
 
 function nextSlide(){
 
 currentSlide++;
 
 if(currentSlide >= slides.length){
-currentSlide = 0;
+  currentSlide = 0;
 }
 
 goToSlide(currentSlide);
@@ -1667,8 +2308,8 @@ localStorage.getItem(
 if(savedSettings){
 
 settings = {
-...settings,
-...JSON.parse(savedSettings)
+  ...settings,
+  ...JSON.parse(savedSettings)
 };
 
 }
@@ -1693,13 +2334,18 @@ products = fallbackProducts;
 
 }
 
+
 document.getElementById(
 "heroTitle"
-).textContent = settings.heroTitle;
+).textContent =
+settings.heroTitle;
+
 
 document.getElementById(
 "heroDescription"
-).textContent = settings.heroDescription;
+).textContent =
+settings.heroDescription;
+
 
 renderProducts();
 
@@ -1722,14 +2368,17 @@ return `${Number(price).toLocaleString()} ${currency}`;
 
 let activeCategory = "All";
 
+
 function filterCategory(category){
 
 activeCategory = category;
+
 
 document.querySelectorAll(".filter-btn")
 .forEach(button=>{
 
 button.classList.remove("active");
+
 
 if(
 button.textContent.trim().toLowerCase()
@@ -1746,13 +2395,15 @@ button.classList.add("active");
 
 renderProducts();
 
+
 const collection =
 document.getElementById("collection");
+
 
 if(collection){
 
 collection.scrollIntoView({
-behavior:"smooth"
+  behavior:"smooth"
 });
 
 }
@@ -1768,6 +2419,7 @@ const container =
 document.getElementById("products");
 
 container.innerHTML = "";
+
 
 const filteredProducts =
 activeCategory === "All"
@@ -1789,7 +2441,10 @@ if(!filteredProducts.length){
 
 container.innerHTML = `
 
-<div class="empty" style="grid-column:1/-1">
+<div
+  class="empty"
+  style="grid-column:1/-1"
+>
 
 No products found in this category yet.
 
@@ -1807,11 +2462,17 @@ filteredProducts.forEach((product,index)=>{
 const card =
 document.createElement("div");
 
-card.className = "product-card";
+
+card.className =
+"product-card";
+
 
 card.onclick = ()=>{
+
 openProduct(product);
+
 };
+
 
 card.innerHTML = `
 
@@ -1853,6 +2514,7 @@ ${formatPrice(product.price)}
 
 `;
 
+
 container.appendChild(card);
 
 });
@@ -1864,33 +2526,42 @@ container.appendChild(card);
 
 let selectedProduct = null;
 
+
 function openProduct(product){
 
 selectedProduct = product;
 
+
 document.getElementById(
 "modalImage"
-).src = product.image;
+).src =
+product.image;
+
 
 document.getElementById(
 "modalName"
-).textContent = product.name;
+).textContent =
+product.name;
+
 
 document.getElementById(
 "modalCategory"
 ).textContent =
 product.category || "Furniture";
 
+
 document.getElementById(
 "modalPrice"
 ).textContent =
 formatPrice(product.price);
+
 
 document.getElementById(
 "productModal"
 ).classList.add("show");
 
 }
+
 
 function closeModal(){
 
@@ -1920,6 +2591,7 @@ openCart();
 /* ================= CART ================= */
 
 let cart = [];
+
 
 try{
 
@@ -1954,6 +2626,7 @@ cart.find(
 item => item.id === product.id
 );
 
+
 if(existing){
 
 existing.quantity++;
@@ -1961,11 +2634,15 @@ existing.quantity++;
 }else{
 
 cart.push({
+
 ...product,
+
 quantity:1
+
 });
 
 }
+
 
 saveCart();
 
@@ -1995,9 +2672,12 @@ cart.find(
 item => item.id === id
 );
 
+
 if(!item) return;
 
+
 item.quantity += amount;
+
 
 if(item.quantity <= 0){
 
@@ -2006,6 +2686,7 @@ removeFromCart(id);
 return;
 
 }
+
 
 saveCart();
 
@@ -2021,6 +2702,7 @@ document.getElementById(
 "cartItems"
 );
 
+
 const count =
 cart.reduce(
 (sum,item)=>
@@ -2028,9 +2710,11 @@ sum + item.quantity,
 0
 );
 
+
 document.getElementById(
 "cartCount"
-).textContent = count;
+).textContent =
+count;
 
 
 if(!cart.length){
@@ -2043,10 +2727,12 @@ Your cart is empty.
 
 `;
 
+
 document.getElementById(
 "cartTotal"
 ).textContent =
 formatPrice(0);
+
 
 return;
 
@@ -2055,7 +2741,9 @@ return;
 
 let total = 0;
 
+
 container.innerHTML = "";
+
 
 cart.forEach(item=>{
 
@@ -2063,10 +2751,14 @@ total +=
 Number(item.price) *
 item.quantity;
 
+
 const element =
 document.createElement("div");
 
-element.className = "cart-item";
+
+element.className =
+"cart-item";
+
 
 element.innerHTML = `
 
@@ -2089,7 +2781,9 @@ ${formatPrice(item.price)}
 
 <button
 onclick="changeQuantity(${item.id},-1)"
-style="border:1px solid #ddd;background:white;padding:3px 8px;cursor:pointer">
+style="border:1px solid #ddd;background:white;padding:3px 8px;cursor:pointer"
+type="button"
+>
 −
 </button>
 
@@ -2099,7 +2793,9 @@ ${item.quantity}
 
 <button
 onclick="changeQuantity(${item.id},1)"
-style="border:1px solid #ddd;background:white;padding:3px 8px;cursor:pointer">
+style="border:1px solid #ddd;background:white;padding:3px 8px;cursor:pointer"
+type="button"
+>
 +
 </button>
 
@@ -2109,11 +2805,14 @@ style="border:1px solid #ddd;background:white;padding:3px 8px;cursor:pointer">
 
 <button
 class="cart-remove"
-onclick="removeFromCart(${item.id})">
+onclick="removeFromCart(${item.id})"
+type="button"
+>
 Remove
 </button>
 
 `;
+
 
 container.appendChild(element);
 
@@ -2148,6 +2847,8 @@ document.getElementById(
 }
 
 
+/* ================= CHECKOUT ================= */
+
 function checkout(){
 
 if(!cart.length){
@@ -2160,9 +2861,314 @@ return;
 
 }
 
-alert(
-"Checkout is ready to be connected to your payment system."
+
+closeCart();
+
+
+renderCheckoutSummary();
+
+
+document
+.getElementById("checkoutModal")
+.classList.add("show");
+
+}
+
+
+function renderCheckoutSummary(){
+
+const container =
+document.getElementById(
+"checkoutSummaryItems"
 );
+
+
+container.innerHTML = "";
+
+
+let total = 0;
+
+
+cart.forEach(item=>{
+
+total +=
+Number(item.price) *
+item.quantity;
+
+
+const element =
+document.createElement("div");
+
+
+element.className =
+"checkout-summary-item";
+
+
+element.innerHTML = `
+
+<img
+src="${item.image}"
+alt="${item.name}"
+>
+
+<div class="checkout-summary-item-info">
+
+<strong>
+${item.name}
+</strong>
+
+<span>
+Qty: ${item.quantity}
+</span>
+
+<span>
+${formatPrice(item.price)}
+</span>
+
+</div>
+
+`;
+
+
+container.appendChild(element);
+
+});
+
+
+document.getElementById(
+"checkoutSummaryTotal"
+).textContent =
+formatPrice(total);
+
+}
+
+
+function closeCheckout(){
+
+document
+.getElementById("checkoutModal")
+.classList.remove("show");
+
+}
+
+
+function placeOrder(){
+
+const name =
+document
+.getElementById("customerName")
+.value
+.trim();
+
+
+const phone =
+document
+.getElementById("customerPhone")
+.value
+.trim();
+
+
+const email =
+document
+.getElementById("customerEmail")
+.value
+.trim();
+
+
+const address =
+document
+.getElementById("customerAddress")
+.value
+.trim();
+
+
+const notes =
+document
+.getElementById("customerNotes")
+.value
+.trim();
+
+
+if(!name){
+
+alert(
+"Please enter your name."
+);
+
+return;
+
+}
+
+
+if(!phone){
+
+alert(
+"Please enter your phone number."
+);
+
+return;
+
+}
+
+
+if(!address){
+
+alert(
+"Please enter your delivery address."
+);
+
+return;
+
+}
+
+
+const total =
+cart.reduce(
+(sum,item)=>
+sum +
+Number(item.price) *
+item.quantity,
+0
+);
+
+
+const orderNumber =
+"RF-" +
+Date.now()
+.toString()
+.slice(-6);
+
+
+const order = {
+
+orderNumber,
+
+customer:{
+
+name,
+
+phone,
+
+email,
+
+address,
+
+notes
+
+},
+
+items:
+cart.map(item=>({
+
+id:item.id,
+
+name:item.name,
+
+price:item.price,
+
+quantity:item.quantity,
+
+category:item.category
+
+})),
+
+total,
+
+currency:
+settings.currency || "EGP",
+
+createdAt:
+new Date().toISOString()
+
+};
+
+
+localStorage.setItem(
+"royalFurnitureProLastOrder",
+JSON.stringify(order)
+);
+
+
+document.getElementById(
+"orderNumber"
+).textContent =
+"Order #" + orderNumber;
+
+
+document.getElementById(
+"checkoutFormArea"
+).style.display =
+"none";
+
+
+document.getElementById(
+"checkoutSummaryItems"
+).style.display =
+"none";
+
+
+document.getElementById(
+"orderSuccess"
+).classList.add("show");
+
+
+cart = [];
+
+
+saveCart();
+
+renderCart();
+
+}
+
+
+function finishOrder(){
+
+document.getElementById(
+"checkoutModal"
+).classList.remove("show");
+
+
+document.getElementById(
+"orderSuccess"
+).classList.remove("show");
+
+
+document.getElementById(
+"checkoutFormArea"
+).style.display =
+"block";
+
+
+document.getElementById(
+"checkoutSummaryItems"
+).style.display =
+"block";
+
+
+document.getElementById(
+"customerName"
+).value = "";
+
+
+document.getElementById(
+"customerPhone"
+).value = "";
+
+
+document.getElementById(
+"customerEmail"
+).value = "";
+
+
+document.getElementById(
+"customerAddress"
+).value = "";
+
+
+document.getElementById(
+"customerNotes"
+).value = "";
 
 }
 
@@ -2171,7 +3177,9 @@ alert(
 
 document.getElementById(
 "productModal"
-).addEventListener("click",(event)=>{
+).addEventListener(
+"click",
+(event)=>{
 
 if(
 event.target.id ===
@@ -2187,7 +3195,9 @@ closeModal();
 
 document.getElementById(
 "cartOverlay"
-).addEventListener("click",(event)=>{
+).addEventListener(
+"click",
+(event)=>{
 
 if(
 event.target.id ===
@@ -2195,6 +3205,24 @@ event.target.id ===
 ){
 
 closeCart();
+
+}
+
+});
+
+
+document.getElementById(
+"checkoutModal"
+).addEventListener(
+"click",
+(event)=>{
+
+if(
+event.target.id ===
+"checkoutModal"
+){
+
+closeCheckout();
 
 }
 
