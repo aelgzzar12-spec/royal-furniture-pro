@@ -139,9 +139,7 @@ header{
   background-position:center;
   opacity:0;
   transform:scale(1.06);
-  transition:
-    opacity 1.4s ease,
-    transform 6s ease;
+  transition:opacity 1.4s ease,transform 6s ease;
 }
 
 .hero-slide.active{
@@ -255,7 +253,7 @@ header{
   background:white;
 }
 
-/* ================= SECTIONS ================= */
+/* ================= GENERAL ================= */
 
 .container{
   max-width:var(--max);
@@ -295,7 +293,96 @@ header{
   font-size:15px;
 }
 
+/* ================= CATEGORIES ================= */
+
+.categories-section{
+  background:#fff;
+  padding:105px 0 80px;
+}
+
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+}
+
+.category-card{
+  position:relative;
+  height:360px;
+  overflow:hidden;
+  cursor:pointer;
+  background:#ddd;
+}
+
+.category-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .8s ease;
+}
+
+.category-card:hover img{
+  transform:scale(1.08);
+}
+
+.category-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.72),
+    rgba(0,0,0,.05)
+  );
+}
+
+.category-content{
+  position:absolute;
+  z-index:2;
+  bottom:25px;
+  left:22px;
+  color:white;
+}
+
+.category-content span{
+  display:block;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#d9bf87;
+  margin-bottom:6px;
+}
+
+.category-content h3{
+  font-size:23px;
+  font-weight:500;
+}
+
 /* ================= PRODUCTS ================= */
+
+.filter-bar{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-bottom:38px;
+}
+
+.filter-btn{
+  background:transparent;
+  border:1px solid var(--line);
+  padding:11px 18px;
+  cursor:pointer;
+  color:var(--dark);
+  transition:.25s;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+  background:#171717;
+  border-color:#171717;
+  color:white;
+}
 
 .products{
   display:grid;
@@ -361,44 +448,52 @@ header{
   z-index:2;
 }
 
-/* ================= EDITORIAL ================= */
+/* ================= STORY ================= */
 
-.editorial{
+.story-section{
   background:#191918;
   color:white;
 }
 
-.editorial-grid{
+.story-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   min-height:720px;
 }
 
-.editorial-image{
+.story-image{
   min-height:620px;
   background:
     url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=90")
     center/cover;
 }
 
-.editorial-content{
+.story-content{
   display:flex;
   align-items:center;
   padding:80px;
 }
 
-.editorial-content h2{
+.story-content h2{
   font-size:clamp(45px,5vw,75px);
   line-height:.98;
   font-weight:500;
   margin-bottom:28px;
 }
 
-.editorial-content p{
+.story-content p{
   color:#bdb9b0;
-  max-width:500px;
-  margin-bottom:35px;
+  max-width:510px;
+  margin-bottom:22px;
   font-size:16px;
+}
+
+.story-signature{
+  color:#d5b879;
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-top:30px;
 }
 
 /* ================= VALUES ================= */
@@ -669,10 +764,10 @@ footer{
 
 /* ================= TABLET ================= */
 
-@media(max-width:1000px){
+@media(max-width:1100px){
 
-  .nav-links{
-    display:none;
+  .category-grid{
+    grid-template-columns:repeat(3,1fr);
   }
 
   .products{
@@ -683,11 +778,11 @@ footer{
     height:380px;
   }
 
-  .editorial-grid{
+  .story-grid{
     grid-template-columns:1fr;
   }
 
-  .editorial-content{
+  .story-content{
     padding:70px 35px;
   }
 
@@ -737,6 +832,10 @@ footer{
     font-size:13px;
   }
 
+  .nav-links{
+    display:none;
+  }
+
   .hero{
     min-height:100svh;
     height:100svh;
@@ -778,6 +877,23 @@ footer{
     margin-top:20px;
   }
 
+  .categories-section{
+    padding:80px 0 60px;
+  }
+
+  .category-grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .category-card{
+    height:260px;
+  }
+
+  .category-card:first-child{
+    grid-column:span 2;
+  }
+
   .products{
     grid-template-columns:1fr;
     gap:18px;
@@ -787,11 +903,21 @@ footer{
     height:430px;
   }
 
-  .editorial-content{
+  .filter-bar{
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:5px;
+  }
+
+  .filter-btn{
+    white-space:nowrap;
+  }
+
+  .story-content{
     padding:70px 25px;
   }
 
-  .editorial-content h2{
+  .story-content h2{
     font-size:48px;
   }
 
@@ -843,24 +969,25 @@ footer{
 
 <header>
 
-  <nav class="nav">
+<nav class="nav">
 
-    <a href="#" class="logo">
-      ROYAL <span>FURNITURE</span>
-    </a>
+<a href="#" class="logo">
+ROYAL <span>FURNITURE</span>
+</a>
 
-    <div class="nav-links">
-      <a href="#collection">Collection</a>
-      <a href="#story">Our Story</a>
-      <a href="#values">Values</a>
-    </div>
+<div class="nav-links">
+<a href="#categories">Categories</a>
+<a href="#collection">Collection</a>
+<a href="#story">Our Story</a>
+<a href="#values">Values</a>
+</div>
 
-    <button class="cart-btn" onclick="openCart()">
-      Cart
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
+<button class="cart-btn" onclick="openCart()">
+Cart
+<span class="cart-count" id="cartCount">0</span>
+</button>
 
-  </nav>
+</nav>
 
 </header>
 
@@ -869,69 +996,157 @@ footer{
 
 <section class="hero">
 
-  <div class="hero-slides">
+<div class="hero-slides">
 
-    <div
-      class="hero-slide active"
-      style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2200&q=90')">
-    </div>
+<div class="hero-slide active"
+style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2200&q=90')"></div>
 
-    <div
-      class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2200&q=90')">
-    </div>
+<div class="hero-slide"
+style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2200&q=90')"></div>
 
-    <div
-      class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=2200&q=90')">
-    </div>
+<div class="hero-slide"
+style="background-image:url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=2200&q=90')"></div>
 
-    <div
-      class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=2200&q=90')">
-    </div>
+<div class="hero-slide"
+style="background-image:url('https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=2200&q=90')"></div>
 
-  </div>
+</div>
 
-  <div class="hero-overlay"></div>
+<div class="hero-overlay"></div>
 
-  <div class="hero-content">
+<div class="hero-content">
 
-    <div class="hero-kicker">
-      Royal Furniture Pro
-    </div>
+<div class="hero-kicker">
+Royal Furniture Pro
+</div>
 
-    <h1 id="heroTitle">
-      Furniture made for beautiful living.
-    </h1>
+<h1 id="heroTitle">
+Furniture made for beautiful living.
+</h1>
 
-    <p id="heroDescription">
-      Discover refined furniture designed to bring timeless
-      character, comfort and elegance into modern spaces.
-    </p>
+<p id="heroDescription">
+Discover refined furniture designed to bring timeless
+character, comfort and elegance into modern spaces.
+</p>
 
-    <div class="hero-actions">
+<div class="hero-actions">
 
-      <a href="#collection" class="btn btn-primary">
-        Explore Collection
-      </a>
+<a href="#categories" class="btn btn-primary">
+Explore Collection
+</a>
 
-      <a href="#story" class="btn btn-outline">
-        Discover Our Story
-      </a>
+<a href="#story" class="btn btn-outline">
+Discover Our Story
+</a>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
-  <div class="hero-dots">
+<div class="hero-dots">
 
-    <button class="hero-dot active" onclick="goToSlide(0)"></button>
-    <button class="hero-dot" onclick="goToSlide(1)"></button>
-    <button class="hero-dot" onclick="goToSlide(2)"></button>
-    <button class="hero-dot" onclick="goToSlide(3)"></button>
+<button class="hero-dot active" onclick="goToSlide(0)"></button>
+<button class="hero-dot" onclick="goToSlide(1)"></button>
+<button class="hero-dot" onclick="goToSlide(2)"></button>
+<button class="hero-dot" onclick="goToSlide(3)"></button>
 
-  </div>
+</div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="categories-section" id="categories">
+
+<div class="container">
+
+<div class="section-head">
+
+<div>
+
+<div class="eyebrow">
+Shop by Category
+</div>
+
+<h2 class="section-title">
+Find your space.
+</h2>
+
+</div>
+
+<p class="section-description">
+Explore carefully selected pieces for every room,
+from elegant living spaces to refined home offices.
+</p>
+
+</div>
+
+
+<div class="category-grid">
+
+<div class="category-card" onclick="filterCategory('Living Room')">
+
+<img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=90" alt="Living Room">
+
+<div class="category-content">
+<span>01</span>
+<h3>Living Room</h3>
+</div>
+
+</div>
+
+
+<div class="category-card" onclick="filterCategory('Bedroom')">
+
+<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=90" alt="Bedroom">
+
+<div class="category-content">
+<span>02</span>
+<h3>Bedroom</h3>
+</div>
+
+</div>
+
+
+<div class="category-card" onclick="filterCategory('Dining')">
+
+<img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=90" alt="Dining Room">
+
+<div class="category-content">
+<span>03</span>
+<h3>Dining</h3>
+</div>
+
+</div>
+
+
+<div class="category-card" onclick="filterCategory('Office')">
+
+<img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=90" alt="Office">
+
+<div class="category-content">
+<span>04</span>
+<h3>Office</h3>
+</div>
+
+</div>
+
+
+<div class="category-card" onclick="filterCategory('Accessories')">
+
+<img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=90" alt="Accessories">
+
+<div class="category-content">
+<span>05</span>
+<h3>Accessories</h3>
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -940,71 +1155,114 @@ footer{
 
 <section class="section" id="collection">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-head">
+<div class="section-head">
 
-      <div>
+<div>
 
-        <div class="eyebrow">
-          The Collection
-        </div>
+<div class="eyebrow">
+The Collection
+</div>
 
-        <h2 class="section-title">
-          Pieces with presence.
-        </h2>
+<h2 class="section-title">
+Pieces with presence.
+</h2>
 
-      </div>
+</div>
 
-      <p class="section-description">
-        A curated selection of furniture created for
-        sophisticated interiors and contemporary living.
-      </p>
+<p class="section-description">
+A curated selection of furniture created for
+sophisticated interiors and contemporary living.
+</p>
 
-    </div>
+</div>
 
-    <div class="products" id="products"></div>
 
-  </div>
+<!-- FILTERS -->
+
+<div class="filter-bar">
+
+<button class="filter-btn active" onclick="filterCategory('All')">
+All
+</button>
+
+<button class="filter-btn" onclick="filterCategory('Living Room')">
+Living Room
+</button>
+
+<button class="filter-btn" onclick="filterCategory('Bedroom')">
+Bedroom
+</button>
+
+<button class="filter-btn" onclick="filterCategory('Dining')">
+Dining
+</button>
+
+<button class="filter-btn" onclick="filterCategory('Office')">
+Office
+</button>
+
+<button class="filter-btn" onclick="filterCategory('Accessories')">
+Accessories
+</button>
+
+</div>
+
+
+<div class="products" id="products"></div>
+
+</div>
 
 </section>
 
 
-<!-- ================= EDITORIAL ================= -->
+<!-- ================= STORY ================= -->
 
-<section class="editorial section" id="story">
+<section class="story-section section" id="story">
 
-  <div class="editorial-grid">
+<div class="story-grid">
 
-    <div class="editorial-image"></div>
+<div class="story-image"></div>
 
-    <div class="editorial-content">
+<div class="story-content">
 
-      <div>
+<div>
 
-        <div class="eyebrow">
-          Our Philosophy
-        </div>
+<div class="eyebrow">
+Our Story
+</div>
 
-        <h2>
-          Designed to live beautifully.
-        </h2>
+<h2>
+A home should feel like you.
+</h2>
 
-        <p>
-          Royal Furniture brings together thoughtful design,
-          refined materials and timeless forms to create pieces
-          that feel at home for years to come.
-        </p>
+<p>
+Royal Furniture was created around a simple belief:
+beautiful furniture should be more than something you place
+in a room. It should become part of the way you live.
+</p>
 
-        <a href="#collection" class="btn btn-primary">
-          View Collection
-        </a>
+<p>
+We bring together contemporary forms, refined materials
+and everyday comfort to create furniture with a timeless
+sense of character.
+</p>
 
-      </div>
+<p>
+From the first piece to the final detail, Royal is designed
+for homes that value beauty, comfort and lasting style.
+</p>
 
-    </div>
+<div class="story-signature">
+The Royal Furniture Standard
+</div>
 
-  </div>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -1013,79 +1271,81 @@ footer{
 
 <section class="section" id="values">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-head">
+<div class="section-head">
 
-      <div>
+<div>
 
-        <div class="eyebrow">
-          The Royal Standard
-        </div>
+<div class="eyebrow">
+The Royal Standard
+</div>
 
-        <h2 class="section-title">
-          Made with intention.
-        </h2>
+<h2 class="section-title">
+Made with intention.
+</h2>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
-    <div class="values">
+<div class="values">
 
-      <div class="value">
+<div class="value">
 
-        <div class="value-number">
-          01
-        </div>
+<div class="value-number">
+01
+</div>
 
-        <h3>
-          Timeless Design
-        </h3>
+<h3>
+Timeless Design
+</h3>
 
-        <p>
-          Carefully considered forms designed to remain
-          relevant beyond changing trends.
-        </p>
+<p>
+Carefully considered forms designed to remain
+relevant beyond changing trends.
+</p>
 
-      </div>
+</div>
 
-      <div class="value">
 
-        <div class="value-number">
-          02
-        </div>
+<div class="value">
 
-        <h3>
-          Refined Details
-        </h3>
+<div class="value-number">
+02
+</div>
 
-        <p>
-          Every proportion, material and finish is selected
-          with attention to detail.
-        </p>
+<h3>
+Refined Details
+</h3>
 
-      </div>
+<p>
+Every proportion, material and finish is selected
+with attention to detail.
+</p>
 
-      <div class="value">
+</div>
 
-        <div class="value-number">
-          03
-        </div>
 
-        <h3>
-          Modern Comfort
-        </h3>
+<div class="value">
 
-        <p>
-          Elegant furniture should feel as good as it looks.
-        </p>
+<div class="value-number">
+03
+</div>
 
-      </div>
+<h3>
+Modern Comfort
+</h3>
 
-    </div>
+<p>
+Elegant furniture should feel as good as it looks.
+</p>
 
-  </div>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -1094,70 +1354,77 @@ footer{
 
 <footer>
 
-  <div class="container">
+<div class="container">
 
-    <div class="footer-grid">
+<div class="footer-grid">
 
-      <div class="footer-brand">
+<div class="footer-brand">
 
-        <h2>
-          ROYAL FURNITURE
-        </h2>
+<h2>
+ROYAL FURNITURE
+</h2>
 
-        <p>
-          A premium furniture showroom template built for
-          modern furniture brands, showrooms and interior studios.
-        </p>
+<p>
+A premium furniture store experience built for
+modern furniture brands, showrooms and interior studios.
+</p>
 
-      </div>
+</div>
 
-      <div class="footer-column">
 
-        <h4>
-          Explore
-        </h4>
+<div class="footer-column">
 
-        <a href="#collection">
-          Collection
-        </a>
+<h4>
+Explore
+</h4>
 
-        <a href="#story">
-          Our Story
-        </a>
+<a href="#categories">
+Categories
+</a>
 
-        <a href="#values">
-          Values
-        </a>
+<a href="#collection">
+Collection
+</a>
 
-      </div>
+<a href="#story">
+Our Story
+</a>
 
-      <div class="footer-column">
+<a href="#values">
+Values
+</a>
 
-        <h4>
-          Contact
-        </h4>
+</div>
 
-        <a href="#">
-          Instagram
-        </a>
 
-        <a href="#">
-          Facebook
-        </a>
+<div class="footer-column">
 
-        <a href="#">
-          Email
-        </a>
+<h4>
+Contact
+</h4>
 
-      </div>
+<a href="#">
+Instagram
+</a>
 
-    </div>
+<a href="#">
+Facebook
+</a>
 
-    <div class="footer-bottom">
-      © 2026 Royal Furniture. All rights reserved.
-    </div>
+<a href="#">
+Email
+</a>
 
-  </div>
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+© 2026 Royal Furniture. All rights reserved.
+</div>
+
+</div>
 
 </footer>
 
@@ -1166,40 +1433,40 @@ footer{
 
 <div class="modal" id="productModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <div class="modal-image">
+<div class="modal-image">
 
-      <img id="modalImage" src="" alt="">
+<img id="modalImage" src="" alt="">
 
-    </div>
+</div>
 
-    <div class="modal-info">
+<div class="modal-info">
 
-      <button class="close" onclick="closeModal()">
-        ×
-      </button>
+<button class="close" onclick="closeModal()">
+×
+</button>
 
-      <div class="modal-category" id="modalCategory">
-        Furniture
-      </div>
+<div class="modal-category" id="modalCategory">
+Furniture
+</div>
 
-      <h2 id="modalName"></h2>
+<h2 id="modalName"></h2>
 
-      <div class="modal-price" id="modalPrice"></div>
+<div class="modal-price" id="modalPrice"></div>
 
-      <p class="modal-description">
-        A refined piece created to bring comfort,
-        character and timeless style to your interior.
-      </p>
+<p class="modal-description">
+A refined piece created to bring comfort,
+character and timeless style to your interior.
+</p>
 
-      <button class="btn btn-primary" id="modalAdd">
-        Add to Cart
-      </button>
+<button class="btn btn-primary" id="modalAdd">
+Add to Cart
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </div>
 
@@ -1208,43 +1475,43 @@ footer{
 
 <div class="cart-overlay" id="cartOverlay">
 
-  <div class="cart-panel">
+<div class="cart-panel">
 
-    <div class="cart-header">
+<div class="cart-header">
 
-      <h2>
-        Your Cart
-      </h2>
+<h2>
+Your Cart
+</h2>
 
-      <button class="close" onclick="closeCart()">
-        ×
-      </button>
+<button class="close" onclick="closeCart()">
+×
+</button>
 
-    </div>
+</div>
 
-    <div class="cart-items" id="cartItems"></div>
+<div class="cart-items" id="cartItems"></div>
 
-    <div class="cart-footer">
+<div class="cart-footer">
 
-      <div class="cart-total">
+<div class="cart-total">
 
-        <span>
-          Total
-        </span>
+<span>
+Total
+</span>
 
-        <strong id="cartTotal">
-          0
-        </strong>
+<strong id="cartTotal">
+0
+</strong>
 
-      </div>
+</div>
 
-      <button class="checkout" onclick="checkout()">
-        Proceed to Checkout
-      </button>
+<button class="checkout" onclick="checkout()">
+Proceed to Checkout
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </div>
 
@@ -1254,39 +1521,39 @@ footer{
 /* ================= HERO SLIDER ================= */
 
 const slides =
-  document.querySelectorAll(".hero-slide");
+document.querySelectorAll(".hero-slide");
 
 const dots =
-  document.querySelectorAll(".hero-dot");
+document.querySelectorAll(".hero-dot");
 
 let currentSlide = 0;
 
 function goToSlide(index){
 
-  slides.forEach(slide=>{
-    slide.classList.remove("active");
-  });
+slides.forEach(slide=>{
+slide.classList.remove("active");
+});
 
-  dots.forEach(dot=>{
-    dot.classList.remove("active");
-  });
+dots.forEach(dot=>{
+dot.classList.remove("active");
+});
 
-  currentSlide = index;
+currentSlide = index;
 
-  slides[currentSlide].classList.add("active");
-  dots[currentSlide].classList.add("active");
+slides[currentSlide].classList.add("active");
+dots[currentSlide].classList.add("active");
 
 }
 
 function nextSlide(){
 
-  currentSlide++;
+currentSlide++;
 
-  if(currentSlide >= slides.length){
-    currentSlide = 0;
-  }
+if(currentSlide >= slides.length){
+currentSlide = 0;
+}
 
-  goToSlide(currentSlide);
+goToSlide(currentSlide);
 
 }
 
@@ -1297,15 +1564,15 @@ setInterval(nextSlide,5000);
 
 let settings = {
 
-  storeName:"Royal Furniture",
+storeName:"Royal Furniture",
 
-  currency:"EGP",
+currency:"EGP",
 
-  heroTitle:
-    "Furniture made for beautiful living.",
+heroTitle:
+"Furniture made for beautiful living.",
 
-  heroDescription:
-    "Discover refined furniture designed to bring timeless character, comfort and elegance into modern spaces."
+heroDescription:
+"Discover refined furniture designed to bring timeless character, comfort and elegance into modern spaces."
 
 };
 
@@ -1314,37 +1581,69 @@ let products = [];
 
 const fallbackProducts = [
 
-  {
-    id:1,
-    name:"Royal Lounge Sofa",
-    price:1299,
-    category:"Living Room",
-    image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=90"
-  },
+{
+id:1,
+name:"Royal Lounge Sofa",
+price:1299,
+category:"Living Room",
+image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=90"
+},
 
-  {
-    id:2,
-    name:"Monaco Armchair",
-    price:699,
-    category:"Seating",
-    image:"https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1200&q=90"
-  },
+{
+id:2,
+name:"Monaco Armchair",
+price:699,
+category:"Living Room",
+image:"https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1200&q=90"
+},
 
-  {
-    id:3,
-    name:"Oak Dining Table",
-    price:1599,
-    category:"Dining",
-    image:"https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=90"
-  },
+{
+id:3,
+name:"Royal Bedroom Set",
+price:1899,
+category:"Bedroom",
+image:"https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90"
+},
 
-  {
-    id:4,
-    name:"Modern Side Chair",
-    price:499,
-    category:"Dining",
-    image:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1200&q=90"
-  }
+{
+id:4,
+name:"Oak Dining Table",
+price:1599,
+category:"Dining",
+image:"https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=90"
+},
+
+{
+id:5,
+name:"Modern Office Chair",
+price:599,
+category:"Office",
+image:"https://images.unsplash.com/photo-1505843490701-5be5d7e8c3c5?auto=format&fit=crop&w=1200&q=90"
+},
+
+{
+id:6,
+name:"Royal Desk",
+price:1199,
+category:"Office",
+image:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=90"
+},
+
+{
+id:7,
+name:"Modern Side Chair",
+price:499,
+category:"Dining",
+image:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1200&q=90"
+},
+
+{
+id:8,
+name:"Royal Accent Lamp",
+price:299,
+category:"Accessories",
+image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=90"
+}
 
 ];
 
@@ -1353,56 +1652,56 @@ const fallbackProducts = [
 
 function loadStore(){
 
-  try{
+try{
 
-    const savedSettings =
-      localStorage.getItem(
-        "royalFurnitureProSettings"
-      );
+const savedSettings =
+localStorage.getItem(
+"royalFurnitureProSettings"
+);
 
-    const savedProducts =
-      localStorage.getItem(
-        "royalFurnitureProProducts"
-      );
+const savedProducts =
+localStorage.getItem(
+"royalFurnitureProProducts"
+);
 
-    if(savedSettings){
+if(savedSettings){
 
-      settings = {
-        ...settings,
-        ...JSON.parse(savedSettings)
-      };
+settings = {
+...settings,
+...JSON.parse(savedSettings)
+};
 
-    }
+}
 
-    if(savedProducts){
+if(savedProducts){
 
-      products = JSON.parse(savedProducts);
+products = JSON.parse(savedProducts);
 
-    }
+}
 
-  }catch(error){
+}catch(error){
 
-    console.log(
-      "Store data could not be loaded."
-    );
+console.log(
+"Store data could not be loaded."
+);
 
-  }
+}
 
-  if(!products.length){
+if(!products.length){
 
-    products = fallbackProducts;
+products = fallbackProducts;
 
-  }
+}
 
-  document.getElementById(
-    "heroTitle"
-  ).textContent = settings.heroTitle;
+document.getElementById(
+"heroTitle"
+).textContent = settings.heroTitle;
 
-  document.getElementById(
-    "heroDescription"
-  ).textContent = settings.heroDescription;
+document.getElementById(
+"heroDescription"
+).textContent = settings.heroDescription;
 
-  renderProducts();
+renderProducts();
 
 }
 
@@ -1411,10 +1710,52 @@ function loadStore(){
 
 function formatPrice(price){
 
-  const currency =
-    settings.currency || "EGP";
+const currency =
+settings.currency || "EGP";
 
-  return `${Number(price).toLocaleString()} ${currency}`;
+return `${Number(price).toLocaleString()} ${currency}`;
+
+}
+
+
+/* ================= CATEGORY FILTER ================= */
+
+let activeCategory = "All";
+
+function filterCategory(category){
+
+activeCategory = category;
+
+document.querySelectorAll(".filter-btn")
+.forEach(button=>{
+
+button.classList.remove("active");
+
+if(
+button.textContent.trim().toLowerCase()
+===
+category.toLowerCase()
+){
+
+button.classList.add("active");
+
+}
+
+});
+
+
+renderProducts();
+
+const collection =
+document.getElementById("collection");
+
+if(collection){
+
+collection.scrollIntoView({
+behavior:"smooth"
+});
+
+}
 
 }
 
@@ -1423,65 +1764,98 @@ function formatPrice(price){
 
 function renderProducts(){
 
-  const container =
-    document.getElementById("products");
+const container =
+document.getElementById("products");
 
-  container.innerHTML = "";
+container.innerHTML = "";
 
-  products.forEach((product,index)=>{
+const filteredProducts =
+activeCategory === "All"
+? products
+: products.filter(product => {
 
-    const card =
-      document.createElement("div");
+const productCategory =
+String(product.category || "")
+.trim()
+.toLowerCase();
 
-    card.className = "product-card";
+return productCategory ===
+activeCategory.toLowerCase();
 
-    card.onclick = ()=>{
-      openProduct(product);
-    };
+});
 
-    card.innerHTML = `
 
-      ${
-        index === 0
-        ? `
-          <div class="product-badge">
-            Featured
-          </div>
-        `
-        : ""
-      }
+if(!filteredProducts.length){
 
-      <div class="product-image">
+container.innerHTML = `
 
-        <img
-          src="${product.image}"
-          alt="${product.name}"
-          onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=90'"
-        >
+<div class="empty" style="grid-column:1/-1">
 
-      </div>
+No products found in this category yet.
 
-      <div class="product-info">
+</div>
 
-        <div class="product-category">
-          ${product.category || "Furniture"}
-        </div>
+`;
 
-        <div class="product-name">
-          ${product.name}
-        </div>
+return;
 
-        <div class="product-price">
-          ${formatPrice(product.price)}
-        </div>
+}
 
-      </div>
 
-    `;
+filteredProducts.forEach((product,index)=>{
 
-    container.appendChild(card);
+const card =
+document.createElement("div");
 
-  });
+card.className = "product-card";
+
+card.onclick = ()=>{
+openProduct(product);
+};
+
+card.innerHTML = `
+
+${
+index === 0 && activeCategory === "All"
+? `
+<div class="product-badge">
+Featured
+</div>
+`
+: ""
+}
+
+<div class="product-image">
+
+<img
+src="${product.image}"
+alt="${product.name}"
+onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=90'"
+>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+${product.category || "Furniture"}
+</div>
+
+<div class="product-name">
+${product.name}
+</div>
+
+<div class="product-price">
+${formatPrice(product.price)}
+</div>
+
+</div>
+
+`;
+
+container.appendChild(card);
+
+});
 
 }
 
@@ -1492,37 +1866,37 @@ let selectedProduct = null;
 
 function openProduct(product){
 
-  selectedProduct = product;
+selectedProduct = product;
 
-  document.getElementById(
-    "modalImage"
-  ).src = product.image;
+document.getElementById(
+"modalImage"
+).src = product.image;
 
-  document.getElementById(
-    "modalName"
-  ).textContent = product.name;
+document.getElementById(
+"modalName"
+).textContent = product.name;
 
-  document.getElementById(
-    "modalCategory"
-  ).textContent =
-    product.category || "Furniture";
+document.getElementById(
+"modalCategory"
+).textContent =
+product.category || "Furniture";
 
-  document.getElementById(
-    "modalPrice"
-  ).textContent =
-    formatPrice(product.price);
+document.getElementById(
+"modalPrice"
+).textContent =
+formatPrice(product.price);
 
-  document.getElementById(
-    "productModal"
-  ).classList.add("show");
+document.getElementById(
+"productModal"
+).classList.add("show");
 
 }
 
 function closeModal(){
 
-  document.getElementById(
-    "productModal"
-  ).classList.remove("show");
+document.getElementById(
+"productModal"
+).classList.remove("show");
 
 }
 
@@ -1530,15 +1904,15 @@ function closeModal(){
 document.getElementById("modalAdd")
 .addEventListener("click",()=>{
 
-  if(selectedProduct){
+if(selectedProduct){
 
-    addToCart(selectedProduct);
+addToCart(selectedProduct);
 
-    closeModal();
+closeModal();
 
-    openCart();
+openCart();
 
-  }
+}
 
 });
 
@@ -1549,243 +1923,246 @@ let cart = [];
 
 try{
 
-  cart =
-    JSON.parse(
-      localStorage.getItem(
-        "royalFurnitureProCart"
-      )
-    ) || [];
+cart =
+JSON.parse(
+localStorage.getItem(
+"royalFurnitureProCart"
+)
+) || [];
 
 }catch(error){
 
-  cart = [];
+cart = [];
 
 }
 
 
 function saveCart(){
 
-  localStorage.setItem(
-    "royalFurnitureProCart",
-    JSON.stringify(cart)
-  );
+localStorage.setItem(
+"royalFurnitureProCart",
+JSON.stringify(cart)
+);
 
 }
 
 
 function addToCart(product){
 
-  const existing =
-    cart.find(
-      item => item.id === product.id
-    );
+const existing =
+cart.find(
+item => item.id === product.id
+);
 
-  if(existing){
+if(existing){
 
-    existing.quantity++;
+existing.quantity++;
 
-  }else{
+}else{
 
-    cart.push({
-      ...product,
-      quantity:1
-    });
+cart.push({
+...product,
+quantity:1
+});
 
-  }
+}
 
-  saveCart();
+saveCart();
 
-  renderCart();
+renderCart();
 
 }
 
 
 function removeFromCart(id){
 
-  cart =
-    cart.filter(
-      item => item.id !== id
-    );
+cart =
+cart.filter(
+item => item.id !== id
+);
 
-  saveCart();
+saveCart();
 
-  renderCart();
+renderCart();
 
 }
 
 
 function changeQuantity(id,amount){
 
-  const item =
-    cart.find(
-      item => item.id === id
-    );
+const item =
+cart.find(
+item => item.id === id
+);
 
-  if(!item) return;
+if(!item) return;
 
-  item.quantity += amount;
+item.quantity += amount;
 
-  if(item.quantity <= 0){
+if(item.quantity <= 0){
 
-    removeFromCart(id);
+removeFromCart(id);
 
-    return;
+return;
 
-  }
+}
 
-  saveCart();
+saveCart();
 
-  renderCart();
+renderCart();
 
 }
 
 
 function renderCart(){
 
-  const container =
-    document.getElementById(
-      "cartItems"
-    );
+const container =
+document.getElementById(
+"cartItems"
+);
 
-  const count =
-    cart.reduce(
-      (sum,item)=>
-        sum + item.quantity,
-      0
-    );
+const count =
+cart.reduce(
+(sum,item)=>
+sum + item.quantity,
+0
+);
 
-  document.getElementById(
-    "cartCount"
-  ).textContent = count;
+document.getElementById(
+"cartCount"
+).textContent = count;
 
-  if(!cart.length){
 
-    container.innerHTML = `
+if(!cart.length){
 
-      <div class="empty">
-        Your cart is empty.
-      </div>
+container.innerHTML = `
 
-    `;
+<div class="empty">
+Your cart is empty.
+</div>
 
-    document.getElementById(
-      "cartTotal"
-    ).textContent =
-      formatPrice(0);
+`;
 
-    return;
+document.getElementById(
+"cartTotal"
+).textContent =
+formatPrice(0);
 
-  }
+return;
 
-  let total = 0;
+}
 
-  container.innerHTML = "";
 
-  cart.forEach(item=>{
+let total = 0;
 
-    total +=
-      Number(item.price) *
-      item.quantity;
+container.innerHTML = "";
 
-    const element =
-      document.createElement("div");
+cart.forEach(item=>{
 
-    element.className = "cart-item";
+total +=
+Number(item.price) *
+item.quantity;
 
-    element.innerHTML = `
+const element =
+document.createElement("div");
 
-      <img
-        src="${item.image}"
-        alt="${item.name}"
-      >
+element.className = "cart-item";
 
-      <div>
+element.innerHTML = `
 
-        <h4>
-          ${item.name}
-        </h4>
+<img
+src="${item.image}"
+alt="${item.name}"
+>
 
-        <p>
-          ${formatPrice(item.price)}
-        </p>
+<div>
 
-        <div style="margin-top:8px">
+<h4>
+${item.name}
+</h4>
 
-          <button
-            onclick="changeQuantity(${item.id},-1)"
-            style="border:1px solid #ddd;background:white;padding:3px 8px;cursor:pointer">
-            −
-          </button>
+<p>
+${formatPrice(item.price)}
+</p>
 
-          <span style="padding:0 8px">
-            ${item.quantity}
-          </span>
+<div style="margin-top:8px">
 
-          <button
-            onclick="changeQuantity(${item.id},1)"
-            style="border:1px solid #ddd;background:white;padding:3px 8px;cursor:pointer">
-            +
-          </button>
+<button
+onclick="changeQuantity(${item.id},-1)"
+style="border:1px solid #ddd;background:white;padding:3px 8px;cursor:pointer">
+−
+</button>
 
-        </div>
+<span style="padding:0 8px">
+${item.quantity}
+</span>
 
-      </div>
+<button
+onclick="changeQuantity(${item.id},1)"
+style="border:1px solid #ddd;background:white;padding:3px 8px;cursor:pointer">
++
+</button>
 
-      <button
-        class="cart-remove"
-        onclick="removeFromCart(${item.id})">
-        Remove
-      </button>
+</div>
 
-    `;
+</div>
 
-    container.appendChild(element);
+<button
+class="cart-remove"
+onclick="removeFromCart(${item.id})">
+Remove
+</button>
 
-  });
+`;
 
-  document.getElementById(
-    "cartTotal"
-  ).textContent =
-    formatPrice(total);
+container.appendChild(element);
+
+});
+
+
+document.getElementById(
+"cartTotal"
+).textContent =
+formatPrice(total);
 
 }
 
 
 function openCart(){
 
-  document.getElementById(
-    "cartOverlay"
-  ).classList.add("show");
+document.getElementById(
+"cartOverlay"
+).classList.add("show");
 
-  renderCart();
+renderCart();
 
 }
 
 
 function closeCart(){
 
-  document.getElementById(
-    "cartOverlay"
-  ).classList.remove("show");
+document.getElementById(
+"cartOverlay"
+).classList.remove("show");
 
 }
 
 
 function checkout(){
 
-  if(!cart.length){
+if(!cart.length){
 
-    alert(
-      "Your cart is empty."
-    );
+alert(
+"Your cart is empty."
+);
 
-    return;
+return;
 
-  }
+}
 
-  alert(
-    "Checkout is ready to be connected to your payment system."
-  );
+alert(
+"Checkout is ready to be connected to your payment system."
+);
 
 }
 
@@ -1793,33 +2170,33 @@ function checkout(){
 /* ================= CLOSE MODALS ================= */
 
 document.getElementById(
-  "productModal"
+"productModal"
 ).addEventListener("click",(event)=>{
 
-  if(
-    event.target.id ===
-    "productModal"
-  ){
+if(
+event.target.id ===
+"productModal"
+){
 
-    closeModal();
+closeModal();
 
-  }
+}
 
 });
 
 
 document.getElementById(
-  "cartOverlay"
+"cartOverlay"
 ).addEventListener("click",(event)=>{
 
-  if(
-    event.target.id ===
-    "cartOverlay"
-  ){
+if(
+event.target.id ===
+"cartOverlay"
+){
 
-    closeCart();
+closeCart();
 
-  }
+}
 
 });
 
