@@ -413,14 +413,16 @@
       name: "Royal Lounge Chair",
       price: "499",
       description: "Premium upholstered chair",
-      image: "assets/product-1.jpg"
+      image: "assets/product-1.jpg",
+      category: "Living Room"
     },
 
     {
       name: "Modern Sofa",
       price: "1299",
       description: "Contemporary living sofa",
-      image: "assets/product-2.jpg"
+      image: "assets/product-2.jpg",
+      category: "Living Room"
     }
 
   ];
@@ -480,6 +482,43 @@
           >
 
         </div>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Product Category
+        </label>
+
+        <select class="product-category">
+
+          <option value="Living Room"
+            ${product.category === "Living Room" ? "selected" : ""}>
+            Living Room
+          </option>
+
+          <option value="Bedroom"
+            ${product.category === "Bedroom" ? "selected" : ""}>
+            Bedroom
+          </option>
+
+          <option value="Dining"
+            ${product.category === "Dining" ? "selected" : ""}>
+            Dining
+          </option>
+
+          <option value="Office"
+            ${product.category === "Office" ? "selected" : ""}>
+            Office
+          </option>
+
+          <option value="Accessories"
+            ${product.category === "Accessories" ? "selected" : ""}>
+            Accessories
+          </option>
+
+        </select>
 
       </div>
 
@@ -568,7 +607,15 @@
     document.getElementById("products").innerHTML = "";
 
     products.forEach(product => {
-      createProduct(product);
+
+      createProduct({
+
+        ...product,
+
+        category: product.category || "Living Room"
+
+      });
+
     });
 
   }
@@ -584,7 +631,9 @@
 
       description: "Product description",
 
-      image: "assets/product.jpg"
+      image: "assets/product.jpg",
+
+      category: "Living Room"
 
     });
 
@@ -621,6 +670,11 @@
             .value
             .trim();
 
+        const category =
+          product
+            .querySelector(".product-category")
+            .value;
+
         const description =
           product
             .querySelector(".product-description")
@@ -640,6 +694,9 @@
             name: name,
 
             price: price,
+
+            category:
+              category || "Living Room",
 
             description:
               description || "Furniture product",
