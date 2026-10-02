@@ -68,8 +68,6 @@
       margin:auto;
     }
 
-    /* HEADER */
-
     header{
       position:fixed;
       top:0;
@@ -145,8 +143,6 @@
       align-items:center;
       justify-content:center;
     }
-
-    /* HERO */
 
     .hero{
       min-height:100vh;
@@ -257,8 +253,6 @@
       transform:none;
     }
 
-    /* SECTIONS */
-
     section{
       padding:100px 0;
     }
@@ -282,8 +276,6 @@
       max-width:480px;
       color:var(--muted);
     }
-
-    /* CATEGORIES */
 
     .categories{
       display:grid;
@@ -326,8 +318,6 @@
       font-size:20px;
       font-weight:600;
     }
-
-    /* COLLECTION */
 
     .filters{
       display:flex;
@@ -409,8 +399,6 @@
       font-weight:700;
     }
 
-    /* STORY */
-
     .story-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -442,8 +430,6 @@
       max-width:520px;
       margin-bottom:20px;
     }
-
-    /* VALUES */
 
     .values{
       background:#1b1b1b;
@@ -477,8 +463,6 @@
     .value p{
       color:#aaa;
     }
-
-    /* FOOTER */
 
     footer{
       background:#111;
@@ -518,8 +502,6 @@
       justify-content:space-between;
       gap:20px;
     }
-
-    /* MODAL */
 
     .overlay{
       position:fixed;
@@ -592,8 +574,6 @@
       color:var(--muted);
       margin:20px 0 30px;
     }
-
-    /* CART */
 
     .cart-overlay{
       position:fixed;
@@ -707,8 +687,6 @@
       padding:70px 20px;
       color:var(--muted);
     }
-
-    /* CHECKOUT */
 
     .checkout-modal{
       width:min(1050px,100%);
@@ -859,8 +837,6 @@
       margin:0 auto 25px;
     }
 
-    /* TOAST */
-
     .toast{
       position:fixed;
       left:50%;
@@ -881,8 +857,6 @@
       opacity:1;
       transform:translate(-50%,0);
     }
-
-    /* RESPONSIVE */
 
     @media(max-width:1000px){
 
@@ -1021,583 +995,806 @@
 
 <body>
 
-  <!-- HEADER -->
-
-  <header>
-
-    <div class="container nav">
-
-      <a href="#" class="logo" id="storeLogo">
-        ROYAL FURNITURE
-      </a>
-
-      <nav class="nav-links">
-
-        <a href="#collections">
-          Collection
-        </a>
-
-        <a href="#categories">
-          Categories
-        </a>
-
-        <a href="#story">
-          Our Story
-        </a>
-
-        <a href="#values">
-          Values
-        </a>
-
-      </nav>
-
-      <div class="nav-actions">
-
-        <button
-          class="icon-btn"
-          type="button"
-          onclick="openCart()"
-          aria-label="Shopping cart"
-        >
-          🛒
-
-          <span
-            class="cart-count"
-            id="cartCount"
-          >
-            0
-          </span>
-
-        </button>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-slides">
-
-      <div
-        class="hero-slide active"
-        style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=85')"
-      ></div>
-
-      <div
-        class="hero-slide"
-        style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=85')"
-      ></div>
-
-      <div
-        class="hero-slide"
-        style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=85')"
-      ></div>
-
-      <div
-        class="hero-slide"
-        style="background-image:url('https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1800&q=85')"
-      ></div>
-
-    </div>
-
-
-    <div class="hero-content">
-
-      <div class="eyebrow">
-        Premium Furniture Collection
-      </div>
-
-      <h1 id="heroTitle">
-        Designed for the way you live.
-      </h1>
-
-      <p id="heroDescription">
-        Refined furniture pieces created to bring comfort,
-        character and timeless elegance into modern spaces.
-      </p>
-
-      <a
-        href="#collections"
-        class="btn btn-light"
-      >
-        Explore Collection
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- CATEGORIES -->
-
-  <section id="categories">
-
-    <div class="container">
-
-      <div class="section-head">
-
-        <div>
-
-          <div
-            class="eyebrow"
-            style="color:#777"
-          >
-            Explore
-          </div>
-
-          <h2>
-            Shop by space
-          </h2>
-
-        </div>
-
-        <p>
-          Discover carefully selected pieces for every room,
-          from welcoming living spaces to refined dining areas.
-        </p>
-
-      </div>
-
-
-      <div class="categories">
-
-        <div
-          class="category-card"
-          onclick="filterCategory('Living Room')"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
-            alt="Living Room"
-          >
-
-          <div class="category-title">
-            Living Room
-          </div>
-
-        </div>
-
-
-        <div
-          class="category-card"
-          onclick="filterCategory('Bedroom')"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80"
-            alt="Bedroom"
-          >
-
-          <div class="category-title">
-            Bedroom
-          </div>
-
-        </div>
-
-
-        <div
-          class="category-card"
-          onclick="filterCategory('Dining')"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=900&q=80"
-            alt="Dining"
-          >
-
-          <div class="category-title">
-            Dining
-          </div>
-
-        </div>
-
-
-        <div
-          class="category-card"
-          onclick="filterCategory('Office')"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
-            alt="Office"
-          >
-
-          <div class="category-title">
-            Office
-          </div>
-
-        </div>
-
-
-        <div
-          class="category-card"
-          onclick="filterCategory('Accessories')"
-        >
-
-          <img
-            src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80"
-            alt="Accessories"
-          >
-
-          <div class="category-title">
-            Accessories
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- COLLECTION -->
-
-  <section id="collections">
-
-    <div class="container">
-
-      <div class="section-head">
-
-        <div>
-
-          <div
-            class="eyebrow"
-            style="color:#777"
-          >
-            Collection
-          </div>
-
-          <h2>
-            Selected pieces
-          </h2>
-
-        </div>
-
-        <p>
-          A curated collection designed around comfort,
-          craftsmanship and contemporary living.
-        </p>
-
-      </div>
-
-
-      <div class="filters">
-
-        <button
-          class="filter-btn active"
-          onclick="filterCategory('All', this)"
-        >
-          All
-        </button>
-
-        <button
-          class="filter-btn"
-          onclick="filterCategory('Living Room', this)"
-        >
-          Living Room
-        </button>
-
-        <button
-          class="filter-btn"
-          onclick="filterCategory('Bedroom', this)"
-        >
-          Bedroom
-        </button>
-
-        <button
-          class="filter-btn"
-          onclick="filterCategory('Dining', this)"
-        >
-          Dining
-        </button>
-
-        <button
-          class="filter-btn"
-          onclick="filterCategory('Office', this)"
-        >
-          Office
-        </button>
-
-        <button
-          class="filter-btn"
-          onclick="filterCategory('Accessories', this)"
-        >
-          Accessories
-        </button>
-
-      </div>
-
-
-      <div
-        class="products"
-        id="products"
-      ></div>
-
-    </div>
-
-  </section>
-
-
-  <!-- STORY -->
-
-  <section id="story">
-
-    <div class="container">
-
-      <div class="story-grid">
-
-        <div class="story-image">
-
-          <img
-            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
-            alt="Furniture interior"
-          >
-
-        </div>
-
-
-        <div class="story-text">
-
-          <div class="eyebrow">
-            Our Story
-          </div>
-
-          <h2>
-            Furniture with a sense of place.
-          </h2>
-
-          <p>
-            Royal Furniture brings together timeless forms,
-            natural materials and contemporary design.
-          </p>
-
-          <p>
-            Every piece is selected to create spaces that feel
-            comfortable, personal and considered.
-          </p>
-
-          <a
-            href="#collections"
-            class="btn btn-dark"
-          >
-            Discover the collection
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- VALUES -->
-
-  <section
-    class="values"
-    id="values"
-  >
-
-    <div class="container">
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="eyebrow">
-            Why Royal
-          </div>
-
-          <h2>
-            Made for modern living.
-          </h2>
-
-        </div>
-
-      </div>
-
-
-      <div class="values-grid">
-
-        <div class="value">
-
-          <div class="value-number">
-            01
-          </div>
-
-          <h3>
-            Thoughtful Design
-          </h3>
-
-          <p>
-            Clean proportions and timeless details designed
-            to work beautifully across different interiors.
-          </p>
-
-        </div>
-
-
-        <div class="value">
-
-          <div class="value-number">
-            02
-          </div>
-
-          <h3>
-            Quality First
-          </h3>
-
-          <p>
-            Furniture selected with attention to materials,
-            comfort and long-term everyday use.
-          </p>
-
-        </div>
-
-
-        <div class="value">
-
-          <div class="value-number">
-            03
-          </div>
-
-          <h3>
-            Personal Spaces
-          </h3>
-
-          <p>
-            Pieces that allow every customer to create a home
-            that reflects their own character.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="container">
-
-      <div class="footer-top">
-
-        <div
-          class="footer-logo"
-          id="footerLogo"
-        >
-          ROYAL FURNITURE
-        </div>
-
-        <div class="footer-links">
-
-          <a href="#collections">
-            Collection
-          </a>
-
-          <a href="#categories">
-            Categories
-          </a>
-
-          <a href="#story">
-            Story
-          </a>
-
-          <a href="#values">
-            Values
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        <div>
-          ©
-          <span id="year"></span>
-          Royal Furniture
-        </div>
-
-        <div>
-          Premium Furniture Store
-        </div>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-
-  <!-- PRODUCT MODAL -->
-
-  <div
-    class="overlay"
-    id="productOverlay"
-    onclick="closeProductFromOverlay(event)"
-  >
-
-    <div class="modal">
+<header>
+  <div class="container nav">
+
+    <a href="#" class="logo" id="storeLogo">
+      ROYAL FURNITURE
+    </a>
+
+    <nav class="nav-links">
+      <a href="#collections">Collection</a>
+      <a href="#categories">Categories</a>
+      <a href="#story">Our Story</a>
+      <a href="#values">Values</a>
+    </nav>
+
+    <div class="nav-actions">
 
       <button
-        class="close-btn"
-        onclick="closeModal()"
+        class="icon-btn"
         type="button"
+        onclick="openCart()"
+        aria-label="Shopping cart"
+      >
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-slides">
+
+    <div
+      class="hero-slide active"
+      style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=85')"
+    ></div>
+
+    <div
+      class="hero-slide"
+      style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=85')"
+    ></div>
+
+    <div
+      class="hero-slide"
+      style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=85')"
+    ></div>
+
+    <div
+      class="hero-slide"
+      style="background-image:url('https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1800&q=85')"
+    ></div>
+
+  </div>
+
+  <div class="hero-content">
+
+    <div class="eyebrow">
+      Premium Furniture Collection
+    </div>
+
+    <h1 id="heroTitle">
+      Designed for the way you live.
+    </h1>
+
+    <p id="heroDescription">
+      Refined furniture pieces created to bring comfort,
+      character and timeless elegance into modern spaces.
+    </p>
+
+    <a href="#collections" class="btn btn-light">
+      Explore Collection
+    </a>
+
+  </div>
+
+</section>
+
+
+<section id="categories">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="eyebrow" style="color:#777">
+          Explore
+        </div>
+
+        <h2>
+          Shop by space
+        </h2>
+
+      </div>
+
+      <p>
+        Discover carefully selected pieces for every room,
+        from welcoming living spaces to refined dining areas.
+      </p>
+
+    </div>
+
+
+    <div class="categories">
+
+      <div
+        class="category-card"
+        onclick="filterCategory('Living Room')"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
+          alt="Living Room"
+        >
+
+        <div class="category-title">
+          Living Room
+        </div>
+
+      </div>
+
+
+      <div
+        class="category-card"
+        onclick="filterCategory('Bedroom')"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80"
+          alt="Bedroom"
+        >
+
+        <div class="category-title">
+          Bedroom
+        </div>
+
+      </div>
+
+
+      <div
+        class="category-card"
+        onclick="filterCategory('Dining')"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=900&q=80"
+          alt="Dining"
+        >
+
+        <div class="category-title">
+          Dining
+        </div>
+
+      </div>
+
+
+      <div
+        class="category-card"
+        onclick="filterCategory('Office')"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
+          alt="Office"
+        >
+
+        <div class="category-title">
+          Office
+        </div>
+
+      </div>
+
+
+      <div
+        class="category-card"
+        onclick="filterCategory('Accessories')"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80"
+          alt="Accessories"
+        >
+
+        <div class="category-title">
+          Accessories
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="collections">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="eyebrow" style="color:#777">
+          Collection
+        </div>
+
+        <h2>
+          Selected pieces
+        </h2>
+
+      </div>
+
+      <p>
+        A curated collection designed around comfort,
+        craftsmanship and contemporary living.
+      </p>
+
+    </div>
+
+
+    <div class="filters">
+
+      <button
+        class="filter-btn active"
+        onclick="filterCategory('All', this)"
+      >
+        All
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="filterCategory('Living Room', this)"
+      >
+        Living Room
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="filterCategory('Bedroom', this)"
+      >
+        Bedroom
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="filterCategory('Dining', this)"
+      >
+        Dining
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="filterCategory('Office', this)"
+      >
+        Office
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="filterCategory('Accessories', this)"
+      >
+        Accessories
+      </button>
+
+    </div>
+
+
+    <div
+      class="products"
+      id="products"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<section id="story">
+
+  <div class="container">
+
+    <div class="story-grid">
+
+      <div class="story-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+          alt="Furniture interior"
+        >
+
+      </div>
+
+
+      <div class="story-text">
+
+        <div class="eyebrow">
+          Our Story
+        </div>
+
+        <h2>
+          Furniture with a sense of place.
+        </h2>
+
+        <p>
+          Royal Furniture brings together timeless forms,
+          natural materials and contemporary design.
+        </p>
+
+        <p>
+          Every piece is selected to create spaces that feel
+          comfortable, personal and considered.
+        </p>
+
+        <a
+          href="#collections"
+          class="btn btn-dark"
+        >
+          Discover the collection
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="values" id="values">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="eyebrow">
+          Why Royal
+        </div>
+
+        <h2>
+          Made for modern living.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="values-grid">
+
+      <div class="value">
+
+        <div class="value-number">
+          01
+        </div>
+
+        <h3>
+          Thoughtful Design
+        </h3>
+
+        <p>
+          Clean proportions and timeless details designed
+          to work beautifully across different interiors.
+        </p>
+
+      </div>
+
+
+      <div class="value">
+
+        <div class="value-number">
+          02
+        </div>
+
+        <h3>
+          Quality First
+        </h3>
+
+        <p>
+          Furniture selected with attention to materials,
+          comfort and long-term everyday use.
+        </p>
+
+      </div>
+
+
+      <div class="value">
+
+        <div class="value-number">
+          03
+        </div>
+
+        <h3>
+          Personal Spaces
+        </h3>
+
+        <p>
+          Pieces that allow every customer to create a home
+          that reflects their own character.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-top">
+
+      <div class="footer-logo" id="footerLogo">
+        ROYAL FURNITURE
+      </div>
+
+      <div class="footer-links">
+
+        <a href="#collections">Collection</a>
+        <a href="#categories">Categories</a>
+        <a href="#story">Story</a>
+        <a href="#values">Values</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <div>
+        ©
+        <span id="year"></span>
+        Royal Furniture
+      </div>
+
+      <div>
+        Premium Furniture Store
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<div
+  class="overlay"
+  id="productOverlay"
+  onclick="closeProductFromOverlay(event)"
+>
+
+  <div class="modal">
+
+    <button
+      class="close-btn"
+      onclick="closeModal()"
+      type="button"
+    >
+      ×
+    </button>
+
+
+    <div class="product-modal-grid">
+
+      <div class="modal-image">
+
+        <img
+          id="modalImage"
+          src=""
+          alt=""
+        >
+
+      </div>
+
+
+      <div class="modal-details">
+
+        <div
+          class="product-category"
+          id="modalCategory"
+        ></div>
+
+        <h2 id="modalName"></h2>
+
+        <div
+          class="product-price"
+          id="modalPrice"
+        ></div>
+
+        <p id="modalDescription"></p>
+
+        <button
+          class="btn btn-dark"
+          id="modalAddButton"
+          type="button"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  class="cart-overlay"
+  id="cartOverlay"
+  onclick="closeCartFromOverlay(event)"
+>
+
+  <aside class="cart-drawer">
+
+    <div class="cart-header">
+
+      <h2>
+        Your Cart
+      </h2>
+
+      <button
+        class="icon-btn"
+        type="button"
+        onclick="closeCart()"
       >
         ×
       </button>
 
+    </div>
 
-      <div class="product-modal-grid">
 
-        <div class="modal-image">
+    <div
+      class="cart-items"
+      id="cartItems"
+    ></div>
 
-          <img
-            id="modalImage"
-            src=""
-            alt=""
-          >
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>
+          Total
+        </span>
+
+        <span id="cartTotal">
+          0 USD
+        </span>
+
+      </div>
+
+
+      <button
+        class="btn btn-dark"
+        style="width:100%"
+        onclick="openCheckout()"
+        type="button"
+        id="checkoutButton"
+      >
+        Proceed to Checkout
+      </button>
+
+    </div>
+
+  </aside>
+
+</div>
+
+
+<div
+  class="overlay"
+  id="checkoutOverlay"
+>
+
+  <div class="checkout-modal">
+
+    <button
+      class="close-btn"
+      onclick="closeCheckout()"
+      type="button"
+    >
+      ×
+    </button>
+
+
+    <div class="checkout-form">
+
+      <div class="checkout-title">
+
+        <div
+          class="eyebrow"
+          style="color:#777"
+        >
+          Checkout
+        </div>
+
+        <h2>
+          Complete your order
+        </h2>
+
+        <p>
+          Enter your details and complete your payment securely with PayPal.
+        </p>
+
+      </div>
+
+
+      <div
+        class="checkout-grid"
+        id="checkoutGrid"
+      >
+
+        <div id="customerForm">
+
+          <div class="form-group">
+
+            <label for="customerName">
+              Full Name *
+            </label>
+
+            <input
+              id="customerName"
+              type="text"
+              placeholder="Your full name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="customerPhone">
+              Phone Number *
+            </label>
+
+            <input
+              id="customerPhone"
+              type="tel"
+              placeholder="01xxxxxxxxx"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="customerEmail">
+              Email
+            </label>
+
+            <input
+              id="customerEmail"
+              type="email"
+              placeholder="you@example.com"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="customerCity">
+              City *
+            </label>
+
+            <input
+              id="customerCity"
+              type="text"
+              placeholder="Your city"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="customerAddress">
+              Delivery Address *
+            </label>
+
+            <textarea
+              id="customerAddress"
+              placeholder="Street, building, apartment..."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="customerNotes">
+              Order Notes
+            </label>
+
+            <textarea
+              id="customerNotes"
+              placeholder="Optional notes..."
+            ></textarea>
+
+          </div>
 
         </div>
 
 
-        <div class="modal-details">
+        <div class="order-summary">
+
+          <h3>
+            Order Summary
+          </h3>
 
           <div
-            class="product-category"
-            id="modalCategory"
+            class="summary-items"
+            id="summaryItems"
           ></div>
 
-          <h2 id="modalName"></h2>
 
-          <div
-            class="product-price"
-            id="modalPrice"
-          ></div>
+          <div class="summary-total">
 
-          <p id="modalDescription"></p>
+            <span>
+              Total
+            </span>
+
+            <span id="summaryTotal">
+              0 USD
+            </span>
+
+          </div>
+
+
+          <div class="checkout-actions">
+
+            <button
+              class="btn btn-dark"
+              type="button"
+              onclick="startPayPalPayment()"
+              id="paypalStartButton"
+            >
+              Pay with PayPal
+            </button>
+
+
+            <div
+              id="paypal-button-container"
+              style="display:none;margin-top:15px;"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="order-success"
+          id="orderSuccess"
+        >
+
+          <div class="success-icon">
+            ✓
+          </div>
+
+          <h2>
+            Order received
+          </h2>
+
+          <p>
+            Thank you. Your payment was completed successfully
+            and your order has been recorded.
+          </p>
+
+          <p>
+            Order number:
+            <strong id="orderNumber"></strong>
+          </p>
 
           <button
             class="btn btn-dark"
-            id="modalAddButton"
             type="button"
+            onclick="finishOrder()"
           >
-            Add to Cart
+            Continue Shopping
           </button>
 
         </div>
@@ -1608,2661 +1805,2367 @@
 
   </div>
 
+</div>
 
-  <!-- CART -->
 
-  <div
-    class="cart-overlay"
-    id="cartOverlay"
-    onclick="closeCartFromOverlay(event)"
-  >
+<div
+  class="toast"
+  id="toast"
+></div>
 
-    <aside class="cart-drawer">
 
-      <div class="cart-header">
+<script>
 
-        <h2>
-          Your Cart
-        </h2>
+/* =========================
+   HERO SLIDER
+========================= */
 
-        <button
-          class="icon-btn"
-          type="button"
-          onclick="closeCart()"
-        >
-          ×
-        </button>
+const heroSlides =
+  document.querySelectorAll(".hero-slide");
 
-      </div>
+let heroIndex = 0;
 
+setInterval(() => {
 
-      <div
-        class="cart-items"
-        id="cartItems"
-      ></div>
+  if(!heroSlides.length){
+    return;
+  }
 
+  heroSlides[heroIndex]
+    .classList.remove("active");
 
-      <div class="cart-footer">
+  heroIndex =
+    (heroIndex + 1) %
+    heroSlides.length;
 
-        <div class="cart-total">
+  heroSlides[heroIndex]
+    .classList.add("active");
 
-          <span>
-            Total
-          </span>
+},5000);
 
-          <span id="cartTotal">
-            0 USD
-          </span>
 
-        </div>
+/* =========================
+   SETTINGS
+========================= */
 
+const defaultSettings = {
 
-        <button
-          class="btn btn-dark"
-          style="width:100%"
-          onclick="openCheckout()"
-          type="button"
-          id="checkoutButton"
-        >
-          Proceed to Checkout
-        </button>
+  storeName:
+    "Royal Furniture",
 
-      </div>
+  currency:
+    "USD",
 
-    </aside>
+  description:
+    "Refined furniture for modern living.",
 
-  </div>
+  heroTitle:
+    "Designed for the way you live.",
 
+  heroDescription:
+    "Refined furniture pieces created to bring comfort, character and timeless elegance into modern spaces."
 
-  <!-- CHECKOUT -->
+};
 
-  <div
-    class="overlay"
-    id="checkoutOverlay"
-  >
 
-    <div class="checkout-modal">
+let settings =
+  defaultSettings;
 
-      <button
-        class="close-btn"
-        onclick="closeCheckout()"
-        type="button"
-      >
-        ×
-      </button>
 
+/*
+  IMPORTANT:
+  Royal Furniture Pro uses USD only.
+  Any old saved currency is ignored.
+*/
 
-      <div class="checkout-form">
+function loadStore(){
 
-        <div class="checkout-title">
+  try{
 
-          <div
-            class="eyebrow"
-            style="color:#777"
-          >
-            Checkout
-          </div>
+    const savedSettings =
+      localStorage.getItem(
+        "royalFurnitureProSettings"
+      );
 
-          <h2>
-            Complete your order
-          </h2>
 
-          <p>
-            Enter your details and complete your payment securely with PayPal.
-          </p>
+    if(savedSettings){
 
-        </div>
+      settings = {
 
+        ...defaultSettings,
 
-        <div
-          class="checkout-grid"
-          id="checkoutGrid"
-        >
+        ...JSON.parse(savedSettings),
 
-          <!-- CUSTOMER FORM -->
+        currency:
+          "USD"
 
-          <div id="customerForm">
+      };
 
-            <div class="form-group">
+    }else{
 
-              <label for="customerName">
-                Full Name *
-              </label>
+      settings = {
 
-              <input
-                id="customerName"
-                type="text"
-                placeholder="Your full name"
-                required
-              >
+        ...defaultSettings,
 
-            </div>
+        currency:
+          "USD"
 
+      };
 
-            <div class="form-group">
+    }
 
-              <label for="customerPhone">
-                Phone Number *
-              </label>
+  }catch(error){
 
-              <input
-                id="customerPhone"
-                type="tel"
-                placeholder="01xxxxxxxxx"
-                required
-              >
+    settings = {
 
-            </div>
-
-
-            <div class="form-group">
-
-              <label for="customerEmail">
-                Email
-              </label>
-
-              <input
-                id="customerEmail"
-                type="email"
-                placeholder="you@example.com"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label for="customerCity">
-                City *
-              </label>
-
-              <input
-                id="customerCity"
-                type="text"
-                placeholder="Your city"
-                required
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label for="customerAddress">
-                Delivery Address *
-              </label>
-
-              <textarea
-                id="customerAddress"
-                placeholder="Street, building, apartment..."
-                required
-              ></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label for="customerNotes">
-                Order Notes
-              </label>
-
-              <textarea
-                id="customerNotes"
-                placeholder="Optional notes..."
-              ></textarea>
-
-            </div>
-
-          </div>
-
-
-          <!-- SUMMARY -->
-
-          <div class="order-summary">
-
-            <h3>
-              Order Summary
-            </h3>
-
-            <div
-              class="summary-items"
-              id="summaryItems"
-            ></div>
-
-
-            <div class="summary-total">
-
-              <span>
-                Total
-              </span>
-
-              <span id="summaryTotal">
-                0 USD
-              </span>
-
-            </div>
-
-
-            <div class="checkout-actions">
-
-              <button
-                class="btn btn-dark"
-                type="button"
-                onclick="startPayPalPayment()"
-                id="paypalStartButton"
-              >
-                Pay with PayPal
-              </button>
-
-
-              <div
-                id="paypal-button-container"
-                style="display:none;margin-top:15px;"
-              ></div>
-
-            </div>
-
-          </div>
-
-
-          <!-- SUCCESS -->
-
-          <div
-            class="order-success"
-            id="orderSuccess"
-          >
-
-            <div class="success-icon">
-              ✓
-            </div>
-
-            <h2>
-              Order received
-            </h2>
-
-            <p>
-              Thank you. Your payment was completed successfully
-              and your order has been recorded.
-            </p>
-
-            <p>
-              Order number:
-              <strong id="orderNumber"></strong>
-            </p>
-
-            <button
-              class="btn btn-dark"
-              type="button"
-              onclick="finishOrder()"
-            >
-              Continue Shopping
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- TOAST -->
-
-  <div
-    class="toast"
-    id="toast"
-  ></div>
-
-
-  <script>
-
-    /* =========================
-       HERO SLIDER
-    ========================= */
-
-    const heroSlides =
-      document.querySelectorAll(".hero-slide");
-
-    let heroIndex = 0;
-
-    setInterval(() => {
-
-      if(!heroSlides.length){
-        return;
-      }
-
-      heroSlides[heroIndex]
-        .classList.remove("active");
-
-      heroIndex =
-        (heroIndex + 1) %
-        heroSlides.length;
-
-      heroSlides[heroIndex]
-        .classList.add("active");
-
-    },5000);
-
-
-    /* =========================
-       SETTINGS
-    ========================= */
-
-    const defaultSettings = {
-
-      storeName:
-        "Royal Furniture",
+      ...defaultSettings,
 
       currency:
-        "USD",
+        "USD"
 
-      description:
-        "Refined furniture for modern living.",
+    };
 
-      heroTitle:
-        "Designed for the way you live.",
+  }
 
-      heroDescription:
-        "Refined furniture pieces created to bring comfort, character and timeless elegance into modern spaces."
+
+  // Always force USD
+  settings.currency =
+    "USD";
+
+
+  document.title =
+    `${settings.storeName} | Premium Furniture`;
+
+
+  document.getElementById(
+    "storeLogo"
+  ).textContent =
+    String(
+      settings.storeName ||
+      defaultSettings.storeName
+    ).toUpperCase();
+
+
+  document.getElementById(
+    "footerLogo"
+  ).textContent =
+    String(
+      settings.storeName ||
+      defaultSettings.storeName
+    ).toUpperCase();
+
+
+  document.getElementById(
+    "heroTitle"
+  ).textContent =
+    settings.heroTitle ||
+    defaultSettings.heroTitle;
+
+
+  document.getElementById(
+    "heroDescription"
+  ).textContent =
+    settings.heroDescription ||
+    defaultSettings.heroDescription;
+
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+const fallbackProducts = [
+
+  {
+    id:1,
+    name:"Cloud Sofa",
+    category:"Living Room",
+    price:18500,
+    image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85",
+    description:"A soft contemporary sofa designed for relaxed modern living."
+  },
+
+  {
+    id:2,
+    name:"Lounge Chair",
+    category:"Living Room",
+    price:7200,
+    image:"https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=85",
+    description:"A sculptural lounge chair with a refined silhouette."
+  },
+
+  {
+    id:3,
+    name:"Oak Bed",
+    category:"Bedroom",
+    price:22000,
+    image:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=85",
+    description:"A warm oak bed designed around calm and comfortable spaces."
+  },
+
+  {
+    id:4,
+    name:"Minimal Bedside",
+    category:"Bedroom",
+    price:4500,
+    image:"https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=85",
+    description:"A compact bedside table with clean contemporary lines."
+  },
+
+  {
+    id:5,
+    name:"Dining Table",
+    category:"Dining",
+    price:14500,
+    image:"https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=85",
+    description:"A sophisticated dining table made for everyday gatherings."
+  },
+
+  {
+    id:6,
+    name:"Dining Chair",
+    category:"Dining",
+    price:3800,
+    image:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1000&q=85",
+    description:"Elegant dining seating with a comfortable contemporary profile."
+  },
+
+  {
+    id:7,
+    name:"Executive Desk",
+    category:"Office",
+    price:12500,
+    image:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85",
+    description:"A refined workspace desk designed for modern offices."
+  },
+
+  {
+    id:8,
+    name:"Ceramic Vase",
+    category:"Accessories",
+    price:1200,
+    image:"https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?auto=format&fit=crop&w=1000&q=85",
+    description:"A simple decorative accent for contemporary interiors."
+  }
+
+];
+
+
+let products = [];
+
+
+function getProductId(product){
+
+  if(
+    product &&
+    product.id !== undefined &&
+    product.id !== null
+  ){
+
+    return String(
+      product.id
+    );
+
+  }
+
+
+  return (
+    "custom-" +
+    String(
+      product?.name ||
+      "product"
+    )
+      .trim()
+      .toLowerCase()
+      .replace(
+        /[^a-z0-9]+/g,
+        "-"
+      ) +
+    "-" +
+    String(
+      product?.image ||
+      ""
+    )
+      .trim()
+      .slice(-30)
+  );
+
+}
+
+
+function loadProducts(){
+
+  try{
+
+    const saved =
+      localStorage.getItem(
+        "royalFurnitureProProducts"
+      );
+
+
+    if(saved){
+
+      const parsed =
+        JSON.parse(saved);
+
+
+      if(Array.isArray(parsed)){
+
+        products =
+          parsed.map(
+            (product,index) => {
+
+              return {
+
+                ...product,
+
+                id:
+                  product.id ??
+                  `custom-${index}-${String(product.name || "product")
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g,"-")}`
+
+              };
+
+            }
+          );
+
+      }
+
+    }
+
+  }catch(error){
+
+    products = [];
+
+  }
+
+
+  if(!products.length){
+
+    products =
+      fallbackProducts;
+
+  }
+
+}
+
+
+function numericPrice(price){
+
+  const number =
+    Number(price);
+
+  return Number.isFinite(number)
+    ? number
+    : 0;
+
+}
+
+
+function formatPrice(price){
+
+  return (
+    numericPrice(price)
+      .toLocaleString(
+        undefined,
+        {
+          minimumFractionDigits:2,
+          maximumFractionDigits:2
+        }
+      ) +
+    " " +
+    "USD"
+  );
+
+}
+
+
+/* =========================
+   PRODUCT FILTER
+========================= */
+
+let activeCategory =
+  "All";
+
+
+function filterCategory(
+  category,
+  clickedButton = null
+){
+
+  activeCategory =
+    category;
+
+
+  document
+    .querySelectorAll(
+      ".filter-btn"
+    )
+    .forEach(
+      button => {
+
+        button.classList
+          .remove("active");
+
+      }
+    );
+
+
+  if(clickedButton){
+
+    clickedButton.classList
+      .add("active");
+
+  }else{
+
+    document
+      .querySelectorAll(
+        ".filter-btn"
+      )
+      .forEach(
+        button => {
+
+          if(
+            button.textContent
+              .trim()
+              .toLowerCase() ===
+            category.toLowerCase()
+          ){
+
+            button.classList
+              .add("active");
+
+          }
+
+        }
+      );
+
+  }
+
+
+  renderProducts();
+
+
+  document
+    .getElementById(
+      "collections"
+    )
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function renderProducts(){
+
+  const container =
+    document.getElementById(
+      "products"
+    );
+
+
+  const filtered =
+    activeCategory === "All"
+      ? products
+      : products.filter(
+          product =>
+            String(
+              product.category ||
+              ""
+            )
+              .toLowerCase() ===
+            activeCategory
+              .toLowerCase()
+        );
+
+
+  if(!filtered.length){
+
+    container.innerHTML = `
+
+      <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:60px 20px;
+        color:#777;
+      ">
+
+        No products available in this category yet.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    filtered.map(
+      product => {
+
+        const id =
+          getProductId(
+            product
+          );
+
+
+        return `
+
+          <article
+            class="product-card"
+            data-product-id="${escapeHtml(id)}"
+            onclick="openProductById('${escapeAttribute(id)}')"
+          >
+
+            <div class="product-image">
+
+              <img
+                src="${escapeAttribute(product.image || "")}"
+                alt="${escapeAttribute(product.name || "Product")}"
+                loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80'"
+              >
+
+            </div>
+
+
+            <div class="product-info">
+
+              <div class="product-category">
+                ${escapeHtml(
+                  product.category ||
+                  "Collection"
+                )}
+              </div>
+
+              <div class="product-name">
+                ${escapeHtml(
+                  product.name ||
+                  "Untitled Product"
+                )}
+              </div>
+
+              <div class="product-price">
+                ${formatPrice(
+                  product.price
+                )}
+              </div>
+
+            </div>
+
+          </article>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+function escapeAttribute(value){
+
+  return escapeHtml(
+    value
+  )
+    .replace(
+      /\\/g,
+      "\\\\"
+    );
+
+}
+
+
+function openProductById(id){
+
+  const product =
+    products.find(
+      item =>
+        getProductId(item) ===
+        String(id)
+    );
+
+
+  if(product){
+
+    openProduct(
+      product
+    );
+
+  }
+
+}
+
+
+let currentProduct =
+  null;
+
+
+function openProduct(product){
+
+  currentProduct =
+    product;
+
+
+  document.getElementById(
+    "modalImage"
+  ).src =
+    product.image ||
+    "";
+
+
+  document.getElementById(
+    "modalImage"
+  ).alt =
+    product.name ||
+    "Product";
+
+
+  document.getElementById(
+    "modalCategory"
+  ).textContent =
+    product.category ||
+    "Collection";
+
+
+  document.getElementById(
+    "modalName"
+  ).textContent =
+    product.name ||
+    "Untitled Product";
+
+
+  document.getElementById(
+    "modalPrice"
+  ).textContent =
+    formatPrice(
+      product.price
+    );
+
+
+  document.getElementById(
+    "modalDescription"
+  ).textContent =
+    product.description ||
+    "A refined furniture piece designed for modern interiors.";
+
+
+  document.getElementById(
+    "modalAddButton"
+  ).onclick =
+    function(){
+
+      addToCart(
+        currentProduct
+      );
+
+      closeModal();
+
+      showToast(
+        "Product added to cart"
+      );
 
     };
 
 
-    let settings =
-      defaultSettings;
+  document
+    .getElementById(
+      "productOverlay"
+    )
+    .classList
+    .add("open");
 
 
-    function loadStore(){
+  document.body.style.overflow =
+    "hidden";
 
-      try{
-
-        const savedSettings =
-          localStorage.getItem(
-            "royalFurnitureProSettings"
-          );
+}
 
 
-        if(savedSettings){
+function closeModal(){
 
-          settings = {
-
-            ...defaultSettings,
-
-            ...JSON.parse(savedSettings)
-
-          };
-
-        }
-
-      }catch(error){
-
-        settings =
-          defaultSettings;
-
-      }
+  document
+    .getElementById(
+      "productOverlay"
+    )
+    .classList
+    .remove("open");
 
 
-      document.title =
-        `${settings.storeName} | Premium Furniture`;
+  document.body.style.overflow =
+    "";
+
+}
 
 
-      document.getElementById(
-        "storeLogo"
-      ).textContent =
-        String(
-          settings.storeName ||
-          defaultSettings.storeName
-        ).toUpperCase();
+function closeProductFromOverlay(
+  event
+){
+
+  if(
+    event.target.id ===
+    "productOverlay"
+  ){
+
+    closeModal();
+
+  }
+
+}
 
 
-      document.getElementById(
-        "footerLogo"
-      ).textContent =
-        String(
-          settings.storeName ||
-          defaultSettings.storeName
-        ).toUpperCase();
+/* =========================
+   CART
+========================= */
+
+let cart = [];
 
 
-      document.getElementById(
-        "heroTitle"
-      ).textContent =
-        settings.heroTitle ||
-        defaultSettings.heroTitle;
+function loadCart(){
 
+  try{
 
-      document.getElementById(
-        "heroDescription"
-      ).textContent =
-        settings.heroDescription ||
-        defaultSettings.heroDescription;
-
-    }
-
-
-    /* =========================
-       PRODUCTS
-    ========================= */
-
-    const fallbackProducts = [
-
-      {
-        id:1,
-        name:"Cloud Sofa",
-        category:"Living Room",
-        price:18500,
-        image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85",
-        description:"A soft contemporary sofa designed for relaxed modern living."
-      },
-
-      {
-        id:2,
-        name:"Lounge Chair",
-        category:"Living Room",
-        price:7200,
-        image:"https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=85",
-        description:"A sculptural lounge chair with a refined silhouette."
-      },
-
-      {
-        id:3,
-        name:"Oak Bed",
-        category:"Bedroom",
-        price:22000,
-        image:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=85",
-        description:"A warm oak bed designed around calm and comfortable spaces."
-      },
-
-      {
-        id:4,
-        name:"Minimal Bedside",
-        category:"Bedroom",
-        price:4500,
-        image:"https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=85",
-        description:"A compact bedside table with clean contemporary lines."
-      },
-
-      {
-        id:5,
-        name:"Dining Table",
-        category:"Dining",
-        price:14500,
-        image:"https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=85",
-        description:"A sophisticated dining table made for everyday gatherings."
-      },
-
-      {
-        id:6,
-        name:"Dining Chair",
-        category:"Dining",
-        price:3800,
-        image:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1000&q=85",
-        description:"Elegant dining seating with a comfortable contemporary profile."
-      },
-
-      {
-        id:7,
-        name:"Executive Desk",
-        category:"Office",
-        price:12500,
-        image:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85",
-        description:"A refined workspace desk designed for modern offices."
-      },
-
-      {
-        id:8,
-        name:"Ceramic Vase",
-        category:"Accessories",
-        price:1200,
-        image:"https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?auto=format&fit=crop&w=1000&q=85",
-        description:"A simple decorative accent for contemporary interiors."
-      }
-
-    ];
-
-
-    let products = [];
-
-
-    function getProductId(product){
-
-      if(
-        product &&
-        product.id !== undefined &&
-        product.id !== null
-      ){
-
-        return String(
-          product.id
-        );
-
-      }
-
-
-      return (
-        "custom-" +
-        String(
-          product?.name ||
-          "product"
-        )
-          .trim()
-          .toLowerCase()
-          .replace(
-            /[^a-z0-9]+/g,
-            "-"
-          ) +
-        "-" +
-        String(
-          product?.image ||
-          ""
-        )
-          .trim()
-          .slice(-30)
+    const saved =
+      localStorage.getItem(
+        "royalFurnitureProCart"
       );
 
-    }
+
+    if(saved){
+
+      const parsed =
+        JSON.parse(saved);
 
 
-    function loadProducts(){
+      if(Array.isArray(parsed)){
 
-      try{
-
-        const saved =
-          localStorage.getItem(
-            "royalFurnitureProProducts"
-          );
-
-
-        if(saved){
-
-          const parsed =
-            JSON.parse(saved);
-
-
-          if(Array.isArray(parsed)){
-
-            products =
-              parsed.map(
-                (product,index) => {
-
-                  return {
-
-                    ...product,
-
-                    id:
-                      product.id ??
-                      `custom-${index}-${String(product.name || "product")
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]+/g,"-")}`
-
-                  };
-
-                }
-              );
-
-          }
-
-        }
-
-      }catch(error){
-
-        products = [];
-
-      }
-
-
-      if(!products.length){
-
-        products =
-          fallbackProducts;
+        cart =
+          parsed;
 
       }
 
     }
 
+  }catch(error){
 
-    function numericPrice(price){
+    cart = [];
 
-      const number =
-        Number(price);
+  }
 
-      return Number.isFinite(number)
-        ? number
-        : 0;
+}
 
-    }
 
+function saveCart(){
 
-    function formatPrice(price){
+  localStorage.setItem(
+    "royalFurnitureProCart",
+    JSON.stringify(
+      cart
+    )
+  );
 
-      return (
-        numericPrice(price)
-          .toLocaleString(
-            undefined,
-            {
-              minimumFractionDigits:2,
-              maximumFractionDigits:2
-            }
-          ) +
-        " " +
-        (
-          settings.currency ||
-          "USD"
-        )
-      );
+}
 
-    }
 
+function getCartId(item){
 
-    /* =========================
-       PRODUCT FILTER
-    ========================= */
+  if(
+    item.cartId !== undefined &&
+    item.cartId !== null
+  ){
 
-    let activeCategory =
-      "All";
+    return String(
+      item.cartId
+    );
 
+  }
 
-    function filterCategory(
-      category,
-      clickedButton = null
-    ){
 
-      activeCategory =
-        category;
+  return getProductId(
+    item
+  );
 
+}
 
-      document
-        .querySelectorAll(
-          ".filter-btn"
-        )
-        .forEach(
-          button => {
 
-            button.classList
-              .remove("active");
+function addToCart(product){
 
-          }
-        );
+  const productId =
+    getProductId(
+      product
+    );
 
 
-      if(clickedButton){
+  const existing =
+    cart.find(
+      item =>
+        getCartId(item) ===
+        productId
+    );
 
-        clickedButton.classList
-          .add("active");
 
-      }else{
+  if(existing){
 
-        document
-          .querySelectorAll(
-            ".filter-btn"
-          )
-          .forEach(
-            button => {
+    existing.quantity =
+      Number(
+        existing.quantity || 1
+      ) + 1;
 
-              if(
-                button.textContent
-                  .trim()
-                  .toLowerCase() ===
-                category.toLowerCase()
-              ){
+  }else{
 
-                button.classList
-                  .add("active");
+    cart.push({
 
-              }
+      ...product,
 
-            }
-          );
+      cartId:
+        productId,
 
-      }
+      quantity:
+        1
 
+    });
 
-      renderProducts();
+  }
 
 
-      document
-        .getElementById(
-          "collections"
-        )
-        .scrollIntoView({
-          behavior:"smooth"
-        });
+  saveCart();
 
-    }
+  renderCart();
 
+  updateCartCount();
 
-    function renderProducts(){
+}
 
-      const container =
-        document.getElementById(
-          "products"
-        );
 
+function removeFromCart(
+  cartId
+){
 
-      const filtered =
-        activeCategory === "All"
-          ? products
-          : products.filter(
-              product =>
-                String(
-                  product.category ||
-                  ""
-                )
-                  .toLowerCase() ===
-                activeCategory
-                  .toLowerCase()
-            );
+  cart =
+    cart.filter(
+      item =>
+        getCartId(item) !==
+        String(cartId)
+    );
 
 
-      if(!filtered.length){
+  saveCart();
 
-        container.innerHTML = `
+  renderCart();
 
-          <div style="
-            grid-column:1/-1;
-            text-align:center;
-            padding:60px 20px;
-            color:#777;
-          ">
+  updateCartCount();
 
-            No products available in this category yet.
+}
 
-          </div>
 
-        `;
+function changeQuantity(
+  cartId,
+  change
+){
 
-        return;
+  const item =
+    cart.find(
+      product =>
+        getCartId(product) ===
+        String(cartId)
+    );
 
-      }
 
+  if(!item){
 
-      container.innerHTML =
-        filtered.map(
-          product => {
+    return;
 
-            const id =
-              getProductId(
-                product
-              );
+  }
 
 
-            return `
-
-              <article
-                class="product-card"
-                data-product-id="${escapeHtml(id)}"
-                onclick="openProductById('${escapeAttribute(id)}')"
-              >
-
-                <div class="product-image">
-
-                  <img
-                    src="${escapeAttribute(product.image || "")}"
-                    alt="${escapeAttribute(product.name || "Product")}"
-                    loading="lazy"
-                    onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80'"
-                  >
-
-                </div>
-
-
-                <div class="product-info">
-
-                  <div class="product-category">
-                    ${escapeHtml(
-                      product.category ||
-                      "Collection"
-                    )}
-                  </div>
-
-                  <div class="product-name">
-                    ${escapeHtml(
-                      product.name ||
-                      "Untitled Product"
-                    )}
-                  </div>
-
-                  <div class="product-price">
-                    ${formatPrice(
-                      product.price
-                    )}
-                  </div>
-
-                </div>
-
-              </article>
-
-            `;
-
-          }
-        ).join("");
-
-    }
-
-
-    function escapeHtml(value){
-
-      return String(
-        value ?? ""
-      )
-        .replace(
-          /&/g,
-          "&amp;"
-        )
-        .replace(
-          /</g,
-          "&lt;"
-        )
-        .replace(
-          />/g,
-          "&gt;"
-        )
-        .replace(
-          /"/g,
-          "&quot;"
-        )
-        .replace(
-          /'/g,
-          "&#039;"
-        );
-
-    }
-
-
-    function escapeAttribute(value){
-
-      return escapeHtml(
-        value
-      )
-        .replace(
-          /\\/g,
-          "\\\\"
-        );
-
-    }
-
-
-    function openProductById(id){
-
-      const product =
-        products.find(
-          item =>
-            getProductId(item) ===
-            String(id)
-        );
-
-
-      if(product){
-
-        openProduct(
-          product
-        );
-
-      }
-
-    }
-
-
-    let currentProduct =
-      null;
-
-
-    function openProduct(product){
-
-      currentProduct =
-        product;
-
-
-      document.getElementById(
-        "modalImage"
-      ).src =
-        product.image ||
-        "";
-
-
-      document.getElementById(
-        "modalImage"
-      ).alt =
-        product.name ||
-        "Product";
-
-
-      document.getElementById(
-        "modalCategory"
-      ).textContent =
-        product.category ||
-        "Collection";
-
-
-      document.getElementById(
-        "modalName"
-      ).textContent =
-        product.name ||
-        "Untitled Product";
-
-
-      document.getElementById(
-        "modalPrice"
-      ).textContent =
-        formatPrice(
-          product.price
-        );
-
-
-      document.getElementById(
-        "modalDescription"
-      ).textContent =
-        product.description ||
-        "A refined furniture piece designed for modern interiors.";
-
-
-      document.getElementById(
-        "modalAddButton"
-      ).onclick =
-        function(){
-
-          addToCart(
-            currentProduct
-          );
-
-          closeModal();
-
-          showToast(
-            "Product added to cart"
-          );
-
-        };
-
-
-      document
-        .getElementById(
-          "productOverlay"
-        )
-        .classList
-        .add("open");
-
-
-      document.body.style.overflow =
-        "hidden";
-
-    }
-
-
-    function closeModal(){
-
-      document
-        .getElementById(
-          "productOverlay"
-        )
-        .classList
-        .remove("open");
-
-
-      document.body.style.overflow =
-        "";
-
-    }
-
-
-    function closeProductFromOverlay(
-      event
-    ){
-
-      if(
-        event.target.id ===
-        "productOverlay"
-      ){
-
-        closeModal();
-
-      }
-
-    }
-
-
-    /* =========================
-       CART
-    ========================= */
-
-    let cart = [];
-
-
-    function loadCart(){
-
-      try{
-
-        const saved =
-          localStorage.getItem(
-            "royalFurnitureProCart"
-          );
-
-
-        if(saved){
-
-          const parsed =
-            JSON.parse(saved);
-
-
-          if(Array.isArray(parsed)){
-
-            cart =
-              parsed;
-
-          }
-
-        }
-
-      }catch(error){
-
-        cart = [];
-
-      }
-
-    }
-
-
-    function saveCart(){
-
-      localStorage.setItem(
-        "royalFurnitureProCart",
-        JSON.stringify(
-          cart
-        )
-      );
-
-    }
-
-
-    function getCartId(item){
-
-      if(
-        item.cartId !== undefined &&
-        item.cartId !== null
-      ){
-
-        return String(
-          item.cartId
-        );
-
-      }
-
-
-      return getProductId(
-        item
-      );
-
-    }
-
-
-    function addToCart(product){
-
-      const productId =
-        getProductId(
-          product
-        );
-
-
-      const existing =
-        cart.find(
-          item =>
-            getCartId(item) ===
-            productId
-        );
-
-
-      if(existing){
-
-        existing.quantity =
-          Number(
-            existing.quantity || 1
-          ) + 1;
-
-      }else{
-
-        cart.push({
-
-          ...product,
-
-          cartId:
-            productId,
-
-          quantity:
-            1
-
-        });
-
-      }
-
-
-      saveCart();
-
-      renderCart();
-
-      updateCartCount();
-
-    }
-
-
-    function removeFromCart(
-      cartId
-    ){
-
-      cart =
-        cart.filter(
-          item =>
-            getCartId(item) !==
-            String(cartId)
-        );
-
-
-      saveCart();
-
-      renderCart();
-
-      updateCartCount();
-
-    }
-
-
-    function changeQuantity(
-      cartId,
+  item.quantity =
+    Number(
+      item.quantity || 1
+    ) +
+    Number(
       change
-    ){
-
-      const item =
-        cart.find(
-          product =>
-            getCartId(product) ===
-            String(cartId)
-        );
+    );
 
 
-      if(!item){
+  if(
+    item.quantity <= 0
+  ){
 
-        return;
+    removeFromCart(
+      cartId
+    );
 
-      }
+    return;
 
-
-      item.quantity =
-        Number(
-          item.quantity || 1
-        ) +
-        Number(
-          change
-        );
+  }
 
 
-      if(
-        item.quantity <= 0
-      ){
+  saveCart();
 
-        removeFromCart(
-          cartId
-        );
+  renderCart();
 
-        return;
+  updateCartCount();
 
-      }
+}
 
 
-      saveCart();
+function cartTotal(){
 
-      renderCart();
+  return cart.reduce(
+    (
+      total,
+      item
+    ) =>
+      total +
+      numericPrice(
+        item.price
+      ) *
+      Number(
+        item.quantity || 1
+      ),
+    0
+  );
 
-      updateCartCount();
-
-    }
-
-
-    function cartTotal(){
-
-      return cart.reduce(
-        (
-          total,
-          item
-        ) =>
-          total +
-          numericPrice(
-            item.price
-          ) *
-          Number(
-            item.quantity || 1
-          ),
-        0
-      );
-
-    }
+}
 
 
-    function cartItemsCount(){
+function cartItemsCount(){
 
-      return cart.reduce(
-        (
-          total,
-          item
-        ) =>
-          total +
-          Number(
-            item.quantity || 1
-          ),
-        0
-      );
+  return cart.reduce(
+    (
+      total,
+      item
+    ) =>
+      total +
+      Number(
+        item.quantity || 1
+      ),
+    0
+  );
 
-    }
-
-
-    function updateCartCount(){
-
-      document.getElementById(
-        "cartCount"
-      ).textContent =
-        cartItemsCount();
-
-    }
+}
 
 
-    function renderCart(){
+function updateCartCount(){
 
-      const container =
-        document.getElementById(
-          "cartItems"
-        );
+  document.getElementById(
+    "cartCount"
+  ).textContent =
+    cartItemsCount();
+
+}
 
 
-      if(!cart.length){
+function renderCart(){
 
-        container.innerHTML = `
+  const container =
+    document.getElementById(
+      "cartItems"
+    );
 
-          <div class="empty-cart">
 
-            <div style="font-size:40px;margin-bottom:15px;">
-              🛒
-            </div>
+  if(!cart.length){
 
-            <p>
-              Your cart is empty.
-            </p>
+    container.innerHTML = `
 
-            <button
-              class="btn btn-dark"
-              style="margin-top:20px;"
-              onclick="closeCart()"
-              type="button"
+      <div class="empty-cart">
+
+        <div style="font-size:40px;margin-bottom:15px;">
+          🛒
+        </div>
+
+        <p>
+          Your cart is empty.
+        </p>
+
+        <button
+          class="btn btn-dark"
+          style="margin-top:20px;"
+          onclick="closeCart()"
+          type="button"
+        >
+          Continue Shopping
+        </button>
+
+      </div>
+
+    `;
+
+
+    document.getElementById(
+      "cartTotal"
+    ).textContent =
+      formatPrice(0);
+
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    cart.map(
+      item => {
+
+        const id =
+          getCartId(
+            item
+          );
+
+
+        return `
+
+          <div class="cart-item">
+
+            <img
+              src="${escapeAttribute(item.image || "")}"
+              alt="${escapeAttribute(item.name || "Product")}"
             >
-              Continue Shopping
-            </button>
 
-          </div>
 
-        `;
+            <div>
 
-
-        document.getElementById(
-          "cartTotal"
-        ).textContent =
-          formatPrice(0);
-
-
-        return;
-
-      }
-
-
-      container.innerHTML =
-        cart.map(
-          item => {
-
-            const id =
-              getCartId(
-                item
-              );
-
-
-            return `
-
-              <div class="cart-item">
-
-                <img
-                  src="${escapeAttribute(item.image || "")}"
-                  alt="${escapeAttribute(item.name || "Product")}"
-                >
-
-
-                <div>
-
-                  <div class="cart-item-name">
-                    ${escapeHtml(
-                      item.name ||
-                      "Product"
-                    )}
-                  </div>
-
-
-                  <div class="cart-item-price">
-                    ${formatPrice(
-                      item.price
-                    )}
-                  </div>
-
-
-                  <div class="quantity">
-
-                    <button
-                      type="button"
-                      onclick="changeQuantity('${escapeAttribute(id)}',-1)"
-                    >
-                      −
-                    </button>
-
-
-                    <span>
-                      ${Number(
-                        item.quantity || 1
-                      )}
-                    </span>
-
-
-                    <button
-                      type="button"
-                      onclick="changeQuantity('${escapeAttribute(id)}',1)"
-                    >
-                      +
-                    </button>
-
-                  </div>
-
-
-                  <button
-                    class="cart-remove"
-                    type="button"
-                    onclick="removeFromCart('${escapeAttribute(id)}')"
-                  >
-                    Remove
-                  </button>
-
-                </div>
-
-
-                <strong>
-                  ${formatPrice(
-                    numericPrice(
-                      item.price
-                    ) *
-                    Number(
-                      item.quantity || 1
-                    )
-                  )}
-                </strong>
-
-              </div>
-
-            `;
-
-          }
-        ).join("");
-
-
-      document.getElementById(
-        "cartTotal"
-      ).textContent =
-        formatPrice(
-          cartTotal()
-        );
-
-    }
-
-
-    function openCart(){
-
-      renderCart();
-
-
-      document
-        .getElementById(
-          "cartOverlay"
-        )
-        .classList
-        .add("open");
-
-
-      document.body.style.overflow =
-        "hidden";
-
-    }
-
-
-    function closeCart(){
-
-      document
-        .getElementById(
-          "cartOverlay"
-        )
-        .classList
-        .remove("open");
-
-
-      document.body.style.overflow =
-        "";
-
-    }
-
-
-    function closeCartFromOverlay(
-      event
-    ){
-
-      if(
-        event.target.id ===
-        "cartOverlay"
-      ){
-
-        closeCart();
-
-      }
-
-    }
-
-
-    /* =========================
-       CHECKOUT
-    ========================= */
-
-    let paypalSdkLoaded =
-      false;
-
-    let paypalButtonsRendered =
-      false;
-
-
-    function renderCheckoutSummary(){
-
-      const container =
-        document.getElementById(
-          "summaryItems"
-        );
-
-
-      if(!cart.length){
-
-        container.innerHTML =
-          "<p>Your cart is empty.</p>";
-
-
-        document.getElementById(
-          "summaryTotal"
-        ).textContent =
-          formatPrice(0);
-
-
-        return;
-
-      }
-
-
-      container.innerHTML =
-        cart.map(
-          item => `
-
-            <div class="summary-item">
-
-              <span>
+              <div class="cart-item-name">
                 ${escapeHtml(
                   item.name ||
                   "Product"
                 )}
-                ×
-                ${Number(
-                  item.quantity || 1
-                )}
-              </span>
+              </div>
 
 
-              <strong>
+              <div class="cart-item-price">
                 ${formatPrice(
-                  numericPrice(
-                    item.price
-                  ) *
-                  Number(
-                    item.quantity || 1
-                  )
+                  item.price
                 )}
-              </strong>
+              </div>
+
+
+              <div class="quantity">
+
+                <button
+                  type="button"
+                  onclick="changeQuantity('${escapeAttribute(id)}',-1)"
+                >
+                  −
+                </button>
+
+
+                <span>
+                  ${Number(
+                    item.quantity || 1
+                  )}
+                </span>
+
+
+                <button
+                  type="button"
+                  onclick="changeQuantity('${escapeAttribute(id)}',1)"
+                >
+                  +
+                </button>
+
+              </div>
+
+
+              <button
+                class="cart-remove"
+                type="button"
+                onclick="removeFromCart('${escapeAttribute(id)}')"
+              >
+                Remove
+              </button>
 
             </div>
 
-          `
-        ).join("");
 
+            <strong>
+              ${formatPrice(
+                numericPrice(
+                  item.price
+                ) *
+                Number(
+                  item.quantity || 1
+                )
+              )}
+            </strong>
 
-      document.getElementById(
-        "summaryTotal"
-      ).textContent =
-        formatPrice(
-          cartTotal()
-        );
+          </div>
 
-    }
-
-
-    function resetPayPalUI(){
-
-      const startButton =
-        document.getElementById(
-          "paypalStartButton"
-        );
-
-
-      const paypalContainer =
-        document.getElementById(
-          "paypal-button-container"
-        );
-
-
-      if(startButton){
-
-        startButton.style.display =
-          "inline-flex";
-
-        startButton.disabled =
-          false;
-
-        startButton.textContent =
-          "Pay with PayPal";
+        `;
 
       }
+    ).join("");
 
 
-      if(paypalContainer){
+  document.getElementById(
+    "cartTotal"
+  ).textContent =
+    formatPrice(
+      cartTotal()
+    );
 
-        paypalContainer.style.display =
-          "none";
+}
 
-        paypalContainer.innerHTML =
-          "";
 
-      }
+function openCart(){
 
+  renderCart();
 
-      paypalButtonsRendered =
-        false;
 
-    }
+  document
+    .getElementById(
+      "cartOverlay"
+    )
+    .classList
+    .add("open");
 
 
-    function openCheckout(){
+  document.body.style.overflow =
+    "hidden";
 
-      if(!cart.length){
+}
 
-        showToast(
-          "Your cart is empty"
-        );
 
-        return;
+function closeCart(){
 
-      }
+  document
+    .getElementById(
+      "cartOverlay"
+    )
+    .classList
+    .remove("open");
 
 
-      if(
-        String(
-          settings.currency ||
-          "USD"
-        ).toUpperCase() !==
-        "USD"
-      ){
+  document.body.style.overflow =
+    "";
 
-        showToast(
-          "Checkout requires USD pricing."
-        );
+}
 
-        return;
 
-      }
+function closeCartFromOverlay(
+  event
+){
 
+  if(
+    event.target.id ===
+    "cartOverlay"
+  ){
 
-      closeCart();
+    closeCart();
 
-      renderCheckoutSummary();
+  }
 
-      resetPayPalUI();
+}
 
 
-      document.getElementById(
-        "customerForm"
-      ).style.display =
-        "";
+/* =========================
+   CHECKOUT
+========================= */
 
+let paypalSdkLoaded =
+  false;
 
-      document.querySelector(
-        ".order-summary"
-      ).style.display =
-        "";
+let paypalButtonsRendered =
+  false;
 
 
-      document.getElementById(
-        "orderSuccess"
-      ).classList
-        .remove("show");
+function renderCheckoutSummary(){
 
+  const container =
+    document.getElementById(
+      "summaryItems"
+    );
 
-      document
-        .getElementById(
-          "checkoutOverlay"
-        )
-        .classList
-        .add("open");
 
+  if(!cart.length){
 
-      document.body.style.overflow =
-        "hidden";
-
-    }
-
-
-    function closeCheckout(){
-
-      document
-        .getElementById(
-          "checkoutOverlay"
-        )
-        .classList
-        .remove("open");
-
-
-      document.body.style.overflow =
-        "";
-
-    }
-
-
-    function validateCheckoutForm(){
-
-      if(!cart.length){
-
-        showToast(
-          "Your cart is empty"
-        );
-
-        return false;
-
-      }
-
-
-      const name =
-        document.getElementById(
-          "customerName"
-        ).value.trim();
-
-
-      const phone =
-        document.getElementById(
-          "customerPhone"
-        ).value.trim();
-
-
-      const city =
-        document.getElementById(
-          "customerCity"
-        ).value.trim();
-
-
-      const address =
-        document.getElementById(
-          "customerAddress"
-        ).value.trim();
-
-
-      if(!name){
-
-        showToast(
-          "Please enter your name"
-        );
-
-        return false;
-
-      }
-
-
-      if(!phone){
-
-        showToast(
-          "Please enter your phone number"
-        );
-
-        return false;
-
-      }
-
-
-      if(!city){
-
-        showToast(
-          "Please enter your city"
-        );
-
-        return false;
-
-      }
-
-
-      if(!address){
-
-        showToast(
-          "Please enter your delivery address"
-        );
-
-        return false;
-
-      }
-
-
-      if(
-        String(
-          settings.currency ||
-          "USD"
-        ).toUpperCase() !==
-        "USD"
-      ){
-
-        showToast(
-          "PayPal checkout requires USD pricing."
-        );
-
-        return false;
-
-      }
-
-
-      const amount =
-        cartTotal();
-
-
-      if(
-        !Number.isFinite(amount) ||
-        amount <= 0
-      ){
-
-        showToast(
-          "Invalid order total."
-        );
-
-        return false;
-
-      }
-
-
-      return true;
-
-    }
-
-
-    async function loadPayPalSDK(){
-
-      if(
-        paypalSdkLoaded &&
-        window.paypal
-      ){
-
-        return true;
-
-      }
-
-
-      try{
-
-        const response =
-          await fetch(
-            "/api/paypal-client-id"
-          );
-
-
-        const data =
-          await response.json();
-
-
-        if(
-          !response.ok ||
-          !data.clientId
-        ){
-
-          throw new Error(
-            data.error ||
-            "PayPal Client ID is not configured."
-          );
-
-        }
-
-
-        await new Promise(
-          (
-            resolve,
-            reject
-          ) => {
-
-            const existingScript =
-              document.querySelector(
-                'script[data-paypal-sdk="true"]'
-              );
-
-
-            if(existingScript){
-
-              if(window.paypal){
-
-                resolve();
-
-                return;
-
-              }
-
-
-              existingScript.addEventListener(
-                "load",
-                resolve,
-                {
-                  once:true
-                }
-              );
-
-
-              existingScript.addEventListener(
-                "error",
-                reject,
-                {
-                  once:true
-                }
-              );
-
-
-              return;
-
-            }
-
-
-            const script =
-              document.createElement(
-                "script"
-              );
-
-
-            script.src =
-              "https://www.paypal.com/sdk/js" +
-              "?client-id=" +
-              encodeURIComponent(
-                data.clientId
-              ) +
-              "&currency=USD" +
-              "&intent=capture" +
-              "&components=buttons";
-
-
-            script.async =
-              true;
-
-
-            script.dataset.paypalSdk =
-              "true";
-
-
-            script.onload =
-              () => {
-
-                resolve();
-
-              };
-
-
-            script.onerror =
-              () => {
-
-                reject(
-                  new Error(
-                    "Failed to load PayPal."
-                  )
-                );
-
-              };
-
-
-            document.head.appendChild(
-              script
-            );
-
-          }
-        );
-
-
-        paypalSdkLoaded =
-          true;
-
-
-        return true;
-
-      }catch(error){
-
-        console.error(
-          "PayPal SDK error:",
-          error
-        );
-
-
-        showToast(
-          error.message ||
-          "Unable to connect to PayPal."
-        );
-
-
-        return false;
-
-      }
-
-    }
-
-
-    async function startPayPalPayment(){
-
-      if(
-        !validateCheckoutForm()
-      ){
-
-        return;
-
-      }
-
-
-      const startButton =
-        document.getElementById(
-          "paypalStartButton"
-        );
-
-
-      const paypalContainer =
-        document.getElementById(
-          "paypal-button-container"
-        );
-
-
-      startButton.disabled =
-        true;
-
-
-      startButton.textContent =
-        "Loading PayPal...";
-
-
-      const loaded =
-        await loadPayPalSDK();
-
-
-      if(!loaded){
-
-        startButton.disabled =
-          false;
-
-
-        startButton.textContent =
-          "Pay with PayPal";
-
-
-        return;
-
-      }
-
-
-      startButton.style.display =
-        "none";
-
-
-      paypalContainer.style.display =
-        "block";
-
-
-      if(paypalButtonsRendered){
-
-        return;
-
-      }
-
-
-      paypalButtonsRendered =
-        true;
-
-
-      paypalContainer.innerHTML =
-        "";
-
-
-      try{
-
-        await window.paypal
-          .Buttons({
-
-            style:{
-
-              layout:
-                "vertical",
-
-              color:
-                "gold",
-
-              shape:
-                "rect",
-
-              label:
-                "paypal",
-
-              height:
-                48
-
-            },
-
-
-            createOrder:
-              async function(){
-
-                try{
-
-                  const amount =
-                    cartTotal();
-
-
-                  if(
-                    !Number.isFinite(
-                      amount
-                    ) ||
-                    amount <= 0
-                  ){
-
-                    throw new Error(
-                      "Invalid order total."
-                    );
-
-                  }
-
-
-                  const response =
-                    await fetch(
-                      "/api/paypal-create-order",
-                      {
-
-                        method:
-                          "POST",
-
-                        headers:{
-                          "Content-Type":
-                            "application/json"
-                        },
-
-                        body:
-                          JSON.stringify({
-
-                            amount:
-                              amount.toFixed(
-                                2
-                              )
-
-                          })
-
-                      }
-                    );
-
-
-                  const data =
-                    await response.json();
-
-
-                  if(!response.ok){
-
-                    throw new Error(
-                      data.error ||
-                      "Failed to create PayPal order."
-                    );
-
-                  }
-
-
-                  if(!data.id){
-
-                    throw new Error(
-                      "PayPal did not return an order ID."
-                    );
-
-                  }
-
-
-                  return data.id;
-
-                }catch(error){
-
-                  console.error(
-                    "PayPal create order error:",
-                    error
-                  );
-
-
-                  showToast(
-                    error.message ||
-                    "Unable to create PayPal order."
-                  );
-
-
-                  throw error;
-
-                }
-
-              },
-
-
-            onApprove:
-              async function(
-                data
-              ){
-
-                try{
-
-                  showToast(
-                    "Processing your payment..."
-                  );
-
-
-                  const response =
-                    await fetch(
-                      "/api/paypal-capture-order",
-                      {
-
-                        method:
-                          "POST",
-
-                        headers:{
-                          "Content-Type":
-                            "application/json"
-                        },
-
-                        body:
-                          JSON.stringify({
-
-                            orderID:
-                              data.orderID
-
-                          })
-
-                      }
-                    );
-
-
-                  const captureData =
-                    await response.json();
-
-
-                  if(!response.ok){
-
-                    throw new Error(
-                      captureData.error ||
-                      "Payment capture failed."
-                    );
-
-                  }
-
-
-                  if(
-                    captureData.status !==
-                    "COMPLETED"
-                  ){
-
-                    throw new Error(
-                      "PayPal payment was not completed."
-                    );
-
-                  }
-
-
-                  const capture =
-                    captureData
-                      ?.purchase_units?.[0]
-                      ?.payments?.captures?.[0];
-
-
-                  const captureId =
-                    capture?.id ||
-                    "";
-
-
-                  savePaidOrder({
-
-                    paypalOrderId:
-                      data.orderID,
-
-                    paypalCaptureId:
-                      captureId,
-
-                    paypalStatus:
-                      captureData.status
-
-                  });
-
-
-                }catch(error){
-
-                  console.error(
-                    "PayPal capture error:",
-                    error
-                  );
-
-
-                  showToast(
-                    error.message ||
-                    "Payment could not be completed."
-                  );
-
-                }
-
-              },
-
-
-            onCancel:
-              function(){
-
-                showToast(
-                  "PayPal payment was cancelled."
-                );
-
-              },
-
-
-            onError:
-              function(error){
-
-                console.error(
-                  "PayPal error:",
-                  error
-                );
-
-
-                showToast(
-                  "PayPal payment could not be completed."
-                );
-
-              }
-
-          })
-          .render(
-            "#paypal-button-container"
-          );
-
-      }catch(error){
-
-        console.error(
-          "PayPal render error:",
-          error
-        );
-
-
-        paypalButtonsRendered =
-          false;
-
-
-        paypalContainer.innerHTML =
-          "";
-
-
-        paypalContainer.style.display =
-          "none";
-
-
-        startButton.style.display =
-          "inline-flex";
-
-
-        startButton.disabled =
-          false;
-
-
-        startButton.textContent =
-          "Pay with PayPal";
-
-
-        showToast(
-          "Unable to display PayPal checkout."
-        );
-
-      }
-
-    }
-
-
-    function savePaidOrder(
-      paymentData
-    ){
-
-      const name =
-        document.getElementById(
-          "customerName"
-        ).value.trim();
-
-
-      const phone =
-        document.getElementById(
-          "customerPhone"
-        ).value.trim();
-
-
-      const email =
-        document.getElementById(
-          "customerEmail"
-        ).value.trim();
-
-
-      const city =
-        document.getElementById(
-          "customerCity"
-        ).value.trim();
-
-
-      const address =
-        document.getElementById(
-          "customerAddress"
-        ).value.trim();
-
-
-      const notes =
-        document.getElementById(
-          "customerNotes"
-        ).value.trim();
-
-
-      const orderNumber =
-        "RF-" +
-        Date.now()
-          .toString()
-          .slice(-8);
-
-
-      const order = {
-
-        id:
-          orderNumber,
-
-        createdAt:
-          new Date().toISOString(),
-
-        customer:{
-
-          name,
-          phone,
-          email,
-          city,
-          address,
-          notes
-
-        },
-
-        items:
-          JSON.parse(
-            JSON.stringify(
-              cart
-            )
-          ),
-
-        total:
-          cartTotal(),
-
-        currency:
-          "USD",
-
-        payment:{
-
-          method:
-            "PayPal",
-
-          status:
-            "Paid",
-
-          paypalOrderId:
-            paymentData.paypalOrderId,
-
-          paypalCaptureId:
-            paymentData.paypalCaptureId,
-
-          paypalStatus:
-            paymentData.paypalStatus
-
-        }
-
-      };
-
-
-      let orders =
-        [];
-
-
-      try{
-
-        const saved =
-          localStorage.getItem(
-            "royalFurnitureProOrders"
-          );
-
-
-        if(saved){
-
-          const parsed =
-            JSON.parse(
-              saved
-            );
-
-
-          if(
-            Array.isArray(
-              parsed
-            )
-          ){
-
-            orders =
-              parsed;
-
-          }
-
-        }
-
-      }catch(error){
-
-        orders =
-          [];
-
-      }
-
-
-      orders.push(
-        order
-      );
-
-
-      localStorage.setItem(
-        "royalFurnitureProOrders",
-        JSON.stringify(
-          orders
-        )
-      );
-
-
-      document.getElementById(
-        "orderNumber"
-      ).textContent =
-        orderNumber;
-
-
-      document.getElementById(
-        "customerForm"
-      ).style.display =
-        "none";
-
-
-      document.querySelector(
-        ".order-summary"
-      ).style.display =
-        "none";
-
-
-      document.getElementById(
-        "orderSuccess"
-      ).classList
-        .add("show");
-
-
-      cart =
-        [];
-
-
-      saveCart();
-
-      renderCart();
-
-      updateCartCount();
-
-    }
-
-
-    /* =========================
-       LEGACY PLACE ORDER
-       Kept for compatibility
-    ========================= */
-
-    function placeOrder(){
-
-      startPayPalPayment();
-
-    }
-
-
-    function finishOrder(){
-
-      document.getElementById(
-        "checkoutOverlay"
-      ).classList
-        .remove("open");
-
-
-      document.body.style.overflow =
-        "";
-
-
-      document.getElementById(
-        "customerName"
-      ).value =
-        "";
-
-
-      document.getElementById(
-        "customerPhone"
-      ).value =
-        "";
-
-
-      document.getElementById(
-        "customerEmail"
-      ).value =
-        "";
-
-
-      document.getElementById(
-        "customerCity"
-      ).value =
-        "";
-
-
-      document.getElementById(
-        "customerAddress"
-      ).value =
-        "";
-
-
-      document.getElementById(
-        "customerNotes"
-      ).value =
-        "";
-
-
-      resetPayPalUI();
-
-
-      window.location.hash =
-        "collections";
-
-    }
-
-
-    /* =========================
-       TOAST
-    ========================= */
-
-    let toastTimer;
-
-
-    function showToast(
-      message
-    ){
-
-      const toast =
-        document.getElementById(
-          "toast"
-        );
-
-
-      toast.textContent =
-        message;
-
-
-      toast.classList
-        .add("show");
-
-
-      clearTimeout(
-        toastTimer
-      );
-
-
-      toastTimer =
-        setTimeout(
-          () => {
-
-            toast.classList
-              .remove("show");
-
-          },
-          2500
-        );
-
-    }
-
-
-    /* =========================
-       INIT
-    ========================= */
-
-    loadStore();
-
-    loadProducts();
-
-    loadCart();
-
-    renderProducts();
-
-    renderCart();
-
-    updateCartCount();
+    container.innerHTML =
+      "<p>Your cart is empty.</p>";
 
 
     document.getElementById(
-      "year"
+      "summaryTotal"
     ).textContent =
-      new Date()
-        .getFullYear();
+      formatPrice(0);
 
-  </script>
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    cart.map(
+      item => `
+
+        <div class="summary-item">
+
+          <span>
+            ${escapeHtml(
+              item.name ||
+              "Product"
+            )}
+            ×
+            ${Number(
+              item.quantity || 1
+            )}
+          </span>
+
+
+          <strong>
+            ${formatPrice(
+              numericPrice(
+                item.price
+              ) *
+              Number(
+                item.quantity || 1
+              )
+            )}
+          </strong>
+
+        </div>
+
+      `
+    ).join("");
+
+
+  document.getElementById(
+    "summaryTotal"
+  ).textContent =
+    formatPrice(
+      cartTotal()
+    );
+
+}
+
+
+function resetPayPalUI(){
+
+  const startButton =
+    document.getElementById(
+      "paypalStartButton"
+    );
+
+
+  const paypalContainer =
+    document.getElementById(
+      "paypal-button-container"
+    );
+
+
+  if(startButton){
+
+    startButton.style.display =
+      "inline-flex";
+
+    startButton.disabled =
+      false;
+
+    startButton.textContent =
+      "Pay with PayPal";
+
+  }
+
+
+  if(paypalContainer){
+
+    paypalContainer.style.display =
+      "none";
+
+    paypalContainer.innerHTML =
+      "";
+
+  }
+
+
+  paypalButtonsRendered =
+    false;
+
+}
+
+
+function openCheckout(){
+
+  if(!cart.length){
+
+    showToast(
+      "Your cart is empty"
+    );
+
+    return;
+
+  }
+
+
+  /*
+    PayPal checkout is USD only.
+    Currency is already forced to USD
+    by loadStore().
+  */
+
+  settings.currency =
+    "USD";
+
+
+  closeCart();
+
+  renderCheckoutSummary();
+
+  resetPayPalUI();
+
+
+  document.getElementById(
+    "customerForm"
+  ).style.display =
+    "";
+
+
+  document.querySelector(
+    ".order-summary"
+  ).style.display =
+    "";
+
+
+  document.getElementById(
+    "orderSuccess"
+  ).classList
+    .remove("show");
+
+
+  document
+    .getElementById(
+      "checkoutOverlay"
+    )
+    .classList
+    .add("open");
+
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+function closeCheckout(){
+
+  document
+    .getElementById(
+      "checkoutOverlay"
+    )
+    .classList
+    .remove("open");
+
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+function validateCheckoutForm(){
+
+  if(!cart.length){
+
+    showToast(
+      "Your cart is empty"
+    );
+
+    return false;
+
+  }
+
+
+  const name =
+    document.getElementById(
+      "customerName"
+    ).value.trim();
+
+
+  const phone =
+    document.getElementById(
+      "customerPhone"
+    ).value.trim();
+
+
+  const city =
+    document.getElementById(
+      "customerCity"
+    ).value.trim();
+
+
+  const address =
+    document.getElementById(
+      "customerAddress"
+    ).value.trim();
+
+
+  if(!name){
+
+    showToast(
+      "Please enter your name"
+    );
+
+    return false;
+
+  }
+
+
+  if(!phone){
+
+    showToast(
+      "Please enter your phone number"
+    );
+
+    return false;
+
+  }
+
+
+  if(!city){
+
+    showToast(
+      "Please enter your city"
+    );
+
+    return false;
+
+  }
+
+
+  if(!address){
+
+    showToast(
+      "Please enter your delivery address"
+    );
+
+    return false;
+
+  }
+
+
+  /*
+    Always USD.
+  */
+
+  settings.currency =
+    "USD";
+
+
+  const amount =
+    cartTotal();
+
+
+  if(
+    !Number.isFinite(amount) ||
+    amount <= 0
+  ){
+
+    showToast(
+      "Invalid order total."
+    );
+
+    return false;
+
+  }
+
+
+  return true;
+
+}
+
+
+async function loadPayPalSDK(){
+
+  if(
+    paypalSdkLoaded &&
+    window.paypal
+  ){
+
+    return true;
+
+  }
+
+
+  try{
+
+    const response =
+      await fetch(
+        "/api/paypal-client-id"
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !data.clientId
+    ){
+
+      throw new Error(
+        data.error ||
+        "PayPal Client ID is not configured."
+      );
+
+    }
+
+
+    await new Promise(
+      (
+        resolve,
+        reject
+      ) => {
+
+        const existingScript =
+          document.querySelector(
+            'script[data-paypal-sdk="true"]'
+          );
+
+
+        if(existingScript){
+
+          if(window.paypal){
+
+            resolve();
+
+            return;
+
+          }
+
+
+          existingScript.addEventListener(
+            "load",
+            resolve,
+            {
+              once:true
+            }
+          );
+
+
+          existingScript.addEventListener(
+            "error",
+            reject,
+            {
+              once:true
+            }
+          );
+
+
+          return;
+
+        }
+
+
+        const script =
+          document.createElement(
+            "script"
+          );
+
+
+        script.src =
+          "https://www.paypal.com/sdk/js" +
+          "?client-id=" +
+          encodeURIComponent(
+            data.clientId
+          ) +
+          "&currency=USD" +
+          "&intent=capture" +
+          "&components=buttons";
+
+
+        script.async =
+          true;
+
+
+        script.dataset.paypalSdk =
+          "true";
+
+
+        script.onload =
+          () => {
+
+            resolve();
+
+          };
+
+
+        script.onerror =
+          () => {
+
+            reject(
+              new Error(
+                "Failed to load PayPal."
+              )
+            );
+
+          };
+
+
+        document.head.appendChild(
+          script
+        );
+
+      }
+    );
+
+
+    paypalSdkLoaded =
+      true;
+
+
+    return true;
+
+  }catch(error){
+
+    console.error(
+      "PayPal SDK error:",
+      error
+    );
+
+
+    showToast(
+      error.message ||
+      "Unable to connect to PayPal."
+    );
+
+
+    return false;
+
+  }
+
+}
+
+
+async function startPayPalPayment(){
+
+  if(
+    !validateCheckoutForm()
+  ){
+
+    return;
+
+  }
+
+
+  const startButton =
+    document.getElementById(
+      "paypalStartButton"
+    );
+
+
+  const paypalContainer =
+    document.getElementById(
+      "paypal-button-container"
+    );
+
+
+  startButton.disabled =
+    true;
+
+
+  startButton.textContent =
+    "Loading PayPal...";
+
+
+  const loaded =
+    await loadPayPalSDK();
+
+
+  if(!loaded){
+
+    startButton.disabled =
+      false;
+
+
+    startButton.textContent =
+      "Pay with PayPal";
+
+
+    return;
+
+  }
+
+
+  startButton.style.display =
+    "none";
+
+
+  paypalContainer.style.display =
+    "block";
+
+
+  if(paypalButtonsRendered){
+
+    return;
+
+  }
+
+
+  paypalButtonsRendered =
+    true;
+
+
+  paypalContainer.innerHTML =
+    "";
+
+
+  try{
+
+    await window.paypal
+      .Buttons({
+
+        style:{
+
+          layout:
+            "vertical",
+
+          color:
+            "gold",
+
+          shape:
+            "rect",
+
+          label:
+            "paypal",
+
+          height:
+            48
+
+        },
+
+
+        createOrder:
+          async function(){
+
+            try{
+
+              const amount =
+                cartTotal();
+
+
+              if(
+                !Number.isFinite(
+                  amount
+                ) ||
+                amount <= 0
+              ){
+
+                throw new Error(
+                  "Invalid order total."
+                );
+
+              }
+
+
+              const response =
+                await fetch(
+                  "/api/paypal-create-order",
+                  {
+
+                    method:
+                      "POST",
+
+                    headers:{
+                      "Content-Type":
+                        "application/json"
+                    },
+
+                    body:
+                      JSON.stringify({
+
+                        amount:
+                          amount.toFixed(
+                            2
+                          )
+
+                      })
+
+                  }
+                );
+
+
+              const data =
+                await response.json();
+
+
+              if(!response.ok){
+
+                throw new Error(
+                  data.error ||
+                  "Failed to create PayPal order."
+                );
+
+              }
+
+
+              if(!data.id){
+
+                throw new Error(
+                  "PayPal did not return an order ID."
+                );
+
+              }
+
+
+              return data.id;
+
+            }catch(error){
+
+              console.error(
+                "PayPal create order error:",
+                error
+              );
+
+
+              showToast(
+                error.message ||
+                "Unable to create PayPal order."
+              );
+
+
+              throw error;
+
+            }
+
+          },
+
+
+        onApprove:
+          async function(
+            data
+          ){
+
+            try{
+
+              showToast(
+                "Processing your payment..."
+              );
+
+
+              const response =
+                await fetch(
+                  "/api/paypal-capture-order",
+                  {
+
+                    method:
+                      "POST",
+
+                    headers:{
+                      "Content-Type":
+                        "application/json"
+                    },
+
+                    body:
+                      JSON.stringify({
+
+                        orderID:
+                          data.orderID
+
+                      })
+
+                  }
+                );
+
+
+              const captureData =
+                await response.json();
+
+
+              if(!response.ok){
+
+                throw new Error(
+                  captureData.error ||
+                  "Payment capture failed."
+                );
+
+              }
+
+
+              if(
+                captureData.status !==
+                "COMPLETED"
+              ){
+
+                throw new Error(
+                  "PayPal payment was not completed."
+                );
+
+              }
+
+
+              const capture =
+                captureData
+                  ?.purchase_units?.[0]
+                  ?.payments?.captures?.[0];
+
+
+              const captureId =
+                capture?.id ||
+                "";
+
+
+              savePaidOrder({
+
+                paypalOrderId:
+                  data.orderID,
+
+                paypalCaptureId:
+                  captureId,
+
+                paypalStatus:
+                  captureData.status
+
+              });
+
+
+            }catch(error){
+
+              console.error(
+                "PayPal capture error:",
+                error
+              );
+
+
+              showToast(
+                error.message ||
+                "Payment could not be completed."
+              );
+
+            }
+
+          },
+
+
+        onCancel:
+          function(){
+
+            showToast(
+              "PayPal payment was cancelled."
+            );
+
+          },
+
+
+        onError:
+          function(error){
+
+            console.error(
+              "PayPal error:",
+              error
+            );
+
+
+            showToast(
+              "PayPal payment could not be completed."
+            );
+
+          }
+
+      })
+      .render(
+        "#paypal-button-container"
+      );
+
+  }catch(error){
+
+    console.error(
+      "PayPal render error:",
+      error
+    );
+
+
+    paypalButtonsRendered =
+      false;
+
+
+    paypalContainer.innerHTML =
+      "";
+
+
+    paypalContainer.style.display =
+      "none";
+
+
+    startButton.style.display =
+      "inline-flex";
+
+
+    startButton.disabled =
+      false;
+
+
+    startButton.textContent =
+      "Pay with PayPal";
+
+
+    showToast(
+      "Unable to display PayPal checkout."
+    );
+
+  }
+
+}
+
+
+function savePaidOrder(
+  paymentData
+){
+
+  const name =
+    document.getElementById(
+      "customerName"
+    ).value.trim();
+
+
+  const phone =
+    document.getElementById(
+      "customerPhone"
+    ).value.trim();
+
+
+  const email =
+    document.getElementById(
+      "customerEmail"
+    ).value.trim();
+
+
+  const city =
+    document.getElementById(
+      "customerCity"
+    ).value.trim();
+
+
+  const address =
+    document.getElementById(
+      "customerAddress"
+    ).value.trim();
+
+
+  const notes =
+    document.getElementById(
+      "customerNotes"
+    ).value.trim();
+
+
+  const orderNumber =
+    "RF-" +
+    Date.now()
+      .toString()
+      .slice(-8);
+
+
+  const order = {
+
+    id:
+      orderNumber,
+
+    createdAt:
+      new Date().toISOString(),
+
+    customer:{
+
+      name,
+      phone,
+      email,
+      city,
+      address,
+      notes
+
+    },
+
+    items:
+      JSON.parse(
+        JSON.stringify(
+          cart
+        )
+      ),
+
+    total:
+      cartTotal(),
+
+    currency:
+      "USD",
+
+    payment:{
+
+      method:
+        "PayPal",
+
+      status:
+        "Paid",
+
+      paypalOrderId:
+        paymentData.paypalOrderId,
+
+      paypalCaptureId:
+        paymentData.paypalCaptureId,
+
+      paypalStatus:
+        paymentData.paypalStatus
+
+    }
+
+  };
+
+
+  let orders =
+    [];
+
+
+  try{
+
+    const saved =
+      localStorage.getItem(
+        "royalFurnitureProOrders"
+      );
+
+
+    if(saved){
+
+      const parsed =
+        JSON.parse(
+          saved
+        );
+
+
+      if(
+        Array.isArray(
+          parsed
+        )
+      ){
+
+        orders =
+          parsed;
+
+      }
+
+    }
+
+  }catch(error){
+
+    orders =
+      [];
+
+  }
+
+
+  orders.push(
+    order
+  );
+
+
+  localStorage.setItem(
+    "royalFurnitureProOrders",
+    JSON.stringify(
+      orders
+    )
+  );
+
+
+  document.getElementById(
+    "orderNumber"
+  ).textContent =
+    orderNumber;
+
+
+  document.getElementById(
+    "customerForm"
+  ).style.display =
+    "none";
+
+
+  document.querySelector(
+    ".order-summary"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "orderSuccess"
+  ).classList
+    .add("show");
+
+
+  cart =
+    [];
+
+
+  saveCart();
+
+  renderCart();
+
+  updateCartCount();
+
+}
+
+
+function placeOrder(){
+
+  startPayPalPayment();
+
+}
+
+
+function finishOrder(){
+
+  document.getElementById(
+    "checkoutOverlay"
+  ).classList
+    .remove("open");
+
+
+  document.body.style.overflow =
+    "";
+
+
+  document.getElementById(
+    "customerName"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "customerPhone"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "customerEmail"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "customerCity"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "customerAddress"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "customerNotes"
+  ).value =
+    "";
+
+
+  resetPayPalUI();
+
+
+  window.location.hash =
+    "collections";
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+let toastTimer;
+
+
+function showToast(
+  message
+){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  toast.textContent =
+    message;
+
+
+  toast.classList
+    .add("show");
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      () => {
+
+        toast.classList
+          .remove("show");
+
+      },
+      2500
+    );
+
+}
+
+
+/* =========================
+   INIT
+========================= */
+
+loadStore();
+
+loadProducts();
+
+loadCart();
+
+renderProducts();
+
+renderCart();
+
+updateCartCount();
+
+
+document.getElementById(
+  "year"
+).textContent =
+  new Date()
+    .getFullYear();
+
+</script>
 
 </body>
-  </html>
+</html>
