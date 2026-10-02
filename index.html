@@ -251,6 +251,12 @@
       transform:translateY(-2px);
     }
 
+    .btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+      transform:none;
+    }
+
     /* SECTIONS */
 
     section{
@@ -814,6 +820,10 @@
       width:100%;
     }
 
+    #paypal-button-container{
+      width:100%;
+    }
+
     .order-success{
       grid-column:1 / -1;
       text-align:center;
@@ -875,6 +885,7 @@
     /* RESPONSIVE */
 
     @media(max-width:1000px){
+
       .categories{
         grid-template-columns:repeat(3,1fr);
       }
@@ -882,9 +893,11 @@
       .products{
         grid-template-columns:repeat(2,1fr);
       }
+
     }
 
     @media(max-width:700px){
+
       .nav{
         min-height:68px;
       }
@@ -981,9 +994,11 @@
       .checkout-title h2{
         font-size:34px;
       }
+
     }
 
     @media(max-width:430px){
+
       .products{
         grid-template-columns:1fr;
       }
@@ -999,6 +1014,7 @@
       .cart-drawer{
         padding:20px;
       }
+
     }
   </style>
 </head>
@@ -1008,6 +1024,7 @@
   <!-- HEADER -->
 
   <header>
+
     <div class="container nav">
 
       <a href="#" class="logo" id="storeLogo">
@@ -1015,13 +1032,27 @@
       </a>
 
       <nav class="nav-links">
-        <a href="#collections">Collection</a>
-        <a href="#categories">Categories</a>
-        <a href="#story">Our Story</a>
-        <a href="#values">Values</a>
+
+        <a href="#collections">
+          Collection
+        </a>
+
+        <a href="#categories">
+          Categories
+        </a>
+
+        <a href="#story">
+          Our Story
+        </a>
+
+        <a href="#values">
+          Values
+        </a>
+
       </nav>
 
       <div class="nav-actions">
+
         <button
           class="icon-btn"
           type="button"
@@ -1029,11 +1060,20 @@
           aria-label="Shopping cart"
         >
           🛒
-          <span class="cart-count" id="cartCount">0</span>
+
+          <span
+            class="cart-count"
+            id="cartCount"
+          >
+            0
+          </span>
+
         </button>
+
       </div>
 
     </div>
+
   </header>
 
 
@@ -1065,6 +1105,7 @@
 
     </div>
 
+
     <div class="hero-content">
 
       <div class="eyebrow">
@@ -1080,7 +1121,10 @@
         character and timeless elegance into modern spaces.
       </p>
 
-      <a href="#collections" class="btn btn-light">
+      <a
+        href="#collections"
+        class="btn btn-light"
+      >
         Explore Collection
       </a>
 
@@ -1096,18 +1140,27 @@
     <div class="container">
 
       <div class="section-head">
+
         <div>
-          <div class="eyebrow" style="color:#777">
+
+          <div
+            class="eyebrow"
+            style="color:#777"
+          >
             Explore
           </div>
 
-          <h2>Shop by space</h2>
+          <h2>
+            Shop by space
+          </h2>
+
         </div>
 
         <p>
           Discover carefully selected pieces for every room,
           from welcoming living spaces to refined dining areas.
         </p>
+
       </div>
 
 
@@ -1117,11 +1170,16 @@
           class="category-card"
           onclick="filterCategory('Living Room')"
         >
+
           <img
             src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
             alt="Living Room"
           >
-          <div class="category-title">Living Room</div>
+
+          <div class="category-title">
+            Living Room
+          </div>
+
         </div>
 
 
@@ -1129,11 +1187,16 @@
           class="category-card"
           onclick="filterCategory('Bedroom')"
         >
+
           <img
             src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80"
             alt="Bedroom"
           >
-          <div class="category-title">Bedroom</div>
+
+          <div class="category-title">
+            Bedroom
+          </div>
+
         </div>
 
 
@@ -1141,11 +1204,16 @@
           class="category-card"
           onclick="filterCategory('Dining')"
         >
+
           <img
             src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=900&q=80"
             alt="Dining"
           >
-          <div class="category-title">Dining</div>
+
+          <div class="category-title">
+            Dining
+          </div>
+
         </div>
 
 
@@ -1153,11 +1221,16 @@
           class="category-card"
           onclick="filterCategory('Office')"
         >
+
           <img
             src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
             alt="Office"
           >
-          <div class="category-title">Office</div>
+
+          <div class="category-title">
+            Office
+          </div>
+
         </div>
 
 
@@ -1165,11 +1238,16 @@
           class="category-card"
           onclick="filterCategory('Accessories')"
         >
+
           <img
             src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80"
             alt="Accessories"
           >
-          <div class="category-title">Accessories</div>
+
+          <div class="category-title">
+            Accessories
+          </div>
+
         </div>
 
       </div>
@@ -1188,11 +1266,18 @@
       <div class="section-head">
 
         <div>
-          <div class="eyebrow" style="color:#777">
+
+          <div
+            class="eyebrow"
+            style="color:#777"
+          >
             Collection
           </div>
 
-          <h2>Selected pieces</h2>
+          <h2>
+            Selected pieces
+          </h2>
+
         </div>
 
         <p>
@@ -1250,7 +1335,10 @@
       </div>
 
 
-      <div class="products" id="products"></div>
+      <div
+        class="products"
+        id="products"
+      ></div>
 
     </div>
 
@@ -1313,13 +1401,17 @@
 
   <!-- VALUES -->
 
-  <section class="values" id="values">
+  <section
+    class="values"
+    id="values"
+  >
 
     <div class="container">
 
       <div class="section-head">
 
         <div>
+
           <div class="eyebrow">
             Why Royal
           </div>
@@ -1327,6 +1419,7 @@
           <h2>
             Made for modern living.
           </h2>
+
         </div>
 
       </div>
@@ -1335,32 +1428,56 @@
       <div class="values-grid">
 
         <div class="value">
-          <div class="value-number">01</div>
-          <h3>Thoughtful Design</h3>
+
+          <div class="value-number">
+            01
+          </div>
+
+          <h3>
+            Thoughtful Design
+          </h3>
+
           <p>
             Clean proportions and timeless details designed
             to work beautifully across different interiors.
           </p>
+
         </div>
 
 
         <div class="value">
-          <div class="value-number">02</div>
-          <h3>Quality First</h3>
+
+          <div class="value-number">
+            02
+          </div>
+
+          <h3>
+            Quality First
+          </h3>
+
           <p>
             Furniture selected with attention to materials,
             comfort and long-term everyday use.
           </p>
+
         </div>
 
 
         <div class="value">
-          <div class="value-number">03</div>
-          <h3>Personal Spaces</h3>
+
+          <div class="value-number">
+            03
+          </div>
+
+          <h3>
+            Personal Spaces
+          </h3>
+
           <p>
             Pieces that allow every customer to create a home
             that reflects their own character.
           </p>
+
         </div>
 
       </div>
@@ -1378,15 +1495,31 @@
 
       <div class="footer-top">
 
-        <div class="footer-logo" id="footerLogo">
+        <div
+          class="footer-logo"
+          id="footerLogo"
+        >
           ROYAL FURNITURE
         </div>
 
         <div class="footer-links">
-          <a href="#collections">Collection</a>
-          <a href="#categories">Categories</a>
-          <a href="#story">Story</a>
-          <a href="#values">Values</a>
+
+          <a href="#collections">
+            Collection
+          </a>
+
+          <a href="#categories">
+            Categories
+          </a>
+
+          <a href="#story">
+            Story
+          </a>
+
+          <a href="#values">
+            Values
+          </a>
+
         </div>
 
       </div>
@@ -1395,7 +1528,9 @@
       <div class="footer-bottom">
 
         <div>
-          © <span id="year"></span> Royal Furniture
+          ©
+          <span id="year"></span>
+          Royal Furniture
         </div>
 
         <div>
@@ -1427,11 +1562,19 @@
         ×
       </button>
 
+
       <div class="product-modal-grid">
 
         <div class="modal-image">
-          <img id="modalImage" src="" alt="">
+
+          <img
+            id="modalImage"
+            src=""
+            alt=""
+          >
+
         </div>
+
 
         <div class="modal-details">
 
@@ -1478,7 +1621,9 @@
 
       <div class="cart-header">
 
-        <h2>Your Cart</h2>
+        <h2>
+          Your Cart
+        </h2>
 
         <button
           class="icon-btn"
@@ -1500,9 +1645,17 @@
       <div class="cart-footer">
 
         <div class="cart-total">
-          <span>Total</span>
-          <span id="cartTotal">0 EGP</span>
+
+          <span>
+            Total
+          </span>
+
+          <span id="cartTotal">
+            0 USD
+          </span>
+
         </div>
+
 
         <button
           class="btn btn-dark"
@@ -1543,14 +1696,19 @@
 
         <div class="checkout-title">
 
-          <div class="eyebrow" style="color:#777">
+          <div
+            class="eyebrow"
+            style="color:#777"
+          >
             Checkout
           </div>
 
-          <h2>Complete your order</h2>
+          <h2>
+            Complete your order
+          </h2>
 
           <p>
-            Enter your details and we'll prepare your order.
+            Enter your details and complete your payment securely with PayPal.
           </p>
 
         </div>
@@ -1663,19 +1821,24 @@
 
           <div class="order-summary">
 
-            <h3>Order Summary</h3>
+            <h3>
+              Order Summary
+            </h3>
 
             <div
               class="summary-items"
               id="summaryItems"
             ></div>
 
+
             <div class="summary-total">
 
-              <span>Total</span>
+              <span>
+                Total
+              </span>
 
               <span id="summaryTotal">
-                0 EGP
+                0 USD
               </span>
 
             </div>
@@ -1686,10 +1849,17 @@
               <button
                 class="btn btn-dark"
                 type="button"
-                onclick="placeOrder()"
+                onclick="startPayPalPayment()"
+                id="paypalStartButton"
               >
-                Place Order
+                Pay with PayPal
               </button>
+
+
+              <div
+                id="paypal-button-container"
+                style="display:none;margin-top:15px;"
+              ></div>
 
             </div>
 
@@ -1707,11 +1877,13 @@
               ✓
             </div>
 
-            <h2>Order received</h2>
+            <h2>
+              Order received
+            </h2>
 
             <p>
-              Thank you. Your order has been recorded successfully.
-              Payment integration can be connected to this store later.
+              Thank you. Your payment was completed successfully
+              and your order has been recorded.
             </p>
 
             <p>
@@ -1759,14 +1931,21 @@
 
     setInterval(() => {
 
-      heroSlides[heroIndex].classList.remove("active");
+      if(!heroSlides.length){
+        return;
+      }
+
+      heroSlides[heroIndex]
+        .classList.remove("active");
 
       heroIndex =
-        (heroIndex + 1) % heroSlides.length;
+        (heroIndex + 1) %
+        heroSlides.length;
 
-      heroSlides[heroIndex].classList.add("active");
+      heroSlides[heroIndex]
+        .classList.add("active");
 
-    }, 5000);
+    },5000);
 
 
     /* =========================
@@ -1779,7 +1958,7 @@
         "Royal Furniture",
 
       currency:
-        "EGP",
+        "USD",
 
       description:
         "Refined furniture for modern living.",
@@ -1793,7 +1972,8 @@
     };
 
 
-    let settings = defaultSettings;
+    let settings =
+      defaultSettings;
 
 
     function loadStore(){
@@ -1805,18 +1985,23 @@
             "royalFurnitureProSettings"
           );
 
+
         if(savedSettings){
 
           settings = {
+
             ...defaultSettings,
+
             ...JSON.parse(savedSettings)
+
           };
 
         }
 
       }catch(error){
 
-        settings = defaultSettings;
+        settings =
+          defaultSettings;
 
       }
 
@@ -1824,19 +2009,35 @@
       document.title =
         `${settings.storeName} | Premium Furniture`;
 
-      document.getElementById("storeLogo").textContent =
-        String(settings.storeName || defaultSettings.storeName)
-          .toUpperCase();
 
-      document.getElementById("footerLogo").textContent =
-        String(settings.storeName || defaultSettings.storeName)
-          .toUpperCase();
+      document.getElementById(
+        "storeLogo"
+      ).textContent =
+        String(
+          settings.storeName ||
+          defaultSettings.storeName
+        ).toUpperCase();
 
-      document.getElementById("heroTitle").textContent =
+
+      document.getElementById(
+        "footerLogo"
+      ).textContent =
+        String(
+          settings.storeName ||
+          defaultSettings.storeName
+        ).toUpperCase();
+
+
+      document.getElementById(
+        "heroTitle"
+      ).textContent =
         settings.heroTitle ||
         defaultSettings.heroTitle;
 
-      document.getElementById("heroDescription").textContent =
+
+      document.getElementById(
+        "heroDescription"
+      ).textContent =
         settings.heroDescription ||
         defaultSettings.heroDescription;
 
@@ -1935,18 +2136,30 @@
         product.id !== null
       ){
 
-        return String(product.id);
+        return String(
+          product.id
+        );
 
       }
 
+
       return (
         "custom-" +
-        String(product?.name || "product")
+        String(
+          product?.name ||
+          "product"
+        )
           .trim()
           .toLowerCase()
-          .replace(/[^a-z0-9]+/g,"-") +
+          .replace(
+            /[^a-z0-9]+/g,
+            "-"
+          ) +
         "-" +
-        String(product?.image || "")
+        String(
+          product?.image ||
+          ""
+        )
           .trim()
           .slice(-30)
       );
@@ -1963,24 +2176,33 @@
             "royalFurnitureProProducts"
           );
 
+
         if(saved){
 
-          const parsed = JSON.parse(saved);
+          const parsed =
+            JSON.parse(saved);
+
 
           if(Array.isArray(parsed)){
 
-            products = parsed.map((product,index) => {
+            products =
+              parsed.map(
+                (product,index) => {
 
-              return {
-                ...product,
-                id:
-                  product.id ??
-                  `custom-${index}-${String(product.name || "product")
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]+/g,"-")}`
-              };
+                  return {
 
-            });
+                    ...product,
+
+                    id:
+                      product.id ??
+                      `custom-${index}-${String(product.name || "product")
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g,"-")}`
+
+                  };
+
+                }
+              );
 
           }
 
@@ -1995,7 +2217,8 @@
 
       if(!products.length){
 
-        products = fallbackProducts;
+        products =
+          fallbackProducts;
 
       }
 
@@ -2018,9 +2241,18 @@
 
       return (
         numericPrice(price)
-          .toLocaleString() +
+          .toLocaleString(
+            undefined,
+            {
+              minimumFractionDigits:2,
+              maximumFractionDigits:2
+            }
+          ) +
         " " +
-        (settings.currency || "EGP")
+        (
+          settings.currency ||
+          "USD"
+        )
       );
 
     }
@@ -2030,7 +2262,8 @@
        PRODUCT FILTER
     ========================= */
 
-    let activeCategory = "All";
+    let activeCategory =
+      "All";
 
 
     function filterCategory(
@@ -2038,45 +2271,63 @@
       clickedButton = null
     ){
 
-      activeCategory = category;
+      activeCategory =
+        category;
+
 
       document
-        .querySelectorAll(".filter-btn")
-        .forEach(button => {
-          button.classList.remove("active");
-        });
+        .querySelectorAll(
+          ".filter-btn"
+        )
+        .forEach(
+          button => {
+
+            button.classList
+              .remove("active");
+
+          }
+        );
 
 
       if(clickedButton){
 
-        clickedButton.classList.add("active");
+        clickedButton.classList
+          .add("active");
 
       }else{
 
         document
-          .querySelectorAll(".filter-btn")
-          .forEach(button => {
+          .querySelectorAll(
+            ".filter-btn"
+          )
+          .forEach(
+            button => {
 
-            if(
-              button.textContent
-                .trim()
-                .toLowerCase() ===
-              category.toLowerCase()
-            ){
+              if(
+                button.textContent
+                  .trim()
+                  .toLowerCase() ===
+                category.toLowerCase()
+              ){
 
-              button.classList.add("active");
+                button.classList
+                  .add("active");
+
+              }
 
             }
-
-          });
+          );
 
       }
 
 
       renderProducts();
 
+
       document
-        .getElementById("collections")
+        .getElementById(
+          "collections"
+        )
         .scrollIntoView({
           behavior:"smooth"
         });
@@ -2087,29 +2338,41 @@
     function renderProducts(){
 
       const container =
-        document.getElementById("products");
+        document.getElementById(
+          "products"
+        );
+
 
       const filtered =
         activeCategory === "All"
           ? products
-          : products.filter(product =>
-              String(product.category || "")
-                .toLowerCase() ===
-              activeCategory.toLowerCase()
+          : products.filter(
+              product =>
+                String(
+                  product.category ||
+                  ""
+                )
+                  .toLowerCase() ===
+                activeCategory
+                  .toLowerCase()
             );
 
 
       if(!filtered.length){
 
         container.innerHTML = `
+
           <div style="
             grid-column:1/-1;
             text-align:center;
             padding:60px 20px;
             color:#777;
           ">
+
             No products available in this category yet.
+
           </div>
+
         `;
 
         return;
@@ -2118,72 +2381,108 @@
 
 
       container.innerHTML =
-        filtered.map(product => {
+        filtered.map(
+          product => {
 
-          const id =
-            getProductId(product);
-
-          return `
-
-            <article
-              class="product-card"
-              data-product-id="${escapeHtml(id)}"
-              onclick="openProductById('${escapeAttribute(id)}')"
-            >
-
-              <div class="product-image">
-
-                <img
-                  src="${escapeAttribute(product.image || "")}"
-                  alt="${escapeAttribute(product.name || "Product")}"
-                  loading="lazy"
-                  onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80'"
-                >
-
-              </div>
+            const id =
+              getProductId(
+                product
+              );
 
 
-              <div class="product-info">
+            return `
 
-                <div class="product-category">
-                  ${escapeHtml(product.category || "Collection")}
+              <article
+                class="product-card"
+                data-product-id="${escapeHtml(id)}"
+                onclick="openProductById('${escapeAttribute(id)}')"
+              >
+
+                <div class="product-image">
+
+                  <img
+                    src="${escapeAttribute(product.image || "")}"
+                    alt="${escapeAttribute(product.name || "Product")}"
+                    loading="lazy"
+                    onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80'"
+                  >
+
                 </div>
 
-                <div class="product-name">
-                  ${escapeHtml(product.name || "Untitled Product")}
+
+                <div class="product-info">
+
+                  <div class="product-category">
+                    ${escapeHtml(
+                      product.category ||
+                      "Collection"
+                    )}
+                  </div>
+
+                  <div class="product-name">
+                    ${escapeHtml(
+                      product.name ||
+                      "Untitled Product"
+                    )}
+                  </div>
+
+                  <div class="product-price">
+                    ${formatPrice(
+                      product.price
+                    )}
+                  </div>
+
                 </div>
 
-                <div class="product-price">
-                  ${formatPrice(product.price)}
-                </div>
+              </article>
 
-              </div>
+            `;
 
-            </article>
-
-          `;
-
-        }).join("");
+          }
+        ).join("");
 
     }
 
 
     function escapeHtml(value){
 
-      return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+      return String(
+        value ?? ""
+      )
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
     }
 
 
     function escapeAttribute(value){
 
-      return escapeHtml(value)
-        .replace(/\\/g,"\\\\");
+      return escapeHtml(
+        value
+      )
+        .replace(
+          /\\/g,
+          "\\\\"
+        );
+
     }
 
 
@@ -2196,59 +2495,99 @@
             String(id)
         );
 
+
       if(product){
 
-        openProduct(product);
+        openProduct(
+          product
+        );
 
       }
 
     }
 
 
-    let currentProduct = null;
+    let currentProduct =
+      null;
 
 
     function openProduct(product){
 
-      currentProduct = product;
+      currentProduct =
+        product;
 
-      document.getElementById("modalImage").src =
-        product.image || "";
 
-      document.getElementById("modalImage").alt =
-        product.name || "Product";
+      document.getElementById(
+        "modalImage"
+      ).src =
+        product.image ||
+        "";
 
-      document.getElementById("modalCategory").textContent =
-        product.category || "Collection";
 
-      document.getElementById("modalName").textContent =
-        product.name || "Untitled Product";
+      document.getElementById(
+        "modalImage"
+      ).alt =
+        product.name ||
+        "Product";
 
-      document.getElementById("modalPrice").textContent =
-        formatPrice(product.price);
 
-      document.getElementById("modalDescription").textContent =
+      document.getElementById(
+        "modalCategory"
+      ).textContent =
+        product.category ||
+        "Collection";
+
+
+      document.getElementById(
+        "modalName"
+      ).textContent =
+        product.name ||
+        "Untitled Product";
+
+
+      document.getElementById(
+        "modalPrice"
+      ).textContent =
+        formatPrice(
+          product.price
+        );
+
+
+      document.getElementById(
+        "modalDescription"
+      ).textContent =
         product.description ||
         "A refined furniture piece designed for modern interiors.";
 
 
-      document.getElementById("modalAddButton").onclick =
+      document.getElementById(
+        "modalAddButton"
+      ).onclick =
         function(){
 
-          addToCart(currentProduct);
+          addToCart(
+            currentProduct
+          );
 
           closeModal();
 
-          showToast("Product added to cart");
+          showToast(
+            "Product added to cart"
+          );
 
         };
 
 
       document
-        .getElementById("productOverlay")
-        .classList.add("open");
+        .getElementById(
+          "productOverlay"
+        )
+        .classList
+        .add("open");
 
-      document.body.style.overflow = "hidden";
+
+      document.body.style.overflow =
+        "hidden";
 
     }
 
@@ -2256,17 +2595,27 @@
     function closeModal(){
 
       document
-        .getElementById("productOverlay")
-        .classList.remove("open");
+        .getElementById(
+          "productOverlay"
+        )
+        .classList
+        .remove("open");
 
-      document.body.style.overflow = "";
+
+      document.body.style.overflow =
+        "";
 
     }
 
 
-    function closeProductFromOverlay(event){
+    function closeProductFromOverlay(
+      event
+    ){
 
-      if(event.target.id === "productOverlay"){
+      if(
+        event.target.id ===
+        "productOverlay"
+      ){
 
         closeModal();
 
@@ -2291,14 +2640,17 @@
             "royalFurnitureProCart"
           );
 
+
         if(saved){
 
           const parsed =
             JSON.parse(saved);
 
+
           if(Array.isArray(parsed)){
 
-            cart = parsed;
+            cart =
+              parsed;
 
           }
 
@@ -2317,7 +2669,9 @@
 
       localStorage.setItem(
         "royalFurnitureProCart",
-        JSON.stringify(cart)
+        JSON.stringify(
+          cart
+        )
       );
 
     }
@@ -2330,11 +2684,16 @@
         item.cartId !== null
       ){
 
-        return String(item.cartId);
+        return String(
+          item.cartId
+        );
 
       }
 
-      return getProductId(item);
+
+      return getProductId(
+        item
+      );
 
     }
 
@@ -2342,7 +2701,10 @@
     function addToCart(product){
 
       const productId =
-        getProductId(product);
+        getProductId(
+          product
+        );
+
 
       const existing =
         cart.find(
@@ -2355,7 +2717,9 @@
       if(existing){
 
         existing.quantity =
-          Number(existing.quantity || 1) + 1;
+          Number(
+            existing.quantity || 1
+          ) + 1;
 
       }else{
 
@@ -2363,9 +2727,11 @@
 
           ...product,
 
-          cartId:productId,
+          cartId:
+            productId,
 
-          quantity:1
+          quantity:
+            1
 
         });
 
@@ -2381,7 +2747,9 @@
     }
 
 
-    function removeFromCart(cartId){
+    function removeFromCart(
+      cartId
+    ){
 
       cart =
         cart.filter(
@@ -2389,6 +2757,7 @@
             getCartId(item) !==
             String(cartId)
         );
+
 
       saveCart();
 
@@ -2411,17 +2780,30 @@
             String(cartId)
         );
 
-      if(!item) return;
+
+      if(!item){
+
+        return;
+
+      }
 
 
       item.quantity =
-        Number(item.quantity || 1) +
-        Number(change);
+        Number(
+          item.quantity || 1
+        ) +
+        Number(
+          change
+        );
 
 
-      if(item.quantity <= 0){
+      if(
+        item.quantity <= 0
+      ){
 
-        removeFromCart(cartId);
+        removeFromCart(
+          cartId
+        );
 
         return;
 
@@ -2440,10 +2822,17 @@
     function cartTotal(){
 
       return cart.reduce(
-        (total,item) =>
+        (
+          total,
+          item
+        ) =>
           total +
-          numericPrice(item.price) *
-          Number(item.quantity || 1),
+          numericPrice(
+            item.price
+          ) *
+          Number(
+            item.quantity || 1
+          ),
         0
       );
 
@@ -2453,9 +2842,14 @@
     function cartItemsCount(){
 
       return cart.reduce(
-        (total,item) =>
+        (
+          total,
+          item
+        ) =>
           total +
-          Number(item.quantity || 1),
+          Number(
+            item.quantity || 1
+          ),
         0
       );
 
@@ -2464,8 +2858,9 @@
 
     function updateCartCount(){
 
-      document.getElementById("cartCount")
-        .textContent =
+      document.getElementById(
+        "cartCount"
+      ).textContent =
         cartItemsCount();
 
     }
@@ -2474,7 +2869,10 @@
     function renderCart(){
 
       const container =
-        document.getElementById("cartItems");
+        document.getElementById(
+          "cartItems"
+        );
+
 
       if(!cart.length){
 
@@ -2486,7 +2884,9 @@
               🛒
             </div>
 
-            <p>Your cart is empty.</p>
+            <p>
+              Your cart is empty.
+            </p>
 
             <button
               class="btn btn-dark"
@@ -2501,9 +2901,12 @@
 
         `;
 
-        document.getElementById("cartTotal")
-          .textContent =
+
+        document.getElementById(
+          "cartTotal"
+        ).textContent =
           formatPrice(0);
+
 
         return;
 
@@ -2511,82 +2914,105 @@
 
 
       container.innerHTML =
-        cart.map(item => {
+        cart.map(
+          item => {
 
-          const id =
-            getCartId(item);
-
-          return `
-
-            <div class="cart-item">
-
-              <img
-                src="${escapeAttribute(item.image || "")}"
-                alt="${escapeAttribute(item.name || "Product")}"
-              >
-
-              <div>
-
-                <div class="cart-item-name">
-                  ${escapeHtml(item.name || "Product")}
-                </div>
-
-                <div class="cart-item-price">
-                  ${formatPrice(item.price)}
-                </div>
+            const id =
+              getCartId(
+                item
+              );
 
 
-                <div class="quantity">
+            return `
 
-                  <button
-                    type="button"
-                    onclick="changeQuantity('${escapeAttribute(id)}',-1)"
-                  >
-                    −
-                  </button>
+              <div class="cart-item">
 
-                  <span>
-                    ${Number(item.quantity || 1)}
-                  </span>
-
-                  <button
-                    type="button"
-                    onclick="changeQuantity('${escapeAttribute(id)}',1)"
-                  >
-                    +
-                  </button>
-
-                </div>
-
-
-                <button
-                  class="cart-remove"
-                  type="button"
-                  onclick="removeFromCart('${escapeAttribute(id)}')"
+                <img
+                  src="${escapeAttribute(item.image || "")}"
+                  alt="${escapeAttribute(item.name || "Product")}"
                 >
-                  Remove
-                </button>
+
+
+                <div>
+
+                  <div class="cart-item-name">
+                    ${escapeHtml(
+                      item.name ||
+                      "Product"
+                    )}
+                  </div>
+
+
+                  <div class="cart-item-price">
+                    ${formatPrice(
+                      item.price
+                    )}
+                  </div>
+
+
+                  <div class="quantity">
+
+                    <button
+                      type="button"
+                      onclick="changeQuantity('${escapeAttribute(id)}',-1)"
+                    >
+                      −
+                    </button>
+
+
+                    <span>
+                      ${Number(
+                        item.quantity || 1
+                      )}
+                    </span>
+
+
+                    <button
+                      type="button"
+                      onclick="changeQuantity('${escapeAttribute(id)}',1)"
+                    >
+                      +
+                    </button>
+
+                  </div>
+
+
+                  <button
+                    class="cart-remove"
+                    type="button"
+                    onclick="removeFromCart('${escapeAttribute(id)}')"
+                  >
+                    Remove
+                  </button>
+
+                </div>
+
+
+                <strong>
+                  ${formatPrice(
+                    numericPrice(
+                      item.price
+                    ) *
+                    Number(
+                      item.quantity || 1
+                    )
+                  )}
+                </strong>
 
               </div>
 
+            `;
 
-              <strong>
-                ${formatPrice(
-                  numericPrice(item.price) *
-                  Number(item.quantity || 1)
-                )}
-              </strong>
-
-            </div>
-
-          `;
-
-        }).join("");
+          }
+        ).join("");
 
 
-      document.getElementById("cartTotal")
-        .textContent =
-        formatPrice(cartTotal());
+      document.getElementById(
+        "cartTotal"
+      ).textContent =
+        formatPrice(
+          cartTotal()
+        );
 
     }
 
@@ -2595,11 +3021,17 @@
 
       renderCart();
 
-      document
-        .getElementById("cartOverlay")
-        .classList.add("open");
 
-      document.body.style.overflow = "hidden";
+      document
+        .getElementById(
+          "cartOverlay"
+        )
+        .classList
+        .add("open");
+
+
+      document.body.style.overflow =
+        "hidden";
 
     }
 
@@ -2607,17 +3039,27 @@
     function closeCart(){
 
       document
-        .getElementById("cartOverlay")
-        .classList.remove("open");
+        .getElementById(
+          "cartOverlay"
+        )
+        .classList
+        .remove("open");
 
-      document.body.style.overflow = "";
+
+      document.body.style.overflow =
+        "";
 
     }
 
 
-    function closeCartFromOverlay(event){
+    function closeCartFromOverlay(
+      event
+    ){
 
-      if(event.target.id === "cartOverlay"){
+      if(
+        event.target.id ===
+        "cartOverlay"
+      ){
 
         closeCart();
 
@@ -2630,19 +3072,32 @@
        CHECKOUT
     ========================= */
 
+    let paypalSdkLoaded =
+      false;
+
+    let paypalButtonsRendered =
+      false;
+
+
     function renderCheckoutSummary(){
 
       const container =
-        document.getElementById("summaryItems");
+        document.getElementById(
+          "summaryItems"
+        );
+
 
       if(!cart.length){
 
         container.innerHTML =
           "<p>Your cart is empty.</p>";
 
-        document.getElementById("summaryTotal")
-          .textContent =
+
+        document.getElementById(
+          "summaryTotal"
+        ).textContent =
           formatPrice(0);
+
 
         return;
 
@@ -2650,30 +3105,91 @@
 
 
       container.innerHTML =
-        cart.map(item => `
+        cart.map(
+          item => `
 
-          <div class="summary-item">
+            <div class="summary-item">
 
-            <span>
-              ${escapeHtml(item.name || "Product")}
-              × ${Number(item.quantity || 1)}
-            </span>
-
-            <strong>
-              ${formatPrice(
-                numericPrice(item.price) *
-                Number(item.quantity || 1)
-              )}
-            </strong>
-
-          </div>
-
-        `).join("");
+              <span>
+                ${escapeHtml(
+                  item.name ||
+                  "Product"
+                )}
+                ×
+                ${Number(
+                  item.quantity || 1
+                )}
+              </span>
 
 
-      document.getElementById("summaryTotal")
-        .textContent =
-        formatPrice(cartTotal());
+              <strong>
+                ${formatPrice(
+                  numericPrice(
+                    item.price
+                  ) *
+                  Number(
+                    item.quantity || 1
+                  )
+                )}
+              </strong>
+
+            </div>
+
+          `
+        ).join("");
+
+
+      document.getElementById(
+        "summaryTotal"
+      ).textContent =
+        formatPrice(
+          cartTotal()
+        );
+
+    }
+
+
+    function resetPayPalUI(){
+
+      const startButton =
+        document.getElementById(
+          "paypalStartButton"
+        );
+
+
+      const paypalContainer =
+        document.getElementById(
+          "paypal-button-container"
+        );
+
+
+      if(startButton){
+
+        startButton.style.display =
+          "inline-flex";
+
+        startButton.disabled =
+          false;
+
+        startButton.textContent =
+          "Pay with PayPal";
+
+      }
+
+
+      if(paypalContainer){
+
+        paypalContainer.style.display =
+          "none";
+
+        paypalContainer.innerHTML =
+          "";
+
+      }
+
+
+      paypalButtonsRendered =
+        false;
 
     }
 
@@ -2682,7 +3198,26 @@
 
       if(!cart.length){
 
-        showToast("Your cart is empty");
+        showToast(
+          "Your cart is empty"
+        );
+
+        return;
+
+      }
+
+
+      if(
+        String(
+          settings.currency ||
+          "USD"
+        ).toUpperCase() !==
+        "USD"
+      ){
+
+        showToast(
+          "Checkout requires USD pricing."
+        );
 
         return;
 
@@ -2693,22 +3228,37 @@
 
       renderCheckoutSummary();
 
+      resetPayPalUI();
 
-      document.getElementById("customerForm")
-        .style.display = "";
 
-      document.querySelector(".order-summary")
-        .style.display = "";
+      document.getElementById(
+        "customerForm"
+      ).style.display =
+        "";
 
-      document.getElementById("orderSuccess")
-        .classList.remove("show");
+
+      document.querySelector(
+        ".order-summary"
+      ).style.display =
+        "";
+
+
+      document.getElementById(
+        "orderSuccess"
+      ).classList
+        .remove("show");
 
 
       document
-        .getElementById("checkoutOverlay")
-        .classList.add("open");
+        .getElementById(
+          "checkoutOverlay"
+        )
+        .classList
+        .add("open");
 
-      document.body.style.overflow = "hidden";
+
+      document.body.style.overflow =
+        "hidden";
 
     }
 
@@ -2716,84 +3266,712 @@
     function closeCheckout(){
 
       document
-        .getElementById("checkoutOverlay")
-        .classList.remove("open");
+        .getElementById(
+          "checkoutOverlay"
+        )
+        .classList
+        .remove("open");
 
-      document.body.style.overflow = "";
+
+      document.body.style.overflow =
+        "";
 
     }
 
 
-    function placeOrder(){
+    function validateCheckoutForm(){
 
       if(!cart.length){
 
-        showToast("Your cart is empty");
+        showToast(
+          "Your cart is empty"
+        );
 
-        return;
+        return false;
 
       }
 
 
       const name =
-        document.getElementById("customerName")
-          .value.trim();
+        document.getElementById(
+          "customerName"
+        ).value.trim();
+
 
       const phone =
-        document.getElementById("customerPhone")
-          .value.trim();
+        document.getElementById(
+          "customerPhone"
+        ).value.trim();
 
-      const email =
-        document.getElementById("customerEmail")
-          .value.trim();
 
       const city =
-        document.getElementById("customerCity")
-          .value.trim();
+        document.getElementById(
+          "customerCity"
+        ).value.trim();
+
 
       const address =
-        document.getElementById("customerAddress")
-          .value.trim();
-
-      const notes =
-        document.getElementById("customerNotes")
-          .value.trim();
+        document.getElementById(
+          "customerAddress"
+        ).value.trim();
 
 
       if(!name){
 
-        showToast("Please enter your name");
+        showToast(
+          "Please enter your name"
+        );
 
-        return;
+        return false;
 
       }
 
 
       if(!phone){
 
-        showToast("Please enter your phone number");
+        showToast(
+          "Please enter your phone number"
+        );
 
-        return;
+        return false;
 
       }
 
 
       if(!city){
 
-        showToast("Please enter your city");
+        showToast(
+          "Please enter your city"
+        );
 
-        return;
+        return false;
 
       }
 
 
       if(!address){
 
-        showToast("Please enter your delivery address");
+        showToast(
+          "Please enter your delivery address"
+        );
+
+        return false;
+
+      }
+
+
+      if(
+        String(
+          settings.currency ||
+          "USD"
+        ).toUpperCase() !==
+        "USD"
+      ){
+
+        showToast(
+          "PayPal checkout requires USD pricing."
+        );
+
+        return false;
+
+      }
+
+
+      const amount =
+        cartTotal();
+
+
+      if(
+        !Number.isFinite(amount) ||
+        amount <= 0
+      ){
+
+        showToast(
+          "Invalid order total."
+        );
+
+        return false;
+
+      }
+
+
+      return true;
+
+    }
+
+
+    async function loadPayPalSDK(){
+
+      if(
+        paypalSdkLoaded &&
+        window.paypal
+      ){
+
+        return true;
+
+      }
+
+
+      try{
+
+        const response =
+          await fetch(
+            "/api/paypal-client-id"
+          );
+
+
+        const data =
+          await response.json();
+
+
+        if(
+          !response.ok ||
+          !data.clientId
+        ){
+
+          throw new Error(
+            data.error ||
+            "PayPal Client ID is not configured."
+          );
+
+        }
+
+
+        await new Promise(
+          (
+            resolve,
+            reject
+          ) => {
+
+            const existingScript =
+              document.querySelector(
+                'script[data-paypal-sdk="true"]'
+              );
+
+
+            if(existingScript){
+
+              if(window.paypal){
+
+                resolve();
+
+                return;
+
+              }
+
+
+              existingScript.addEventListener(
+                "load",
+                resolve,
+                {
+                  once:true
+                }
+              );
+
+
+              existingScript.addEventListener(
+                "error",
+                reject,
+                {
+                  once:true
+                }
+              );
+
+
+              return;
+
+            }
+
+
+            const script =
+              document.createElement(
+                "script"
+              );
+
+
+            script.src =
+              "https://www.paypal.com/sdk/js" +
+              "?client-id=" +
+              encodeURIComponent(
+                data.clientId
+              ) +
+              "&currency=USD" +
+              "&intent=capture" +
+              "&components=buttons";
+
+
+            script.async =
+              true;
+
+
+            script.dataset.paypalSdk =
+              "true";
+
+
+            script.onload =
+              () => {
+
+                resolve();
+
+              };
+
+
+            script.onerror =
+              () => {
+
+                reject(
+                  new Error(
+                    "Failed to load PayPal."
+                  )
+                );
+
+              };
+
+
+            document.head.appendChild(
+              script
+            );
+
+          }
+        );
+
+
+        paypalSdkLoaded =
+          true;
+
+
+        return true;
+
+      }catch(error){
+
+        console.error(
+          "PayPal SDK error:",
+          error
+        );
+
+
+        showToast(
+          error.message ||
+          "Unable to connect to PayPal."
+        );
+
+
+        return false;
+
+      }
+
+    }
+
+
+    async function startPayPalPayment(){
+
+      if(
+        !validateCheckoutForm()
+      ){
 
         return;
 
       }
+
+
+      const startButton =
+        document.getElementById(
+          "paypalStartButton"
+        );
+
+
+      const paypalContainer =
+        document.getElementById(
+          "paypal-button-container"
+        );
+
+
+      startButton.disabled =
+        true;
+
+
+      startButton.textContent =
+        "Loading PayPal...";
+
+
+      const loaded =
+        await loadPayPalSDK();
+
+
+      if(!loaded){
+
+        startButton.disabled =
+          false;
+
+
+        startButton.textContent =
+          "Pay with PayPal";
+
+
+        return;
+
+      }
+
+
+      startButton.style.display =
+        "none";
+
+
+      paypalContainer.style.display =
+        "block";
+
+
+      if(paypalButtonsRendered){
+
+        return;
+
+      }
+
+
+      paypalButtonsRendered =
+        true;
+
+
+      paypalContainer.innerHTML =
+        "";
+
+
+      try{
+
+        await window.paypal
+          .Buttons({
+
+            style:{
+
+              layout:
+                "vertical",
+
+              color:
+                "gold",
+
+              shape:
+                "rect",
+
+              label:
+                "paypal",
+
+              height:
+                48
+
+            },
+
+
+            createOrder:
+              async function(){
+
+                try{
+
+                  const amount =
+                    cartTotal();
+
+
+                  if(
+                    !Number.isFinite(
+                      amount
+                    ) ||
+                    amount <= 0
+                  ){
+
+                    throw new Error(
+                      "Invalid order total."
+                    );
+
+                  }
+
+
+                  const response =
+                    await fetch(
+                      "/api/paypal-create-order",
+                      {
+
+                        method:
+                          "POST",
+
+                        headers:{
+                          "Content-Type":
+                            "application/json"
+                        },
+
+                        body:
+                          JSON.stringify({
+
+                            amount:
+                              amount.toFixed(
+                                2
+                              )
+
+                          })
+
+                      }
+                    );
+
+
+                  const data =
+                    await response.json();
+
+
+                  if(!response.ok){
+
+                    throw new Error(
+                      data.error ||
+                      "Failed to create PayPal order."
+                    );
+
+                  }
+
+
+                  if(!data.id){
+
+                    throw new Error(
+                      "PayPal did not return an order ID."
+                    );
+
+                  }
+
+
+                  return data.id;
+
+                }catch(error){
+
+                  console.error(
+                    "PayPal create order error:",
+                    error
+                  );
+
+
+                  showToast(
+                    error.message ||
+                    "Unable to create PayPal order."
+                  );
+
+
+                  throw error;
+
+                }
+
+              },
+
+
+            onApprove:
+              async function(
+                data
+              ){
+
+                try{
+
+                  showToast(
+                    "Processing your payment..."
+                  );
+
+
+                  const response =
+                    await fetch(
+                      "/api/paypal-capture-order",
+                      {
+
+                        method:
+                          "POST",
+
+                        headers:{
+                          "Content-Type":
+                            "application/json"
+                        },
+
+                        body:
+                          JSON.stringify({
+
+                            orderID:
+                              data.orderID
+
+                          })
+
+                      }
+                    );
+
+
+                  const captureData =
+                    await response.json();
+
+
+                  if(!response.ok){
+
+                    throw new Error(
+                      captureData.error ||
+                      "Payment capture failed."
+                    );
+
+                  }
+
+
+                  if(
+                    captureData.status !==
+                    "COMPLETED"
+                  ){
+
+                    throw new Error(
+                      "PayPal payment was not completed."
+                    );
+
+                  }
+
+
+                  const capture =
+                    captureData
+                      ?.purchase_units?.[0]
+                      ?.payments?.captures?.[0];
+
+
+                  const captureId =
+                    capture?.id ||
+                    "";
+
+
+                  savePaidOrder({
+
+                    paypalOrderId:
+                      data.orderID,
+
+                    paypalCaptureId:
+                      captureId,
+
+                    paypalStatus:
+                      captureData.status
+
+                  });
+
+
+                }catch(error){
+
+                  console.error(
+                    "PayPal capture error:",
+                    error
+                  );
+
+
+                  showToast(
+                    error.message ||
+                    "Payment could not be completed."
+                  );
+
+                }
+
+              },
+
+
+            onCancel:
+              function(){
+
+                showToast(
+                  "PayPal payment was cancelled."
+                );
+
+              },
+
+
+            onError:
+              function(error){
+
+                console.error(
+                  "PayPal error:",
+                  error
+                );
+
+
+                showToast(
+                  "PayPal payment could not be completed."
+                );
+
+              }
+
+          })
+          .render(
+            "#paypal-button-container"
+          );
+
+      }catch(error){
+
+        console.error(
+          "PayPal render error:",
+          error
+        );
+
+
+        paypalButtonsRendered =
+          false;
+
+
+        paypalContainer.innerHTML =
+          "";
+
+
+        paypalContainer.style.display =
+          "none";
+
+
+        startButton.style.display =
+          "inline-flex";
+
+
+        startButton.disabled =
+          false;
+
+
+        startButton.textContent =
+          "Pay with PayPal";
+
+
+        showToast(
+          "Unable to display PayPal checkout."
+        );
+
+      }
+
+    }
+
+
+    function savePaidOrder(
+      paymentData
+    ){
+
+      const name =
+        document.getElementById(
+          "customerName"
+        ).value.trim();
+
+
+      const phone =
+        document.getElementById(
+          "customerPhone"
+        ).value.trim();
+
+
+      const email =
+        document.getElementById(
+          "customerEmail"
+        ).value.trim();
+
+
+      const city =
+        document.getElementById(
+          "customerCity"
+        ).value.trim();
+
+
+      const address =
+        document.getElementById(
+          "customerAddress"
+        ).value.trim();
+
+
+      const notes =
+        document.getElementById(
+          "customerNotes"
+        ).value.trim();
 
 
       const orderNumber =
@@ -2805,7 +3983,8 @@
 
       const order = {
 
-        id:orderNumber,
+        id:
+          orderNumber,
 
         createdAt:
           new Date().toISOString(),
@@ -2823,19 +4002,41 @@
 
         items:
           JSON.parse(
-            JSON.stringify(cart)
+            JSON.stringify(
+              cart
+            )
           ),
 
         total:
           cartTotal(),
 
         currency:
-          settings.currency || "EGP"
+          "USD",
+
+        payment:{
+
+          method:
+            "PayPal",
+
+          status:
+            "Paid",
+
+          paypalOrderId:
+            paymentData.paypalOrderId,
+
+          paypalCaptureId:
+            paymentData.paypalCaptureId,
+
+          paypalStatus:
+            paymentData.paypalStatus
+
+        }
 
       };
 
 
-      let orders = [];
+      let orders =
+        [];
 
 
       try{
@@ -2845,14 +4046,23 @@
             "royalFurnitureProOrders"
           );
 
+
         if(saved){
 
           const parsed =
-            JSON.parse(saved);
+            JSON.parse(
+              saved
+            );
 
-          if(Array.isArray(parsed)){
 
-            orders = parsed;
+          if(
+            Array.isArray(
+              parsed
+            )
+          ){
+
+            orders =
+              parsed;
 
           }
 
@@ -2860,36 +4070,52 @@
 
       }catch(error){
 
-        orders = [];
+        orders =
+          [];
 
       }
 
 
-      orders.push(order);
+      orders.push(
+        order
+      );
 
 
       localStorage.setItem(
         "royalFurnitureProOrders",
-        JSON.stringify(orders)
+        JSON.stringify(
+          orders
+        )
       );
 
 
-      document.getElementById("orderNumber")
-        .textContent =
+      document.getElementById(
+        "orderNumber"
+      ).textContent =
         orderNumber;
 
 
-      document.getElementById("customerForm")
-        .style.display = "none";
-
-      document.querySelector(".order-summary")
-        .style.display = "none";
-
-      document.getElementById("orderSuccess")
-        .classList.add("show");
+      document.getElementById(
+        "customerForm"
+      ).style.display =
+        "none";
 
 
-      cart = [];
+      document.querySelector(
+        ".order-summary"
+      ).style.display =
+        "none";
+
+
+      document.getElementById(
+        "orderSuccess"
+      ).classList
+        .add("show");
+
+
+      cart =
+        [];
+
 
       saveCart();
 
@@ -2900,32 +4126,71 @@
     }
 
 
+    /* =========================
+       LEGACY PLACE ORDER
+       Kept for compatibility
+    ========================= */
+
+    function placeOrder(){
+
+      startPayPalPayment();
+
+    }
+
+
     function finishOrder(){
 
-      document.getElementById("checkoutOverlay")
-        .classList.remove("open");
+      document.getElementById(
+        "checkoutOverlay"
+      ).classList
+        .remove("open");
 
-      document.body.style.overflow = "";
 
-      document.getElementById("customerName")
-        .value = "";
+      document.body.style.overflow =
+        "";
 
-      document.getElementById("customerPhone")
-        .value = "";
 
-      document.getElementById("customerEmail")
-        .value = "";
+      document.getElementById(
+        "customerName"
+      ).value =
+        "";
 
-      document.getElementById("customerCity")
-        .value = "";
 
-      document.getElementById("customerAddress")
-        .value = "";
+      document.getElementById(
+        "customerPhone"
+      ).value =
+        "";
 
-      document.getElementById("customerNotes")
-        .value = "";
 
-      window.location.hash = "collections";
+      document.getElementById(
+        "customerEmail"
+      ).value =
+        "";
+
+
+      document.getElementById(
+        "customerCity"
+      ).value =
+        "";
+
+
+      document.getElementById(
+        "customerAddress"
+      ).value =
+        "";
+
+
+      document.getElementById(
+        "customerNotes"
+      ).value =
+        "";
+
+
+      resetPayPalUI();
+
+
+      window.location.hash =
+        "collections";
 
     }
 
@@ -2937,26 +4202,39 @@
     let toastTimer;
 
 
-    function showToast(message){
+    function showToast(
+      message
+    ){
 
       const toast =
-        document.getElementById("toast");
+        document.getElementById(
+          "toast"
+        );
+
 
       toast.textContent =
         message;
 
-      toast.classList.add("show");
+
+      toast.classList
+        .add("show");
 
 
-      clearTimeout(toastTimer);
+      clearTimeout(
+        toastTimer
+      );
 
 
       toastTimer =
-        setTimeout(() => {
+        setTimeout(
+          () => {
 
-          toast.classList.remove("show");
+            toast.classList
+              .remove("show");
 
-        },2500);
+          },
+          2500
+        );
 
     }
 
@@ -2977,11 +4255,14 @@
 
     updateCartCount();
 
-    document.getElementById("year")
-      .textContent =
-      new Date().getFullYear();
+
+    document.getElementById(
+      "year"
+    ).textContent =
+      new Date()
+        .getFullYear();
 
   </script>
 
 </body>
-</html>
+  </html>
