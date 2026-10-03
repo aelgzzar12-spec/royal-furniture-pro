@@ -3623,11 +3623,26 @@ async function startPayPalPayment(){
                 await response.json();
 
 
+              /* =========================
+                 PAYPAL ERROR DETAILS
+              ========================= */
+
               if(!response.ok){
 
+                const paypalError =
+                  data?.paypal?.message ||
+                  data?.paypal?.name ||
+                  data?.paypal?.details?.[0]?.description ||
+                  data?.error ||
+                  "Failed to create PayPal order.";
+
+                console.error(
+                  "PayPal API response:",
+                  data
+                );
+
                 throw new Error(
-                  data.error ||
-                  "Failed to create PayPal order."
+                  paypalError
                 );
 
               }
