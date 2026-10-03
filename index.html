@@ -3804,9 +3804,14 @@ async function startPayPalPayment(){
               error
             );
 
+            const errorMessage =
+              error?.message ||
+              error?.details?.[0]?.description ||
+              error?.details?.[0]?.issue ||
+              "PayPal payment could not be completed.";
 
             showToast(
-              "PayPal payment could not be completed."
+              errorMessage
             );
 
           }
@@ -4183,4 +4188,4 @@ document.getElementById(
 </script>
 
 </body>
-</html>
+  </html>
