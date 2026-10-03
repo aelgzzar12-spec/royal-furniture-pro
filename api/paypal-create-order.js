@@ -1,6 +1,8 @@
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return res.status(405).json({
+      error: "Method not allowed"
+    });
   }
 
   try {
@@ -75,7 +77,7 @@ export default async function handler(req, res) {
     if (!orderResponse.ok) {
       return res.status(orderResponse.status).json({
         error: "Failed to create PayPal order.",
-        details: orderData
+        paypal: orderData
       });
     }
 
