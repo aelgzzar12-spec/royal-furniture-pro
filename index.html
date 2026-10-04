@@ -13,16 +13,18 @@
 
   <style>
     :root{
-      --bg:#f5f2ec;
+      --bg:#f4efe7;
       --surface:#fffdf9;
-      --text:#171717;
-      --muted:#77736c;
-      --line:#ddd8cf;
-      --dark:#171717;
+      --surface-soft:#eee7dc;
+      --text:#1c1916;
+      --muted:#756e65;
+      --line:#ddd3c6;
+      --dark:#1c1916;
       --light:#ffffff;
-      --accent:#a88962;
-      --shadow:0 20px 60px rgba(0,0,0,.10);
-      --radius:18px;
+      --accent:#a88761;
+      --accent-dark:#8d704f;
+      --shadow:0 24px 70px rgba(43,32,21,.13);
+      --radius:20px;
     }
 
     *{
@@ -63,10 +65,9 @@
       text-decoration:none;
     }
 
-    .container{
-      width:min(1200px,92%);
-      margin:auto;
-    }
+    /* =========================
+       HEADER
+    ========================== */
 
     header{
       position:fixed;
@@ -74,83 +75,89 @@
       left:0;
       width:100%;
       z-index:1000;
-      background:rgba(245,242,236,.88);
+      background:rgba(250,247,241,.88);
       backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(0,0,0,.06);
+      border-bottom:1px solid rgba(221,211,198,.7);
     }
 
     .nav{
-      min-height:78px;
+      max-width:1240px;
+      margin:auto;
+      height:78px;
+      padding:0 24px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:30px;
+      gap:24px;
     }
 
     .logo{
-      font-size:24px;
+      font-size:21px;
       font-weight:700;
-      letter-spacing:3px;
+      letter-spacing:2px;
       white-space:nowrap;
+    }
+
+    .logo span{
+      color:var(--accent);
     }
 
     .nav-links{
       display:flex;
-      gap:28px;
       align-items:center;
+      gap:30px;
+      color:#514b44;
+      font-size:14px;
     }
 
     .nav-links a{
-      font-size:14px;
-      color:#4f4b45;
-      transition:.2s;
+      transition:.25s;
     }
 
     .nav-links a:hover{
-      color:#000;
+      color:var(--accent-dark);
     }
 
-    .nav-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .icon-btn{
-      width:44px;
-      height:44px;
+    .cart-button{
       border:1px solid var(--line);
-      background:transparent;
-      border-radius:50%;
+      background:#fffaf3;
+      padding:11px 16px;
+      border-radius:999px;
       display:flex;
       align-items:center;
-      justify-content:center;
-      position:relative;
+      gap:8px;
+      transition:.25s;
+    }
+
+    .cart-button:hover{
+      background:#f1e8dc;
     }
 
     .cart-count{
-      position:absolute;
-      right:-3px;
-      top:-3px;
-      min-width:18px;
-      height:18px;
-      padding:0 4px;
-      border-radius:20px;
-      background:#111;
-      color:#fff;
-      font-size:10px;
+      min-width:22px;
+      height:22px;
+      padding:0 6px;
+      border-radius:999px;
+      background:var(--dark);
+      color:white;
+      font-size:12px;
       display:flex;
       align-items:center;
       justify-content:center;
     }
 
+    /* =========================
+       HERO
+    ========================== */
+
     .hero{
-      min-height:100vh;
+      min-height:820px;
+      height:100vh;
+      max-height:940px;
       position:relative;
       overflow:hidden;
-      display:flex;
-      align-items:flex-end;
       color:white;
+      background:#211b16;
     }
 
     .hero-slides{
@@ -162,9 +169,9 @@
       position:absolute;
       inset:0;
       opacity:0;
-      transition:opacity 1s ease;
       background-size:cover;
       background-position:center;
+      transition:opacity 1.3s ease;
     }
 
     .hero-slide.active{
@@ -175,173 +182,243 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(
-        to top,
-        rgba(0,0,0,.72),
-        rgba(0,0,0,.18),
-        rgba(0,0,0,.15)
-      );
+      background:
+        linear-gradient(
+          90deg,
+          rgba(20,15,11,.76) 0%,
+          rgba(20,15,11,.43) 42%,
+          rgba(20,15,11,.15) 75%,
+          rgba(20,15,11,.25) 100%
+        );
+    }
+
+    /* Luxury apartment interiors */
+    .hero-slide:nth-child(1){
+      background-image:url("https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2200&q=88");
+    }
+
+    .hero-slide:nth-child(2){
+      background-image:url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2200&q=88");
+    }
+
+    .hero-slide:nth-child(3){
+      background-image:url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=88");
+    }
+
+    .hero-slide:nth-child(4){
+      background-image:url("https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=2200&q=88");
     }
 
     .hero-content{
       position:relative;
       z-index:2;
-      width:min(1200px,92%);
-      margin:0 auto;
-      padding:150px 0 90px;
+      min-height:100%;
+      max-width:1240px;
+      margin:auto;
+      padding:150px 24px 100px;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-copy{
+      max-width:680px;
     }
 
     .eyebrow{
-      text-transform:uppercase;
-      letter-spacing:4px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
       font-size:12px;
-      margin-bottom:18px;
-      opacity:.8;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#eadbc7;
+      margin-bottom:20px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:34px;
+      height:1px;
+      background:#c8a97e;
     }
 
     .hero h1{
-      font-size:clamp(48px,8vw,100px);
-      line-height:.95;
-      max-width:900px;
-      font-weight:500;
-      letter-spacing:-4px;
-      margin-bottom:25px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(48px,7vw,88px);
+      line-height:.98;
+      font-weight:400;
+      letter-spacing:-2px;
+      margin-bottom:26px;
     }
 
     .hero p{
-      max-width:600px;
-      font-size:18px;
-      color:rgba(255,255,255,.82);
-      margin-bottom:35px;
+      max-width:590px;
+      font-size:17px;
+      line-height:1.8;
+      color:#eee6dc;
+      margin-bottom:34px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:13px;
+      flex-wrap:wrap;
     }
 
     .btn{
-      border:0;
+      border:none;
+      border-radius:999px;
       padding:14px 24px;
-      border-radius:40px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
+      gap:9px;
       transition:.25s;
-      font-weight:600;
+    }
+
+    .btn-primary{
+      background:#fffaf3;
+      color:#201b16;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      background:#fff;
     }
 
     .btn-dark{
-      background:#111;
-      color:#fff;
+      background:var(--dark);
+      color:white;
     }
 
-    .btn-light{
-      background:#fff;
-      color:#111;
-    }
-
-    .btn-outline{
-      background:transparent;
-      border:1px solid var(--line);
-      color:var(--text);
-    }
-
-    .btn:hover{
+    .btn-dark:hover{
+      background:#302a24;
       transform:translateY(-2px);
     }
 
-    .btn:disabled{
-      opacity:.6;
-      cursor:not-allowed;
-      transform:none;
+    .hero-dots{
+      position:absolute;
+      z-index:5;
+      bottom:38px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:8px;
     }
+
+    .hero-dot{
+      width:8px;
+      height:8px;
+      border:0;
+      border-radius:50%;
+      background:rgba(255,255,255,.4);
+      transition:.3s;
+    }
+
+    .hero-dot.active{
+      width:28px;
+      border-radius:10px;
+      background:#fff;
+    }
+
+    /* =========================
+       SECTION
+    ========================== */
 
     section{
-      padding:100px 0;
+      padding:100px 24px;
     }
 
-    .section-head{
+    .container{
+      max-width:1240px;
+      margin:auto;
+    }
+
+    .section-heading{
       display:flex;
+      align-items:end;
       justify-content:space-between;
-      align-items:flex-end;
       gap:30px;
-      margin-bottom:45px;
+      margin-bottom:42px;
     }
 
-    .section-head h2{
-      font-size:clamp(34px,5vw,58px);
+    .section-heading h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(35px,5vw,54px);
+      font-weight:400;
       line-height:1;
-      font-weight:500;
-      letter-spacing:-2px;
     }
 
-    .section-head p{
-      max-width:480px;
+    .section-heading p{
+      max-width:460px;
       color:var(--muted);
     }
 
+    /* =========================
+       CATEGORIES
+    ========================== */
+
     .categories{
+      background:#fbf8f2;
+    }
+
+    .category-grid{
       display:grid;
       grid-template-columns:repeat(5,1fr);
-      gap:14px;
+      gap:12px;
     }
 
-    .category-card{
-      position:relative;
-      min-height:280px;
-      overflow:hidden;
+    .category{
+      min-height:150px;
+      border:1px solid var(--line);
+      background:var(--surface);
       border-radius:var(--radius);
-      cursor:pointer;
-    }
-
-    .category-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:.6s;
-    }
-
-    .category-card:hover img{
-      transform:scale(1.06);
-    }
-
-    .category-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(transparent,rgba(0,0,0,.65));
-    }
-
-    .category-title{
-      position:absolute;
-      z-index:2;
-      bottom:22px;
-      left:22px;
-      color:white;
-      font-size:20px;
+      padding:24px;
+      display:flex;
+      align-items:end;
+      font-size:17px;
       font-weight:600;
+      transition:.3s;
+    }
+
+    .category:hover{
+      transform:translateY(-5px);
+      box-shadow:var(--shadow);
+      border-color:#c9b79f;
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================== */
+
+    .products-section{
+      background:var(--bg);
     }
 
     .filters{
       display:flex;
-      gap:10px;
       flex-wrap:wrap;
-      margin-bottom:35px;
+      gap:9px;
+      margin-bottom:30px;
     }
 
     .filter-btn{
       border:1px solid var(--line);
       background:transparent;
-      padding:10px 18px;
-      border-radius:30px;
-      color:#5e5a54;
+      color:var(--muted);
+      border-radius:999px;
+      padding:10px 17px;
+      transition:.25s;
     }
 
-    .filter-btn.active,
-    .filter-btn:hover{
-      background:#111;
-      border-color:#111;
-      color:#fff;
+    .filter-btn:hover,
+    .filter-btn.active{
+      background:var(--dark);
+      color:white;
+      border-color:var(--dark);
     }
 
-    .products{
+    .product-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:18px;
@@ -349,22 +426,22 @@
 
     .product-card{
       background:var(--surface);
+      border:1px solid var(--line);
       border-radius:var(--radius);
       overflow:hidden;
-      border:1px solid rgba(0,0,0,.05);
-      cursor:pointer;
       transition:.3s;
+      cursor:pointer;
     }
 
     .product-card:hover{
-      transform:translateY(-5px);
+      transform:translateY(-6px);
       box-shadow:var(--shadow);
     }
 
     .product-image{
       aspect-ratio:1/1;
       overflow:hidden;
-      background:#e8e3da;
+      background:#e8e0d4;
     }
 
     .product-image img{
@@ -375,270 +452,329 @@
     }
 
     .product-card:hover .product-image img{
-      transform:scale(1.04);
+      transform:scale(1.045);
     }
 
     .product-info{
-      padding:20px;
+      padding:18px;
     }
 
     .product-category{
-      color:var(--muted);
-      font-size:11px;
+      color:var(--accent-dark);
       text-transform:uppercase;
-      letter-spacing:1.5px;
-      margin-bottom:7px;
+      letter-spacing:1.4px;
+      font-size:10px;
+      margin-bottom:6px;
     }
 
     .product-name{
-      font-size:18px;
-      margin-bottom:8px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:20px;
+      margin-bottom:10px;
     }
 
-    .product-price{
+    .product-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .price{
       font-weight:700;
+    }
+
+    .add-btn{
+      width:38px;
+      height:38px;
+      border:none;
+      border-radius:50%;
+      background:var(--dark);
+      color:white;
+      font-size:20px;
+      transition:.25s;
+    }
+
+    .add-btn:hover{
+      background:var(--accent-dark);
+      transform:scale(1.06);
+    }
+
+    /* =========================
+       STORY
+    ========================== */
+
+    .story{
+      background:#ebe3d8;
     }
 
     .story-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
+      grid-template-columns:1.05fr .95fr;
+      gap:70px;
       align-items:center;
     }
 
     .story-image{
-      border-radius:var(--radius);
+      min-height:560px;
+      border-radius:28px;
       overflow:hidden;
+      background-image:url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=88");
+      background-size:cover;
+      background-position:center;
+      box-shadow:var(--shadow);
     }
 
-    .story-image img{
-      width:100%;
-      aspect-ratio:4/5;
-      object-fit:cover;
-    }
-
-    .story-text h2{
-      font-size:clamp(38px,5vw,64px);
-      line-height:1;
-      font-weight:500;
-      letter-spacing:-2px;
+    .story-copy h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(40px,5vw,62px);
+      font-weight:400;
+      line-height:1.05;
       margin-bottom:25px;
     }
 
-    .story-text p{
+    .story-copy p{
       color:var(--muted);
-      max-width:520px;
       margin-bottom:20px;
+      max-width:550px;
     }
+
+    /* =========================
+       VALUES
+    ========================== */
 
     .values{
-      background:#1b1b1b;
-      color:#fff;
+      background:#f8f4ed;
     }
 
-    .values-grid{
+    .value-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:1px;
-      background:#444;
-      border:1px solid #444;
+      gap:18px;
     }
 
-    .value{
-      background:#1b1b1b;
-      padding:45px 30px;
+    .value-card{
+      padding:32px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
     }
 
     .value-number{
+      color:var(--accent);
       font-size:13px;
-      color:#aaa;
-      margin-bottom:50px;
+      letter-spacing:2px;
+      margin-bottom:18px;
     }
 
-    .value h3{
-      font-size:25px;
+    .value-card h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:26px;
+      font-weight:400;
       margin-bottom:12px;
     }
 
-    .value p{
-      color:#aaa;
+    .value-card p{
+      color:var(--muted);
     }
+
+    /* =========================
+       FOOTER
+    ========================== */
 
     footer{
-      background:#111;
+      background:#1d1915;
       color:#fff;
-      padding:70px 0 30px;
+      padding:65px 24px 30px;
     }
 
-    .footer-top{
-      display:flex;
-      justify-content:space-between;
-      gap:40px;
-      padding-bottom:60px;
-      border-bottom:1px solid #333;
+    .footer-grid{
+      max-width:1240px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:50px;
+      padding-bottom:45px;
     }
 
-    .footer-logo{
-      font-size:28px;
-      letter-spacing:4px;
+    .footer-brand{
+      font-size:22px;
+      font-weight:700;
+      letter-spacing:2px;
+      margin-bottom:15px;
+    }
+
+    .footer-brand span{
+      color:#c6a77b;
+    }
+
+    footer p{
+      color:#aaa39a;
+      max-width:430px;
+    }
+
+    .footer-title{
+      margin-bottom:16px;
+      font-weight:600;
     }
 
     .footer-links{
       display:flex;
-      gap:25px;
-      flex-wrap:wrap;
-    }
-
-    .footer-links a{
-      color:#aaa;
+      flex-direction:column;
+      gap:10px;
+      color:#aaa39a;
       font-size:14px;
     }
 
-    .footer-bottom{
+    .copyright{
+      max-width:1240px;
+      margin:auto;
       padding-top:25px;
-      color:#777;
+      border-top:1px solid rgba(255,255,255,.1);
+      color:#88827b;
       font-size:13px;
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
     }
+
+    /* =========================
+       MODALS
+    ========================== */
 
     .overlay{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.55);
+      background:rgba(20,16,12,.62);
+      backdrop-filter:blur(5px);
       z-index:2000;
-      opacity:0;
-      visibility:hidden;
-      transition:.25s;
+      display:none;
+      align-items:center;
+      justify-content:center;
       padding:20px;
-      overflow:auto;
     }
 
-    .overlay.open{
-      opacity:1;
-      visibility:visible;
+    .overlay.show{
+      display:flex;
     }
 
     .modal{
-      width:min(950px,100%);
-      margin:50px auto;
+      width:min(720px,100%);
+      max-height:90vh;
+      overflow:auto;
       background:var(--surface);
       border-radius:24px;
-      overflow:hidden;
+      box-shadow:0 30px 100px rgba(0,0,0,.3);
+      padding:28px;
       position:relative;
     }
 
-    .close-btn{
+    .modal-close{
       position:absolute;
-      right:18px;
-      top:18px;
-      width:42px;
-      height:42px;
-      border:0;
+      top:16px;
+      right:16px;
+      width:38px;
+      height:38px;
+      border:1px solid var(--line);
       border-radius:50%;
-      background:rgba(255,255,255,.9);
-      z-index:5;
+      background:white;
+      cursor:pointer;
       font-size:20px;
     }
 
-    .product-modal-grid{
+    .modal h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      font-size:34px;
+      margin-bottom:20px;
+    }
+
+    .modal-product{
       display:grid;
       grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:start;
     }
 
-    .modal-image{
-      min-height:500px;
-    }
-
-    .modal-image img{
+    .modal-product img{
       width:100%;
-      height:100%;
+      aspect-ratio:1/1;
       object-fit:cover;
+      border-radius:18px;
     }
 
-    .modal-details{
-      padding:55px 40px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
+    .modal-price{
+      font-size:23px;
+      font-weight:700;
+      margin:15px 0;
     }
 
-    .modal-details h2{
-      font-size:42px;
-      line-height:1;
-      margin-bottom:15px;
-    }
-
-    .modal-details p{
-      color:var(--muted);
-      margin:20px 0 30px;
-    }
-
-    .cart-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.45);
-      z-index:2500;
-      opacity:0;
-      visibility:hidden;
-      transition:.25s;
-    }
-
-    .cart-overlay.open{
-      opacity:1;
-      visibility:visible;
-    }
+    /* =========================
+       CART
+    ========================== */
 
     .cart-drawer{
-      position:absolute;
-      right:0;
+      position:fixed;
       top:0;
-      height:100%;
-      width:min(470px,100%);
-      background:var(--surface);
-      padding:30px;
+      right:-460px;
+      width:min(430px,100%);
+      height:100vh;
+      z-index:2500;
+      background:#fffdf9;
+      box-shadow:-20px 0 70px rgba(0,0,0,.2);
+      transition:.35s ease;
       display:flex;
       flex-direction:column;
+    }
+
+    .cart-drawer.open{
+      right:0;
     }
 
     .cart-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding-bottom:20px;
+      padding:24px;
       border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
     }
 
     .cart-header h2{
-      font-size:28px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+    }
+
+    .cart-close{
+      width:38px;
+      height:38px;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:white;
     }
 
     .cart-items{
       flex:1;
       overflow:auto;
-      padding:20px 0;
+      padding:20px;
     }
 
     .cart-item{
       display:grid;
-      grid-template-columns:80px 1fr auto;
-      gap:14px;
-      padding:15px 0;
-      border-bottom:1px solid var(--line);
+      grid-template-columns:75px 1fr auto;
+      gap:13px;
       align-items:center;
+      padding:13px 0;
+      border-bottom:1px solid var(--line);
     }
 
     .cart-item img{
-      width:80px;
-      height:80px;
-      object-fit:cover;
+      width:75px;
+      height:75px;
       border-radius:12px;
+      object-fit:cover;
     }
 
     .cart-item-name{
+      font-size:14px;
       font-weight:600;
-      margin-bottom:5px;
+      margin-bottom:4px;
     }
 
     .cart-item-price{
@@ -649,88 +785,61 @@
     .quantity{
       display:flex;
       align-items:center;
-      gap:8px;
+      gap:7px;
       margin-top:8px;
     }
 
     .quantity button{
-      width:26px;
-      height:26px;
+      width:27px;
+      height:27px;
       border:1px solid var(--line);
-      background:transparent;
+      background:white;
       border-radius:50%;
     }
 
-    .cart-remove{
+    .remove-item{
       border:0;
-      background:transparent;
-      color:#999;
+      background:none;
+      color:#a34b3f;
       font-size:12px;
-      margin-top:8px;
+      margin-top:6px;
     }
 
     .cart-footer{
+      padding:20px;
       border-top:1px solid var(--line);
-      padding-top:20px;
     }
 
     .cart-total{
       display:flex;
       justify-content:space-between;
-      font-size:20px;
       font-weight:700;
-      margin-bottom:18px;
+      margin-bottom:14px;
     }
 
     .empty-cart{
       text-align:center;
-      padding:70px 20px;
       color:var(--muted);
+      padding:50px 20px;
     }
 
-    .checkout-modal{
-      width:min(1050px,100%);
-      margin:30px auto;
-      background:var(--surface);
-      border-radius:24px;
-      position:relative;
-      overflow:hidden;
-    }
+    /* =========================
+       CHECKOUT
+    ========================== */
 
     .checkout-form{
-      position:relative;
-      padding:45px;
-    }
-
-    .checkout-title{
-      margin-bottom:30px;
-    }
-
-    .checkout-title h2{
-      font-size:42px;
-      line-height:1;
-      margin-bottom:8px;
-    }
-
-    .checkout-title p{
-      color:var(--muted);
-    }
-
-    .checkout-grid{
       display:grid;
-      grid-template-columns:1.3fr .7fr;
-      gap:40px;
+      gap:15px;
     }
 
     .form-group{
-      margin-bottom:18px;
+      display:grid;
+      gap:7px;
     }
 
     .form-group label{
-      display:block;
       font-size:13px;
       font-weight:600;
-      margin-bottom:7px;
     }
 
     .form-group input,
@@ -738,196 +847,92 @@
     .form-group select{
       width:100%;
       border:1px solid var(--line);
-      background:#fff;
+      background:white;
       border-radius:12px;
       padding:13px 14px;
       outline:none;
     }
 
     .form-group textarea{
-      min-height:110px;
+      min-height:100px;
       resize:vertical;
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus{
-      border-color:#777;
+    .checkout-note{
+      background:#f2ece3;
+      border-radius:14px;
+      padding:14px;
+      color:var(--muted);
+      font-size:13px;
     }
 
-    .order-summary{
-      background:#f0ece4;
-      border-radius:18px;
-      padding:25px;
-      height:max-content;
-    }
-
-    .order-summary h3{
-      margin-bottom:20px;
-    }
-
-    .summary-items{
-      display:flex;
-      flex-direction:column;
-      gap:13px;
-      margin-bottom:20px;
-    }
-
-    .summary-item{
-      display:flex;
-      justify-content:space-between;
-      gap:15px;
-      font-size:14px;
-    }
-
-    .summary-total{
-      border-top:1px solid #d3cec5;
-      padding-top:18px;
-      margin-top:18px;
-      display:flex;
-      justify-content:space-between;
-      font-weight:700;
-      font-size:20px;
-    }
-
-    .checkout-actions{
-      margin-top:25px;
-    }
-
-    .checkout-actions .btn{
-      width:100%;
-    }
-
-    .payment-note{
-      margin-top:12px;
-      font-size:12px;
-      line-height:1.5;
-      color:#777;
+    .success-box{
       text-align:center;
-    }
-
-    .order-success{
-      grid-column:1 / -1;
-      text-align:center;
-      padding:60px 25px;
-      display:none;
-    }
-
-    .order-success.show{
-      display:block;
+      padding:30px 10px;
     }
 
     .success-icon{
       width:70px;
       height:70px;
       border-radius:50%;
-      background:#111;
-      color:#fff;
+      background:#e8eee5;
+      color:#536d4c;
       display:flex;
       align-items:center;
       justify-content:center;
       margin:0 auto 20px;
-      font-size:28px;
+      font-size:30px;
     }
 
-    .order-success h2{
-      font-size:35px;
-      margin-bottom:10px;
-    }
+    /* =========================
+       RESPONSIVE
+    ========================== */
 
-    .order-success p{
-      color:var(--muted);
-      max-width:500px;
-      margin:0 auto 25px;
-    }
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom:25px;
-      transform:translate(-50%,20px);
-      background:#111;
-      color:#fff;
-      padding:13px 20px;
-      border-radius:30px;
-      z-index:5000;
-      opacity:0;
-      pointer-events:none;
-      transition:.3s;
-      font-size:14px;
-    }
-
-    .toast.show{
-      opacity:1;
-      transform:translate(-50%,0);
-    }
-
-    @media(max-width:1000px){
-
-      .categories{
+    @media(max-width:1050px){
+      .product-grid{
         grid-template-columns:repeat(3,1fr);
       }
 
-      .products{
-        grid-template-columns:repeat(2,1fr);
+      .category-grid{
+        grid-template-columns:repeat(3,1fr);
       }
-
     }
 
-    @media(max-width:700px){
-
+    @media(max-width:800px){
       .nav{
-        min-height:68px;
+        height:68px;
       }
 
       .nav-links{
         display:none;
       }
 
-      .logo{
-        font-size:20px;
+      .hero{
+        min-height:720px;
       }
 
       .hero-content{
-        padding-bottom:60px;
+        padding-top:120px;
       }
 
       .hero h1{
         font-size:52px;
-        letter-spacing:-2px;
       }
 
-      section{
-        padding:70px 0;
+      .hero p{
+        font-size:15px;
       }
 
-      .section-head{
+      .section-heading{
         display:block;
       }
 
-      .section-head p{
-        margin-top:20px;
+      .section-heading p{
+        margin-top:18px;
       }
 
-      .categories{
+      .product-grid{
         grid-template-columns:repeat(2,1fr);
-      }
-
-      .category-card{
-        min-height:210px;
-      }
-
-      .products{
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-      }
-
-      .product-info{
-        padding:14px;
-      }
-
-      .product-name{
-        font-size:15px;
       }
 
       .story-grid{
@@ -935,599 +940,596 @@
         gap:35px;
       }
 
-      .values-grid{
+      .story-image{
+        min-height:420px;
+      }
+
+      .value-grid{
         grid-template-columns:1fr;
       }
 
-      .footer-top,
-      .footer-bottom{
-        flex-direction:column;
-      }
-
-      .product-modal-grid{
+      .footer-grid{
         grid-template-columns:1fr;
+        gap:30px;
       }
-
-      .modal-image{
-        min-height:320px;
-      }
-
-      .modal-details{
-        padding:35px 25px;
-      }
-
-      .modal-details h2{
-        font-size:34px;
-      }
-
-      .checkout-grid{
-        grid-template-columns:1fr;
-        gap:25px;
-      }
-
-      .checkout-form{
-        padding:30px 20px;
-      }
-
-      .checkout-title h2{
-        font-size:34px;
-      }
-
     }
 
-    @media(max-width:430px){
-
-      .products{
-        grid-template-columns:1fr;
+    @media(max-width:560px){
+      section{
+        padding:75px 16px;
       }
 
-      .categories{
-        grid-template-columns:1fr 1fr;
+      .nav{
+        padding:0 16px;
+      }
+
+      .logo{
+        font-size:17px;
+      }
+
+      .cart-button{
+        padding:9px 12px;
+      }
+
+      .hero{
+        min-height:700px;
+      }
+
+      .hero-content{
+        padding:115px 20px 90px;
       }
 
       .hero h1{
         font-size:44px;
+        letter-spacing:-1px;
       }
 
-      .cart-drawer{
+      .hero p{
+        font-size:14px;
+        line-height:1.7;
+      }
+
+      .hero-slide{
+        background-position:center;
+      }
+
+      .category-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .category{
+        min-height:120px;
+        padding:18px;
+      }
+
+      .product-grid{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+      }
+
+      .product-info{
+        padding:13px;
+      }
+
+      .product-name{
+        font-size:17px;
+      }
+
+      .product-bottom{
+        align-items:center;
+      }
+
+      .modal{
         padding:20px;
       }
 
+      .modal-product{
+        grid-template-columns:1fr;
+      }
+
+      .modal-product img{
+        max-height:330px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
+  <!-- =========================
+       HEADER
+  ========================== -->
 
-    <a href="#" class="logo" id="storeLogo">
-      ROYAL FURNITURE
-    </a>
+  <header>
+    <nav class="nav">
+      <a href="#" class="logo">
+        ROYAL <span>FURNITURE</span>
+      </a>
 
-    <nav class="nav-links">
-      <a href="#collections">Collection</a>
-      <a href="#categories">Categories</a>
-      <a href="#story">Our Story</a>
-      <a href="#values">Values</a>
-    </nav>
+      <div class="nav-links">
+        <a href="#collection">Collection</a>
+        <a href="#story">Our Story</a>
+        <a href="#values">Values</a>
+      </div>
 
-    <div class="nav-actions">
-
-      <button
-        class="icon-btn"
-        type="button"
-        onclick="openCart()"
-        aria-label="Shopping cart"
-      >
-        🛒
+      <button class="cart-button" onclick="openCart()">
+        Cart
         <span class="cart-count" id="cartCount">0</span>
       </button>
-
-    </div>
-  </div>
-</header>
+    </nav>
+  </header>
 
 
-<section class="hero">
+  <!-- =========================
+       HERO
+  ========================== -->
 
-  <div class="hero-slides">
+  <section class="hero">
 
-    <div
-      class="hero-slide active"
-      style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=85')"
-    ></div>
+    <div class="hero-slides">
 
-    <div
-      class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=85')"
-    ></div>
-
-    <div
-      class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=85')"
-    ></div>
-
-    <div
-      class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1800&q=85')"
-    ></div>
-
-  </div>
-
-  <div class="hero-content">
-
-    <div class="eyebrow">
-      Premium Furniture Collection
-    </div>
-
-    <h1 id="heroTitle">
-      Designed for the way you live.
-    </h1>
-
-    <p id="heroDescription">
-      Refined furniture pieces created to bring comfort,
-      character and timeless elegance into modern spaces.
-    </p>
-
-    <a href="#collections" class="btn btn-light">
-      Explore Collection
-    </a>
-
-  </div>
-
-</section>
-
-
-<section id="categories">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-
-        <div class="eyebrow" style="color:#777">
-          Explore
-        </div>
-
-        <h2>
-          Shop by space
-        </h2>
-
-      </div>
-
-      <p>
-        Discover carefully selected pieces for every room,
-        from welcoming living spaces to refined dining areas.
-      </p>
+      <div class="hero-slide active"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
 
     </div>
 
-
-    <div class="categories">
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Living Room')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
-          alt="Living Room"
-        >
-
-        <div class="category-title">
-          Living Room
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Bedroom')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80"
-          alt="Bedroom"
-        >
-
-        <div class="category-title">
-          Bedroom
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Dining')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=900&q=80"
-          alt="Dining"
-        >
-
-        <div class="category-title">
-          Dining
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Office')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
-          alt="Office"
-        >
-
-        <div class="category-title">
-          Office
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Accessories')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80"
-          alt="Accessories"
-        >
-
-        <div class="category-title">
-          Accessories
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section id="collections">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-
-        <div class="eyebrow" style="color:#777">
-          Collection
-        </div>
-
-        <h2>
-          Selected pieces
-        </h2>
-
-      </div>
-
-      <p>
-        A curated collection designed around comfort,
-        craftsmanship and contemporary living.
-      </p>
-
-    </div>
-
-
-    <div class="filters">
-
-      <button
-        class="filter-btn active"
-        onclick="filterCategory('All', this)"
-      >
-        All
-      </button>
-
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Living Room', this)"
-      >
-        Living Room
-      </button>
-
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Bedroom', this)"
-      >
-        Bedroom
-      </button>
-
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Dining', this)"
-      >
-        Dining
-      </button>
-
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Office', this)"
-      >
-        Office
-      </button>
-
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Accessories', this)"
-      >
-        Accessories
-      </button>
-
-    </div>
-
-
-    <div
-      class="products"
-      id="products"
-    ></div>
-
-  </div>
-
-</section>
-
-
-<section id="story">
-
-  <div class="container">
-
-    <div class="story-grid">
-
-      <div class="story-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
-          alt="Furniture interior"
-        >
-
-      </div>
-
-
-      <div class="story-text">
+    <div class="hero-content">
+      <div class="hero-copy">
 
         <div class="eyebrow">
-          Our Story
+          Royal Furniture
         </div>
 
-        <h2>
-          Furniture with a sense of place.
-        </h2>
+        <h1>
+          Designed for the way you live.
+        </h1>
 
         <p>
-          Royal Furniture brings together timeless forms,
-          natural materials and contemporary design.
+          Refined furniture pieces created to bring comfort,
+          character and timeless elegance into modern spaces.
         </p>
+
+        <div class="hero-actions">
+          <a href="#collection" class="btn btn-primary">
+            Explore Collection
+          </a>
+
+          <a href="#story" class="btn" style="border:1px solid rgba(255,255,255,.35);color:white;">
+            Discover Our Story
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero-dots">
+      <button class="hero-dot active" onclick="goToSlide(0)"></button>
+      <button class="hero-dot" onclick="goToSlide(1)"></button>
+      <button class="hero-dot" onclick="goToSlide(2)"></button>
+      <button class="hero-dot" onclick="goToSlide(3)"></button>
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CATEGORIES
+  ========================== -->
+
+  <section class="categories">
+    <div class="container">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow" style="color:var(--accent-dark);">
+            Explore
+          </div>
+
+          <h2>
+            Spaces with character.
+          </h2>
+        </div>
 
         <p>
-          Every piece is selected to create spaces that feel
-          comfortable, personal and considered.
+          Thoughtfully selected pieces for every corner
+          of a refined modern home.
         </p>
+      </div>
 
-        <a
-          href="#collections"
-          class="btn btn-dark"
-        >
-          Discover the collection
+      <div class="category-grid">
+
+        <a href="#collection" class="category">
+          Living Room
+        </a>
+
+        <a href="#collection" class="category">
+          Bedroom
+        </a>
+
+        <a href="#collection" class="category">
+          Dining
+        </a>
+
+        <a href="#collection" class="category">
+          Office
+        </a>
+
+        <a href="#collection" class="category">
+          Accessories
         </a>
 
       </div>
-
     </div>
-
-  </div>
-
-</section>
+  </section>
 
 
-<section class="values" id="values">
+  <!-- =========================
+       PRODUCTS
+  ========================== -->
 
-  <div class="container">
+  <section class="products-section" id="collection">
+    <div class="container">
 
-    <div class="section-head">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow" style="color:var(--accent-dark);">
+            Collection
+          </div>
 
-      <div>
-
-        <div class="eyebrow">
-          Why Royal
+          <h2>
+            Signature pieces.
+          </h2>
         </div>
-
-        <h2>
-          Made for modern living.
-        </h2>
-
-      </div>
-
-    </div>
-
-
-    <div class="values-grid">
-
-      <div class="value">
-
-        <div class="value-number">
-          01
-        </div>
-
-        <h3>
-          Thoughtful Design
-        </h3>
 
         <p>
-          Clean proportions and timeless details designed
-          to work beautifully across different interiors.
+          Furniture designed to feel beautiful today
+          and remain timeless for years to come.
         </p>
-
       </div>
 
-
-      <div class="value">
-
-        <div class="value-number">
-          02
-        </div>
-
-        <h3>
-          Quality First
-        </h3>
-
-        <p>
-          Furniture selected with attention to materials,
-          comfort and long-term everyday use.
-        </p>
-
-      </div>
-
-
-      <div class="value">
-
-        <div class="value-number">
-          03
-        </div>
-
-        <h3>
-          Personal Spaces
-        </h3>
-
-        <p>
-          Pieces that allow every customer to create a home
-          that reflects their own character.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<footer>
-
-  <div class="container">
-
-    <div class="footer-top">
-
-      <div class="footer-logo" id="footerLogo">
-        ROYAL FURNITURE
-      </div>
-
-      <div class="footer-links">
-
-        <a href="#collections">Collection</a>
-        <a href="#categories">Categories</a>
-        <a href="#story">Story</a>
-        <a href="#values">Values</a>
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-      <div>
-        ©
-        <span id="year"></span>
-        Royal Furniture
-      </div>
-
-      <div>
-        Premium Furniture Store
-      </div>
-
-    </div>
-
-  </div>
-
-</footer>
-
-
-<div
-  class="overlay"
-  id="productOverlay"
-  onclick="closeProductFromOverlay(event)"
->
-
-  <div class="modal">
-
-    <button
-      class="close-btn"
-      onclick="closeModal()"
-      type="button"
-    >
-      ×
-    </button>
-
-
-    <div class="product-modal-grid">
-
-      <div class="modal-image">
-
-        <img
-          id="modalImage"
-          src=""
-          alt=""
-        >
-
-      </div>
-
-
-      <div class="modal-details">
-
-        <div
-          class="product-category"
-          id="modalCategory"
-        ></div>
-
-        <h2 id="modalName"></h2>
-
-        <div
-          class="product-price"
-          id="modalPrice"
-        ></div>
-
-        <p id="modalDescription"></p>
+      <div class="filters">
 
         <button
-          class="btn btn-dark"
-          id="modalAddButton"
-          type="button"
+          class="filter-btn active"
+          onclick="filterProducts('All', this)"
         >
-          Add to Cart
+          All
+        </button>
+
+        <button
+          class="filter-btn"
+          onclick="filterProducts('Living Room', this)"
+        >
+          Living Room
+        </button>
+
+        <button
+          class="filter-btn"
+          onclick="filterProducts('Bedroom', this)"
+        >
+          Bedroom
+        </button>
+
+        <button
+          class="filter-btn"
+          onclick="filterProducts('Dining', this)"
+        >
+          Dining
+        </button>
+
+        <button
+          class="filter-btn"
+          onclick="filterProducts('Office', this)"
+        >
+          Office
+        </button>
+
+        <button
+          class="filter-btn"
+          onclick="filterProducts('Accessories', this)"
+        >
+          Accessories
         </button>
 
       </div>
 
+      <div class="product-grid" id="productGrid"></div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================
+       STORY
+  ========================== -->
+
+  <section class="story" id="story">
+    <div class="container">
+
+      <div class="story-grid">
+
+        <div class="story-image"></div>
+
+        <div class="story-copy">
+
+          <div class="eyebrow" style="color:var(--accent-dark);">
+            Our Story
+          </div>
+
+          <h2>
+            Furniture made for beautiful living.
+          </h2>
+
+          <p>
+            Royal Furniture was created around a simple idea:
+            furniture should make everyday life feel more beautiful.
+          </p>
+
+          <p>
+            We combine natural materials, refined proportions
+            and timeless design to create pieces that belong
+            naturally in modern interiors.
+          </p>
+
+          <a href="#collection" class="btn btn-dark">
+            Explore Collection
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================
+       VALUES
+  ========================== -->
+
+  <section class="values" id="values">
+    <div class="container">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow" style="color:var(--accent-dark);">
+            Our Values
+          </div>
+
+          <h2>
+            Less, but better.
+          </h2>
+        </div>
+
+        <p>
+          Every Royal Furniture piece follows the same
+          principles of quality, comfort and timeless design.
+        </p>
+      </div>
+
+      <div class="value-grid">
+
+        <div class="value-card">
+          <div class="value-number">01</div>
+
+          <h3>
+            Timeless Design
+          </h3>
+
+          <p>
+            Clean silhouettes and balanced proportions
+            designed to stay relevant beyond trends.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-number">02</div>
+
+          <h3>
+            Honest Materials
+          </h3>
+
+          <p>
+            Natural textures, warm woods and carefully
+            selected finishes create authentic character.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-number">03</div>
+
+          <h3>
+            Everyday Comfort
+          </h3>
+
+          <p>
+            Beautiful furniture should also feel effortless,
+            comfortable and practical every day.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-brand">
+          ROYAL <span>FURNITURE</span>
+        </div>
+
+        <p>
+          Premium furniture for modern living.
+          Designed with warmth, simplicity and timeless elegance.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-title">
+          Explore
+        </div>
+
+        <div class="footer-links">
+          <a href="#collection">Collection</a>
+          <a href="#story">Our Story</a>
+          <a href="#values">Values</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">
+          Customer
+        </div>
+
+        <div class="footer-links">
+          <a href="#collection">Shop Furniture</a>
+          <a href="#" onclick="openCart();return false;">Shopping Cart</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Royal Furniture. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       PRODUCT MODAL
+  ========================== -->
+
+  <div class="overlay" id="productOverlay" onclick="closeProductModal(event)">
+
+    <div class="modal">
+
+      <button
+        class="modal-close"
+        onclick="closeProductModal()"
+      >
+        ×
+      </button>
+
+      <div id="productModalContent"></div>
+
     </div>
 
   </div>
 
-</div>
+
+  <!-- =========================
+       CHECKOUT MODAL
+  ========================== -->
+
+  <div class="overlay" id="checkoutOverlay">
+
+    <div class="modal">
+
+      <button
+        class="modal-close"
+        onclick="closeCheckout()"
+      >
+        ×
+      </button>
+
+      <div id="checkoutContent">
+
+        <h2>
+          Checkout
+        </h2>
+
+        <form
+          class="checkout-form"
+          onsubmit="placeOrder(event)"
+        >
+
+          <div class="form-group">
+            <label>
+              Full Name
+            </label>
+
+            <input
+              id="customerName"
+              type="text"
+              required
+              placeholder="Your full name"
+            >
+          </div>
+
+          <div class="form-group">
+            <label>
+              Email
+            </label>
+
+            <input
+              id="customerEmail"
+              type="email"
+              required
+              placeholder="you@example.com"
+            >
+          </div>
+
+          <div class="form-group">
+            <label>
+              Phone
+            </label>
+
+            <input
+              id="customerPhone"
+              type="tel"
+              required
+              placeholder="Your phone number"
+            >
+          </div>
+
+          <div class="form-group">
+            <label>
+              Address
+            </label>
+
+            <textarea
+              id="customerAddress"
+              required
+              placeholder="Delivery address"
+            ></textarea>
+          </div>
+
+          <div class="checkout-note">
+            Payment gateway is not connected yet.
+            Your order will be saved as pending payment.
+          </div>
+
+          <button
+            class="btn btn-dark"
+            type="submit"
+          >
+            Place Order
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
 
 
-<div
-  class="cart-overlay"
-  id="cartOverlay"
-  onclick="closeCartFromOverlay(event)"
->
+  <!-- =========================
+       CART DRAWER
+  ========================== -->
 
-  <aside class="cart-drawer">
+  <div class="cart-drawer" id="cartDrawer">
 
     <div class="cart-header">
 
@@ -1536,8 +1538,7 @@
       </h2>
 
       <button
-        class="icon-btn"
-        type="button"
+        class="cart-close"
         onclick="closeCart()"
       >
         ×
@@ -1545,234 +1546,768 @@
 
     </div>
 
-
     <div
       class="cart-items"
       id="cartItems"
     ></div>
 
-
     <div class="cart-footer">
 
       <div class="cart-total">
-
-        <span>
-          Total
-        </span>
-
-        <span id="cartTotal">
-          0 USD
-        </span>
-
+        <span>Total</span>
+        <span id="cartTotal">$0</span>
       </div>
-
 
       <button
         class="btn btn-dark"
-        style="width:100%"
+        style="width:100%;"
         onclick="openCheckout()"
-        type="button"
-        id="checkoutButton"
       >
-        Proceed to Checkout
+        Checkout
       </button>
 
     </div>
 
-  </aside>
-
-</div>
+  </div>
 
 
-<div
-  class="overlay"
-  id="checkoutOverlay"
->
+  <script>
 
-  <div class="checkout-modal">
+    /* =========================
+       DEFAULT PRODUCTS
+    ========================== */
 
-    <button
-      class="close-btn"
-      onclick="closeCheckout()"
-      type="button"
-    >
-      ×
-    </button>
+    const defaultProducts = [
+      {
+        id: 1,
+        name: "Luna Sofa",
+        category: "Living Room",
+        price: 1290,
+        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85"
+      },
+      {
+        id: 2,
+        name: "Oak Lounge Chair",
+        category: "Living Room",
+        price: 620,
+        image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=85"
+      },
+      {
+        id: 3,
+        name: "Linea Bed",
+        category: "Bedroom",
+        price: 1480,
+        image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=85"
+      },
+      {
+        id: 4,
+        name: "Nora Nightstand",
+        category: "Bedroom",
+        price: 340,
+        image: "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=1000&q=85"
+      },
+      {
+        id: 5,
+        name: "Maison Dining Table",
+        category: "Dining",
+        price: 1650,
+        image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=85"
+      },
+      {
+        id: 6,
+        name: "Arco Dining Chair",
+        category: "Dining",
+        price: 290,
+        image: "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1000&q=85"
+      },
+      {
+        id: 7,
+        name: "Forma Desk",
+        category: "Office",
+        price: 790,
+        image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85"
+      },
+      {
+        id: 8,
+        name: "Sculptural Lamp",
+        category: "Accessories",
+        price: 180,
+        image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=85"
+      }
+    ];
 
 
-    <div class="checkout-form">
-
-      <div class="checkout-title">
-
-        <div
-          class="eyebrow"
-          style="color:#777"
-        >
-          Checkout
-        </div>
-
-        <h2>
-          Complete your order
-        </h2>
-
-        <p>
-          Enter your details to submit your order request.
-        </p>
-
-      </div>
+    let products = [];
+    let cart = [];
+    let currentSlide = 0;
 
 
-      <div
-        class="checkout-grid"
-        id="checkoutGrid"
-      >
+    /* =========================
+       LOAD STORE DATA
+    ========================== */
 
-        <div id="customerForm">
+    function loadStore(){
 
-          <div class="form-group">
+      try{
 
-            <label for="customerName">
-              Full Name *
-            </label>
+        const savedSettings =
+          localStorage.getItem("royalFurnitureProSettings");
 
-            <input
-              id="customerName"
-              type="text"
-              placeholder="Your full name"
-              required
-            >
+        if(savedSettings){
 
+          const settings =
+            JSON.parse(savedSettings);
+
+          if(settings.brandName){
+
+            document.querySelector(".logo").innerHTML =
+              settings.brandName;
+
+          }
+
+          if(settings.heroTitle){
+
+            document.querySelector(".hero h1").textContent =
+              settings.heroTitle;
+
+          }
+
+          if(settings.heroDescription){
+
+            document.querySelector(".hero p").textContent =
+              settings.heroDescription;
+
+          }
+
+          if(settings.accentColor){
+
+            document.documentElement.style
+              .setProperty("--accent", settings.accentColor);
+
+          }
+
+        }
+
+      }catch(error){
+
+        console.error(
+          "Settings load error:",
+          error
+        );
+
+      }
+
+    }
+
+
+    function loadProducts(){
+
+      try{
+
+        const saved =
+          localStorage.getItem(
+            "royalFurnitureProProducts"
+          );
+
+        if(saved){
+
+          const parsed =
+            JSON.parse(saved);
+
+          if(Array.isArray(parsed) && parsed.length){
+
+            products = parsed;
+
+          }else{
+
+            products = [...defaultProducts];
+
+          }
+
+        }else{
+
+          products = [...defaultProducts];
+
+        }
+
+      }catch(error){
+
+        console.error(
+          "Products load error:",
+          error
+        );
+
+        products = [...defaultProducts];
+
+      }
+
+      renderProducts();
+
+    }
+
+
+    /* =========================
+       PRODUCTS
+    ========================== */
+
+    function renderProducts(category = "All"){
+
+      const grid =
+        document.getElementById("productGrid");
+
+      const filtered =
+        category === "All"
+          ? products
+          : products.filter(
+              product =>
+                product.category === category
+            );
+
+      if(!filtered.length){
+
+        grid.innerHTML = `
+          <div style="
+            grid-column:1/-1;
+            text-align:center;
+            padding:50px;
+            color:var(--muted);
+          ">
+            No products found.
           </div>
+        `;
+
+        return;
+
+      }
+
+      grid.innerHTML =
+        filtered.map(product => `
+
+          <article
+            class="product-card"
+            onclick="openProduct(${product.id})"
+          >
+
+            <div class="product-image">
+
+              <img
+                src="${escapeHtml(product.image)}"
+                alt="${escapeHtml(product.name)}"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="product-info">
+
+              <div class="product-category">
+                ${escapeHtml(product.category)}
+              </div>
+
+              <div class="product-name">
+                ${escapeHtml(product.name)}
+              </div>
+
+              <div class="product-bottom">
+
+                <div class="price">
+                  $${Number(product.price).toLocaleString()}
+                </div>
+
+                <button
+                  class="add-btn"
+                  onclick="event.stopPropagation();addToCart(${product.id})"
+                >
+                  +
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        `).join("");
+
+    }
 
 
-          <div class="form-group">
+    function filterProducts(category, button){
 
-            <label for="customerPhone">
-              Phone Number *
-            </label>
+      document
+        .querySelectorAll(".filter-btn")
+        .forEach(btn =>
+          btn.classList.remove("active")
+        );
 
-            <input
-              id="customerPhone"
-              type="tel"
-              placeholder="01xxxxxxxxx"
-              required
-            >
+      button.classList.add("active");
 
-          </div>
+      renderProducts(category);
 
-
-          <div class="form-group">
-
-            <label for="customerEmail">
-              Email
-            </label>
-
-            <input
-              id="customerEmail"
-              type="email"
-              placeholder="you@example.com"
-            >
-
-          </div>
+    }
 
 
-          <div class="form-group">
+    /* =========================
+       PRODUCT MODAL
+    ========================== */
 
-            <label for="customerCity">
-              City *
-            </label>
+    function openProduct(id){
 
-            <input
-              id="customerCity"
-              type="text"
-              placeholder="Your city"
-              required
-            >
+      const product =
+        products.find(
+          item => item.id == id
+        );
 
-          </div>
+      if(!product) return;
 
+      document.getElementById(
+        "productModalContent"
+      ).innerHTML = `
 
-          <div class="form-group">
+        <div class="modal-product">
 
-            <label for="customerAddress">
-              Delivery Address *
-            </label>
+          <img
+            src="${escapeHtml(product.image)}"
+            alt="${escapeHtml(product.name)}"
+          >
 
-            <textarea
-              id="customerAddress"
-              placeholder="Street, building, apartment..."
-              required
-            ></textarea>
+          <div>
 
-          </div>
+            <div class="product-category">
+              ${escapeHtml(product.category)}
+            </div>
 
+            <h2>
+              ${escapeHtml(product.name)}
+            </h2>
 
-          <div class="form-group">
+            <div class="modal-price">
+              $${Number(product.price).toLocaleString()}
+            </div>
 
-            <label for="customerNotes">
-              Order Notes
-            </label>
-
-            <textarea
-              id="customerNotes"
-              placeholder="Optional notes..."
-            ></textarea>
-
-          </div>
-
-        </div>
-
-
-        <div class="order-summary">
-
-          <h3>
-            Order Summary
-          </h3>
-
-          <div
-            class="summary-items"
-            id="summaryItems"
-          ></div>
-
-
-          <div class="summary-total">
-
-            <span>
-              Total
-            </span>
-
-            <span id="summaryTotal">
-              0 USD
-            </span>
-
-          </div>
-
-
-          <div class="checkout-actions">
+            <p style="
+              color:var(--muted);
+              margin-bottom:25px;
+            ">
+              A refined furniture piece designed
+              to bring comfort and timeless elegance
+              into your home.
+            </p>
 
             <button
               class="btn btn-dark"
-              type="button"
-              onclick="placeOrder()"
-              id="placeOrderButton"
+              style="width:100%;"
+              onclick="addToCart(${product.id});closeProductModal();"
             >
-              Place Order
+              Add to Cart
             </button>
-
-            <div class="payment-note">
-              Payment gateway is not connected yet.
-              Your order will be saved as pending payment.
-            </div>
 
           </div>
 
         </div>
 
+      `;
 
-        <div
-          class="order-success"
-          id="orderSuccess"
-        >
+      document
+        .getElementById("productOverlay")
+        .classList.add("show");
+
+    }
+
+
+    function closeProductModal(event){
+
+      if(
+        event &&
+        event.target !==
+        document.getElementById("productOverlay")
+      ){
+
+        return;
+
+      }
+
+      document
+        .getElementById("productOverlay")
+        .classList.remove("show");
+
+    }
+
+
+    /* =========================
+       CART
+    ========================== */
+
+    function loadCart(){
+
+      try{
+
+        const saved =
+          localStorage.getItem(
+            "royalFurnitureProCart"
+          );
+
+        cart =
+          saved
+            ? JSON.parse(saved)
+            : [];
+
+        if(!Array.isArray(cart)){
+          cart = [];
+        }
+
+      }catch(error){
+
+        cart = [];
+
+      }
+
+      renderCart();
+
+    }
+
+
+    function saveCart(){
+
+      localStorage.setItem(
+        "royalFurnitureProCart",
+        JSON.stringify(cart)
+      );
+
+      renderCart();
+
+    }
+
+
+    function addToCart(id){
+
+      const product =
+        products.find(
+          item => item.id == id
+        );
+
+      if(!product) return;
+
+      const existing =
+        cart.find(
+          item => item.id == id
+        );
+
+      if(existing){
+
+        existing.quantity += 1;
+
+      }else{
+
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: Number(product.price),
+          image: product.image,
+          quantity: 1
+        });
+
+      }
+
+      saveCart();
+
+      openCart();
+
+    }
+
+
+    function changeQuantity(id, amount){
+
+      const item =
+        cart.find(
+          product => product.id == id
+        );
+
+      if(!item) return;
+
+      item.quantity += amount;
+
+      if(item.quantity <= 0){
+
+        cart =
+          cart.filter(
+            product => product.id !== id
+          );
+
+      }
+
+      saveCart();
+
+    }
+
+
+    function removeFromCart(id){
+
+      cart =
+        cart.filter(
+          product => product.id !== id
+        );
+
+      saveCart();
+
+    }
+
+
+    function renderCart(){
+
+      const container =
+        document.getElementById("cartItems");
+
+      const count =
+        cart.reduce(
+          (sum, item) =>
+            sum + item.quantity,
+          0
+        );
+
+      document.getElementById(
+        "cartCount"
+      ).textContent = count;
+
+
+      if(!cart.length){
+
+        container.innerHTML = `
+          <div class="empty-cart">
+            Your cart is empty.
+          </div>
+        `;
+
+        document.getElementById(
+          "cartTotal"
+        ).textContent = "$0";
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        cart.map(item => `
+
+          <div class="cart-item">
+
+            <img
+              src="${escapeHtml(item.image)}"
+              alt="${escapeHtml(item.name)}"
+            >
+
+            <div>
+
+              <div class="cart-item-name">
+                ${escapeHtml(item.name)}
+              </div>
+
+              <div class="cart-item-price">
+                $${Number(item.price).toLocaleString()}
+              </div>
+
+              <div class="quantity">
+
+                <button
+                  onclick="changeQuantity(${item.id}, -1)"
+                >
+                  −
+                </button>
+
+                <span>
+                  ${item.quantity}
+                </span>
+
+                <button
+                  onclick="changeQuantity(${item.id}, 1)"
+                >
+                  +
+                </button>
+
+              </div>
+
+              <button
+                class="remove-item"
+                onclick="removeFromCart(${item.id})"
+              >
+                Remove
+              </button>
+
+            </div>
+
+            <strong>
+              $${(
+                Number(item.price) *
+                item.quantity
+              ).toLocaleString()}
+            </strong>
+
+          </div>
+
+        `).join("");
+
+
+      const total =
+        cart.reduce(
+          (sum, item) =>
+            sum +
+            Number(item.price) *
+            item.quantity,
+          0
+        );
+
+      document.getElementById(
+        "cartTotal"
+      ).textContent =
+        "$" + total.toLocaleString();
+
+    }
+
+
+    function openCart(){
+
+      document
+        .getElementById("cartDrawer")
+        .classList.add("open");
+
+    }
+
+
+    function closeCart(){
+
+      document
+        .getElementById("cartDrawer")
+        .classList.remove("open");
+
+    }
+
+
+    /* =========================
+       CHECKOUT
+    ========================== */
+
+    function openCheckout(){
+
+      if(!cart.length){
+
+        alert("Your cart is empty.");
+
+        return;
+
+      }
+
+      document
+        .getElementById("checkoutOverlay")
+        .classList.add("show");
+
+    }
+
+
+    function closeCheckout(){
+
+      document
+        .getElementById("checkoutOverlay")
+        .classList.remove("show");
+
+    }
+
+
+    function placeOrder(event){
+
+      event.preventDefault();
+
+      if(!cart.length){
+
+        alert("Your cart is empty.");
+
+        return;
+
+      }
+
+
+      const name =
+        document
+          .getElementById("customerName")
+          .value
+          .trim();
+
+      const email =
+        document
+          .getElementById("customerEmail")
+          .value
+          .trim();
+
+      const phone =
+        document
+          .getElementById("customerPhone")
+          .value
+          .trim();
+
+      const address =
+        document
+          .getElementById("customerAddress")
+          .value
+          .trim();
+
+
+      const total =
+        cart.reduce(
+          (sum, item) =>
+            sum +
+            Number(item.price) *
+            item.quantity,
+          0
+        );
+
+
+      const orderNumber =
+        "RF-" +
+        Math.floor(
+          10000000 +
+          Math.random() * 90000000
+        );
+
+
+      const order = {
+
+        id: orderNumber,
+
+        customer: {
+          name,
+          email,
+          phone,
+          address
+        },
+
+        items: [...cart],
+
+        total,
+
+        createdAt:
+          new Date().toISOString(),
+
+        payment: {
+          method: "Not Connected",
+          status: "Pending Payment"
+        }
+
+      };
+
+
+      savePendingOrder(order);
+
+
+      cart = [];
+
+      saveCart();
+
+
+      document.getElementById(
+        "checkoutContent"
+      ).innerHTML = `
+
+        <div class="success-box">
 
           <div class="success-icon">
             ✓
@@ -1782,1794 +2317,155 @@
             Order received
           </h2>
 
-          <p>
-            Thank you. Your order request has been received
-            and is currently pending payment confirmation.
+          <p style="
+            color:var(--muted);
+            margin-bottom:10px;
+          ">
+            Thank you. Your order request
+            has been received and is currently
+            pending payment confirmation.
           </p>
 
-          <p>
-            Order number:
-            <strong id="orderNumber"></strong>
+          <p style="
+            margin-bottom:25px;
+            font-weight:700;
+          ">
+            Order #${orderNumber}
           </p>
 
           <button
             class="btn btn-dark"
-            type="button"
-            onclick="finishOrder()"
+            onclick="closeCheckout()"
           >
             Continue Shopping
           </button>
 
         </div>
 
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<div
-  class="toast"
-  id="toast"
-></div>
-
-
-<script>
-
-/* =========================
-   HERO SLIDER
-========================= */
-
-const heroSlides =
-  document.querySelectorAll(".hero-slide");
-
-let heroIndex = 0;
-
-setInterval(() => {
-
-  if(!heroSlides.length){
-    return;
-  }
-
-  heroSlides[heroIndex]
-    .classList.remove("active");
-
-  heroIndex =
-    (heroIndex + 1) %
-    heroSlides.length;
-
-  heroSlides[heroIndex]
-    .classList.add("active");
-
-},5000);
-
-
-/* =========================
-   SETTINGS
-========================= */
-
-const defaultSettings = {
-
-  storeName:
-    "Royal Furniture",
-
-  currency:
-    "USD",
-
-  description:
-    "Refined furniture for modern living.",
-
-  heroTitle:
-    "Designed for the way you live.",
-
-  heroDescription:
-    "Refined furniture pieces created to bring comfort, character and timeless elegance into modern spaces."
-
-};
-
-
-let settings =
-  defaultSettings;
-
-
-function loadStore(){
-
-  try{
-
-    const savedSettings =
-      localStorage.getItem(
-        "royalFurnitureProSettings"
-      );
-
-    if(savedSettings){
-
-      settings = {
-
-        ...defaultSettings,
-
-        ...JSON.parse(savedSettings),
-
-        currency:
-          "USD"
-
-      };
-
-    }else{
-
-      settings = {
-
-        ...defaultSettings,
-
-        currency:
-          "USD"
-
-      };
+      `;
 
     }
 
-  }catch(error){
 
-    settings = {
+    function savePendingOrder(order){
 
-      ...defaultSettings,
+      try{
 
-      currency:
-        "USD"
-
-    };
-
-  }
-
-
-  settings.currency =
-    "USD";
-
-
-  document.title =
-    `${settings.storeName} | Premium Furniture`;
-
-
-  document.getElementById(
-    "storeLogo"
-  ).textContent =
-    String(
-      settings.storeName ||
-      defaultSettings.storeName
-    ).toUpperCase();
-
-
-  document.getElementById(
-    "footerLogo"
-  ).textContent =
-    String(
-      settings.storeName ||
-      defaultSettings.storeName
-    ).toUpperCase();
-
-
-  document.getElementById(
-    "heroTitle"
-  ).textContent =
-    settings.heroTitle ||
-    defaultSettings.heroTitle;
-
-
-  document.getElementById(
-    "heroDescription"
-  ).textContent =
-    settings.heroDescription ||
-    defaultSettings.heroDescription;
-
-}
-
-
-/* =========================
-   PRODUCTS
-========================= */
-
-const fallbackProducts = [
-
-  {
-    id:1,
-    name:"Cloud Sofa",
-    category:"Living Room",
-    price:18500,
-    image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85",
-    description:"A soft contemporary sofa designed for relaxed modern living."
-  },
-
-  {
-    id:2,
-    name:"Lounge Chair",
-    category:"Living Room",
-    price:7200,
-    image:"https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=85",
-    description:"A sculptural lounge chair with a refined silhouette."
-  },
-
-  {
-    id:3,
-    name:"Oak Bed",
-    category:"Bedroom",
-    price:22000,
-    image:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=85",
-    description:"A warm oak bed designed around calm and comfortable spaces."
-  },
-
-  {
-    id:4,
-    name:"Minimal Bedside",
-    category:"Bedroom",
-    price:4500,
-    image:"https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=85",
-    description:"A compact bedside table with clean contemporary lines."
-  },
-
-  {
-    id:5,
-    name:"Dining Table",
-    category:"Dining",
-    price:14500,
-    image:"https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=85",
-    description:"A sophisticated dining table made for everyday gatherings."
-  },
-
-  {
-    id:6,
-    name:"Dining Chair",
-    category:"Dining",
-    price:3800,
-    image:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1000&q=85",
-    description:"Elegant dining seating with a comfortable contemporary profile."
-  },
-
-  {
-    id:7,
-    name:"Executive Desk",
-    category:"Office",
-    price:12500,
-    image:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85",
-    description:"A refined workspace desk designed for modern offices."
-  },
-
-  {
-    id:8,
-    name:"Ceramic Vase",
-    category:"Accessories",
-    price:1200,
-    image:"https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?auto=format&fit=crop&w=1000&q=85",
-    description:"A simple decorative accent for contemporary interiors."
-  }
-
-];
-
-
-let products = [];
-
-
-function getProductId(product){
-
-  if(
-    product &&
-    product.id !== undefined &&
-    product.id !== null
-  ){
-
-    return String(
-      product.id
-    );
-
-  }
-
-  return (
-    "custom-" +
-    String(
-      product?.name ||
-      "product"
-    )
-      .trim()
-      .toLowerCase()
-      .replace(
-        /[^a-z0-9]+/g,
-        "-"
-      ) +
-    "-" +
-    String(
-      product?.image ||
-      ""
-    )
-      .trim()
-      .slice(-30)
-  );
-
-}
-
-
-function loadProducts(){
-
-  try{
-
-    const saved =
-      localStorage.getItem(
-        "royalFurnitureProProducts"
-      );
-
-    if(saved){
-
-      const parsed =
-        JSON.parse(saved);
-
-      if(Array.isArray(parsed)){
-
-        products =
-          parsed.map(
-            (product,index) => {
-
-              return {
-
-                ...product,
-
-                id:
-                  product.id ??
-                  `custom-${index}-${String(product.name || "product")
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]+/g,"-")}`
-
-              };
-
-            }
+        const saved =
+          localStorage.getItem(
+            "royalFurnitureProOrders"
           );
 
-      }
-
-    }
-
-  }catch(error){
-
-    products = [];
-
-  }
-
-
-  if(!products.length){
-
-    products =
-      fallbackProducts;
-
-  }
-
-}
-
-
-function numericPrice(price){
-
-  const number =
-    Number(price);
-
-  return Number.isFinite(number)
-    ? number
-    : 0;
-
-}
-
-
-function formatPrice(price){
-
-  return (
-    numericPrice(price)
-      .toLocaleString(
-        undefined,
-        {
-          minimumFractionDigits:2,
-          maximumFractionDigits:2
-        }
-      ) +
-    " USD"
-  );
-
-}
-
-
-/* =========================
-   PRODUCT FILTER
-========================= */
-
-let activeCategory =
-  "All";
-
-
-function filterCategory(
-  category,
-  clickedButton = null
-){
-
-  activeCategory =
-    category;
-
-
-  document
-    .querySelectorAll(
-      ".filter-btn"
-    )
-    .forEach(
-      button => {
-
-        button.classList
-          .remove("active");
-
-      }
-    );
-
-
-  if(clickedButton){
-
-    clickedButton.classList
-      .add("active");
-
-  }else{
-
-    document
-      .querySelectorAll(
-        ".filter-btn"
-      )
-      .forEach(
-        button => {
-
-          if(
-            button.textContent
-              .trim()
-              .toLowerCase() ===
-            category.toLowerCase()
-          ){
-
-            button.classList
-              .add("active");
-
-          }
-
-        }
-      );
-
-  }
-
-
-  renderProducts();
-
-
-  document
-    .getElementById(
-      "collections"
-    )
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-function renderProducts(){
-
-  const container =
-    document.getElementById(
-      "products"
-    );
-
-
-  const filtered =
-    activeCategory === "All"
-      ? products
-      : products.filter(
-          product =>
-            String(
-              product.category ||
-              ""
-            )
-              .toLowerCase() ===
-            activeCategory
-              .toLowerCase()
-        );
-
-
-  if(!filtered.length){
-
-    container.innerHTML = `
-
-      <div style="
-        grid-column:1/-1;
-        text-align:center;
-        padding:60px 20px;
-        color:#777;
-      ">
-
-        No products available in this category yet.
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    filtered.map(
-      product => {
-
-        const id =
-          getProductId(
-            product
-          );
-
-
-        return `
-
-          <article
-            class="product-card"
-            data-product-id="${escapeHtml(id)}"
-            onclick="openProductById('${escapeAttribute(id)}')"
-          >
-
-            <div class="product-image">
-
-              <img
-                src="${escapeAttribute(product.image || "")}"
-                alt="${escapeAttribute(product.name || "Product")}"
-                loading="lazy"
-                onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80'"
-              >
-
-            </div>
-
-
-            <div class="product-info">
-
-              <div class="product-category">
-                ${escapeHtml(
-                  product.category ||
-                  "Collection"
-                )}
-              </div>
-
-              <div class="product-name">
-                ${escapeHtml(
-                  product.name ||
-                  "Untitled Product"
-                )}
-              </div>
-
-              <div class="product-price">
-                ${formatPrice(
-                  product.price
-                )}
-              </div>
-
-            </div>
-
-          </article>
-
-        `;
-
-      }
-    ).join("");
-
-}
-
-
-function escapeHtml(value){
-
-  return String(
-    value ?? ""
-  )
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-function escapeAttribute(value){
-
-  return escapeHtml(value)
-    .replace(
-      /\\/g,
-      "\\\\"
-    );
-
-}
-
-
-function openProductById(id){
-
-  const product =
-    products.find(
-      item =>
-        getProductId(item) ===
-        String(id)
-    );
-
-
-  if(product){
-
-    openProduct(
-      product
-    );
-
-  }
-
-}
-
-
-let currentProduct =
-  null;
-
-
-function openProduct(product){
-
-  currentProduct =
-    product;
-
-
-  document.getElementById(
-    "modalImage"
-  ).src =
-    product.image ||
-    "";
-
-
-  document.getElementById(
-    "modalImage"
-  ).alt =
-    product.name ||
-    "Product";
-
-
-  document.getElementById(
-    "modalCategory"
-  ).textContent =
-    product.category ||
-    "Collection";
-
-
-  document.getElementById(
-    "modalName"
-  ).textContent =
-    product.name ||
-    "Untitled Product";
-
-
-  document.getElementById(
-    "modalPrice"
-  ).textContent =
-    formatPrice(
-      product.price
-    );
-
-
-  document.getElementById(
-    "modalDescription"
-  ).textContent =
-    product.description ||
-    "A refined furniture piece designed for modern interiors.";
-
-
-  document.getElementById(
-    "modalAddButton"
-  ).onclick =
-    function(){
-
-      addToCart(
-        currentProduct
-      );
-
-      closeModal();
-
-      showToast(
-        "Product added to cart"
-      );
-
-    };
-
-
-  document
-    .getElementById(
-      "productOverlay"
-    )
-    .classList
-    .add("open");
-
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-function closeModal(){
-
-  document
-    .getElementById(
-      "productOverlay"
-    )
-    .classList
-    .remove("open");
-
-
-  document.body.style.overflow =
-    "";
-
-}
-
-
-function closeProductFromOverlay(
-  event
-){
-
-  if(
-    event.target.id ===
-    "productOverlay"
-  ){
-
-    closeModal();
-
-  }
-
-}
-
-
-/* =========================
-   CART
-========================= */
-
-let cart = [];
-
-
-function loadCart(){
-
-  try{
-
-    const saved =
-      localStorage.getItem(
-        "royalFurnitureProCart"
-      );
-
-
-    if(saved){
-
-      const parsed =
-        JSON.parse(saved);
-
-
-      if(Array.isArray(parsed)){
-
-        cart =
-          parsed;
-
-      }
-
-    }
-
-  }catch(error){
-
-    cart = [];
-
-  }
-
-}
-
-
-function saveCart(){
-
-  localStorage.setItem(
-    "royalFurnitureProCart",
-    JSON.stringify(
-      cart
-    )
-  );
-
-}
-
-
-function getCartId(item){
-
-  if(
-    item.cartId !== undefined &&
-    item.cartId !== null
-  ){
-
-    return String(
-      item.cartId
-    );
-
-  }
-
-
-  return getProductId(
-    item
-  );
-
-}
-
-
-function addToCart(product){
-
-  const productId =
-    getProductId(
-      product
-    );
-
-
-  const existing =
-    cart.find(
-      item =>
-        getCartId(item) ===
-        productId
-    );
-
-
-  if(existing){
-
-    existing.quantity =
-      Number(
-        existing.quantity || 1
-      ) + 1;
-
-  }else{
-
-    cart.push({
-
-      ...product,
-
-      cartId:
-        productId,
-
-      quantity:
-        1
-
-    });
-
-  }
-
-
-  saveCart();
-
-  renderCart();
-
-  updateCartCount();
-
-}
-
-
-function removeFromCart(
-  cartId
-){
-
-  cart =
-    cart.filter(
-      item =>
-        getCartId(item) !==
-        String(cartId)
-    );
-
-
-  saveCart();
-
-  renderCart();
-
-  updateCartCount();
-
-}
-
-
-function changeQuantity(
-  cartId,
-  change
-){
-
-  const item =
-    cart.find(
-      product =>
-        getCartId(product) ===
-        String(cartId)
-    );
-
-
-  if(!item){
-
-    return;
-
-  }
-
-
-  item.quantity =
-    Number(
-      item.quantity || 1
-    ) +
-    Number(
-      change
-    );
-
-
-  if(
-    item.quantity <= 0
-  ){
-
-    removeFromCart(
-      cartId
-    );
-
-    return;
-
-  }
-
-
-  saveCart();
-
-  renderCart();
-
-  updateCartCount();
-
-}
-
-
-function cartTotal(){
-
-  return cart.reduce(
-    (
-      total,
-      item
-    ) =>
-      total +
-      numericPrice(
-        item.price
-      ) *
-      Number(
-        item.quantity || 1
-      ),
-    0
-  );
-
-}
-
-
-function cartItemsCount(){
-
-  return cart.reduce(
-    (
-      total,
-      item
-    ) =>
-      total +
-      Number(
-        item.quantity || 1
-      ),
-    0
-  );
-
-}
-
-
-function updateCartCount(){
-
-  document.getElementById(
-    "cartCount"
-  ).textContent =
-    cartItemsCount();
-
-}
-
-
-function renderCart(){
-
-  const container =
-    document.getElementById(
-      "cartItems"
-    );
-
-
-  if(!cart.length){
-
-    container.innerHTML = `
-
-      <div class="empty-cart">
-
-        <div style="font-size:40px;margin-bottom:15px;">
-          🛒
-        </div>
-
-        <p>
-          Your cart is empty.
-        </p>
-
-        <button
-          class="btn btn-dark"
-          style="margin-top:20px;"
-          onclick="closeCart()"
-          type="button"
-        >
-          Continue Shopping
-        </button>
-
-      </div>
-
-    `;
-
-
-    document.getElementById(
-      "cartTotal"
-    ).textContent =
-      formatPrice(0);
-
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    cart.map(
-      item => {
-
-        const id =
-          getCartId(
-            item
-          );
-
-
-        return `
-
-          <div class="cart-item">
-
-            <img
-              src="${escapeAttribute(item.image || "")}"
-              alt="${escapeAttribute(item.name || "Product")}"
-            >
-
-
-            <div>
-
-              <div class="cart-item-name">
-                ${escapeHtml(
-                  item.name ||
-                  "Product"
-                )}
-              </div>
-
-
-              <div class="cart-item-price">
-                ${formatPrice(
-                  item.price
-                )}
-              </div>
-
-
-              <div class="quantity">
-
-                <button
-                  type="button"
-                  onclick="changeQuantity('${escapeAttribute(id)}',-1)"
-                >
-                  −
-                </button>
-
-
-                <span>
-                  ${Number(
-                    item.quantity || 1
-                  )}
-                </span>
-
-
-                <button
-                  type="button"
-                  onclick="changeQuantity('${escapeAttribute(id)}',1)"
-                >
-                  +
-                </button>
-
-              </div>
-
-
-              <button
-                class="cart-remove"
-                type="button"
-                onclick="removeFromCart('${escapeAttribute(id)}')"
-              >
-                Remove
-              </button>
-
-            </div>
-
-
-            <strong>
-              ${formatPrice(
-                numericPrice(
-                  item.price
-                ) *
-                Number(
-                  item.quantity || 1
-                )
-              )}
-            </strong>
-
-          </div>
-
-        `;
-
-      }
-    ).join("");
-
-
-  document.getElementById(
-    "cartTotal"
-  ).textContent =
-    formatPrice(
-      cartTotal()
-    );
-
-}
-
-
-function openCart(){
-
-  renderCart();
-
-
-  document
-    .getElementById(
-      "cartOverlay"
-    )
-    .classList
-    .add("open");
-
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-function closeCart(){
-
-  document
-    .getElementById(
-      "cartOverlay"
-    )
-    .classList
-    .remove("open");
-
-
-  document.body.style.overflow =
-    "";
-
-}
-
-
-function closeCartFromOverlay(
-  event
-){
-
-  if(
-    event.target.id ===
-    "cartOverlay"
-  ){
-
-    closeCart();
-
-  }
-
-}
-
-
-/* =========================
-   CHECKOUT
-   NO PAYPAL
-========================= */
-
-function renderCheckoutSummary(){
-
-  const container =
-    document.getElementById(
-      "summaryItems"
-    );
-
-
-  if(!cart.length){
-
-    container.innerHTML =
-      "<p>Your cart is empty.</p>";
-
-
-    document.getElementById(
-      "summaryTotal"
-    ).textContent =
-      formatPrice(0);
-
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    cart.map(
-      item => `
-
-        <div class="summary-item">
-
-          <span>
-            ${escapeHtml(
-              item.name ||
-              "Product"
-            )}
-            ×
-            ${Number(
-              item.quantity || 1
-            )}
-          </span>
-
-
-          <strong>
-            ${formatPrice(
-              numericPrice(
-                item.price
-              ) *
-              Number(
-                item.quantity || 1
-              )
-            )}
-          </strong>
-
-        </div>
-
-      `
-    ).join("");
-
-
-  document.getElementById(
-    "summaryTotal"
-  ).textContent =
-    formatPrice(
-      cartTotal()
-    );
-
-}
-
-
-function openCheckout(){
-
-  if(!cart.length){
-
-    showToast(
-      "Your cart is empty"
-    );
-
-    return;
-
-  }
-
-
-  settings.currency =
-    "USD";
-
-
-  closeCart();
-
-  renderCheckoutSummary();
-
-
-  document.getElementById(
-    "customerForm"
-  ).style.display =
-    "";
-
-
-  document.querySelector(
-    ".order-summary"
-  ).style.display =
-    "";
-
-
-  document.getElementById(
-    "orderSuccess"
-  ).classList
-    .remove("show");
-
-
-  document
-    .getElementById(
-      "checkoutOverlay"
-    )
-    .classList
-    .add("open");
-
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-function closeCheckout(){
-
-  document
-    .getElementById(
-      "checkoutOverlay"
-    )
-    .classList
-    .remove("open");
-
-
-  document.body.style.overflow =
-    "";
-
-}
-
-
-function validateCheckoutForm(){
-
-  if(!cart.length){
-
-    showToast(
-      "Your cart is empty"
-    );
-
-    return false;
-
-  }
-
-
-  const name =
-    document.getElementById(
-      "customerName"
-    ).value.trim();
-
-
-  const phone =
-    document.getElementById(
-      "customerPhone"
-    ).value.trim();
-
-
-  const city =
-    document.getElementById(
-      "customerCity"
-    ).value.trim();
-
-
-  const address =
-    document.getElementById(
-      "customerAddress"
-    ).value.trim();
-
-
-  if(!name){
-
-    showToast(
-      "Please enter your name"
-    );
-
-    return false;
-
-  }
-
-
-  if(!phone){
-
-    showToast(
-      "Please enter your phone number"
-    );
-
-    return false;
-
-  }
-
-
-  if(!city){
-
-    showToast(
-      "Please enter your city"
-    );
-
-    return false;
-
-  }
-
-
-  if(!address){
-
-    showToast(
-      "Please enter your delivery address"
-    );
-
-    return false;
-
-  }
-
-
-  settings.currency =
-    "USD";
-
-
-  const amount =
-    cartTotal();
-
-
-  if(
-    !Number.isFinite(amount) ||
-    amount <= 0
-  ){
-
-    showToast(
-      "Invalid order total."
-    );
-
-    return false;
-
-  }
-
-
-  return true;
-
-}
-
-
-/* =========================
-   CREATE LOCAL ORDER
-   PAYMENT PENDING
-========================= */
-
-function placeOrder(){
-
-  if(
-    !validateCheckoutForm()
-  ){
-
-    return;
-
-  }
-
-
-  const button =
-    document.getElementById(
-      "placeOrderButton"
-    );
-
-
-  button.disabled =
-    true;
-
-
-  button.textContent =
-    "Submitting Order...";
-
-
-  savePendingOrder();
-
-
-  button.disabled =
-    false;
-
-
-  button.textContent =
-    "Place Order";
-
-}
-
-
-function savePendingOrder(){
-
-  const name =
-    document.getElementById(
-      "customerName"
-    ).value.trim();
-
-
-  const phone =
-    document.getElementById(
-      "customerPhone"
-    ).value.trim();
-
-
-  const email =
-    document.getElementById(
-      "customerEmail"
-    ).value.trim();
-
-
-  const city =
-    document.getElementById(
-      "customerCity"
-    ).value.trim();
-
-
-  const address =
-    document.getElementById(
-      "customerAddress"
-    ).value.trim();
-
-
-  const notes =
-    document.getElementById(
-      "customerNotes"
-    ).value.trim();
-
-
-  const orderNumber =
-    "RF-" +
-    Date.now()
-      .toString()
-      .slice(-8);
-
-
-  const order = {
-
-    id:
-      orderNumber,
-
-    createdAt:
-      new Date().toISOString(),
-
-    customer:{
-
-      name,
-      phone,
-      email,
-      city,
-      address,
-      notes
-
-    },
-
-    items:
-      JSON.parse(
-        JSON.stringify(
-          cart
-        )
-      ),
-
-    total:
-      cartTotal(),
-
-    currency:
-      "USD",
-
-    payment:{
-
-      method:
-        "Not Connected",
-
-      status:
-        "Pending Payment"
-
-    }
-
-  };
-
-
-  let orders =
-    [];
-
-
-  try{
-
-    const saved =
-      localStorage.getItem(
-        "royalFurnitureProOrders"
-      );
-
-
-    if(saved){
-
-      const parsed =
-        JSON.parse(
+        const orders =
           saved
+            ? JSON.parse(saved)
+            : [];
+
+        orders.push(order);
+
+        localStorage.setItem(
+          "royalFurnitureProOrders",
+          JSON.stringify(orders)
         );
 
+      }catch(error){
 
-      if(
-        Array.isArray(
-          parsed
-        )
-      ){
-
-        orders =
-          parsed;
+        console.error(
+          "Order save error:",
+          error
+        );
 
       }
 
     }
 
-  }catch(error){
 
-    orders =
-      [];
+    /* =========================
+       HERO SLIDER
+    ========================== */
 
-  }
+    function goToSlide(index){
 
+      const slides =
+        document.querySelectorAll(
+          ".hero-slide"
+        );
 
-  orders.push(
-    order
-  );
+      const dots =
+        document.querySelectorAll(
+          ".hero-dot"
+        );
 
+      slides.forEach(
+        slide =>
+          slide.classList.remove("active")
+      );
 
-  localStorage.setItem(
-    "royalFurnitureProOrders",
-    JSON.stringify(
-      orders
-    )
-  );
+      dots.forEach(
+        dot =>
+          dot.classList.remove("active")
+      );
 
+      currentSlide = index;
 
-  document.getElementById(
-    "orderNumber"
-  ).textContent =
-    orderNumber;
+      if(slides[index]){
+        slides[index].classList.add("active");
+      }
 
+      if(dots[index]){
+        dots[index].classList.add("active");
+      }
 
-  document.getElementById(
-    "customerForm"
-  ).style.display =
-    "none";
-
-
-  document.querySelector(
-    ".order-summary"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "orderSuccess"
-  ).classList
-    .add("show");
+    }
 
 
-  cart =
-    [];
+    function nextSlide(){
+
+      const total =
+        document.querySelectorAll(
+          ".hero-slide"
+        ).length;
+
+      goToSlide(
+        (currentSlide + 1) % total
+      );
+
+    }
 
 
-  saveCart();
-
-  renderCart();
-
-  updateCartCount();
-
-
-  showToast(
-    "Order request received"
-  );
-
-}
-
-
-function finishOrder(){
-
-  document.getElementById(
-    "checkoutOverlay"
-  ).classList
-    .remove("open");
-
-
-  document.body.style.overflow =
-    "";
-
-
-  document.getElementById(
-    "customerName"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerPhone"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerEmail"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerCity"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerAddress"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerNotes"
-  ).value =
-    "";
-
-
-  window.location.hash =
-    "collections";
-
-}
-
-
-/* =========================
-   TOAST
-========================= */
-
-let toastTimer;
-
-
-function showToast(
-  message
-){
-
-  const toast =
-    document.getElementById(
-      "toast"
+    setInterval(
+      nextSlide,
+      5000
     );
 
 
-  toast.textContent =
-    message;
+    /* =========================
+       SECURITY / TEXT HELPERS
+    ========================== */
+
+    function escapeHtml(value){
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
 
 
-  toast.classList
-    .add("show");
+    /* =========================
+       INITIALIZE
+    ========================== */
 
+    loadStore();
 
-  clearTimeout(
-    toastTimer
-  );
+    loadProducts();
 
+    loadCart();
 
-  toastTimer =
-    setTimeout(
-      () => {
-
-        toast.classList
-          .remove("show");
-
-      },
-      2500
-    );
-
-}
-
-
-/* =========================
-   INIT
-========================= */
-
-loadStore();
-
-loadProducts();
-
-loadCart();
-
-renderProducts();
-
-renderCart();
-
-updateCartCount();
-
-
-document.getElementById(
-  "year"
-).textContent =
-  new Date()
-    .getFullYear();
-
-</script>
+  </script>
 
 </body>
-  </html>
+</html>
