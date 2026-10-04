@@ -196,6 +196,72 @@
       font-size: 13px;
     }
 
+    /* =========================
+       IMAGE UPLOAD
+    ========================== */
+
+    .image-upload-box {
+      border: 1px dashed #bdb7ae;
+      background: #f4f1ec;
+      padding: 16px;
+      border-radius: 6px;
+    }
+
+    .image-preview {
+      width: 100%;
+      max-width: 260px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #ddd7ce;
+      background: #e8e3db;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .image-preview.show {
+      display: block;
+    }
+
+    .image-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .choose-image {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #171717;
+      color: #fff;
+      padding: 11px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .choose-image input {
+      display: none;
+    }
+
+    .remove-image {
+      border: 1px solid #cfcac2;
+      background: #fff;
+      color: #555;
+      padding: 10px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .image-status {
+      margin-top: 10px;
+      color: #777;
+      font-size: 12px;
+    }
+
     @media (max-width: 700px) {
 
       header {
@@ -226,6 +292,7 @@
         grid-template-columns: 1fr;
         gap: 0;
       }
+
     }
   </style>
 </head>
@@ -272,6 +339,7 @@
     </p>
 
   </div>
+
 
   <!-- STORE INFORMATION -->
 
@@ -331,6 +399,7 @@
 
   </section>
 
+
   <!-- HERO -->
 
   <section class="panel">
@@ -368,6 +437,7 @@
 
   </section>
 
+
   <!-- PRODUCTS -->
 
   <section class="panel">
@@ -388,6 +458,7 @@
 
   </section>
 
+
   <button
     class="save"
     onclick="saveEverything()"
@@ -404,6 +475,7 @@
   </div>
 
 </main>
+
 
 <script>
 
@@ -427,6 +499,10 @@
 
   ];
 
+
+  /* =========================
+     CREATE PRODUCT
+  ========================== */
 
   function createProduct(product) {
 
@@ -453,6 +529,7 @@
 
       </div>
 
+
       <div class="grid">
 
         <div class="field">
@@ -469,6 +546,7 @@
 
         </div>
 
+
         <div class="field">
 
           <label>
@@ -484,6 +562,7 @@
         </div>
 
       </div>
+
 
       <div class="field">
 
@@ -522,6 +601,7 @@
 
       </div>
 
+
       <div class="field">
 
         <label>
@@ -536,6 +616,9 @@
 
       </div>
 
+
+      <!-- IMAGE URL -->
+
       <div class="field">
 
         <label>
@@ -547,7 +630,56 @@
           type="text"
           value="${escapeHtml(product.image)}"
           placeholder="assets/product.jpg"
+          oninput="updateImagePreview(this)"
         >
+
+      </div>
+
+
+      <!-- IMAGE UPLOAD -->
+
+      <div class="field">
+
+        <label>
+          Product Image
+        </label>
+
+        <div class="image-upload-box">
+
+          <img
+            class="image-preview"
+            alt="Product preview"
+          >
+
+          <div class="image-actions">
+
+            <label class="choose-image">
+
+              Choose Image
+
+              <input
+                type="file"
+                accept="image/*"
+                onchange="handleImageUpload(this)"
+              >
+
+            </label>
+
+            <button
+              type="button"
+              class="remove-image"
+              onclick="removeProductImage(this)"
+            >
+              Remove Image
+            </button>
+
+          </div>
+
+          <div class="image-status">
+            Choose a photo from your phone or computer.
+          </div>
+
+        </div>
 
       </div>
 
@@ -557,8 +689,337 @@
       .getElementById("products")
       .appendChild(wrapper);
 
+
+    /*
+      Show existing image immediately.
+    */
+
+    const imageInput =
+      wrapper.querySelector(".product-image");
+
+    updateImagePreview(imageInput);
+
   }
 
+
+  /* =========================
+     IMAGE UPLOAD
+  ========================== */
+
+  function handleImageUpload(fileInput) {
+
+    const file =
+      fileInput.files &&
+      fileInput.files[0];
+
+    if (!file) return;
+
+
+    if (!file.type.startsWith("image/")) {
+
+      alert("Please choose an image file.");
+
+      fileInput.value = "";
+
+      return;
+
+    }
+
+
+    /*
+      Limit original file size to 10 MB.
+    */
+
+    if (file.size > 10 * 1024 * 1024) {
+
+      alert(
+        "This image is too large. Please choose an image under 10 MB."
+      );
+
+      fileInput.value = "";
+
+      return;
+
+    }
+
+
+    const product =
+      fileInput.closest(".product");
+
+
+    const status =
+      product.querySelector(".image-status");
+
+
+    status.textContent =
+      "Preparing image...";
+
+
+    compressImage(
+      file,
+      1200,
+      0.82
+    )
+    .then(dataUrl => {
+
+      /*
+        Put the compressed image
+        into the existing Image URL field.
+      */
+
+      product
+        .querySelector(".product-image")
+        .value = dataUrl;
+
+
+      updateImagePreview(
+        product.querySelector(".product-image")
+      );
+
+
+      status.textContent =
+        "Image selected from your device.";
+
+    })
+    .catch(error => {
+
+      console.error(
+        "Image processing error:",
+        error
+      );
+
+      status.textContent =
+        "Could not process this image.";
+
+      alert(
+        "Could not process this image. Please try another photo."
+      );
+
+    });
+
+  }
+
+
+  /*
+    Compresses the selected image
+    before saving it into localStorage.
+  */
+
+  function compressImage(
+    file,
+    maxSize,
+    quality
+  ) {
+
+    return new Promise(
+      (resolve, reject) => {
+
+        const reader =
+          new FileReader();
+
+
+        reader.onload = event => {
+
+          const image =
+            new Image();
+
+
+          image.onload = () => {
+
+            let width =
+              image.width;
+
+            let height =
+              image.height;
+
+
+            if(width > maxSize){
+
+              height =
+                Math.round(
+                  height *
+                  (maxSize / width)
+                );
+
+              width =
+                maxSize;
+
+            }
+
+
+            if(height > maxSize){
+
+              width =
+                Math.round(
+                  width *
+                  (maxSize / height)
+                );
+
+              height =
+                maxSize;
+
+            }
+
+
+            const canvas =
+              document.createElement("canvas");
+
+
+            canvas.width =
+              width;
+
+            canvas.height =
+              height;
+
+
+            const ctx =
+              canvas.getContext("2d");
+
+
+            ctx.drawImage(
+              image,
+              0,
+              0,
+              width,
+              height
+            );
+
+
+            resolve(
+              canvas.toDataURL(
+                "image/jpeg",
+                quality
+              )
+            );
+
+          };
+
+
+          image.onerror =
+            reject;
+
+
+          image.src =
+            event.target.result;
+
+        };
+
+
+        reader.onerror =
+          reject;
+
+
+        reader.readAsDataURL(file);
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     IMAGE PREVIEW
+  ========================== */
+
+  function updateImagePreview(input) {
+
+    const product =
+      input.closest(".product");
+
+    if(!product) return;
+
+
+    const preview =
+      product.querySelector(".image-preview");
+
+    const status =
+      product.querySelector(".image-status");
+
+    const value =
+      input.value.trim();
+
+
+    if(!value){
+
+      preview.removeAttribute("src");
+
+      preview.classList.remove("show");
+
+      status.textContent =
+        "Choose a photo from your phone or computer.";
+
+      return;
+
+    }
+
+
+    preview.src = value;
+
+    preview.classList.add("show");
+
+    preview.onload = () => {
+
+      status.textContent =
+        "Image preview ready.";
+
+    };
+
+    preview.onerror = () => {
+
+      preview.classList.remove("show");
+
+      status.textContent =
+        "Image URL could not be loaded.";
+
+    };
+
+  }
+
+
+  function removeProductImage(button) {
+
+    const product =
+      button.closest(".product");
+
+
+    product
+      .querySelector(".product-image")
+      .value = "";
+
+
+    const fileInput =
+      product.querySelector(
+        'input[type="file"]'
+      );
+
+
+    if(fileInput){
+
+      fileInput.value = "";
+
+    }
+
+
+    const preview =
+      product.querySelector(".image-preview");
+
+
+    preview.removeAttribute("src");
+
+    preview.classList.remove("show");
+
+
+    product
+      .querySelector(".image-status")
+      .textContent =
+      "Image removed.";
+
+  }
+
+
+  /* =========================
+     ESCAPE HTML
+  ========================== */
 
   function escapeHtml(value) {
 
@@ -571,40 +1032,72 @@
   }
 
 
+  /* =========================
+     LOAD SETTINGS
+  ========================== */
+
   function loadSettings() {
 
     const settings =
       JSON.parse(
-        localStorage.getItem("royalFurnitureProSettings")
+        localStorage.getItem(
+          "royalFurnitureProSettings"
+        )
       ) || {};
 
-    document.getElementById("storeName").value =
-      settings.storeName || "Royal Furniture";
 
-    document.getElementById("currency").value =
-      settings.currency || "$";
+    document.getElementById(
+      "storeName"
+    ).value =
+      settings.storeName ||
+      "Royal Furniture";
 
-    document.getElementById("storeDescription").value =
+
+    document.getElementById(
+      "currency"
+    ).value =
+      settings.currency ||
+      "$";
+
+
+    document.getElementById(
+      "storeDescription"
+    ).value =
       settings.storeDescription ||
       "A curated selection of furniture created for contemporary interiors and elegant spaces.";
 
-    document.getElementById("heroTitle").value =
+
+    document.getElementById(
+      "heroTitle"
+    ).value =
       settings.heroTitle ||
       "Furniture made for modern living.";
 
-    document.getElementById("heroDescription").value =
+
+    document.getElementById(
+      "heroDescription"
+    ).value =
       settings.heroDescription ||
       "Discover refined furniture pieces designed to bring comfort, character and timeless style into your space.";
 
+
     const savedProducts =
       JSON.parse(
-        localStorage.getItem("royalFurnitureProProducts")
+        localStorage.getItem(
+          "royalFurnitureProProducts"
+        )
       );
 
-    const products =
-      savedProducts || defaultProducts;
 
-    document.getElementById("products").innerHTML = "";
+    const products =
+      savedProducts ||
+      defaultProducts;
+
+
+    document.getElementById(
+      "products"
+    ).innerHTML = "";
+
 
     products.forEach(product => {
 
@@ -612,7 +1105,9 @@
 
         ...product,
 
-        category: product.category || "Living Room"
+        category:
+          product.category ||
+          "Living Room"
 
       });
 
@@ -620,6 +1115,10 @@
 
   }
 
+
+  /* =========================
+     ADD PRODUCT
+  ========================== */
 
   function addProduct() {
 
@@ -629,16 +1128,23 @@
 
       price: "0",
 
-      description: "Product description",
+      description:
+        "Product description",
 
-      image: "assets/product.jpg",
+      image:
+        "",
 
-      category: "Living Room"
+      category:
+        "Living Room"
 
     });
 
   }
 
+
+  /* =========================
+     DELETE PRODUCT
+  ========================== */
 
   function deleteProduct(button) {
 
@@ -650,9 +1156,14 @@
   }
 
 
+  /* =========================
+     COLLECT PRODUCTS
+  ========================== */
+
   function collectProducts() {
 
     const products = [];
+
 
     document
       .querySelectorAll(".product")
@@ -664,16 +1175,19 @@
             .value
             .trim();
 
+
         const price =
           product
             .querySelector(".product-price")
             .value
             .trim();
 
+
         const category =
           product
             .querySelector(".product-category")
             .value;
+
 
         const description =
           product
@@ -681,28 +1195,40 @@
             .value
             .trim();
 
+
         const image =
           product
             .querySelector(".product-image")
             .value
             .trim();
 
-        if (name) {
+
+        if(name){
 
           products.push({
 
-            name: name,
+            name:
 
-            price: price,
+              name,
+
+            price:
+
+              price,
 
             category:
-              category || "Living Room",
+
+              category ||
+              "Living Room",
 
             description:
-              description || "Furniture product",
+
+              description ||
+              "Furniture product",
 
             image:
-              image || "assets/product.jpg"
+
+              image ||
+              ""
 
           });
 
@@ -710,10 +1236,15 @@
 
       });
 
+
     return products;
 
   }
 
+
+  /* =========================
+     SAVE EVERYTHING
+  ========================== */
 
   function saveEverything() {
 
@@ -750,53 +1281,98 @@
 
     };
 
+
     const products =
       collectProducts();
 
-    localStorage.setItem(
-      "royalFurnitureProSettings",
-      JSON.stringify(settings)
-    );
 
-    localStorage.setItem(
-      "royalFurnitureProProducts",
-      JSON.stringify(products)
-    );
+    try {
 
-    const notice =
-      document.getElementById("notice");
+      localStorage.setItem(
+        "royalFurnitureProSettings",
+        JSON.stringify(settings)
+      );
 
-    notice.style.display = "block";
 
-    setTimeout(() => {
+      localStorage.setItem(
+        "royalFurnitureProProducts",
+        JSON.stringify(products)
+      );
 
-      notice.style.display = "none";
 
-    }, 2500);
+      const notice =
+        document.getElementById("notice");
+
+
+      notice.textContent =
+        "Changes saved successfully.";
+
+
+      notice.style.display =
+        "block";
+
+
+      setTimeout(() => {
+
+        notice.style.display =
+          "none";
+
+      }, 2500);
+
+
+    } catch(error) {
+
+      console.error(
+        "Save error:",
+        error
+      );
+
+
+      alert(
+        "The images are too large for browser storage. Please use smaller images."
+      );
+
+    }
 
   }
 
+
+  /* =========================
+     LOGOUT
+  ========================== */
 
   async function logout() {
 
     try {
 
-      await fetch("/api/logout", {
-        method: "POST",
-        credentials: "include",
-        cache: "no-store"
-      });
+      await fetch(
+        "/api/logout",
+        {
+          method: "POST",
+          credentials: "include",
+          cache: "no-store"
+        }
+      );
 
-    } catch (error) {
+    } catch(error) {
 
-      console.log("Logout request failed.");
+      console.log(
+        "Logout request failed."
+      );
 
     }
 
-    window.location.replace("login.html");
+
+    window.location.replace(
+      "login.html"
+    );
 
   }
 
+
+  /* =========================
+     INITIALIZE
+  ========================== */
 
   loadSettings();
 
