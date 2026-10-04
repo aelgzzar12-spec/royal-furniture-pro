@@ -1,1707 +1,1511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Royal Furniture | Premium Furniture</title>
-
-  <meta
-    name="description"
-    content="Royal Furniture — refined furniture for modern living."
-  >
-
-  <style>
-    :root{
-      --bg:#f3eee7;
-      --surface:#fffdf9;
-      --surface-2:#ebe3d8;
-      --text:#211d18;
-      --muted:#81786e;
-      --line:#ded4c8;
-      --dark:#211d18;
-      --light:#fffdf9;
-      --accent:#a8845b;
-      --accent-dark:#866640;
-      --shadow:0 24px 70px rgba(53,39,25,.12);
-      --shadow-soft:0 12px 35px rgba(53,39,25,.08);
-      --radius:22px;
-    }
-
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-    }
-
-    button,
-    input,
-    textarea,
-    select{
-      font:inherit;
-    }
-
-    button{
-      cursor:pointer;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    .container{
-      width:min(1200px,92%);
-      margin:auto;
-    }
-
-    header{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      z-index:1000;
-      background:rgba(35,29,23,.82);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(255,255,255,.10);
-      color:#fff;
-    }
-
-    .nav{
-      min-height:82px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:30px;
-    }
-
-    .logo{
-      font-size:22px;
-      font-weight:700;
-      letter-spacing:4px;
-      white-space:nowrap;
-      color:#fff;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:32px;
-      align-items:center;
-    }
-
-    .nav-links a{
-      font-size:13px;
-      color:rgba(255,255,255,.78);
-      transition:.25s;
-      position:relative;
-    }
-
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-7px;
-      width:0;
-      height:1px;
-      background:#fff;
-      transition:.25s;
-    }
-
-    .nav-links a:hover{
-      color:#fff;
-    }
-
-    .nav-links a:hover::after{
-      width:100%;
-    }
-
-    .nav-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .icon-btn{
-      width:44px;
-      height:44px;
-      border:1px solid rgba(255,255,255,.22);
-      background:rgba(255,255,255,.06);
-      color:#fff;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      transition:.25s;
-    }
-
-    .icon-btn:hover{
-      background:#fff;
-      color:#211d18;
-      transform:translateY(-2px);
-    }
-
-    .cart-count{
-      position:absolute;
-      right:-3px;
-      top:-3px;
-      min-width:19px;
-      height:19px;
-      padding:0 5px;
-      border-radius:20px;
-      background:var(--accent);
-      color:#fff;
-      font-size:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border:2px solid #2b241d;
-    }
-
-    .hero{
-      min-height:100vh;
-      position:relative;
-      overflow:hidden;
-      display:flex;
-      align-items:flex-end;
-      color:white;
-      background:#30271f;
-    }
-
-    .hero-slides{
-      position:absolute;
-      inset:0;
-    }
-
-    .hero-slide{
-      position:absolute;
-      inset:0;
-      opacity:0;
-      transition:opacity 1.2s ease;
-      background-size:cover;
-      background-position:center;
-      transform:scale(1.02);
-    }
-
-    .hero-slide.active{
-      opacity:1;
-    }
-
-    .hero-slide::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(27,21,16,.70),
-          rgba(27,21,16,.25) 55%,
-          rgba(27,21,16,.12)
-        ),
-        linear-gradient(
-          to top,
-          rgba(20,15,11,.78),
-          transparent 55%
-        );
-    }
-
-    .hero-content{
-      position:relative;
-      z-index:2;
-      width:min(1200px,92%);
-      margin:0 auto;
-      padding:170px 0 105px;
-    }
-
-    .eyebrow{
-      text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:11px;
-      margin-bottom:18px;
-      opacity:.8;
-    }
-
-    .hero .eyebrow{
-      color:#e5d2b9;
-      opacity:1;
-    }
-
-    .hero h1{
-      font-size:clamp(48px,8vw,100px);
-      line-height:.92;
-      max-width:900px;
-      font-weight:400;
-      letter-spacing:-4px;
-      margin-bottom:28px;
-    }
-
-    .hero p{
-      max-width:610px;
-      font-size:17px;
-      line-height:1.8;
-      color:rgba(255,255,255,.80);
-      margin-bottom:38px;
-    }
-
-    .btn{
-      border:0;
-      padding:14px 25px;
-      min-height:50px;
-      border-radius:40px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      transition:.25s;
-      font-weight:600;
-      letter-spacing:.1px;
-    }
-
-    .btn-dark{
-      background:var(--dark);
-      color:#fff;
-      box-shadow:0 10px 25px rgba(0,0,0,.12);
-    }
-
-    .btn-dark:hover{
-      background:#000;
-      transform:translateY(-2px);
-    }
-
-    .btn-light{
-      background:#f8f1e7;
-      color:#211d18;
-      box-shadow:0 12px 30px rgba(0,0,0,.14);
-    }
-
-    .btn-light:hover{
-      background:#fff;
-      transform:translateY(-2px);
-    }
-
-    .btn-outline{
-      background:transparent;
-      border:1px solid var(--line);
-      color:var(--text);
-    }
-
-    .btn-outline:hover{
-      border-color:var(--accent);
-      color:var(--accent-dark);
-    }
-
-    .btn:disabled{
-      opacity:.6;
-      cursor:not-allowed;
-      transform:none;
-    }
-
-    section{
-      padding:110px 0;
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:30px;
-      margin-bottom:48px;
-    }
-
-    .section-head h2{
-      font-size:clamp(34px,5vw,58px);
-      line-height:1;
-      font-weight:400;
-      letter-spacing:-2.5px;
-    }
-
-    .section-head p{
-      max-width:480px;
-      color:var(--muted);
-      line-height:1.8;
-    }
-
-    #categories{
-      background:#f8f4ee;
-    }
-
-    .categories{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:16px;
-    }
-
-    .category-card{
-      position:relative;
-      min-height:290px;
-      overflow:hidden;
-      border-radius:var(--radius);
-      cursor:pointer;
-      background:#ddd2c4;
-      box-shadow:var(--shadow-soft);
-    }
-
-    .category-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:.7s cubic-bezier(.2,.7,.2,1);
-    }
-
-    .category-card:hover img{
-      transform:scale(1.08);
-    }
-
-    .category-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(
-          to top,
-          rgba(25,18,12,.72),
-          rgba(25,18,12,.05) 65%
-        );
-    }
-
-    .category-title{
-      position:absolute;
-      z-index:2;
-      bottom:24px;
-      left:24px;
-      color:white;
-      font-size:18px;
-      font-weight:600;
-      letter-spacing:.2px;
-    }
-
-    #collections{
-      background:#f3eee7;
-    }
-
-    .filters{
-      display:flex;
-      gap:9px;
-      flex-wrap:wrap;
-      margin-bottom:36px;
-    }
-
-    .filter-btn{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.45);
-      padding:10px 19px;
-      border-radius:30px;
-      color:#665e55;
-      transition:.25s;
-    }
-
-    .filter-btn.active,
-    .filter-btn:hover{
-      background:var(--dark);
-      border-color:var(--dark);
-      color:#fff;
-    }
-
-    .products{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:20px;
-    }
-
-    .product-card{
-      background:var(--surface);
-      border-radius:var(--radius);
-      overflow:hidden;
-      border:1px solid rgba(102,82,60,.10);
-      cursor:pointer;
-      transition:.35s cubic-bezier(.2,.7,.2,1);
-      box-shadow:0 4px 18px rgba(60,42,25,.035);
-    }
-
-    .product-card:hover{
-      transform:translateY(-7px);
-      box-shadow:var(--shadow);
-      border-color:rgba(168,132,91,.25);
-    }
-
-    .product-image{
-      aspect-ratio:1/1;
-      overflow:hidden;
-      background:#e5ddd2;
-    }
-
-    .product-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:.6s cubic-bezier(.2,.7,.2,1);
-    }
-
-    .product-card:hover .product-image img{
-      transform:scale(1.06);
-    }
-
-    .product-info{
-      padding:21px 20px 23px;
-    }
-
-    .product-category{
-      color:var(--accent-dark);
-      font-size:10px;
-      text-transform:uppercase;
-      letter-spacing:1.7px;
-      margin-bottom:8px;
-      font-weight:600;
-    }
-
-    .product-name{
-      font-size:18px;
-      margin-bottom:9px;
-      color:#28221d;
-    }
-
-    .product-price{
-      font-weight:700;
-      color:#17130f;
-    }
-
-    #story{
-      background:#f8f4ee;
-    }
-
-    .story-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:75px;
-      align-items:center;
-    }
-
-    .story-image{
-      border-radius:26px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-
-    .story-image img{
-      width:100%;
-      aspect-ratio:4/5;
-      object-fit:cover;
-      transition:.6s;
-    }
-
-    .story-image:hover img{
-      transform:scale(1.025);
-    }
-
-    .story-text h2{
-      font-size:clamp(38px,5vw,64px);
-      line-height:.98;
-      font-weight:400;
-      letter-spacing:-2.8px;
-      margin-bottom:27px;
-      max-width:600px;
-    }
-
-    .story-text p{
-      color:var(--muted);
-      max-width:520px;
-      margin-bottom:20px;
-      line-height:1.9;
-    }
-
-    .story-text .btn{
-      margin-top:12px;
-    }
-
-    .values{
-      background:#29221c;
-      color:#fff;
-    }
-
-    .values .section-head h2{
-      color:#fff;
-    }
-
-    .values .eyebrow{
-      color:#c9ad89;
-    }
-
-    .values-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1px;
-      background:#55483b;
-      border:1px solid #55483b;
-      border-radius:20px;
-      overflow:hidden;
-    }
-
-    .value{
-      background:#29221c;
-      padding:48px 32px;
-      transition:.3s;
-    }
-
-    .value:hover{
-      background:#312920;
-    }
-
-    .value-number{
-      font-size:12px;
-      color:#a9957e;
-      margin-bottom:55px;
-      letter-spacing:2px;
-    }
-
-    .value h3{
-      font-size:24px;
-      margin-bottom:13px;
-      font-weight:500;
-    }
-
-    .value p{
-      color:#b8aea3;
-      line-height:1.8;
-    }
-
-    footer{
-      background:#17130f;
-      color:#fff;
-      padding:75px 0 30px;
-    }
-
-    .footer-top{
-      display:flex;
-      justify-content:space-between;
-      gap:40px;
-      padding-bottom:60px;
-      border-bottom:1px solid #39312a;
-    }
-
-    .footer-logo{
-      font-size:25px;
-      letter-spacing:4px;
-    }
-
-    .footer-links{
-      display:flex;
-      gap:28px;
-      flex-wrap:wrap;
-    }
-
-    .footer-links a{
-      color:#aaa096;
-      font-size:13px;
-      transition:.2s;
-    }
-
-    .footer-links a:hover{
-      color:#fff;
-    }
-
-    .footer-bottom{
-      padding-top:25px;
-      color:#756d65;
-      font-size:12px;
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(20,15,11,.68);
-      backdrop-filter:blur(5px);
-      z-index:2000;
-      opacity:0;
-      visibility:hidden;
-      transition:.25s;
-      padding:20px;
-      overflow:auto;
-    }
-
-    .overlay.open{
-      opacity:1;
-      visibility:visible;
-    }
-
-    .modal{
-      width:min(950px,100%);
-      margin:50px auto;
-      background:var(--surface);
-      border-radius:26px;
-      overflow:hidden;
-      position:relative;
-      box-shadow:0 30px 100px rgba(0,0,0,.25);
-    }
-
-    .close-btn{
-      position:absolute;
-      right:18px;
-      top:18px;
-      width:42px;
-      height:42px;
-      border:1px solid rgba(0,0,0,.08);
-      border-radius:50%;
-      background:rgba(255,253,249,.92);
-      color:#211d18;
-      z-index:5;
-      font-size:20px;
-      transition:.2s;
-    }
-
-    .close-btn:hover{
-      background:#211d18;
-      color:#fff;
-      transform:rotate(5deg);
-    }
-
-    .product-modal-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-    }
-
-    .modal-image{
-      min-height:500px;
-      background:#e7dfd5;
-    }
-
-    .modal-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .modal-details{
-      padding:55px 40px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .modal-details h2{
-      font-size:42px;
-      line-height:1;
-      margin-bottom:15px;
-      font-weight:400;
-      letter-spacing:-1.5px;
-    }
-
-    .modal-details p{
-      color:var(--muted);
-      margin:20px 0 30px;
-      line-height:1.8;
-    }
-
-    .cart-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(20,15,11,.55);
-      backdrop-filter:blur(4px);
-      z-index:2500;
-      opacity:0;
-      visibility:hidden;
-      transition:.25s;
-    }
-
-    .cart-overlay.open{
-      opacity:1;
-      visibility:visible;
-    }
-
-    .cart-drawer{
-      position:absolute;
-      right:0;
-      top:0;
-      height:100%;
-      width:min(470px,100%);
-      background:var(--surface);
-      padding:30px;
-      display:flex;
-      flex-direction:column;
-      box-shadow:-20px 0 60px rgba(0,0,0,.12);
-    }
-
-    .cart-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding-bottom:20px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .cart-header h2{
-      font-size:28px;
-      font-weight:500;
-    }
-
-    .cart-header .icon-btn{
-      color:#211d18;
-      border-color:var(--line);
-      background:transparent;
-    }
-
-    .cart-header .icon-btn:hover{
-      color:#fff;
-      background:#211d18;
-    }
-
-    .cart-items{
-      flex:1;
-      overflow:auto;
-      padding:20px 0;
-    }
-
-    .cart-item{
-      display:grid;
-      grid-template-columns:80px 1fr auto;
-      gap:14px;
-      padding:15px 0;
-      border-bottom:1px solid var(--line);
-      align-items:center;
-    }
-
-    .cart-item img{
-      width:80px;
-      height:80px;
-      object-fit:cover;
-      border-radius:14px;
-    }
-
-    .cart-item-name{
-      font-weight:600;
-      margin-bottom:5px;
-    }
-
-    .cart-item-price{
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    .quantity{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      margin-top:8px;
-    }
-
-    .quantity button{
-      width:26px;
-      height:26px;
-      border:1px solid var(--line);
-      background:transparent;
-      border-radius:50%;
-      transition:.2s;
-    }
-
-    .quantity button:hover{
-      background:#211d18;
-      color:#fff;
-      border-color:#211d18;
-    }
-
-    .cart-remove{
-      border:0;
-      background:transparent;
-      color:#999;
-      font-size:12px;
-      margin-top:8px;
-    }
-
-    .cart-remove:hover{
-      color:#8b5e42;
-    }
-
-    .cart-footer{
-      border-top:1px solid var(--line);
-      padding-top:20px;
-    }
-
-    .cart-total{
-      display:flex;
-      justify-content:space-between;
-      font-size:20px;
-      font-weight:700;
-      margin-bottom:18px;
-    }
-
-    .empty-cart{
-      text-align:center;
-      padding:70px 20px;
-      color:var(--muted);
-    }
-
-    .checkout-modal{
-      width:min(1050px,100%);
-      margin:30px auto;
-      background:var(--surface);
-      border-radius:26px;
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 30px 100px rgba(0,0,0,.25);
-    }
-
-    .checkout-form{
-      position:relative;
-      padding:45px;
-    }
-
-    .checkout-title{
-      margin-bottom:30px;
-    }
-
-    .checkout-title h2{
-      font-size:42px;
-      line-height:1;
-      margin-bottom:8px;
-      font-weight:400;
-      letter-spacing:-1.5px;
-    }
-
-    .checkout-title p{
-      color:var(--muted);
-    }
-
-    .checkout-grid{
-      display:grid;
-      grid-template-columns:1.3fr .7fr;
-      gap:40px;
-    }
-
-    .form-group{
-      margin-bottom:18px;
-    }
-
-    .form-group label{
-      display:block;
-      font-size:12px;
-      font-weight:600;
-      margin-bottom:7px;
-      color:#494038;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select{
-      width:100%;
-      border:1px solid var(--line);
-      background:#fffefa;
-      border-radius:13px;
-      padding:13px 14px;
-      outline:none;
-      color:#29231d;
-      transition:.2s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus{
-      border-color:var(--accent);
-      box-shadow:0 0 0 3px rgba(168,132,91,.10);
-    }
-
-    .form-group textarea{
-      min-height:110px;
-      resize:vertical;
-    }
-
-    .order-summary{
-      background:#eee6db;
-      border:1px solid #e1d6c8;
-      border-radius:20px;
-      padding:25px;
-      height:max-content;
-    }
-
-    .order-summary h3{
-      margin-bottom:20px;
-      font-weight:600;
-    }
-
-    .summary-items{
-      display:flex;
-      flex-direction:column;
-      gap:13px;
-      margin-bottom:20px;
-    }
-
-    .summary-item{
-      display:flex;
-      justify-content:space-between;
-      gap:15px;
-      font-size:14px;
-    }
-
-    .summary-total{
-      border-top:1px solid #d3c5b5;
-      padding-top:18px;
-      margin-top:18px;
-      display:flex;
-      justify-content:space-between;
-      font-weight:700;
-      font-size:20px;
-    }
-
-    .checkout-actions{
-      margin-top:25px;
-    }
-
-    .checkout-actions .btn{
-      width:100%;
-    }
-
-    .payment-note{
-      margin-top:12px;
-      font-size:12px;
-      line-height:1.5;
-      color:#777;
-      text-align:center;
-    }
-
-    .order-success{
-      grid-column:1 / -1;
-      text-align:center;
-      padding:60px 25px;
-      display:none;
-    }
-
-    .order-success.show{
-      display:block;
-    }
-
-    .success-icon{
-      width:70px;
-      height:70px;
-      border-radius:50%;
-      background:#211d18;
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin:0 auto 20px;
-      font-size:28px;
-      box-shadow:0 10px 30px rgba(0,0,0,.15);
-    }
-
-    .order-success h2{
-      font-size:35px;
-      margin-bottom:10px;
-      font-weight:500;
-    }
-
-    .order-success p{
-      color:var(--muted);
-      max-width:500px;
-      margin:0 auto 25px;
-    }
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom:25px;
-      transform:translate(-50%,20px);
-      background:#211d18;
-      color:#fff;
-      padding:13px 20px;
-      border-radius:30px;
-      z-index:5000;
-      opacity:0;
-      pointer-events:none;
-      transition:.3s;
-      font-size:14px;
-      box-shadow:0 12px 30px rgba(0,0,0,.18);
-    }
-
-    .toast.show{
-      opacity:1;
-      transform:translate(-50%,0);
-    }
-
-    @media(max-width:1000px){
-
-      .categories{
-        grid-template-columns:repeat(3,1fr);
-      }
-
-      .products{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .story-grid{
-        gap:45px;
-      }
-
-    }
-
-    @media(max-width:700px){
-
-      header{
-        background:rgba(35,29,23,.92);
-      }
-
-      .nav{
-        min-height:68px;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-      .logo{
-        font-size:18px;
-        letter-spacing:3px;
-      }
-
-      .hero-content{
-        padding:150px 0 65px;
-      }
-
-      .hero h1{
-        font-size:52px;
-        letter-spacing:-2px;
-      }
-
-      .hero p{
-        font-size:15px;
-      }
-
-      section{
-        padding:75px 0;
-      }
-
-      .section-head{
-        display:block;
-      }
-
-      .section-head p{
-        margin-top:20px;
-      }
-
-      .categories{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .category-card{
-        min-height:210px;
-      }
-
-      .products{
-        grid-template-columns:1fr 1fr;
-        gap:12px;
-      }
-
-      .product-info{
-        padding:14px;
-      }
-
-      .product-name{
-        font-size:15px;
-      }
-
-      .story-grid{
-        grid-template-columns:1fr;
-        gap:35px;
-      }
-
-      .values-grid{
-        grid-template-columns:1fr;
-      }
-
-      .value{
-        padding:38px 25px;
-      }
-
-      .footer-top,
-      .footer-bottom{
-        flex-direction:column;
-      }
-
-      .product-modal-grid{
-        grid-template-columns:1fr;
-      }
-
-      .modal-image{
-        min-height:320px;
-      }
-
-      .modal-details{
-        padding:35px 25px;
-      }
-
-      .modal-details h2{
-        font-size:34px;
-      }
-
-      .checkout-grid{
-        grid-template-columns:1fr;
-        gap:25px;
-      }
-
-      .checkout-form{
-        padding:30px 20px;
-      }
-
-      .checkout-title h2{
-        font-size:34px;
-      }
-
-    }
-
-    @media(max-width:430px){
-
-      .products{
-        grid-template-columns:1fr;
-      }
-
-      .categories{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .hero h1{
-        font-size:44px;
-      }
-
-      .hero-content{
-        padding-bottom:55px;
-      }
-
-      .cart-drawer{
-        padding:20px;
-      }
-
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Royal Furniture | Premium Furniture</title>
+
+<meta name="description"
+content="Royal Furniture — refined furniture for modern living.">
+
+<style>
+:root{
+  --bg:#f4efe7;
+  --surface:#fffdf9;
+  --surface-2:#eee6da;
+  --text:#211b16;
+  --muted:#746b61;
+  --line:#ddd3c6;
+  --dark:#211a15;
+  --light:#fff;
+  --accent:#a8865d;
+  --accent-dark:#80633f;
+  --shadow:0 24px 70px rgba(53,39,25,.12);
+  --radius:22px;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* HEADER */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  padding:16px 5%;
+  background:rgba(255,253,249,.90);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(221,211,198,.7);
+}
+
+.nav{
+  max-width:1400px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.logo{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:14px;
+  transition:.25s;
+}
+
+.nav-links a:hover{
+  color:var(--text);
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.icon-btn{
+  width:44px;
+  height:44px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.65);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  transition:.25s;
+}
+
+.icon-btn:hover{
+  background:var(--dark);
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  min-height:100svh;
+  height:760px;
+  max-height:900px;
+  overflow:hidden;
+  background:#30251d;
+}
+
+.hero-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 1.2s ease,visibility 1.2s ease;
+  background-size:cover;
+  background-position:center;
+}
+
+.hero-slide.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.hero-slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(27,20,15,.72) 0%,
+      rgba(27,20,15,.42) 42%,
+      rgba(27,20,15,.12) 100%
+    );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  min-height:100%;
+  max-width:1400px;
+  margin:auto;
+  padding:150px 7% 80px;
+  display:flex;
+  align-items:center;
+}
+
+.hero-inner{
+  max-width:680px;
+  color:white;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:20px;
+  opacity:.88;
+}
+
+.eyebrow::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--accent);
+}
+
+.hero h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(48px,7vw,92px);
+  line-height:.98;
+  font-weight:500;
+  letter-spacing:-2px;
+  margin-bottom:25px;
+}
+
+.hero p{
+  max-width:560px;
+  color:rgba(255,255,255,.82);
+  font-size:17px;
+  margin-bottom:34px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:none;
+  padding:14px 24px;
+  border-radius:999px;
+  transition:.25s;
+  font-weight:600;
+}
+
+.btn-primary{
+  background:var(--accent);
+  color:white;
+}
+
+.btn-primary:hover{
+  background:var(--accent-dark);
+  transform:translateY(-2px);
+}
+
+.btn-light{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.45);
+  color:white;
+  backdrop-filter:blur(10px);
+}
+
+.btn-light:hover{
+  background:white;
+  color:var(--text);
+}
+
+.hero-dots{
+  position:absolute;
+  z-index:5;
+  left:7%;
+  bottom:40px;
+  display:flex;
+  gap:8px;
+}
+
+.hero-dot{
+  width:30px;
+  height:3px;
+  border:0;
+  background:rgba(255,255,255,.35);
+  transition:.3s;
+}
+
+.hero-dot.active{
+  width:55px;
+  background:white;
+}
+
+/* SECTIONS */
+
+section{
+  padding:110px 5%;
+}
+
+.section-inner{
+  max-width:1400px;
+  margin:auto;
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:45px;
+}
+
+.section-head h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(36px,5vw,58px);
+  font-weight:500;
+  line-height:1;
+}
+
+.section-head p{
+  max-width:480px;
+  color:var(--muted);
+}
+
+/* CATEGORIES */
+
+.categories{
+  background:var(--surface);
+}
+
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:16px;
+}
+
+.category-card{
+  position:relative;
+  height:370px;
+  overflow:hidden;
+  border-radius:var(--radius);
+  background:#ddd;
+}
+
+.category-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .7s ease;
+}
+
+.category-card:hover img{
+  transform:scale(1.07);
+}
+
+.category-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(24,18,13,.78),
+    rgba(24,18,13,.05) 65%
+  );
+}
+
+.category-info{
+  position:absolute;
+  z-index:2;
+  left:22px;
+  right:22px;
+  bottom:20px;
+  color:#fff;
+}
+
+.category-info h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:25px;
+  font-weight:500;
+}
+
+/* PRODUCTS */
+
+.products{
+  background:var(--bg);
+}
+
+.filters{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-bottom:32px;
+}
+
+.filter-btn{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.5);
+  color:var(--muted);
+  border-radius:999px;
+  padding:9px 17px;
+  transition:.25s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+  background:var(--dark);
+  color:white;
+  border-color:var(--dark);
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+
+.product-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 8px 30px rgba(50,35,20,.04);
+  transition:.3s;
+}
+
+.product-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow);
+}
+
+.product-image{
+  height:320px;
+  overflow:hidden;
+  background:#e7dfd4;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.6s;
+}
+
+.product-card:hover .product-image img{
+  transform:scale(1.05);
+}
+
+.product-info{
+  padding:20px;
+}
+
+.product-category{
+  color:var(--accent-dark);
+  font-size:11px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.product-name{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  font-weight:500;
+  margin:6px 0 8px;
+}
+
+.product-description{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:15px;
+}
+
+.product-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.product-price{
+  font-weight:700;
+}
+
+.add-btn{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:var(--dark);
+  color:white;
+  font-size:20px;
+  transition:.25s;
+}
+
+.add-btn:hover{
+  background:var(--accent);
+  transform:rotate(90deg);
+}
+
+/* STORY */
+
+.story{
+  background:var(--surface);
+}
+
+.story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+
+.story-image{
+  border-radius:30px;
+  overflow:hidden;
+  min-height:620px;
+}
+
+.story-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.story-copy .eyebrow{
+  color:var(--accent-dark);
+}
+
+.story-copy h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(40px,5vw,65px);
+  font-weight:500;
+  line-height:1.05;
+  margin-bottom:25px;
+}
+
+.story-copy p{
+  color:var(--muted);
+  max-width:580px;
+  margin-bottom:18px;
+}
+
+/* VALUES */
+
+.values{
+  background:var(--dark);
+  color:white;
+}
+
+.values .section-head p{
+  color:#bdb4a9;
+}
+
+.value-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.value-card{
+  padding:36px;
+  min-height:240px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.035);
+}
+
+.value-number{
+  color:var(--accent);
+  font-size:13px;
+  letter-spacing:2px;
+}
+
+.value-card h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:28px;
+  font-weight:500;
+  margin:25px 0 12px;
+}
+
+.value-card p{
+  color:#bdb4a9;
+}
+
+/* FOOTER */
+
+footer{
+  background:#17110d;
+  color:white;
+  padding:65px 5% 30px;
+}
+
+.footer-inner{
+  max-width:1400px;
+  margin:auto;
+}
+
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  gap:40px;
+  padding-bottom:50px;
+}
+
+.footer-logo{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:34px;
+}
+
+.footer-description{
+  color:#a69d93;
+  max-width:360px;
+  margin-top:12px;
+}
+
+.footer-links{
+  display:flex;
+  gap:35px;
+}
+
+.footer-links a{
+  color:#c9c1b8;
+  font-size:14px;
+}
+
+.footer-bottom{
+  padding-top:25px;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#847b72;
+  font-size:13px;
+}
+
+/* PRODUCT MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:rgba(20,14,10,.7);
+  backdrop-filter:blur(8px);
+}
+
+.modal.active{
+  display:flex;
+}
+
+.modal-box{
+  width:min(1000px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--surface);
+  border-radius:28px;
+  position:relative;
+}
+
+.modal-close{
+  position:absolute;
+  z-index:2;
+  top:16px;
+  right:16px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:white;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.modal-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+.modal-image{
+  min-height:550px;
+}
+
+.modal-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.modal-info{
+  padding:55px;
+}
+
+.modal-info h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:44px;
+  font-weight:500;
+  line-height:1.05;
+  margin:10px 0 20px;
+}
+
+.modal-info p{
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+.modal-price{
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:25px;
+}
+
+/* CART */
+
+.cart-drawer{
+  position:fixed;
+  z-index:2100;
+  top:0;
+  right:-450px;
+  width:min(430px,100%);
+  height:100vh;
+  background:var(--surface);
+  box-shadow:-20px 0 60px rgba(0,0,0,.2);
+  transition:.4s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+.cart-drawer.active{
+  right:0;
+}
+
+.cart-head{
+  padding:25px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.cart-head h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:500;
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:20px;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:70px 1fr auto;
+  gap:12px;
+  align-items:center;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.cart-item img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.cart-item h4{
+  font-size:14px;
+  margin-bottom:4px;
+}
+
+.cart-item p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.cart-qty{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-top:7px;
+}
+
+.cart-qty button{
+  width:25px;
+  height:25px;
+  border:1px solid var(--line);
+  background:white;
+  border-radius:50%;
+}
+
+.cart-remove{
+  border:0;
+  background:none;
+  color:#a34d45;
+  font-size:12px;
+}
+
+.cart-footer{
+  padding:20px;
+  border-top:1px solid var(--line);
+}
+
+.cart-total{
+  display:flex;
+  justify-content:space-between;
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:15px;
+}
+
+/* CHECKOUT */
+
+.checkout{
+  position:fixed;
+  inset:0;
+  z-index:2200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(20,14,10,.75);
+  backdrop-filter:blur(8px);
+}
+
+.checkout.active{
+  display:flex;
+}
+
+.checkout-box{
+  width:min(700px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:var(--surface);
+  border-radius:28px;
+  padding:35px;
+}
+
+.checkout-box h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:38px;
+  font-weight:500;
+  margin-bottom:25px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group.full{
+  grid-column:1/-1;
+}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  margin-bottom:6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:white;
+  padding:13px 14px;
+  outline:none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  border-color:var(--accent);
+}
+
+.form-group textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.checkout-actions{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+/* SUCCESS */
+
+.success{
+  position:fixed;
+  inset:0;
+  z-index:2300;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(20,14,10,.75);
+  backdrop-filter:blur(8px);
+}
+
+.success.active{
+  display:flex;
+}
+
+.success-box{
+  background:var(--surface);
+  width:min(500px,100%);
+  border-radius:28px;
+  padding:50px 35px;
+  text-align:center;
+}
+
+.success-icon{
+  width:75px;
+  height:75px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#e9dfd1;
+  color:var(--accent-dark);
+  font-size:32px;
+}
+
+.success-box h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:38px;
+  font-weight:500;
+  margin-bottom:10px;
+}
+
+.success-box p{
+  color:var(--muted);
+  margin-bottom:25px;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  z-index:3000;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,120px);
+  background:var(--dark);
+  color:white;
+  padding:13px 20px;
+  border-radius:999px;
+  box-shadow:var(--shadow);
+  opacity:0;
+  transition:.35s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  header{
+    padding:13px 4%;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .logo{
+    font-size:23px;
+  }
+
+  .hero{
+    height:650px;
+    min-height:650px;
+  }
+
+  /*
+    Mobile-only hero sizing.
+    The images stay narrow and are positioned for phone screens.
+  */
+  .hero-slide{
+    background-size:cover;
+    background-position:center center;
+  }
+
+  .hero-slide::after{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(25,18,13,.25) 0%,
+        rgba(25,18,13,.48) 45%,
+        rgba(25,18,13,.82) 100%
+      );
+  }
+
+  .hero-content{
+    padding:120px 6% 75px;
+    align-items:flex-end;
+  }
+
+  .hero-inner{
+    max-width:100%;
+  }
+
+  .hero h1{
+    font-size:48px;
+    letter-spacing:-1px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .hero-dots{
+    left:6%;
+    bottom:28px;
+  }
+
+  section{
+    padding:75px 5%;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-head h2{
+    margin-bottom:18px;
+  }
+
+  .category-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .category-card{
+    height:280px;
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
+  }
+
+  .product-image{
+    height:230px;
+  }
+
+  .product-info{
+    padding:15px;
+  }
+
+  .product-name{
+    font-size:18px;
+  }
+
+  .story-grid{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .story-image{
+    min-height:430px;
+  }
+
+  .value-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-top{
+    display:block;
+  }
+
+  .footer-links{
+    margin-top:30px;
+    flex-wrap:wrap;
+  }
+
+  .modal-grid{
+    grid-template-columns:1fr;
+  }
+
+  .modal-image{
+    min-height:320px;
+    max-height:320px;
+  }
+
+  .modal-info{
+    padding:30px;
+  }
+
+  .modal-info h2{
+    font-size:36px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-group.full{
+    grid-column:auto;
+  }
+}
+
+@media(max-width:520px){
+
+  /*
+    Extra-small phone hero:
+    narrower visual composition with no desktop-style wide crop.
+  */
+  .hero{
+    height:610px;
+    min-height:610px;
+  }
+
+  .hero-slide{
+    background-size:cover;
+    background-position:58% center;
+  }
+
+  .hero-content{
+    padding:105px 6% 70px;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+
+  .hero p{
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:25px;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .hero-buttons .btn{
+    width:auto;
+  }
+
+  .category-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .category-card{
+    height:235px;
+  }
+
+  .category-info h3{
+    font-size:20px;
+  }
+
+  .product-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .product-image{
+    height:190px;
+  }
+
+  .product-description{
+    display:none;
+  }
+
+  .product-bottom{
+    align-items:center;
+  }
+
+  .product-price{
+    font-size:13px;
+  }
+
+  .add-btn{
+    width:36px;
+    height:36px;
+  }
+
+  .checkout-box{
+    padding:25px 18px;
+  }
+
+  .checkout-box h2{
+    font-size:32px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="container nav">
-
-    <a href="#" class="logo" id="storeLogo">
-      ROYAL FURNITURE
-    </a>
+  <div class="nav">
+    <a href="#home" class="logo" id="logoText">Royal Furniture</a>
 
     <nav class="nav-links">
-      <a href="#collections">Collection</a>
-      <a href="#categories">Categories</a>
+      <a href="#home">Home</a>
+      <a href="#categories">Collections</a>
+      <a href="#products">Products</a>
       <a href="#story">Our Story</a>
       <a href="#values">Values</a>
     </nav>
 
     <div class="nav-actions">
-
-      <button
-        class="icon-btn"
-        type="button"
-        onclick="openCart()"
-        aria-label="Shopping cart"
-      >
+      <button class="icon-btn" onclick="openCart()" aria-label="Shopping cart">
         🛒
-        <span class="cart-count" id="cartCount">0</span>
+        <span id="cartCount">0</span>
       </button>
-
     </div>
   </div>
 </header>
 
+<!-- HERO -->
+<section class="hero" id="home">
 
-<section class="hero">
+  <!-- NEW MOBILE-FRIENDLY HERO IMAGES -->
+  <div class="hero-slide active"
+       style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85');">
+  </div>
 
-  <div class="hero-slides">
+  <div class="hero-slide"
+       style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=85');">
+  </div>
 
-    <div
-      class="hero-slide active"
-      style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=85')"
-    ></div>
+  <div class="hero-slide"
+       style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85');">
+  </div>
 
-    <div
-      class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=85')"
-    ></div>
-
-    <div
-      class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=85')"
-    ></div>
-
-    <div
-      class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1800&q=85')"
-    ></div>
-
+  <div class="hero-slide"
+       style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85');">
   </div>
 
   <div class="hero-content">
+    <div class="hero-inner">
+      <div class="eyebrow">Royal Furniture</div>
 
-    <div class="eyebrow">
-      Premium Furniture Collection
+      <h1 id="heroTitle">
+        Refined furniture for modern living.
+      </h1>
+
+      <p id="heroDescription">
+        Discover timeless pieces designed to bring warmth,
+        comfort and character into every space.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-primary">
+          Explore Collection
+        </a>
+
+        <a href="#story" class="btn btn-light">
+          Discover Our Story
+        </a>
+      </div>
     </div>
-
-    <h1 id="heroTitle">
-      Designed for the way you live.
-    </h1>
-
-    <p id="heroDescription">
-      Refined furniture pieces created to bring comfort,
-      character and timeless elegance into modern spaces.
-    </p>
-
-    <a href="#collections" class="btn btn-light">
-      Explore Collection
-    </a>
-
   </div>
 
+  <div class="hero-dots">
+    <button class="hero-dot active" onclick="goToSlide(0)"></button>
+    <button class="hero-dot" onclick="goToSlide(1)"></button>
+    <button class="hero-dot" onclick="goToSlide(2)"></button>
+    <button class="hero-dot" onclick="goToSlide(3)"></button>
+  </div>
 </section>
 
-
-<section id="categories">
-
-  <div class="container">
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="section-inner">
 
     <div class="section-head">
-
       <div>
-
-        <div class="eyebrow" style="color:#777">
-          Explore
-        </div>
-
-        <h2>
-          Shop by space
-        </h2>
-
+        <div class="eyebrow">Collections</div>
+        <h2>Designed for every room.</h2>
       </div>
 
       <p>
-        Discover carefully selected pieces for every room,
-        from welcoming living spaces to refined dining areas.
+        Curated furniture collections that combine timeless
+        materials, refined forms and everyday comfort.
       </p>
-
     </div>
 
+    <div class="category-grid">
 
-    <div class="categories">
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Living Room')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
-          alt="Living Room"
-        >
-
-        <div class="category-title">
-          Living Room
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85" alt="Living Room">
+        <div class="category-info">
+          <h3>Living Room</h3>
         </div>
+      </a>
 
-      </div>
-
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Bedroom')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80"
-          alt="Bedroom"
-        >
-
-        <div class="category-title">
-          Bedroom
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=85" alt="Bedroom">
+        <div class="category-info">
+          <h3>Bedroom</h3>
         </div>
+      </a>
 
-      </div>
-
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Dining')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=900&q=80"
-          alt="Dining"
-        >
-
-        <div class="category-title">
-          Dining
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?auto=format&fit=crop&w=900&q=85" alt="Dining">
+        <div class="category-info">
+          <h3>Dining</h3>
         </div>
+      </a>
 
-      </div>
-
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Office')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
-          alt="Office"
-        >
-
-        <div class="category-title">
-          Office
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=900&q=85" alt="Office">
+        <div class="category-info">
+          <h3>Office</h3>
         </div>
+      </a>
 
-      </div>
-
-
-      <div
-        class="category-card"
-        onclick="filterCategory('Accessories')"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80"
-          alt="Accessories"
-        >
-
-        <div class="category-title">
-          Accessories
+      <a href="#products" class="category-card">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="Spaces">
+        <div class="category-info">
+          <h3>Spaces</h3>
         </div>
-
-      </div>
+      </a>
 
     </div>
-
   </div>
-
 </section>
 
-
-<section id="collections">
-
-  <div class="container">
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
 
     <div class="section-head">
-
       <div>
-
-        <div class="eyebrow" style="color:#777">
-          Collection
-        </div>
-
-        <h2>
-          Selected pieces
-        </h2>
-
+        <div class="eyebrow">The Collection</div>
+        <h2>Signature pieces.</h2>
       </div>
 
       <p>
-        A curated collection designed around comfort,
-        craftsmanship and contemporary living.
+        Explore selected pieces from our furniture collection.
       </p>
-
     </div>
-
 
     <div class="filters">
-
-      <button
-        class="filter-btn active"
-        onclick="filterCategory('All', this)"
-      >
+      <button class="filter-btn active" onclick="filterProducts('all',this)">
         All
       </button>
 
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Living Room', this)"
-      >
+      <button class="filter-btn" onclick="filterProducts('Living Room',this)">
         Living Room
       </button>
 
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Bedroom', this)"
-      >
+      <button class="filter-btn" onclick="filterProducts('Bedroom',this)">
         Bedroom
       </button>
 
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Dining', this)"
-      >
+      <button class="filter-btn" onclick="filterProducts('Dining',this)">
         Dining
       </button>
 
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Office', this)"
-      >
+      <button class="filter-btn" onclick="filterProducts('Office',this)">
         Office
       </button>
-
-      <button
-        class="filter-btn"
-        onclick="filterCategory('Accessories', this)"
-      >
-        Accessories
-      </button>
-
     </div>
 
-
-    <div
-      class="products"
-      id="products"
-    ></div>
+    <div class="product-grid" id="productGrid"></div>
 
   </div>
-
 </section>
 
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="section-inner story-grid">
 
-<section id="story">
+    <div class="story-image">
+      <img
+        src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=85"
+        alt="Luxury interior">
+    </div>
 
-  <div class="container">
+    <div class="story-copy">
 
-    <div class="story-grid">
+      <div class="eyebrow">Our Story</div>
 
-      <div class="story-image">
+      <h2>
+        Furniture with a sense of place.
+      </h2>
 
-        <img
-          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
-          alt="Furniture interior"
-        >
+      <p>
+        Royal Furniture was created around a simple idea:
+        beautiful furniture should feel natural in the spaces
+        where people actually live.
+      </p>
 
-      </div>
+      <p>
+        Every piece is selected with attention to proportion,
+        material, comfort and timeless design.
+      </p>
 
-
-      <div class="story-text">
-
-        <div class="eyebrow">
-          Our Story
-        </div>
-
-        <h2>
-          Furniture with a sense of place.
-        </h2>
-
-        <p>
-          Royal Furniture brings together timeless forms,
-          natural materials and contemporary design.
-        </p>
-
-        <p>
-          Every piece is selected to create spaces that feel
-          comfortable, personal and considered.
-        </p>
-
-        <a
-          href="#collections"
-          class="btn btn-dark"
-        >
-          Discover the collection
-        </a>
-
-      </div>
+      <a href="#products" class="btn btn-primary">
+        Explore Our Pieces
+      </a>
 
     </div>
 
   </div>
-
 </section>
 
-
+<!-- VALUES -->
 <section class="values" id="values">
-
-  <div class="container">
+  <div class="section-inner">
 
     <div class="section-head">
-
       <div>
+        <div class="eyebrow">Why Royal</div>
+        <h2>Made to last.</h2>
+      </div>
 
-        <div class="eyebrow">
-          Why Royal
-        </div>
+      <p>
+        A thoughtful approach to furniture, design and modern living.
+      </p>
+    </div>
 
-        <h2>
-          Made for modern living.
-        </h2>
+    <div class="value-grid">
 
+      <div class="value-card">
+        <div class="value-number">01</div>
+        <h3>Timeless Design</h3>
+        <p>
+          Elegant forms created to remain relevant beyond passing trends.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-number">02</div>
+        <h3>Quality Materials</h3>
+        <p>
+          Carefully selected materials that bring warmth,
+          durability and character.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-number">03</div>
+        <h3>Everyday Comfort</h3>
+        <p>
+          Furniture designed not only to look beautiful,
+          but to live beautifully.
+        </p>
       </div>
 
     </div>
-
-
-    <div class="values-grid">
-
-      <div class="value">
-
-        <div class="value-number">
-          01
-        </div>
-
-        <h3>
-          Thoughtful Design
-        </h3>
-
-        <p>
-          Clean proportions and timeless details designed
-          to work beautifully across different interiors.
-        </p>
-
-      </div>
-
-
-      <div class="value">
-
-        <div class="value-number">
-          02
-        </div>
-
-        <h3>
-          Quality First
-        </h3>
-
-        <p>
-          Furniture selected with attention to materials,
-          comfort and long-term everyday use.
-        </p>
-
-      </div>
-
-
-      <div class="value">
-
-        <div class="value-number">
-          03
-        </div>
-
-        <h3>
-          Personal Spaces
-        </h3>
-
-        <p>
-          Pieces that allow every customer to create a home
-          that reflects their own character.
-        </p>
-
-      </div>
-
-    </div>
-
   </div>
-
 </section>
 
-
+<!-- FOOTER -->
 <footer>
-
-  <div class="container">
+  <div class="footer-inner">
 
     <div class="footer-top">
 
-      <div class="footer-logo" id="footerLogo">
-        ROYAL FURNITURE
+      <div>
+        <div class="footer-logo" id="footerLogo">
+          Royal Furniture
+        </div>
+
+        <p class="footer-description">
+          Refined furniture for modern living.
+        </p>
       </div>
 
       <div class="footer-links">
-
-        <a href="#collections">Collection</a>
-        <a href="#categories">Categories</a>
-        <a href="#story">Story</a>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#story">Our Story</a>
         <a href="#values">Values</a>
-
       </div>
 
     </div>
 
-
     <div class="footer-bottom">
-
-      <div>
-        ©
-        <span id="year"></span>
-        Royal Furniture
-      </div>
-
-      <div>
-        Premium Furniture Store
-      </div>
-
+      © 2026 Royal Furniture. All rights reserved.
     </div>
 
   </div>
-
 </footer>
 
+<!-- PRODUCT MODAL -->
+<div class="modal" id="productModal">
 
-<div
-  class="overlay"
-  id="productOverlay"
-  onclick="closeProductFromOverlay(event)"
->
+  <div class="modal-box">
 
-  <div class="modal">
-
-    <button
-      class="close-btn"
-      onclick="closeModal()"
-      type="button"
-    >
-      ×
+    <button class="modal-close" onclick="closeProductModal()">
+      ✕
     </button>
 
-
-    <div class="product-modal-grid">
+    <div class="modal-grid">
 
       <div class="modal-image">
-
-        <img
-          id="modalImage"
-          src=""
-          alt=""
-        >
-
+        <img id="modalImage" src="" alt="">
       </div>
 
+      <div class="modal-info">
 
-      <div class="modal-details">
-
-        <div
-          class="product-category"
-          id="modalCategory"
-        ></div>
+        <div class="product-category" id="modalCategory"></div>
 
         <h2 id="modalName"></h2>
 
-        <div
-          class="product-price"
-          id="modalPrice"
-        ></div>
-
         <p id="modalDescription"></p>
 
-        <button
-          class="btn btn-dark"
-          id="modalAddButton"
-          type="button"
-        >
+        <div class="modal-price" id="modalPrice"></div>
+
+        <button class="btn btn-primary" id="modalAddButton">
           Add to Cart
         </button>
 
@@ -1710,292 +1514,83 @@
     </div>
 
   </div>
-
 </div>
 
+<!-- CART -->
+<div class="cart-drawer" id="cartDrawer">
 
-<div
-  class="cart-overlay"
-  id="cartOverlay"
-  onclick="closeCartFromOverlay(event)"
->
+  <div class="cart-head">
+    <h2>Your Cart</h2>
 
-  <aside class="cart-drawer">
+    <button class="icon-btn" onclick="closeCart()">
+      ✕
+    </button>
+  </div>
 
-    <div class="cart-header">
+  <div class="cart-items" id="cartItems"></div>
 
-      <h2>
-        Your Cart
-      </h2>
+  <div class="cart-footer">
 
-      <button
-        class="icon-btn"
-        type="button"
-        onclick="closeCart()"
-      >
-        ×
-      </button>
-
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">0.00 USD</span>
     </div>
 
-
-    <div
-      class="cart-items"
-      id="cartItems"
-    ></div>
-
-
-    <div class="cart-footer">
-
-      <div class="cart-total">
-
-        <span>
-          Total
-        </span>
-
-        <span id="cartTotal">
-          0 USD
-        </span>
-
-      </div>
-
-
-      <button
-        class="btn btn-dark"
-        style="width:100%"
-        onclick="openCheckout()"
-        type="button"
-        id="checkoutButton"
-      >
-        Proceed to Checkout
-      </button>
-
-    </div>
-
-  </aside>
-
-</div>
-
-
-<div
-  class="overlay"
-  id="checkoutOverlay"
->
-
-  <div class="checkout-modal">
-
-    <button
-      class="close-btn"
-      onclick="closeCheckout()"
-      type="button"
-    >
-      ×
+    <button class="btn btn-primary" style="width:100%;" onclick="openCheckout()">
+      Proceed to Checkout
     </button>
 
+  </div>
 
-    <div class="checkout-form">
+</div>
 
-      <div class="checkout-title">
+<!-- CHECKOUT -->
+<div class="checkout" id="checkout">
 
-        <div
-          class="eyebrow"
-          style="color:#777"
-        >
-          Checkout
-        </div>
+  <div class="checkout-box">
 
-        <h2>
-          Complete your order
-        </h2>
+    <h2>Checkout</h2>
 
-        <p>
-          Enter your details to submit your order request.
-        </p>
+    <div class="form-grid">
 
+      <div class="form-group">
+        <label>Full Name</label>
+        <input id="checkoutName" type="text" placeholder="Your name">
       </div>
 
-
-      <div
-        class="checkout-grid"
-        id="checkoutGrid"
-      >
-
-        <div id="customerForm">
-
-          <div class="form-group">
-
-            <label for="customerName">
-              Full Name *
-            </label>
-
-            <input
-              id="customerName"
-              type="text"
-              placeholder="Your full name"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="customerPhone">
-              Phone Number *
-            </label>
-
-            <input
-              id="customerPhone"
-              type="tel"
-              placeholder="01xxxxxxxxx"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="customerEmail">
-              Email
-            </label>
-
-            <input
-              id="customerEmail"
-              type="email"
-              placeholder="you@example.com"
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="customerCity">
-              City *
-            </label>
-
-            <input
-              id="customerCity"
-              type="text"
-              placeholder="Your city"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="customerAddress">
-              Delivery Address *
-            </label>
-
-            <textarea
-              id="customerAddress"
-              placeholder="Street, building, apartment..."
-              required
-            ></textarea>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="customerNotes">
-              Order Notes
-            </label>
-
-            <textarea
-              id="customerNotes"
-              placeholder="Optional notes..."
-            ></textarea>
-
-          </div>
-
-        </div>
-
-
-        <div class="order-summary">
-
-          <h3>
-            Order Summary
-          </h3>
-
-          <div
-            class="summary-items"
-            id="summaryItems"
-          ></div>
-
-
-          <div class="summary-total">
-
-            <span>
-              Total
-            </span>
-
-            <span id="summaryTotal">
-              0 USD
-            </span>
-
-          </div>
-
-
-          <div class="checkout-actions">
-
-            <button
-              class="btn btn-dark"
-              type="button"
-              onclick="placeOrder()"
-              id="placeOrderButton"
-            >
-              Place Order
-            </button>
-
-            <div class="payment-note">
-              Payment gateway is not connected yet.
-              Your order will be saved as pending payment.
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div
-          class="order-success"
-          id="orderSuccess"
-        >
-
-          <div class="success-icon">
-            ✓
-          </div>
-
-          <h2>
-            Order received
-          </h2>
-
-          <p>
-            Thank you. Your order request has been received
-            and is currently pending payment confirmation.
-          </p>
-
-          <p>
-            Order number:
-            <strong id="orderNumber"></strong>
-          </p>
-
-          <button
-            class="btn btn-dark"
-            type="button"
-            onclick="finishOrder()"
-          >
-            Continue Shopping
-          </button>
-
-        </div>
-
+      <div class="form-group">
+        <label>Phone</label>
+        <input id="checkoutPhone" type="tel" placeholder="Phone number">
       </div>
+
+      <div class="form-group">
+        <label>City</label>
+        <input id="checkoutCity" type="text" placeholder="City">
+      </div>
+
+      <div class="form-group">
+        <label>Currency</label>
+        <select id="checkoutCurrency">
+          <option>USD</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label>Address</label>
+        <textarea id="checkoutAddress" placeholder="Delivery address"></textarea>
+      </div>
+
+    </div>
+
+    <div class="checkout-actions">
+
+      <button class="btn btn-primary" onclick="placeOrder()">
+        Place Order
+      </button>
+
+      <button class="btn" onclick="closeCheckout()">
+        Cancel
+      </button>
 
     </div>
 
@@ -2003,1764 +1598,764 @@
 
 </div>
 
+<!-- SUCCESS -->
+<div class="success" id="success">
 
-<div
-  class="toast"
-  id="toast"
-></div>
+  <div class="success-box">
 
+    <div class="success-icon">
+      ✓
+    </div>
+
+    <h2>Order Received</h2>
+
+    <p>
+      Your order has been received successfully.
+      Payment confirmation is currently pending.
+    </p>
+
+    <button class="btn btn-primary" onclick="closeSuccess()">
+      Continue Shopping
+    </button>
+
+  </div>
+
+</div>
+
+<div class="toast" id="toast">
+  Added to cart
+</div>
 
 <script>
 
-/* =========================
-   HERO SLIDER
-========================= */
+/* HERO SLIDER */
 
-const heroSlides =
-  document.querySelectorAll(".hero-slide");
+let currentSlide = 0;
 
-let heroIndex = 0;
+const heroSlides = document.querySelectorAll(".hero-slide");
+const heroDots = document.querySelectorAll(".hero-dot");
 
-setInterval(() => {
+function showSlide(index){
 
-  if(!heroSlides.length){
-    return;
-  }
+  heroSlides.forEach((slide,i)=>{
+    slide.classList.toggle("active",i === index);
+  });
 
-  heroSlides[heroIndex]
-    .classList.remove("active");
+  heroDots.forEach((dot,i)=>{
+    dot.classList.toggle("active",i === index);
+  });
 
-  heroIndex =
-    (heroIndex + 1) %
-    heroSlides.length;
+  currentSlide = index;
+}
 
-  heroSlides[heroIndex]
-    .classList.add("active");
+function goToSlide(index){
+  showSlide(index);
+}
 
+setInterval(()=>{
+  currentSlide = (currentSlide + 1) % heroSlides.length;
+  showSlide(currentSlide);
 },5000);
 
 
-/* =========================
-   SETTINGS
-========================= */
+/* STORE */
 
-const defaultSettings = {
-
-  storeName:
-    "Royal Furniture",
-
-  currency:
-    "USD",
-
-  description:
-    "Refined furniture for modern living.",
-
-  heroTitle:
-    "Designed for the way you live.",
-
-  heroDescription:
-    "Refined furniture pieces created to bring comfort, character and timeless elegance into modern spaces."
-
-};
-
-
-let settings =
-  defaultSettings;
-
+let settings = {};
 
 function loadStore(){
 
-  try{
+  const saved =
+    localStorage.getItem("royalFurnitureProSettings");
 
-    const savedSettings =
-      localStorage.getItem(
-        "royalFurnitureProSettings"
-      );
+  if(saved){
 
-    if(savedSettings){
-
-      settings = {
-
-        ...defaultSettings,
-
-        ...JSON.parse(savedSettings),
-
-        currency:
-          "USD"
-
-      };
-
-    }else{
-
-      settings = {
-
-        ...defaultSettings,
-
-        currency:
-          "USD"
-
-      };
-
+    try{
+      settings = JSON.parse(saved);
+    }catch(e){
+      settings = {};
     }
-
-  }catch(error){
-
-    settings = {
-
-      ...defaultSettings,
-
-      currency:
-        "USD"
-
-    };
 
   }
 
-
-  settings.currency =
-    "USD";
-
+  const brandName =
+    settings.storeName ||
+    settings.brandName ||
+    "Royal Furniture";
 
   document.title =
-    `${settings.storeName} | Premium Furniture`;
+    brandName + " | Premium Furniture";
 
+  document.getElementById("logoText").textContent =
+    brandName;
 
-  document.getElementById(
-    "storeLogo"
-  ).textContent =
-    String(
-      settings.storeName ||
-      defaultSettings.storeName
-    ).toUpperCase();
+  document.getElementById("footerLogo").textContent =
+    brandName;
 
+  if(settings.heroTitle){
+    document.getElementById("heroTitle").textContent =
+      settings.heroTitle;
+  }
 
-  document.getElementById(
-    "footerLogo"
-  ).textContent =
-    String(
-      settings.storeName ||
-      defaultSettings.storeName
-    ).toUpperCase();
+  if(settings.heroDescription){
+    document.getElementById("heroDescription").textContent =
+      settings.heroDescription;
+  }
 
-
-  document.getElementById(
-    "heroTitle"
-  ).textContent =
-    settings.heroTitle ||
-    defaultSettings.heroTitle;
-
-
-  document.getElementById(
-    "heroDescription"
-  ).textContent =
-    settings.heroDescription ||
-    defaultSettings.heroDescription;
-
+  /* Existing behavior preserved */
+  settings.currency = "USD";
 }
 
 
-/* =========================
-   PRODUCTS
-========================= */
-
-const fallbackProducts = [
-
-  {
-    id:1,
-    name:"Cloud Sofa",
-    category:"Living Room",
-    price:18500,
-    image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85",
-    description:"A soft contemporary sofa designed for relaxed modern living."
-  },
-
-  {
-    id:2,
-    name:"Lounge Chair",
-    category:"Living Room",
-    price:7200,
-    image:"https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=85",
-    description:"A sculptural lounge chair with a refined silhouette."
-  },
-
-  {
-    id:3,
-    name:"Oak Bed",
-    category:"Bedroom",
-    price:22000,
-    image:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=85",
-    description:"A warm oak bed designed around calm and comfortable spaces."
-  },
-
-  {
-    id:4,
-    name:"Minimal Bedside",
-    category:"Bedroom",
-    price:4500,
-    image:"https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=85",
-    description:"A compact bedside table with clean contemporary lines."
-  },
-
-  {
-    id:5,
-    name:"Dining Table",
-    category:"Dining",
-    price:14500,
-    image:"https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=85",
-    description:"A sophisticated dining table made for everyday gatherings."
-  },
-
-  {
-    id:6,
-    name:"Dining Chair",
-    category:"Dining",
-    price:3800,
-    image:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1000&q=85",
-    description:"Elegant dining seating with a comfortable contemporary profile."
-  },
-
-  {
-    id:7,
-    name:"Executive Desk",
-    category:"Office",
-    price:12500,
-    image:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85",
-    description:"A refined workspace desk designed for modern offices."
-  },
-
-  {
-    id:8,
-    name:"Ceramic Vase",
-    category:"Accessories",
-    price:1200,
-    image:"https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?auto=format&fit=crop&w=1000&q=85",
-    description:"A simple decorative accent for contemporary interiors."
-  }
-
-];
-
+/* PRODUCTS */
 
 let products = [];
 
-
-function getProductId(product){
-
-  if(
-    product &&
-    product.id !== undefined &&
-    product.id !== null
-  ){
-
-    return String(
-      product.id
-    );
-
-  }
-
-  return (
-    "custom-" +
-    String(
-      product?.name ||
-      "product"
-    )
-      .trim()
-      .toLowerCase()
-      .replace(
-        /[^a-z0-9]+/g,
-        "-"
-      ) +
-    "-" +
-    String(
-      product?.image ||
-      ""
-    )
-      .trim()
-      .slice(-30)
-  );
-
-}
-
-
 function loadProducts(){
 
-  try{
+  const saved =
+    localStorage.getItem("royalFurnitureProProducts");
 
-    const saved =
-      localStorage.getItem(
-        "royalFurnitureProProducts"
-      );
+  if(saved){
 
-    if(saved){
+    try{
 
-      const parsed =
-        JSON.parse(saved);
+      const parsed = JSON.parse(saved);
 
       if(Array.isArray(parsed)){
-
-        products =
-          parsed.map(
-            (product,index) => {
-
-              return {
-
-                ...product,
-
-                id:
-                  product.id ??
-                  `custom-${index}-${String(product.name || "product")
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]+/g,"-")}`
-
-              };
-
-            }
-          );
-
+        products = parsed;
       }
 
-    }
-
-  }catch(error){
-
-    products = [];
+    }catch(e){}
 
   }
 
+  if(!Array.isArray(products) || products.length === 0){
 
-  if(!products.length){
+    products = [
 
-    products =
-      fallbackProducts;
+      {
+        id:1,
+        name:"Luna Sofa",
+        price:1299,
+        category:"Living Room",
+        description:"Elegant contemporary sofa with soft upholstery.",
+        image:"assets/product-1.jpg"
+      },
 
-  }
+      {
+        id:2,
+        name:"Aria Lounge Chair",
+        price:699,
+        category:"Living Room",
+        description:"A refined lounge chair designed for comfort.",
+        image:"assets/product-2.jpg"
+      },
 
-}
+      {
+        id:3,
+        name:"Royal Bed",
+        price:1899,
+        category:"Bedroom",
+        description:"Modern upholstered bed with timeless proportions.",
+        image:"assets/product-1.jpg"
+      },
 
+      {
+        id:4,
+        name:"Noble Dining Table",
+        price:1499,
+        category:"Dining",
+        description:"Solid table designed for elegant gatherings.",
+        image:"assets/product-2.jpg"
+      },
 
-function numericPrice(price){
+      {
+        id:5,
+        name:"Maison Cabinet",
+        price:899,
+        category:"Living Room",
+        description:"Minimal storage with a warm natural finish.",
+        image:"assets/product-1.jpg"
+      },
 
-  const number =
-    Number(price);
+      {
+        id:6,
+        name:"Executive Desk",
+        price:1199,
+        category:"Office",
+        description:"A sophisticated workspace with clean proportions.",
+        image:"assets/product-2.jpg"
+      },
 
-  return Number.isFinite(number)
-    ? number
-    : 0;
+      {
+        id:7,
+        name:"Cloud Sofa",
+        price:1599,
+        category:"Living Room",
+        description:"Deep seating and soft contemporary comfort.",
+        image:"assets/product-1.jpg"
+      },
 
-}
-
-
-function formatPrice(price){
-
-  return (
-    numericPrice(price)
-      .toLocaleString(
-        undefined,
-        {
-          minimumFractionDigits:2,
-          maximumFractionDigits:2
-        }
-      ) +
-    " USD"
-  );
-
-}
-
-
-/* =========================
-   PRODUCT FILTER
-========================= */
-
-let activeCategory =
-  "All";
-
-
-function filterCategory(
-  category,
-  clickedButton = null
-){
-
-  activeCategory =
-    category;
-
-
-  document
-    .querySelectorAll(
-      ".filter-btn"
-    )
-    .forEach(
-      button => {
-
-        button.classList
-          .remove("active");
-
+      {
+        id:8,
+        name:"Noir Nightstand",
+        price:499,
+        category:"Bedroom",
+        description:"Compact bedside table with elegant detailing.",
+        image:"assets/product-2.jpg"
       }
-    );
 
-
-  if(clickedButton){
-
-    clickedButton.classList
-      .add("active");
-
-  }else{
-
-    document
-      .querySelectorAll(
-        ".filter-btn"
-      )
-      .forEach(
-        button => {
-
-          if(
-            button.textContent
-              .trim()
-              .toLowerCase() ===
-            category.toLowerCase()
-          ){
-
-            button.classList
-              .add("active");
-
-          }
-
-        }
-      );
+    ];
 
   }
-
 
   renderProducts();
 
-
-  document
-    .getElementById(
-      "collections"
-    )
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
 }
 
+
+/* RENDER */
+
+let currentFilter = "all";
 
 function renderProducts(){
 
-  const container =
-    document.getElementById(
-      "products"
+  const grid =
+    document.getElementById("productGrid");
+
+  if(!grid) return;
+
+  let visible = products;
+
+  if(currentFilter !== "all"){
+    visible = products.filter(
+      product => product.category === currentFilter
     );
+  }
 
+  grid.innerHTML = "";
 
-  const filtered =
-    activeCategory === "All"
-      ? products
-      : products.filter(
-          product =>
-            String(
-              product.category ||
-              ""
-            )
-              .toLowerCase() ===
-            activeCategory
-              .toLowerCase()
-        );
+  visible.forEach(product => {
 
+    const card =
+      document.createElement("div");
 
-  if(!filtered.length){
+    card.className = "product-card";
 
-    container.innerHTML = `
+    const image =
+      product.image ||
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85";
 
-      <div style="
-        grid-column:1/-1;
-        text-align:center;
-        padding:60px 20px;
-        color:#777;
-      ">
+    card.innerHTML = `
 
-        No products available in this category yet.
-
+      <div class="product-image">
+        <img
+          src="${image}"
+          alt="${product.name}"
+          onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85'"
+        >
       </div>
 
+      <div class="product-info">
+
+        <div class="product-category">
+          ${product.category || ""}
+        </div>
+
+        <div class="product-name">
+          ${product.name || "Product"}
+        </div>
+
+        <div class="product-description">
+          ${product.description || ""}
+        </div>
+
+        <div class="product-bottom">
+
+          <div class="product-price">
+            ${formatPrice(product.price)}
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="event.stopPropagation(); addToCart(${product.id})"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
     `;
 
-    return;
+    card.onclick = () =>
+      openProductModal(product.id);
 
-  }
+    grid.appendChild(card);
 
-
-  container.innerHTML =
-    filtered.map(
-      product => {
-
-        const id =
-          getProductId(
-            product
-          );
-
-
-        return `
-
-          <article
-            class="product-card"
-            data-product-id="${escapeHtml(id)}"
-            onclick="openProductById('${escapeAttribute(id)}')"
-          >
-
-            <div class="product-image">
-
-              <img
-                src="${escapeAttribute(product.image || "")}"
-                alt="${escapeAttribute(product.name || "Product")}"
-                loading="lazy"
-                onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80'"
-              >
-
-            </div>
-
-
-            <div class="product-info">
-
-              <div class="product-category">
-                ${escapeHtml(
-                  product.category ||
-                  "Collection"
-                )}
-              </div>
-
-              <div class="product-name">
-                ${escapeHtml(
-                  product.name ||
-                  "Untitled Product"
-                )}
-              </div>
-
-              <div class="product-price">
-                ${formatPrice(
-                  product.price
-                )}
-              </div>
-
-            </div>
-
-          </article>
-
-        `;
-
-      }
-    ).join("");
+  });
 
 }
 
 
-function escapeHtml(value){
+/* PRICE */
 
-  return String(
-    value ?? ""
-  )
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+function formatPrice(price){
+
+  return Number(price || 0).toFixed(2) + " USD";
 
 }
 
 
-function escapeAttribute(value){
+/* FILTER */
 
-  return escapeHtml(value)
-    .replace(
-      /\\/g,
-      "\\\\"
+function filterProducts(category,button){
+
+  currentFilter = category;
+
+  document.querySelectorAll(".filter-btn")
+    .forEach(btn =>
+      btn.classList.remove("active")
     );
 
+  if(button){
+    button.classList.add("active");
+  }
+
+  renderProducts();
 }
 
 
-function openProductById(id){
+/* MODAL */
+
+function openProductModal(id){
 
   const product =
-    products.find(
-      item =>
-        getProductId(item) ===
-        String(id)
-    );
+    products.find(p => p.id == id);
 
+  if(!product) return;
 
-  if(product){
+  document.getElementById("modalImage").src =
+    product.image || "";
 
-    openProduct(
-      product
-    );
-
-  }
-
-}
-
-
-let currentProduct =
-  null;
-
-
-function openProduct(product){
-
-  currentProduct =
-    product;
-
-
-  document.getElementById(
-    "modalImage"
-  ).src =
-    product.image ||
-    "";
-
-
-  document.getElementById(
-    "modalImage"
-  ).alt =
-    product.name ||
-    "Product";
-
-
-  document.getElementById(
-    "modalCategory"
-  ).textContent =
-    product.category ||
-    "Collection";
-
-
-  document.getElementById(
-    "modalName"
-  ).textContent =
-    product.name ||
-    "Untitled Product";
-
-
-  document.getElementById(
-    "modalPrice"
-  ).textContent =
-    formatPrice(
-      product.price
-    );
-
-
-  document.getElementById(
-    "modalDescription"
-  ).textContent =
-    product.description ||
-    "A refined furniture piece designed for modern interiors.";
-
-
-  document.getElementById(
-    "modalAddButton"
-  ).onclick =
+  document.getElementById("modalImage").onerror =
     function(){
-
-      addToCart(
-        currentProduct
-      );
-
-      closeModal();
-
-      showToast(
-        "Product added to cart"
-      );
-
+      this.src =
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85";
     };
 
+  document.getElementById("modalCategory").textContent =
+    product.category || "";
 
-  document
-    .getElementById(
-      "productOverlay"
-    )
-    .classList
-    .add("open");
+  document.getElementById("modalName").textContent =
+    product.name || "";
 
+  document.getElementById("modalDescription").textContent =
+    product.description || "";
 
-  document.body.style.overflow =
-    "hidden";
+  document.getElementById("modalPrice").textContent =
+    formatPrice(product.price);
+
+  document.getElementById("modalAddButton").onclick =
+    function(){
+      addToCart(product.id);
+      closeProductModal();
+    };
+
+  document.getElementById("productModal")
+    .classList.add("active");
+
+}
+
+function closeProductModal(){
+
+  document.getElementById("productModal")
+    .classList.remove("active");
 
 }
 
 
-function closeModal(){
-
-  document
-    .getElementById(
-      "productOverlay"
-    )
-    .classList
-    .remove("open");
-
-
-  document.body.style.overflow =
-    "";
-
-}
-
-
-function closeProductFromOverlay(
-  event
-){
-
-  if(
-    event.target.id ===
-    "productOverlay"
-  ){
-
-    closeModal();
-
-  }
-
-}
-
-
-/* =========================
-   CART
-========================= */
+/* CART */
 
 let cart = [];
 
-
 function loadCart(){
 
-  try{
+  const saved =
+    localStorage.getItem("royalFurnitureProCart");
 
-    const saved =
-      localStorage.getItem(
-        "royalFurnitureProCart"
-      );
+  if(saved){
 
-
-    if(saved){
-
-      const parsed =
-        JSON.parse(saved);
-
-
-      if(Array.isArray(parsed)){
-
-        cart =
-          parsed;
-
-      }
-
+    try{
+      cart = JSON.parse(saved);
+    }catch(e){
+      cart = [];
     }
-
-  }catch(error){
-
-    cart = [];
 
   }
 
-}
+  if(!Array.isArray(cart)){
+    cart = [];
+  }
 
+  renderCart();
+}
 
 function saveCart(){
 
   localStorage.setItem(
     "royalFurnitureProCart",
-    JSON.stringify(
-      cart
-    )
+    JSON.stringify(cart)
   );
 
 }
 
+function addToCart(id){
 
-function getCartId(item){
+  const product =
+    products.find(p => p.id == id);
 
-  if(
-    item.cartId !== undefined &&
-    item.cartId !== null
-  ){
-
-    return String(
-      item.cartId
-    );
-
-  }
-
-
-  return getProductId(
-    item
-  );
-
-}
-
-
-function addToCart(product){
-
-  const productId =
-    getProductId(
-      product
-    );
-
+  if(!product) return;
 
   const existing =
-    cart.find(
-      item =>
-        getCartId(item) ===
-        productId
-    );
-
+    cart.find(item => item.id == id);
 
   if(existing){
-
-    existing.quantity =
-      Number(
-        existing.quantity || 1
-      ) + 1;
-
+    existing.quantity++;
   }else{
-
     cart.push({
-
-      ...product,
-
-      cartId:
-        productId,
-
-      quantity:
-        1
-
+      id:product.id,
+      quantity:1
     });
-
   }
 
-
   saveCart();
-
   renderCart();
 
-  updateCartCount();
+  showToast("Added to cart");
 
 }
 
-
-function removeFromCart(
-  cartId
-){
+function removeFromCart(id){
 
   cart =
-    cart.filter(
-      item =>
-        getCartId(item) !==
-        String(cartId)
-    );
-
+    cart.filter(item => item.id != id);
 
   saveCart();
-
   renderCart();
-
-  updateCartCount();
 
 }
 
-
-function changeQuantity(
-  cartId,
-  change
-){
+function changeQuantity(id,amount){
 
   const item =
-    cart.find(
-      product =>
-        getCartId(product) ===
-        String(cartId)
-    );
+    cart.find(item => item.id == id);
 
+  if(!item) return;
 
-  if(!item){
+  item.quantity += amount;
 
+  if(item.quantity <= 0){
+    removeFromCart(id);
     return;
-
   }
-
-
-  item.quantity =
-    Number(
-      item.quantity || 1
-    ) +
-    Number(
-      change
-    );
-
-
-  if(
-    item.quantity <= 0
-  ){
-
-    removeFromCart(
-      cartId
-    );
-
-    return;
-
-  }
-
 
   saveCart();
-
   renderCart();
 
-  updateCartCount();
-
 }
-
-
-function cartTotal(){
-
-  return cart.reduce(
-    (
-      total,
-      item
-    ) =>
-      total +
-      numericPrice(
-        item.price
-      ) *
-      Number(
-        item.quantity || 1
-      ),
-    0
-  );
-
-}
-
-
-function cartItemsCount(){
-
-  return cart.reduce(
-    (
-      total,
-      item
-    ) =>
-      total +
-      Number(
-        item.quantity || 1
-      ),
-    0
-  );
-
-}
-
-
-function updateCartCount(){
-
-  document.getElementById(
-    "cartCount"
-  ).textContent =
-    cartItemsCount();
-
-}
-
 
 function renderCart(){
 
   const container =
-    document.getElementById(
-      "cartItems"
-    );
+    document.getElementById("cartItems");
 
+  const count =
+    document.getElementById("cartCount");
 
-  if(!cart.length){
+  const totalElement =
+    document.getElementById("cartTotal");
 
-    container.innerHTML = `
+  if(!container) return;
 
-      <div class="empty-cart">
+  container.innerHTML = "";
 
-        <div style="font-size:40px;margin-bottom:15px;">
-          🛒
+  let total = 0;
+  let countTotal = 0;
+
+  cart.forEach(item => {
+
+    const product =
+      products.find(p => p.id == item.id);
+
+    if(!product) return;
+
+    const quantity =
+      Number(item.quantity || 1);
+
+    total +=
+      Number(product.price || 0) * quantity;
+
+    countTotal += quantity;
+
+    const row =
+      document.createElement("div");
+
+    row.className = "cart-item";
+
+    row.innerHTML = `
+
+      <img
+        src="${product.image || ""}"
+        alt="${product.name}"
+        onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=500&q=80'"
+      >
+
+      <div>
+
+        <h4>${product.name}</h4>
+
+        <p>${formatPrice(product.price)}</p>
+
+        <div class="cart-qty">
+
+          <button onclick="changeQuantity(${product.id},-1)">
+            −
+          </button>
+
+          <span>${quantity}</span>
+
+          <button onclick="changeQuantity(${product.id},1)">
+            +
+          </button>
+
         </div>
-
-        <p>
-          Your cart is empty.
-        </p>
-
-        <button
-          class="btn btn-dark"
-          style="margin-top:20px;"
-          onclick="closeCart()"
-          type="button"
-        >
-          Continue Shopping
-        </button>
 
       </div>
 
+      <button
+        class="cart-remove"
+        onclick="removeFromCart(${product.id})"
+      >
+        Remove
+      </button>
+
     `;
 
+    container.appendChild(row);
 
-    document.getElementById(
-      "cartTotal"
-    ).textContent =
-      formatPrice(0);
+  });
 
+  if(cart.length === 0){
 
-    return;
+    container.innerHTML = `
+      <div style="padding:40px 10px;text-align:center;color:#777;">
+        Your cart is empty.
+      </div>
+    `;
 
   }
 
+  count.textContent = countTotal;
 
-  container.innerHTML =
-    cart.map(
-      item => {
-
-        const id =
-          getCartId(
-            item
-          );
-
-
-        return `
-
-          <div class="cart-item">
-
-            <img
-              src="${escapeAttribute(item.image || "")}"
-              alt="${escapeAttribute(item.name || "Product")}"
-            >
-
-
-            <div>
-
-              <div class="cart-item-name">
-                ${escapeHtml(
-                  item.name ||
-                  "Product"
-                )}
-              </div>
-
-
-              <div class="cart-item-price">
-                ${formatPrice(
-                  item.price
-                )}
-              </div>
-
-
-              <div class="quantity">
-
-                <button
-                  type="button"
-                  onclick="changeQuantity('${escapeAttribute(id)}',-1)"
-                >
-                  −
-                </button>
-
-
-                <span>
-                  ${Number(
-                    item.quantity || 1
-                  )}
-                </span>
-
-
-                <button
-                  type="button"
-                  onclick="changeQuantity('${escapeAttribute(id)}',1)"
-                >
-                  +
-                </button>
-
-              </div>
-
-
-              <button
-                class="cart-remove"
-                type="button"
-                onclick="removeFromCart('${escapeAttribute(id)}')"
-              >
-                Remove
-              </button>
-
-            </div>
-
-
-            <strong>
-              ${formatPrice(
-                numericPrice(
-                  item.price
-                ) *
-                Number(
-                  item.quantity || 1
-                )
-              )}
-            </strong>
-
-          </div>
-
-        `;
-
-      }
-    ).join("");
-
-
-  document.getElementById(
-    "cartTotal"
-  ).textContent =
-    formatPrice(
-      cartTotal()
-    );
+  totalElement.textContent =
+    total.toFixed(2) + " USD";
 
 }
 
+
+/* CART DRAWER */
 
 function openCart(){
 
-  renderCart();
-
-
-  document
-    .getElementById(
-      "cartOverlay"
-    )
-    .classList
-    .add("open");
-
-
-  document.body.style.overflow =
-    "hidden";
+  document.getElementById("cartDrawer")
+    .classList.add("active");
 
 }
-
 
 function closeCart(){
 
-  document
-    .getElementById(
-      "cartOverlay"
-    )
-    .classList
-    .remove("open");
-
-
-  document.body.style.overflow =
-    "";
+  document.getElementById("cartDrawer")
+    .classList.remove("active");
 
 }
 
 
-function closeCartFromOverlay(
-  event
-){
-
-  if(
-    event.target.id ===
-    "cartOverlay"
-  ){
-
-    closeCart();
-
-  }
-
-}
-
-
-/* =========================
-   CHECKOUT
-   NO PAYPAL
-========================= */
-
-function renderCheckoutSummary(){
-
-  const container =
-    document.getElementById(
-      "summaryItems"
-    );
-
-
-  if(!cart.length){
-
-    container.innerHTML =
-      "<p>Your cart is empty.</p>";
-
-
-    document.getElementById(
-      "summaryTotal"
-    ).textContent =
-      formatPrice(0);
-
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    cart.map(
-      item => `
-
-        <div class="summary-item">
-
-          <span>
-            ${escapeHtml(
-              item.name ||
-              "Product"
-            )}
-            ×
-            ${Number(
-              item.quantity || 1
-            )}
-          </span>
-
-
-          <strong>
-            ${formatPrice(
-              numericPrice(
-                item.price
-              ) *
-              Number(
-                item.quantity || 1
-              )
-            )}
-          </strong>
-
-        </div>
-
-      `
-    ).join("");
-
-
-  document.getElementById(
-    "summaryTotal"
-  ).textContent =
-    formatPrice(
-      cartTotal()
-    );
-
-}
-
+/* CHECKOUT */
 
 function openCheckout(){
 
-  if(!cart.length){
+  if(cart.length === 0){
 
-    showToast(
-      "Your cart is empty"
-    );
-
+    showToast("Your cart is empty");
     return;
 
   }
-
-
-  settings.currency =
-    "USD";
-
 
   closeCart();
 
-  renderCheckoutSummary();
-
-
-  document.getElementById(
-    "customerForm"
-  ).style.display =
-    "";
-
-
-  document.querySelector(
-    ".order-summary"
-  ).style.display =
-    "";
-
-
-  document.getElementById(
-    "orderSuccess"
-  ).classList
-    .remove("show");
-
-
-  document
-    .getElementById(
-      "checkoutOverlay"
-    )
-    .classList
-    .add("open");
-
-
-  document.body.style.overflow =
-    "hidden";
+  document.getElementById("checkout")
+    .classList.add("active");
 
 }
-
 
 function closeCheckout(){
 
-  document
-    .getElementById(
-      "checkoutOverlay"
-    )
-    .classList
-    .remove("open");
-
-
-  document.body.style.overflow =
-    "";
+  document.getElementById("checkout")
+    .classList.remove("active");
 
 }
 
 
-function validateCheckoutForm(){
-
-  if(!cart.length){
-
-    showToast(
-      "Your cart is empty"
-    );
-
-    return false;
-
-  }
-
-
-  const name =
-    document.getElementById(
-      "customerName"
-    ).value.trim();
-
-
-  const phone =
-    document.getElementById(
-      "customerPhone"
-    ).value.trim();
-
-
-  const city =
-    document.getElementById(
-      "customerCity"
-    ).value.trim();
-
-
-  const address =
-    document.getElementById(
-      "customerAddress"
-    ).value.trim();
-
-
-  if(!name){
-
-    showToast(
-      "Please enter your name"
-    );
-
-    return false;
-
-  }
-
-
-  if(!phone){
-
-    showToast(
-      "Please enter your phone number"
-    );
-
-    return false;
-
-  }
-
-
-  if(!city){
-
-    showToast(
-      "Please enter your city"
-    );
-
-    return false;
-
-  }
-
-
-  if(!address){
-
-    showToast(
-      "Please enter your delivery address"
-    );
-
-    return false;
-
-  }
-
-
-  settings.currency =
-    "USD";
-
-
-  const amount =
-    cartTotal();
-
-
-  if(
-    !Number.isFinite(amount) ||
-    amount <= 0
-  ){
-
-    showToast(
-      "Invalid order total."
-    );
-
-    return false;
-
-  }
-
-
-  return true;
-
-}
-
-
-/* =========================
-   CREATE LOCAL ORDER
-   PAYMENT PENDING
-========================= */
+/* ORDER */
 
 function placeOrder(){
 
-  if(
-    !validateCheckoutForm()
-  ){
+  const name =
+    document.getElementById("checkoutName").value.trim();
 
+  const phone =
+    document.getElementById("checkoutPhone").value.trim();
+
+  const city =
+    document.getElementById("checkoutCity").value.trim();
+
+  const address =
+    document.getElementById("checkoutAddress").value.trim();
+
+  if(!name || !phone || !city || !address){
+
+    showToast("Please complete all fields");
     return;
 
   }
 
+  let total = 0;
 
-  const button =
-    document.getElementById(
-      "placeOrderButton"
-    );
+  const orderItems =
+    cart.map(item => {
 
+      const product =
+        products.find(p => p.id == item.id);
 
-  button.disabled =
-    true;
+      const quantity =
+        Number(item.quantity || 1);
 
+      total +=
+        Number(product?.price || 0) * quantity;
 
-  button.textContent =
-    "Submitting Order...";
+      return {
+        productId:item.id,
+        name:product?.name || "",
+        price:Number(product?.price || 0),
+        quantity
+      };
 
-
-  savePendingOrder();
-
-
-  button.disabled =
-    false;
-
-
-  button.textContent =
-    "Place Order";
-
-}
-
-
-function savePendingOrder(){
-
-  const name =
-    document.getElementById(
-      "customerName"
-    ).value.trim();
-
-
-  const phone =
-    document.getElementById(
-      "customerPhone"
-    ).value.trim();
-
-
-  const email =
-    document.getElementById(
-      "customerEmail"
-    ).value.trim();
-
-
-  const city =
-    document.getElementById(
-      "customerCity"
-    ).value.trim();
-
-
-  const address =
-    document.getElementById(
-      "customerAddress"
-    ).value.trim();
-
-
-  const notes =
-    document.getElementById(
-      "customerNotes"
-    ).value.trim();
-
-
-  const orderNumber =
-    "RF-" +
-    Date.now()
-      .toString()
-      .slice(-8);
-
+    });
 
   const order = {
 
     id:
-      orderNumber,
-
-    createdAt:
-      new Date().toISOString(),
+      "RF-" +
+      Date.now().toString().slice(-8),
 
     customer:{
-
       name,
       phone,
-      email,
       city,
-      address,
-      notes
-
+      address
     },
 
-    items:
-      JSON.parse(
-        JSON.stringify(
-          cart
-        )
-      ),
+    items:orderItems,
 
-    total:
-      cartTotal(),
+    total,
 
-    currency:
-      "USD",
+    currency:"USD",
 
     payment:{
+      method:"Not Connected",
+      status:"Pending Payment"
+    },
 
-      method:
-        "Not Connected",
-
-      status:
-        "Pending Payment"
-
-    }
+    createdAt:
+      new Date().toISOString()
 
   };
 
-
-  let orders =
-    [];
-
+  let orders = [];
 
   try{
 
     const saved =
-      localStorage.getItem(
-        "royalFurnitureProOrders"
-      );
-
+      localStorage.getItem("royalFurnitureProOrders");
 
     if(saved){
-
-      const parsed =
-        JSON.parse(
-          saved
-        );
-
-
-      if(
-        Array.isArray(
-          parsed
-        )
-      ){
-
-        orders =
-          parsed;
-
-      }
-
+      orders = JSON.parse(saved);
     }
 
-  }catch(error){
+    if(!Array.isArray(orders)){
+      orders = [];
+    }
 
-    orders =
-      [];
-
+  }catch(e){
+    orders = [];
   }
 
-
-  orders.push(
-    order
-  );
-
+  orders.push(order);
 
   localStorage.setItem(
     "royalFurnitureProOrders",
-    JSON.stringify(
-      orders
-    )
+    JSON.stringify(orders)
   );
 
-
-  document.getElementById(
-    "orderNumber"
-  ).textContent =
-    orderNumber;
-
-
-  document.getElementById(
-    "customerForm"
-  ).style.display =
-    "none";
-
-
-  document.querySelector(
-    ".order-summary"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "orderSuccess"
-  ).classList
-    .add("show");
-
-
-  cart =
-    [];
-
+  cart = [];
 
   saveCart();
-
   renderCart();
 
-  updateCartCount();
+  closeCheckout();
 
+  document.getElementById("success")
+    .classList.add("active");
 
-  showToast(
-    "Order request received"
-  );
+}
+
+function closeSuccess(){
+
+  document.getElementById("success")
+    .classList.remove("active");
 
 }
 
 
-function finishOrder(){
-
-  document.getElementById(
-    "checkoutOverlay"
-  ).classList
-    .remove("open");
-
-
-  document.body.style.overflow =
-    "";
-
-
-  document.getElementById(
-    "customerName"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerPhone"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerEmail"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerCity"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerAddress"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "customerNotes"
-  ).value =
-    "";
-
-
-  window.location.hash =
-    "collections";
-
-}
-
-
-/* =========================
-   TOAST
-========================= */
+/* TOAST */
 
 let toastTimer;
 
-
-function showToast(
-  message
-){
+function showToast(message){
 
   const toast =
-    document.getElementById(
-      "toast"
-    );
+    document.getElementById("toast");
 
+  toast.textContent = message;
 
-  toast.textContent =
-    message;
+  toast.classList.add("show");
 
-
-  toast.classList
-    .add("show");
-
-
-  clearTimeout(
-    toastTimer
-  );
-
+  clearTimeout(toastTimer);
 
   toastTimer =
-    setTimeout(
-      () => {
-
-        toast.classList
-          .remove("show");
-
-      },
-      2500
-    );
+    setTimeout(()=>{
+      toast.classList.remove("show");
+    },2200);
 
 }
 
 
-/* =========================
-   INIT
-========================= */
+/* INIT */
 
 loadStore();
-
 loadProducts();
-
 loadCart();
-
-renderProducts();
-
-renderCart();
-
-updateCartCount();
-
-
-document.getElementById(
-  "year"
-).textContent =
-  new Date()
-    .getFullYear();
 
 </script>
 
