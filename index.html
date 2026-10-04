@@ -798,8 +798,12 @@
       width:100%;
     }
 
-    #paypal-button-container{
-      width:100%;
+    .payment-note{
+      margin-top:12px;
+      font-size:12px;
+      line-height:1.5;
+      color:#777;
+      text-align:center;
     }
 
     .order-success{
@@ -1612,7 +1616,7 @@
         </h2>
 
         <p>
-          Enter your details and complete your payment securely with PayPal.
+          Enter your details to submit your order request.
         </p>
 
       </div>
@@ -1749,17 +1753,16 @@
             <button
               class="btn btn-dark"
               type="button"
-              onclick="startPayPalPayment()"
-              id="paypalStartButton"
+              onclick="placeOrder()"
+              id="placeOrderButton"
             >
-              Pay with PayPal
+              Place Order
             </button>
 
-
-            <div
-              id="paypal-button-container"
-              style="display:none;margin-top:15px;"
-            ></div>
+            <div class="payment-note">
+              Payment gateway is not connected yet.
+              Your order will be saved as pending payment.
+            </div>
 
           </div>
 
@@ -1780,8 +1783,8 @@
           </h2>
 
           <p>
-            Thank you. Your payment was completed successfully
-            and your order has been recorded.
+            Thank you. Your order request has been received
+            and is currently pending payment confirmation.
           </p>
 
           <p>
@@ -1872,12 +1875,6 @@ let settings =
   defaultSettings;
 
 
-/*
-  IMPORTANT:
-  Royal Furniture Pro uses USD only.
-  Any old saved currency is ignored.
-*/
-
 function loadStore(){
 
   try{
@@ -1886,7 +1883,6 @@ function loadStore(){
       localStorage.getItem(
         "royalFurnitureProSettings"
       );
-
 
     if(savedSettings){
 
@@ -1928,7 +1924,6 @@ function loadStore(){
   }
 
 
-  // Always force USD
   settings.currency =
     "USD";
 
@@ -2069,7 +2064,6 @@ function getProductId(product){
 
   }
 
-
   return (
     "custom-" +
     String(
@@ -2103,12 +2097,10 @@ function loadProducts(){
         "royalFurnitureProProducts"
       );
 
-
     if(saved){
 
       const parsed =
         JSON.parse(saved);
-
 
       if(Array.isArray(parsed)){
 
@@ -2175,8 +2167,7 @@ function formatPrice(price){
           maximumFractionDigits:2
         }
       ) +
-    " " +
-    "USD"
+    " USD"
   );
 
 }
@@ -2373,35 +2364,18 @@ function escapeHtml(value){
   return String(
     value ?? ""
   )
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
 function escapeAttribute(value){
 
-  return escapeHtml(
-    value
-  )
+  return escapeHtml(value)
     .replace(
       /\\/g,
       "\\\\"
@@ -2994,14 +2968,8 @@ function closeCartFromOverlay(
 
 /* =========================
    CHECKOUT
+   NO PAYPAL
 ========================= */
-
-let paypalSdkLoaded =
-  false;
-
-let paypalButtonsRendered =
-  false;
-
 
 function renderCheckoutSummary(){
 
@@ -3073,51 +3041,6 @@ function renderCheckoutSummary(){
 }
 
 
-function resetPayPalUI(){
-
-  const startButton =
-    document.getElementById(
-      "paypalStartButton"
-    );
-
-
-  const paypalContainer =
-    document.getElementById(
-      "paypal-button-container"
-    );
-
-
-  if(startButton){
-
-    startButton.style.display =
-      "inline-flex";
-
-    startButton.disabled =
-      false;
-
-    startButton.textContent =
-      "Pay with PayPal";
-
-  }
-
-
-  if(paypalContainer){
-
-    paypalContainer.style.display =
-      "none";
-
-    paypalContainer.innerHTML =
-      "";
-
-  }
-
-
-  paypalButtonsRendered =
-    false;
-
-}
-
-
 function openCheckout(){
 
   if(!cart.length){
@@ -3131,12 +3054,6 @@ function openCheckout(){
   }
 
 
-  /*
-    PayPal checkout is USD only.
-    Currency is already forced to USD
-    by loadStore().
-  */
-
   settings.currency =
     "USD";
 
@@ -3144,8 +3061,6 @@ function openCheckout(){
   closeCart();
 
   renderCheckoutSummary();
-
-  resetPayPalUI();
 
 
   document.getElementById(
@@ -3277,10 +3192,6 @@ function validateCheckoutForm(){
   }
 
 
-  /*
-    Always USD.
-  */
-
   settings.currency =
     "USD";
 
@@ -3308,170 +3219,12 @@ function validateCheckoutForm(){
 }
 
 
-async function loadPayPalSDK(){
+/* =========================
+   CREATE LOCAL ORDER
+   PAYMENT PENDING
+========================= */
 
-  if(
-    paypalSdkLoaded &&
-    window.paypal
-  ){
-
-    return true;
-
-  }
-
-
-  try{
-
-    const response =
-      await fetch(
-        "/api/paypal-client-id"
-      );
-
-
-    const data =
-      await response.json();
-
-
-    if(
-      !response.ok ||
-      !data.clientId
-    ){
-
-      throw new Error(
-        data.error ||
-        "PayPal Client ID is not configured."
-      );
-
-    }
-
-
-    await new Promise(
-      (
-        resolve,
-        reject
-      ) => {
-
-        const existingScript =
-          document.querySelector(
-            'script[data-paypal-sdk="true"]'
-          );
-
-
-        if(existingScript){
-
-          if(window.paypal){
-
-            resolve();
-
-            return;
-
-          }
-
-
-          existingScript.addEventListener(
-            "load",
-            resolve,
-            {
-              once:true
-            }
-          );
-
-
-          existingScript.addEventListener(
-            "error",
-            reject,
-            {
-              once:true
-            }
-          );
-
-
-          return;
-
-        }
-
-
-        const script =
-          document.createElement(
-            "script"
-          );
-
-
-        script.src =
-          "https://www.paypal.com/sdk/js" +
-          "?client-id=" +
-          encodeURIComponent(
-            data.clientId
-          ) +
-          "&currency=USD" +
-          "&intent=capture" +
-          "&components=buttons";
-
-
-        script.async =
-          true;
-
-
-        script.dataset.paypalSdk =
-          "true";
-
-
-        script.onload =
-          () => {
-
-            resolve();
-
-          };
-
-
-        script.onerror =
-          () => {
-
-            reject(
-              new Error(
-                "Failed to load PayPal."
-              )
-            );
-
-          };
-
-
-        document.head.appendChild(
-          script
-        );
-
-      }
-    );
-
-
-    paypalSdkLoaded =
-      true;
-
-
-    return true;
-
-  }catch(error){
-
-    console.error(
-      "PayPal SDK error:",
-      error
-    );
-
-
-    showToast(
-      error.message ||
-      "Unable to connect to PayPal."
-    );
-
-
-    return false;
-
-  }
-
-}
-
-
-async function startPayPalPayment(){
+function placeOrder(){
 
   if(
     !validateCheckoutForm()
@@ -3482,389 +3235,34 @@ async function startPayPalPayment(){
   }
 
 
-  const startButton =
+  const button =
     document.getElementById(
-      "paypalStartButton"
+      "placeOrderButton"
     );
 
 
-  const paypalContainer =
-    document.getElementById(
-      "paypal-button-container"
-    );
-
-
-  startButton.disabled =
+  button.disabled =
     true;
 
 
-  startButton.textContent =
-    "Loading PayPal...";
+  button.textContent =
+    "Submitting Order...";
 
 
-  const loaded =
-    await loadPayPalSDK();
+  savePendingOrder();
 
 
-  if(!loaded){
+  button.disabled =
+    false;
 
-    startButton.disabled =
-      false;
 
-
-    startButton.textContent =
-      "Pay with PayPal";
-
-
-    return;
-
-  }
-
-
-  startButton.style.display =
-    "none";
-
-
-  paypalContainer.style.display =
-    "block";
-
-
-  if(paypalButtonsRendered){
-
-    return;
-
-  }
-
-
-  paypalButtonsRendered =
-    true;
-
-
-  paypalContainer.innerHTML =
-    "";
-
-
-  try{
-
-    await window.paypal
-      .Buttons({
-
-        style:{
-
-          layout:
-            "vertical",
-
-          color:
-            "gold",
-
-          shape:
-            "rect",
-
-          label:
-            "paypal",
-
-          height:
-            48
-
-        },
-
-
-        createOrder:
-          async function(){
-
-            try{
-
-              const amount =
-                cartTotal();
-
-
-              if(
-                !Number.isFinite(
-                  amount
-                ) ||
-                amount <= 0
-              ){
-
-                throw new Error(
-                  "Invalid order total."
-                );
-
-              }
-
-
-              const response =
-                await fetch(
-                  "/api/paypal-create-order",
-                  {
-
-                    method:
-                      "POST",
-
-                    headers:{
-                      "Content-Type":
-                        "application/json"
-                    },
-
-                    body:
-                      JSON.stringify({
-
-                        amount:
-                          amount.toFixed(
-                            2
-                          )
-
-                      })
-
-                  }
-                );
-
-
-              const data =
-                await response.json();
-
-
-              /* =========================
-                 PAYPAL ERROR DETAILS
-              ========================= */
-
-              if(!response.ok){
-
-                const paypalError =
-                  data?.paypal?.message ||
-                  data?.paypal?.name ||
-                  data?.paypal?.details?.[0]?.description ||
-                  data?.error ||
-                  "Failed to create PayPal order.";
-
-                console.error(
-                  "PayPal API response:",
-                  data
-                );
-
-                throw new Error(
-                  paypalError
-                );
-
-              }
-
-
-              if(!data.id){
-
-                throw new Error(
-                  "PayPal did not return an order ID."
-                );
-
-              }
-
-
-              return data.id;
-
-            }catch(error){
-
-              console.error(
-                "PayPal create order error:",
-                error
-              );
-
-
-              showToast(
-                error.message ||
-                "Unable to create PayPal order."
-              );
-
-
-              throw error;
-
-            }
-
-          },
-
-
-        onApprove:
-          async function(
-            data
-          ){
-
-            try{
-
-              showToast(
-                "Processing your payment..."
-              );
-
-
-              const response =
-                await fetch(
-                  "/api/paypal-capture-order",
-                  {
-
-                    method:
-                      "POST",
-
-                    headers:{
-                      "Content-Type":
-                        "application/json"
-                    },
-
-                    body:
-                      JSON.stringify({
-
-                        orderID:
-                          data.orderID
-
-                      })
-
-                  }
-                );
-
-
-              const captureData =
-                await response.json();
-
-
-              if(!response.ok){
-
-                throw new Error(
-                  captureData.error ||
-                  "Payment capture failed."
-                );
-
-              }
-
-
-              if(
-                captureData.status !==
-                "COMPLETED"
-              ){
-
-                throw new Error(
-                  "PayPal payment was not completed."
-                );
-
-              }
-
-
-              const capture =
-                captureData
-                  ?.purchase_units?.[0]
-                  ?.payments?.captures?.[0];
-
-
-              const captureId =
-                capture?.id ||
-                "";
-
-
-              savePaidOrder({
-
-                paypalOrderId:
-                  data.orderID,
-
-                paypalCaptureId:
-                  captureId,
-
-                paypalStatus:
-                  captureData.status
-
-              });
-
-
-            }catch(error){
-
-              console.error(
-                "PayPal capture error:",
-                error
-              );
-
-
-              showToast(
-                error.message ||
-                "Payment could not be completed."
-              );
-
-            }
-
-          },
-
-
-        onCancel:
-          function(){
-
-            showToast(
-              "PayPal payment was cancelled."
-            );
-
-          },
-
-
-        onError:
-          function(error){
-
-            console.error(
-              "PayPal error:",
-              error
-            );
-
-            const errorMessage =
-              error?.message ||
-              error?.details?.[0]?.description ||
-              error?.details?.[0]?.issue ||
-              "PayPal payment could not be completed.";
-
-            showToast(
-              errorMessage
-            );
-
-          }
-
-      })
-      .render(
-        "#paypal-button-container"
-      );
-
-  }catch(error){
-
-    console.error(
-      "PayPal render error:",
-      error
-    );
-
-
-    paypalButtonsRendered =
-      false;
-
-
-    paypalContainer.innerHTML =
-      "";
-
-
-    paypalContainer.style.display =
-      "none";
-
-
-    startButton.style.display =
-      "inline-flex";
-
-
-    startButton.disabled =
-      false;
-
-
-    startButton.textContent =
-      "Pay with PayPal";
-
-
-    showToast(
-      "Unable to display PayPal checkout."
-    );
-
-  }
+  button.textContent =
+    "Place Order";
 
 }
 
 
-function savePaidOrder(
-  paymentData
-){
+function savePendingOrder(){
 
   const name =
     document.getElementById(
@@ -3944,19 +3342,10 @@ function savePaidOrder(
     payment:{
 
       method:
-        "PayPal",
+        "Not Connected",
 
       status:
-        "Paid",
-
-      paypalOrderId:
-        paymentData.paypalOrderId,
-
-      paypalCaptureId:
-        paymentData.paypalCaptureId,
-
-      paypalStatus:
-        paymentData.paypalStatus
+        "Pending Payment"
 
     }
 
@@ -4051,12 +3440,10 @@ function savePaidOrder(
 
   updateCartCount();
 
-}
 
-
-function placeOrder(){
-
-  startPayPalPayment();
+  showToast(
+    "Order request received"
+  );
 
 }
 
@@ -4107,9 +3494,6 @@ function finishOrder(){
     "customerNotes"
   ).value =
     "";
-
-
-  resetPayPalUI();
 
 
   window.location.hash =
